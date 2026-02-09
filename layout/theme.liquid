@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page_title }}{% if current_tags %} – {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} – Seite {{ current_page }}{% endif %} – {{ shop.name }}</title>
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" href="{{ settings.favicon | image_url: width: 32 }}">
+  {%- else -%}
+    <link rel="icon" href="{{ 'favicon.ico' | asset_url }}">
+  {%- endif -%}
+
+  <style>
+    @font-face {
+      font-family: "AG1 Serif";
+      src: url("https://drinkag1.com/_next/static/media/456e9ec1dadfd7db-s.p.woff2") format("woff2");
+      font-weight: 400 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "AG1 Sans";
+      src: url("https://drinkag1.com/_next/static/media/0674c40e16f79b8d-s.p.woff2") format("woff2");
+      font-weight: 400 700;
+      font-display: swap;
+    }
+  </style>
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+
+  {%- if settings.google_tag_id != blank -%}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.google_tag_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} // eslint-disable-line
+      gtag('js', new Date());
+      gtag('config', '{{ settings.google_tag_id }}');
+    </script>
+  {%- endif -%}
+</head>
+<body class="template-{{ template.name | handle }}">
+  <a class="skip-to-content-link" href="#MainContent">Zum Inhalt springen</a>
+
+  {% section 'header' %}
+
+  <main id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  <script src="{{ 'accordion.js' | asset_url }}" defer></script>
+  <script src="{{ 'tabs.js' | asset_url }}" defer></script>
+  <script src="{{ 'carousel.js' | asset_url }}" defer></script>
+</body>
+</html>

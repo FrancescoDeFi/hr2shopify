@@ -1,0 +1,76 @@
+<div class="customer-page">
+  <div class="customer-page-inner customer-page-wide">
+    <div class="account-header">
+      <h1 class="customer-page-title">Mein Konto</h1>
+      <a href="{{ routes.account_logout_url }}" class="outline-btn">Abmelden</a>
+    </div>
+
+    <div class="account-grid">
+      <div class="account-details">
+        <h2>Kontoinformationen</h2>
+        <p>{{ customer.name }}</p>
+        <p>{{ customer.email }}</p>
+
+        {% if customer.default_address %}
+          <h3>Standardadresse</h3>
+          <p>
+            {{ customer.default_address.address1 }}<br>
+            {% if customer.default_address.address2 != blank %}{{ customer.default_address.address2 }}<br>{% endif %}
+            {{ customer.default_address.zip }} {{ customer.default_address.city }}<br>
+            {{ customer.default_address.country }}
+          </p>
+        {% endif %}
+
+        <a href="{{ routes.account_addresses_url }}" class="link-arrow">Adressen verwalten →</a>
+      </div>
+
+      <div class="account-orders">
+        <h2>Bestellungen</h2>
+
+        {% if customer.orders.size > 0 %}
+          <table class="account-table">
+            <thead>
+              <tr>
+                <th>Bestellung</th>
+                <th>Datum</th>
+                <th>Status</th>
+                <th>Betrag</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr>
+                  <td>
+                    <a href="{{ order.customer_url }}">{{ order.name }}</a>
+                  </td>
+                  <td>{{ order.created_at | date: "%d.%m.%Y" }}</td>
+                  <td>{{ order.financial_status_label }}</td>
+                  <td>{{ order.total_price | money }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          {% paginate customer.orders by 20 %}
+            {% if paginate.pages > 1 %}
+              <div class="pagination">
+                {{ paginate | default_pagination }}
+              </div>
+            {% endif %}
+          {% endpaginate %}
+        {% else %}
+          <p>Du hast noch keine Bestellungen aufgegeben.</p>
+          <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}" class="primary-btn">Jetzt kaufen</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kundenkonto",
+  "tag": "section",
+  "class": "section-customer-account"
+}
+{% endschema %}

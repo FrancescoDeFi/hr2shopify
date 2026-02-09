@@ -1,0 +1,168 @@
+<div class="customer-page">
+  <div class="customer-page-inner customer-page-wide">
+    <a href="{{ routes.account_url }}" class="link-arrow">← Zurück zum Konto</a>
+
+    <h1 class="customer-page-title">Meine Adressen</h1>
+
+    <button class="outline-btn" id="AddNewAddress" onclick="document.getElementById('AddressNewForm').style.display='block'; this.style.display='none';">
+      Neue Adresse hinzufügen
+    </button>
+
+    <div id="AddressNewForm" style="display:none;">
+      <h2>Neue Adresse</h2>
+      {%- form 'customer_address', customer.new_address -%}
+        <div class="form-row">
+          <div class="form-field">
+            <label for="AddressFirstNameNew">Vorname</label>
+            <input type="text" id="AddressFirstNameNew" name="address[first_name]" autocomplete="given-name">
+          </div>
+          <div class="form-field">
+            <label for="AddressLastNameNew">Nachname</label>
+            <input type="text" id="AddressLastNameNew" name="address[last_name]" autocomplete="family-name">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="AddressCompanyNew">Firma (optional)</label>
+          <input type="text" id="AddressCompanyNew" name="address[company]" autocomplete="organization">
+        </div>
+
+        <div class="form-field">
+          <label for="AddressAddress1New">Adresse</label>
+          <input type="text" id="AddressAddress1New" name="address[address1]" autocomplete="address-line1" required>
+        </div>
+
+        <div class="form-field">
+          <label for="AddressAddress2New">Adresszusatz (optional)</label>
+          <input type="text" id="AddressAddress2New" name="address[address2]" autocomplete="address-line2">
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="AddressZipNew">PLZ</label>
+            <input type="text" id="AddressZipNew" name="address[zip]" autocomplete="postal-code" required>
+          </div>
+          <div class="form-field">
+            <label for="AddressCityNew">Ort</label>
+            <input type="text" id="AddressCityNew" name="address[city]" autocomplete="address-level2" required>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="AddressCountryNew">Land</label>
+          <select id="AddressCountryNew" name="address[country]" autocomplete="country">
+            {{ all_country_option_tags }}
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="AddressPhoneNew">Telefon (optional)</label>
+          <input type="tel" id="AddressPhoneNew" name="address[phone]" autocomplete="tel">
+        </div>
+
+        <div class="form-field">
+          <label>
+            <input type="checkbox" name="address[default]" value="1">
+            Als Standardadresse festlegen
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="primary-btn">Adresse speichern</button>
+          <button type="button" class="outline-btn" onclick="document.getElementById('AddressNewForm').style.display='none'; document.getElementById('AddNewAddress').style.display='inline-flex';">Abbrechen</button>
+        </div>
+      {%- endform -%}
+    </div>
+
+    <div class="addresses-list">
+      {% for address in customer.addresses %}
+        <div class="address-card">
+          {% if address == customer.default_address %}
+            <span class="address-badge">Standardadresse</span>
+          {% endif %}
+
+          <p>
+            {{ address.first_name }} {{ address.last_name }}<br>
+            {% if address.company != blank %}{{ address.company }}<br>{% endif %}
+            {{ address.address1 }}<br>
+            {% if address.address2 != blank %}{{ address.address2 }}<br>{% endif %}
+            {{ address.zip }} {{ address.city }}<br>
+            {{ address.country }}<br>
+            {% if address.phone != blank %}{{ address.phone }}{% endif %}
+          </p>
+
+          <div class="address-actions">
+            <button class="link-arrow" onclick="document.getElementById('EditAddress_{{ address.id }}').style.display='block'; this.closest('.address-card').querySelector('.address-actions').style.display='none';">
+              Bearbeiten
+            </button>
+
+            {%- form 'customer_address', address -%}
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="link-arrow" onclick="return confirm('Adresse wirklich löschen?');">
+                Löschen
+              </button>
+            {%- endform -%}
+          </div>
+
+          <div id="EditAddress_{{ address.id }}" style="display:none;">
+            {%- form 'customer_address', address -%}
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="AddressFirstName_{{ address.id }}">Vorname</label>
+                  <input type="text" id="AddressFirstName_{{ address.id }}" name="address[first_name]" value="{{ address.first_name }}" autocomplete="given-name">
+                </div>
+                <div class="form-field">
+                  <label for="AddressLastName_{{ address.id }}">Nachname</label>
+                  <input type="text" id="AddressLastName_{{ address.id }}" name="address[last_name]" value="{{ address.last_name }}" autocomplete="family-name">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="AddressAddress1_{{ address.id }}">Adresse</label>
+                <input type="text" id="AddressAddress1_{{ address.id }}" name="address[address1]" value="{{ address.address1 }}" autocomplete="address-line1" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="AddressZip_{{ address.id }}">PLZ</label>
+                  <input type="text" id="AddressZip_{{ address.id }}" name="address[zip]" value="{{ address.zip }}" autocomplete="postal-code" required>
+                </div>
+                <div class="form-field">
+                  <label for="AddressCity_{{ address.id }}">Ort</label>
+                  <input type="text" id="AddressCity_{{ address.id }}" name="address[city]" value="{{ address.city }}" autocomplete="address-level2" required>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="AddressCountry_{{ address.id }}">Land</label>
+                <select id="AddressCountry_{{ address.id }}" name="address[country]" autocomplete="country">
+                  {{ all_country_option_tags }}
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label>
+                  <input type="checkbox" name="address[default]" value="1" {% if address == customer.default_address %}checked{% endif %}>
+                  Als Standardadresse festlegen
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">Speichern</button>
+                <button type="button" class="outline-btn" onclick="document.getElementById('EditAddress_{{ address.id }}').style.display='none'; this.closest('.address-card').querySelector('.address-actions').style.display='flex';">Abbrechen</button>
+              </div>
+            {%- endform -%}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kundenadressen",
+  "tag": "section",
+  "class": "section-customer-addresses"
+}
+{% endschema %}

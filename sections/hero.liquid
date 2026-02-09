@@ -1,0 +1,200 @@
+<section class="hero">
+  <div class="hero-text">
+    <h1>{{ section.settings.heading | default: 'Dein täglicher Haar-Boost' }}</h1>
+    <p class="lead">{{ section.settings.subheading | default: 'Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.' }}</p>
+
+    <div class="hero-benefits" aria-label="Produktvorteile">
+      {% for block in section.blocks %}
+        {% if block.type == 'benefit' %}
+          <div class="hero-benefit" {{ block.shopify_attributes }}>
+            {% if block.settings.icon == 'clinical' %}
+              <svg class="hero-benefit-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="22" r="18" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M14 28c3-7 13-7 16 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="22" cy="18" r="2.4" fill="#000000"/>
+              </svg>
+            {% elsif block.settings.icon == 'drug_free' %}
+              <svg class="hero-benefit-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="22" r="18" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M16 16l12 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M28 16L16 28" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+                <circle cx="30" cy="14" r="2" fill="#000000"/>
+              </svg>
+            {% elsif block.settings.icon == 'results' %}
+              <svg class="hero-benefit-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="22" cy="22" r="18" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M22 12v8l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="22" cy="22" r="2.4" fill="#000000"/>
+              </svg>
+            {% endif %}
+            <div class="hero-benefit-text">{{ block.settings.text }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="hero-ctas" aria-label="Kaufoptionen">
+      <a class="primary-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.cta_text | default: 'Jetzt kaufen' }}</a>
+      {% if section.settings.show_quiz_button %}
+        <a class="outline-btn hero-quiz-btn" href="{{ section.settings.quiz_url | default: '#' }}" aria-label="Quiz für einen personalisierten Plan starten">
+          {{ section.settings.quiz_text | default: 'Mach dein Quiz für einen personalisierten Plan' }} <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_clinicians_badge %}
+      <aside class="hero-clinicians-proof" aria-label="Clinicians Choice">
+        <div class="hero-clinicians-title">
+          <svg class="hero-clinicians-laurel" viewBox="0 0 24 28" aria-hidden="true">
+            <path d="M20 3C13 8 12 18 18 25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <ellipse cx="12.2" cy="7.1" rx="2" ry="1.2" transform="rotate(-33 12.2 7.1)" fill="currentColor"/>
+            <ellipse cx="10.6" cy="11.1" rx="2" ry="1.2" transform="rotate(-22 10.6 11.1)" fill="currentColor"/>
+            <ellipse cx="10.2" cy="15.5" rx="2" ry="1.2" transform="rotate(-12 10.2 15.5)" fill="currentColor"/>
+            <ellipse cx="11.1" cy="19.8" rx="2" ry="1.2" transform="rotate(3 11.1 19.8)" fill="currentColor"/>
+          </svg>
+          <span class="hero-clinicians-med" aria-hidden="true">&#9877;</span>
+          <span>{{ section.settings.clinicians_title | default: 'Von Ärzten empfohlen' }}</span>
+          <svg class="hero-clinicians-laurel hero-clinicians-laurel-right" viewBox="0 0 24 28" aria-hidden="true">
+            <path d="M20 3C13 8 12 18 18 25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <ellipse cx="12.2" cy="7.1" rx="2" ry="1.2" transform="rotate(-33 12.2 7.1)" fill="currentColor"/>
+            <ellipse cx="10.6" cy="11.1" rx="2" ry="1.2" transform="rotate(-22 10.6 11.1)" fill="currentColor"/>
+            <ellipse cx="10.2" cy="15.5" rx="2" ry="1.2" transform="rotate(-12 10.2 15.5)" fill="currentColor"/>
+            <ellipse cx="11.1" cy="19.8" rx="2" ry="1.2" transform="rotate(3 11.1 19.8)" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="hero-clinicians-body">
+          <p>{{ section.settings.clinicians_text | default: 'Wissenschaftlich fundiert. Entwickelt von den führenden medizinischen Expert:innen.' }}</p>
+        </div>
+      </aside>
+    {% endif %}
+  </div>
+
+  <div class="hero-image">
+    {% if section.settings.hero_image != blank %}
+      <img src="{{ section.settings.hero_image | image_url: width: 800 }}" alt="{{ section.settings.hero_image.alt | default: 'Hr² Produkt' }}" loading="eager">
+    {% else %}
+      <img src="{{ 'heroimage.png' | asset_url }}" alt="Hr² Produkt" loading="eager">
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "section-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Dein täglicher<br> Haar-Boost"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Unterüberschrift",
+      "default": "Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Bild"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Jetzt kaufen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quiz_button",
+      "label": "Quiz Button anzeigen",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "quiz_url",
+      "label": "Quiz URL"
+    },
+    {
+      "type": "text",
+      "id": "quiz_text",
+      "label": "Quiz Button Text",
+      "default": "Mach dein Quiz für einen personalisierten Plan"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_clinicians_badge",
+      "label": "Ärzte-Badge anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "clinicians_title",
+      "label": "Badge Titel",
+      "default": "Von Ärzten empfohlen"
+    },
+    {
+      "type": "text",
+      "id": "clinicians_text",
+      "label": "Badge Text",
+      "default": "Wissenschaftlich fundiert. Entwickelt von den führenden medizinischen Expert:innen."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Vorteil",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "clinical", "label": "Klinisch geprüft" },
+            { "value": "drug_free", "label": "Ohne Arzneistoffe" },
+            { "value": "results", "label": "Ergebnisse" }
+          ],
+          "default": "clinical"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "KLINISCH GEPRÜFTE FORMEL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "clinical",
+            "text": "KLINISCH<br>GEPRÜFTE FORMEL"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "drug_free",
+            "text": "100% OHNE<br>ARZNEISTOFFE"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "results",
+            "text": "ERGEBNISSE IN 3–6<br>MONATEN"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

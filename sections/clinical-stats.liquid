@@ -1,0 +1,120 @@
+<section class="clinical-standard" aria-labelledby="clinical-title">
+  <div class="clinical-inner">
+    <div class="clinical-left">
+      <h2 class="clinical-title" id="clinical-title">{{ section.settings.heading | default: 'Klinische Tests sind kein Extra – sie sind unser Standard.' }}</h2>
+      <a class="clinical-cta" href="{{ section.settings.cta_url | default: pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">
+        <span class="cta-icon" aria-hidden="true">→</span>
+        {{ section.settings.cta_text | default: 'Unsere Inhaltsstoffe entdecken' }}
+      </a>
+      <p class="clinical-foot">{{ section.settings.footer_text | default: 'Innovationen für Haargesundheit, denen du vertrauen kannst – dank branchenführender Haarmessung.' }}</p>
+    </div>
+
+    <div class="clinical-right" aria-label="Klinische Kennzahlen">
+      <div class="clinical-stats">
+        {% for block in section.blocks %}
+          {% if block.type == 'stat' %}
+            <div class="clinical-stat" {{ block.shopify_attributes }}>
+              <div class="stat-value">{{ block.settings.value }}</div>
+              <div class="stat-text">{{ block.settings.text }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% if section.settings.show_sources %}
+          <ol class="clinical-notes" aria-label="Quellen">
+            {% for block in section.blocks %}
+              {% if block.type == 'source' %}
+                <li {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer">{{ block.settings.url }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ol>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Klinische Statistiken",
+  "tag": "section",
+  "class": "section-clinical",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Klinische Tests sind kein Extra – sie sind unser Standard."
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Unsere Inhaltsstoffe entdecken"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_text",
+      "label": "Fußzeilen-Text",
+      "default": "Innovationen für Haargesundheit, denen du vertrauen kannst – dank branchenführender Haarmessung."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sources",
+      "label": "Quellen anzeigen",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistik",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Wert",
+          "default": "95%"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Beschreibung",
+          "default": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls<sup>1</sup>"
+        }
+      ]
+    },
+    {
+      "type": "source",
+      "name": "Quelle",
+      "settings": [
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Quellen-URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Klinische Statistiken",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "95%", "text": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls<sup>1</sup>" } },
+        { "type": "stat", "settings": { "value": "60%", "text": "der Probanten, die mit der aktiven Studienformulierung (Saw Palmetto) behandelt wurden wurden beim letzten Besuch als verbessert beurteilt.<sup>2</sup>" } },
+        { "type": "stat", "settings": { "value": "100%", "text": "der Teilnehmen mit einem Defizit an Biotin erlebten eine Verbesserung des Haarausfalls<sup>3</sup>" } },
+        { "type": "source", "settings": { "url": "https://onlinelibrary.wiley.com/doi/10.1002/ptr.6528" } },
+        { "type": "source", "settings": { "url": "https://pubmed.ncbi.nlm.nih.gov/12006122/" } },
+        { "type": "source", "settings": { "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5582478/" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

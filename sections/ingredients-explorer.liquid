@@ -1,0 +1,118 @@
+<section class="ingredients-explorer" aria-labelledby="ingredients-title">
+  <div class="ingredients-inner">
+    <h2 class="ingredients-title" id="ingredients-title">{{ section.settings.heading | default: 'DIE PREISGEKRÖNTE PRÄZISIONSMISCHUNG AN INHALTSSTOFFEN.' }}</h2>
+
+    <div class="ingredients-grid">
+      <div class="ingredients-panel" aria-label="Inhaltsstoff-Details">
+        <div class="ingredients-chips" role="tablist" aria-label="Inhaltsstoffe">
+          {% for block in section.blocks %}
+            {% if block.type == 'ingredient' %}
+              {% assign is_first = false %}
+              {% if forloop.first %}{% assign is_first = true %}{% endif %}
+              <button class="ingredient-chip{% if is_first %} active{% endif %}"
+                      type="button"
+                      role="tab"
+                      aria-selected="{{ is_first }}"
+                      data-ingredient="{{ block.settings.id }}"
+                      data-description="{{ block.settings.description | escape }}"
+                      {{ block.shopify_attributes }}>
+                <span class="chip-dot" aria-hidden="true"></span>
+                {{ block.settings.name }}
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="ingredients-more">{{ section.settings.more_text | default: 'und 20+ mehr' }}</div>
+
+        <p class="ingredient-description" id="ingredient-description">
+          {% for block in section.blocks %}
+            {% if block.type == 'ingredient' and forloop.first %}
+              {{ block.settings.description }}
+            {% endif %}
+          {% endfor %}
+        </p>
+      </div>
+
+      <div class="ingredients-visual" aria-hidden="true">
+        <div class="ingredients-card">
+          <div class="ingredients-ring">
+            {% if section.settings.capsule_image != blank %}
+              <img class="ingredients-capsule" src="{{ section.settings.capsule_image | image_url: width: 400 }}" alt="" loading="lazy" decoding="async">
+            {% else %}
+              <img class="ingredients-capsule" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Inhaltsstoffe Explorer",
+  "tag": "section",
+  "class": "section-ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "DIE PREISGEKRÖNTE PRÄZISIONSMISCHUNG AN INHALTSSTOFFEN."
+    },
+    {
+      "type": "text",
+      "id": "more_text",
+      "label": "Mehr Text",
+      "default": "und 20+ mehr"
+    },
+    {
+      "type": "image_picker",
+      "id": "capsule_image",
+      "label": "Kapsel Bild"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Inhaltsstoff",
+      "settings": [
+        {
+          "type": "text",
+          "id": "id",
+          "label": "ID (für Programmierung)",
+          "default": "anagain"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Anagain"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Beschreibung",
+          "default": "Ein pflanzlicher Erbsensprossen-Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Inhaltsstoffe Explorer",
+      "blocks": [
+        { "type": "ingredient", "settings": { "id": "anagain", "name": "Anagain", "description": "Ein pflanzlicher Erbsensprossen-Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>" } },
+        { "type": "ingredient", "settings": { "id": "sawpalmetto", "name": "Sägepalmenextrakt", "description": "Ein Pflanzenextrakt, der Faktoren unterstützt, die mit der Erhaltung voller Haare in Verbindung stehen.<sup>4</sup>" } },
+        { "type": "ingredient", "settings": { "id": "pomegranate", "name": "Granatapfelextrakt", "description": "Ein polyphenolreicher Extrakt mit antioxidativen Eigenschaften – unterstützt den Schutz vor oxidativem Stress.<sup>4</sup>" } },
+        { "type": "ingredient", "settings": { "id": "ashwagandha", "name": "Ashwagandha", "description": "Ein Adaptogen, das die Stressbalance unterstützt – ein wichtiger Faktor für gesunde Haarzyklen.<sup>4</sup>" } },
+        { "type": "ingredient", "settings": { "id": "lcysteine", "name": "L-Cysteine", "description": "Eine Aminosäure, die als Baustein von Keratin dient – unterstützt die natürliche Haarstruktur.<sup>4</sup>" } },
+        { "type": "ingredient", "settings": { "id": "llysine", "name": "L-Lysine", "description": "Eine essentielle Aminosäure, die am Aufbau von Strukturproteinen beteiligt ist.<sup>4</sup>" } },
+        { "type": "ingredient", "settings": { "id": "zinc", "name": "Zink", "description": "Zink trägt zur Erhaltung normaler Haare und Nägel bei.<sup>4</sup>" } },
+        { "type": "ingredient", "settings": { "id": "biotin", "name": "Biotin", "description": "Biotin trägt zur Erhaltung normaler Haare und Haut bei.<sup>4</sup>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,203 @@
+<section class="offer">
+  <div class="offer-left">
+    <h2 class="offer-product-title">{{ section.settings.product_title | default: 'Hr²' }}</h2>
+
+    <p class="offer-product-description">
+      {{ section.settings.product_description | default: 'Hr² ist dein tägliches Supplement für die Haargesundheit – entwickelt mit einem Fokus auf ausgewählte Inhaltsstoffe, Qualitätssicherung und eine einfache Routine.' }}
+    </p>
+
+    <div class="offer-plans" role="radiogroup" aria-label="Lieferoptionen">
+      {% for block in section.blocks %}
+        {% if block.type == 'plan' %}
+          <label class="offer-plan{% if forloop.first %} is-selected{% endif %}" {{ block.shopify_attributes }}>
+            <input class="offer-plan-radio" type="radio" name="offer-plan" value="{{ block.settings.value }}" {% if forloop.first %}checked{% endif %}>
+            <div class="offer-plan-title">
+              <span class="offer-plan-name">{{ block.settings.name }}</span>
+              {% if block.settings.badge != blank %}
+                <span class="offer-plan-badge">{{ block.settings.badge }}</span>
+              {% endif %}
+            </div>
+            <div class="offer-plan-price">
+              <div class="offer-plan-price-new">{{ block.settings.price_new }}</div>
+              {% if block.settings.price_old != blank %}
+                <div class="offer-plan-price-old">{{ block.settings.price_old }}</div>
+              {% endif %}
+            </div>
+            <div class="offer-plan-desc">{{ block.settings.description }}</div>
+          </label>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.cta_text | default: 'In den Warenkorb' }} <span aria-hidden="true">→</span></a>
+
+    {% if section.settings.show_one_time %}
+      <div class="offer-once">
+        <a class="offer-once-link" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.one_time_text | default: 'Einmal kaufen für 39€ + 4,95€ Versand' }}</a>
+      </div>
+    {% endif %}
+
+    <p class="offer-guarantee-note">{{ section.settings.guarantee_text | default: 'Kostenloser Versand. Jederzeit pausieren oder kündigen.' }}</p>
+  </div>
+
+  <div class="offer-right">
+    <div class="offer-tagline">{{ section.settings.promo_tagline | default: 'Das erste Mal. Nur für kurze Zeit.' }}</div>
+    <h3>{{ section.settings.promo_heading | default: 'Dein Hr² jetzt für 29€' }}</h3>
+    {% if section.settings.promo_image != blank %}
+      <img src="{{ section.settings.promo_image | image_url: width: 600 }}" alt="{{ section.settings.promo_image.alt | default: 'Hr² Bundle' }}" loading="lazy" decoding="async">
+    {% else %}
+      <img src="{{ 'bottlew.png' | asset_url }}" alt="Hr² Bundle" loading="lazy" decoding="async">
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Angebot & Preise",
+  "tag": "section",
+  "class": "section-offer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Produkt-Titel",
+      "default": "Hr²"
+    },
+    {
+      "type": "textarea",
+      "id": "product_description",
+      "label": "Produkt-Beschreibung",
+      "default": "Hr² ist dein tägliches Supplement für die Haargesundheit – entwickelt mit einem Fokus auf ausgewählte Inhaltsstoffe, Qualitätssicherung und eine einfache Routine."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "In den Warenkorb"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_one_time",
+      "label": "Einmalkauf anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "one_time_text",
+      "label": "Einmalkauf Text",
+      "default": "Einmal kaufen für 39€ + 4,95€ Versand"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Garantie Text",
+      "default": "Kostenloser Versand. Jederzeit pausieren oder kündigen."
+    },
+    {
+      "type": "header",
+      "content": "Promo Bereich"
+    },
+    {
+      "type": "text",
+      "id": "promo_tagline",
+      "label": "Promo Tagline",
+      "default": "Das erste Mal. Nur für kurze Zeit."
+    },
+    {
+      "type": "text",
+      "id": "promo_heading",
+      "label": "Promo Überschrift",
+      "default": "Dein Hr² jetzt für 29€"
+    },
+    {
+      "type": "image_picker",
+      "id": "promo_image",
+      "label": "Promo Bild"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "plan",
+      "name": "Abo-Plan",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Wert (für Formular)",
+          "default": "monthly"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Plan Name",
+          "default": "Monatliche Lieferung"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "Spare 10%"
+        },
+        {
+          "type": "text",
+          "id": "price_new",
+          "label": "Neuer Preis",
+          "default": "35€"
+        },
+        {
+          "type": "text",
+          "id": "price_old",
+          "label": "Alter Preis (durchgestrichen)",
+          "default": "39€"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Beschreibung",
+          "default": "1-Monats-Vorrat, Lieferung monatlich."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Angebot & Preise",
+      "blocks": [
+        {
+          "type": "plan",
+          "settings": {
+            "value": "monthly",
+            "name": "Monatliche Lieferung",
+            "badge": "Spare 10%",
+            "price_new": "35€",
+            "price_old": "39€",
+            "description": "1-Monats-Vorrat, Lieferung monatlich."
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "value": "3month",
+            "name": "3-Monats-Lieferung",
+            "badge": "Spare 15%",
+            "price_new": "99€",
+            "price_old": "117€",
+            "description": "3-Monats-Vorrat mit Nachlieferung alle 3 Monate."
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "value": "6month",
+            "name": "6-Monats-Lieferung",
+            "badge": "Spare 20%",
+            "price_new": "187€",
+            "price_old": "234€",
+            "description": "6-Monats-Vorrat mit Nachlieferung alle 6 Monate."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

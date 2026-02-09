@@ -1,0 +1,47 @@
+<div class="search-page">
+  <h1>{{ 'general.search.title' | t }}</h1>
+
+  <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+    <input
+      type="search"
+      name="q"
+      value="{{ search.terms | escape }}"
+      placeholder="{{ 'general.search.placeholder' | t }}"
+      aria-label="{{ 'general.search.title' | t }}"
+    >
+    <button type="submit" class="primary-btn">{{ 'general.search.submit' | t }}</button>
+  </form>
+
+  {% if search.performed %}
+    {% if search.results_count > 0 %}
+      <p class="search-results-count">{{ search.results_count }} Ergebnisse für "{{ search.terms }}"</p>
+
+      {% for item in search.results %}
+        <div class="search-result-item">
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.content != blank %}
+            <p>{{ item.content | strip_html | truncate: 200 }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      {% paginate search.results by 10 %}
+        {% if paginate.pages > 1 %}
+          <div class="pagination">
+            {{ paginate | default_pagination }}
+          </div>
+        {% endif %}
+      {% endpaginate %}
+    {% else %}
+      <p>{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+    {% endif %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Suche",
+  "tag": "section",
+  "class": "section-search"
+}
+{% endschema %}

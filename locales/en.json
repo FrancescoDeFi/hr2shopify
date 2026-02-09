@@ -1,0 +1,211 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "open_menu": "Open menu",
+      "close_menu": "Close menu",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "meta": {
+      "page_number": "Page {{ number }}"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search...",
+      "no_results": "No results for \"{{ terms }}\"",
+      "submit": "Search"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The requested page does not exist.",
+      "link": "Back to homepage"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "buy_now": "Buy now",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "description": "Description",
+      "price": "Price",
+      "compare_at_price": "Was",
+      "save_percentage": "Save {{ percentage }}%",
+      "free_shipping": "Free shipping",
+      "cancel_anytime": "Cancel anytime",
+      "money_back": "30-day money-back guarantee",
+      "includes_tax": "Tax included",
+      "shipping_calculated": "Shipping calculated at checkout"
+    },
+    "selling_plans": {
+      "monthly": "Monthly delivery",
+      "3_months": "3-month delivery",
+      "6_months": "6-month delivery",
+      "one_time": "One-time purchase",
+      "subscription": "Subscribe",
+      "save": "Save {{ percentage }}%",
+      "per_delivery": "per delivery",
+      "delivery_every": "Delivery every {{ interval }}"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "update": "Update",
+    "shipping_note": "Shipping calculated at checkout.",
+    "taxes_note": "Taxes calculated at checkout."
+  },
+  "customer": {
+    "account": {
+      "title": "My account",
+      "details": "Account details",
+      "default_address": "Default address",
+      "manage_addresses": "Manage addresses",
+      "orders": "Orders",
+      "no_orders": "You haven't placed any orders yet.",
+      "logout": "Log out"
+    },
+    "login": {
+      "title": "Log in",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Log in",
+      "forgot_password": "Forgot your password?",
+      "create_account": "Create account",
+      "sign_in": "Sign in"
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create account",
+      "already_have_account": "Already have an account?"
+    },
+    "recover_password": {
+      "title": "Reset password",
+      "subtext": "We'll send you an email to reset your password.",
+      "submit": "Submit",
+      "success": "We've sent you an email with a link to reset your password.",
+      "back_to_login": "Back to login"
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date": "Placed on {{ date }}",
+      "cancelled": "Order cancelled on {{ date }}",
+      "product": "Product",
+      "quantity": "Quantity",
+      "price": "Price",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "billing_address": "Billing address",
+      "shipping_address": "Shipping address",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status"
+    },
+    "addresses": {
+      "title": "My addresses",
+      "add_new": "Add new address",
+      "default_address": "Default address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you want to delete this address?",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company (optional)",
+      "address1": "Address",
+      "address2": "Apartment, suite, etc. (optional)",
+      "zip": "Postal code",
+      "city": "City",
+      "country": "Country",
+      "phone": "Phone (optional)",
+      "set_default": "Set as default address",
+      "save": "Save address",
+      "cancel": "Cancel"
+    }
+  },
+  "sections": {
+    "hero": {
+      "heading": "Your daily hair boost",
+      "cta_buy": "Buy now",
+      "cta_quiz": "Take the quiz for a personalized plan",
+      "clinicians_title": "Recommended by doctors",
+      "clinicians_body": "Science-backed. Developed by leading medical experts."
+    },
+    "comparison": {
+      "title": "Comparison",
+      "feature": "Feature",
+      "hr2": "Hr²",
+      "others": "Others",
+      "buy_cta": "Buy Hr²",
+      "price_note": "from €32 per month"
+    },
+    "causes": {
+      "heading": "YOUR HAIR LOSS DOESN'T HAVE TO BE LEFT TO CHANCE.",
+      "subheading": "Men's hair thins for more than one reason. And addressing multiple causes is exactly what Hr² was designed to do."
+    },
+    "partners": {
+      "kicker": "Formulated by scientists from these institutions"
+    },
+    "ingredients": {
+      "heading": "THE AWARD-WINNING PRECISION BLEND OF INGREDIENTS.",
+      "more": "and 20+ more"
+    },
+    "clinical": {
+      "heading": "Clinical testing isn't an extra – it's our standard.",
+      "cta": "Discover our ingredients",
+      "footer": "Hair health innovations you can trust – powered by industry-leading hair measurement."
+    },
+    "offer": {
+      "title": "Hr²",
+      "cta": "Add to cart",
+      "once_link": "Buy once for {{ price }} + {{ shipping }} shipping",
+      "guarantee": "Free shipping. Pause or cancel anytime.",
+      "tagline": "First time. For a limited time only."
+    },
+    "quality": {
+      "heading": "Independently tested for those who give it their all",
+      "cta": "Learn more about our testing"
+    },
+    "community": {
+      "heading": "Clinically tested, lived by real people",
+      "subheading": "Hear from our community how Hr² has changed their daily routine."
+    },
+    "faq": {
+      "heading": "You have questions, we have answers",
+      "subheading": "Can't find what you're looking for? Visit our",
+      "help_link": "Help Center",
+      "help_suffix": "– we're here to help."
+    }
+  },
+  "footer": {
+    "contact_title": "Want to learn more?",
+    "contact_email": "info@gethr2.com",
+    "legal_title": "Legal",
+    "help_title": "Help",
+    "payment_title": "Payment methods",
+    "copyright": "© {{ year }} Hr². All rights reserved.",
+    "links": {
+      "datenschutz": "Privacy Policy",
+      "agb": "Terms & Conditions",
+      "impressum": "Legal Notice",
+      "widerruf": "Right of Withdrawal",
+      "beschwerden": "Complaints",
+      "hilfe": "Help",
+      "inhaltsstoffe": "Ingredients",
+      "forschung": "Research"
+    }
+  }
+}

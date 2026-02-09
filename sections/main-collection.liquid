@@ -1,0 +1,61 @@
+<div class="collection-page">
+  <div class="collection-page-inner">
+    <h1 class="collection-page-title">{{ collection.title }}</h1>
+
+    {% if collection.description != blank %}
+      <div class="collection-description">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+
+    {% if collection.products.size > 0 %}
+      <div class="collection-grid">
+        {% for product in collection.products %}
+          <article class="product-card">
+            <a href="{{ product.url }}" class="product-card-link">
+              {% if product.featured_image %}
+                <img
+                  class="product-card-image"
+                  src="{{ product.featured_image | image_url: width: 400 }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="400"
+                >
+              {% endif %}
+              <div class="product-card-info">
+                <h2 class="product-card-title">{{ product.title }}</h2>
+                <p class="product-card-price">{{ product.price | money }}</p>
+                {% if product.compare_at_price > product.price %}
+                  <p class="product-card-compare-price">
+                    <span class="visually-hidden">Statt</span>
+                    <s>{{ product.compare_at_price | money }}</s>
+                  </p>
+                {% endif %}
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+
+      {% paginate collection.products by 12 %}
+        {% if paginate.pages > 1 %}
+          <div class="pagination">
+            {{ paginate | default_pagination }}
+          </div>
+        {% endif %}
+      {% endpaginate %}
+    {% else %}
+      <p>Keine Produkte in dieser Kollektion.</p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kollektion",
+  "tag": "section",
+  "class": "section-collection"
+}
+{% endschema %}

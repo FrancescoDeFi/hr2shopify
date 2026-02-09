@@ -1,0 +1,167 @@
+<section class="causes" aria-labelledby="causes-title">
+  <div class="causes-inner">
+    <header class="causes-header">
+      <h2 id="causes-title">{{ section.settings.heading | default: 'DEIN HAARAUSFALL MUSS NICHT DEM ZUFALL ÜBERLASSEN WERDEN.' }}</h2>
+      <p class="causes-sub">{{ section.settings.subheading | default: 'Männerhaar wird aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde.' }}</p>
+    </header>
+
+    <div class="causes-grid">
+      <div class="causes-accordion" role="tablist" aria-label="Ursachen">
+        {% for block in section.blocks %}
+          {% if block.type == 'cause' %}
+            {% assign is_active = false %}
+            {% if block.settings.default_open %}
+              {% assign is_active = true %}
+            {% endif %}
+            <div class="cause-item" {{ block.shopify_attributes }}>
+              <button class="cause-btn{% if is_active %} active{% endif %}" type="button" role="tab" aria-selected="{{ is_active }}" aria-expanded="{{ is_active }}" data-cause="{{ block.settings.cause_id }}">
+                <span class="cause-label">{{ block.settings.title }}</span>
+                <span class="cause-icon" aria-hidden="true">{% if is_active %}−{% else %}+{% endif %}</span>
+              </button>
+              <div class="cause-body{% if is_active %} open{% endif %}" role="tabpanel">
+                {{ block.settings.description }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <figure class="causes-visual" aria-label="Ursachen-Visualisierung">
+        {% if section.settings.video_url != blank %}
+          <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" poster="{{ section.settings.poster_image | image_url: width: 600 | default: 'causes-haarwurzel.png' | asset_url }}">
+            <source src="{{ section.settings.video_url }}" type="video/mp4">
+          </video>
+        {% else %}
+          <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" poster="{{ 'causes-haarwurzel.png' | asset_url }}">
+            <source src="{{ 'causes-hairprom.mp4' | asset_url }}" type="video/mp4">
+          </video>
+        {% endif %}
+        <figcaption class="causes-caption">
+          {{ section.settings.caption | default: 'Der Körper braucht Nährstoffe zur Versorgung und zur Unterstützung eines gesunden Haarwachstumszyklus. Diese Nährstoffe können z. B. durch eine unausgewogene Ernährung reduziert werden – das kann Haarstärke und allgemeine Gesundheit beeinflussen.' }}
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ursachen Akkordeon",
+  "tag": "section",
+  "class": "section-causes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "DEIN HAARAUSFALL MUSS NICHT DEM ZUFALL ÜBERLASSEN WERDEN."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Unterüberschrift",
+      "default": "Männerhaar wird aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde."
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL (optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image",
+      "label": "Video Poster Bild"
+    },
+    {
+      "type": "textarea",
+      "id": "caption",
+      "label": "Bildunterschrift",
+      "default": "Der Körper braucht Nährstoffe zur Versorgung und zur Unterstützung eines gesunden Haarwachstumszyklus. Diese Nährstoffe können z. B. durch eine unausgewogene Ernährung reduziert werden – das kann Haarstärke und allgemeine Gesundheit beeinflussen."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "cause",
+      "name": "Ursache",
+      "settings": [
+        {
+          "type": "text",
+          "id": "cause_id",
+          "label": "ID (für Programmierung)",
+          "default": "stress"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "STRESS"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Beschreibung",
+          "default": "Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen."
+        },
+        {
+          "type": "checkbox",
+          "id": "default_open",
+          "label": "Standardmäßig geöffnet",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ursachen Akkordeon",
+      "blocks": [
+        {
+          "type": "cause",
+          "settings": {
+            "cause_id": "stress",
+            "title": "STRESS",
+            "description": "Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen.",
+            "default_open": false
+          }
+        },
+        {
+          "type": "cause",
+          "settings": {
+            "cause_id": "hormones",
+            "title": "HORMONE",
+            "description": "Hormonsignale können die Empfindlichkeit der Follikel beeinflussen und so langfristig zur Ausdünnung beitragen.",
+            "default_open": false
+          }
+        },
+        {
+          "type": "cause",
+          "settings": {
+            "cause_id": "dht",
+            "title": "DHT",
+            "description": "Schlaf, Aktivität und Gewohnheiten beeinflussen Regeneration und das Umfeld, das Haare brauchen, um zu wachsen.",
+            "default_open": false
+          }
+        },
+        {
+          "type": "cause",
+          "settings": {
+            "cause_id": "nutrition",
+            "title": "ERNÄHRUNG",
+            "description": "Nährstofflücken, die durch Ernährung oder ein unausgeglichenes Darmmikrobiom entstehen können.",
+            "default_open": true
+          }
+        },
+        {
+          "type": "cause",
+          "settings": {
+            "cause_id": "aging",
+            "title": "ALTERUNG",
+            "description": "Mit zunehmendem Alter können Wachstumsphasen kürzer werden – Haardichte lässt sich dann schwerer erhalten.",
+            "default_open": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

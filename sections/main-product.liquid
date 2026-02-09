@@ -1,0 +1,437 @@
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- assign allocations = selected_variant.selling_plan_allocations -%}
+
+<section class="pdp-hero" aria-labelledby="product-title">
+      <div class="pdp-hero-inner">
+        <!-- Left: Product image carousel -->
+        <div class="pdp-hero-image">
+          <span class="pdp-hero-shipping">Kostenloser Versand ab 50 €</span>
+          <div class="pdp-hero-carousel">
+            <div class="pdp-hero-carousel-track">
+              <div class="pdp-hero-carousel-slide active">
+                <img src="{{ 'bottlenew2.png' | asset_url }}" alt="Hr² Haar-Supplement" loading="eager" decoding="async">
+              </div>
+              <div class="pdp-hero-carousel-slide">
+                <img src="{{ 'capsule3.png' | asset_url }}" alt="Hr² Kapseln" loading="lazy" decoding="async">
+              </div>
+              <div class="pdp-hero-carousel-slide">
+                <img src="{{ 'heroimage.png' | asset_url }}" alt="Hr² Anwendung" loading="lazy" decoding="async">
+              </div>
+              <div class="pdp-hero-carousel-slide">
+                <img src="{{ 'testing.png' | asset_url }}" alt="Hr² Qualität" loading="lazy" decoding="async">
+              </div>
+              <div class="pdp-hero-carousel-slide">
+                <img src="{{ 'bottlew.png' | asset_url }}" alt="Hr² Flasche" loading="lazy" decoding="async">
+              </div>
+              <div class="pdp-hero-carousel-slide">
+                <img src="{{ 'capsule.png' | asset_url }}" alt="Hr² Details" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <div class="pdp-hero-carousel-dots">
+              <button class="pdp-carousel-dot active" aria-label="Bild 1" data-index="0"></button>
+              <button class="pdp-carousel-dot" aria-label="Bild 2" data-index="1"></button>
+              <button class="pdp-carousel-dot" aria-label="Bild 3" data-index="2"></button>
+              <button class="pdp-carousel-dot" aria-label="Bild 4" data-index="3"></button>
+              <button class="pdp-carousel-dot" aria-label="Bild 5" data-index="4"></button>
+              <button class="pdp-carousel-dot" aria-label="Bild 6" data-index="5"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Product info -->
+        <div class="pdp-hero-info">
+          <h1 class="pdp-hero-title" id="product-title">{{ product.title }}</h1>
+          <p class="pdp-hero-subtitle">Tägliches Haar-Supplement</p>
+
+          <div class="pdp-hero-tags">
+            <span class="pdp-hero-tag">Haarwachstum</span>
+            <span class="pdp-hero-tag">DHT-Balance</span>
+            <span class="pdp-hero-tag">Kopfhaut</span>
+            <span class="pdp-hero-tag">Nährstoffversorgung</span>
+          </div>
+
+          <p class="pdp-hero-desc">
+            Hr² ist ein tägliches Supplement für die Haargesundheit – entwickelt mit klinisch untersuchten Inhaltsstoffen wie Anagain, Sägepalmenextrakt und Biotin. Formuliert von Wissenschaftler:innen für eine einfache Routine ohne Arzneistoffe.
+          </p>
+
+          <ul class="pdp-hero-benefits">
+            <li>Bio‑optimierte Aufnahme für bessere Bioverfügbarkeit</li>
+            <li>Klinisch untersuchte, natürliche Wirkstoffe</li>
+            <li>Ohne Arzneistoffe – keine Nebenwirkungen auf die Libido</li>
+            <li>Formuliert von Wissenschaftler:innen führender Institutionen</li>
+          </ul>
+
+          <p class="pdp-hero-capsule-note">60 Kapseln · Nahrungsergänzungsmittel</p>
+
+          <div class="pdp-hero-divider"></div>
+
+          <!-- Purchase options -->
+          {%- form 'product', product, class: 'pdp-hero-form', novalidate: 'novalidate' -%}
+            {%- assign initial_plan_id = '' -%}
+            {%- if product.selling_plan_groups.size > 0 -%}
+              {%- assign initial_plan_id = product.selling_plan_groups.first.selling_plans.first.id -%}
+            {%- endif -%}
+            <input type="hidden" name="id" value="{{ selected_variant.id }}">
+            <input type="hidden" name="selling_plan" value="{{ initial_plan_id }}">
+
+            <div class="pdp-hero-options" role="radiogroup" aria-label="Lieferoptionen" data-selling-options>
+              {%- if product.selling_plan_groups.size > 0 -%}
+                {%- assign first_group = product.selling_plan_groups.first -%}
+                {%- assign first_plan = first_group.selling_plans.first -%}
+                {%- for group in product.selling_plan_groups -%}
+                  {%- for plan in group.selling_plans -%}
+                    {%- assign allocation = allocations | where: 'selling_plan_id', plan.id | first -%}
+                    {%- assign adjustment = plan.price_adjustments | first -%}
+                    {%- assign save_text = '' -%}
+                    {%- if adjustment and adjustment.value_type == 'percentage' -%}
+                      {%- assign save_text = 'SPARE ' | append: adjustment.value | append: '%' -%}
+                    {%- elsif adjustment and adjustment.value_type == 'fixed_amount' -%}
+                      {%- assign save_text = 'SPARE ' | append: adjustment.value | money -%}
+                    {%- endif -%}
+                    {%- assign is_selected = false -%}
+                    {%- if plan.id == first_plan.id -%}
+                      {%- assign is_selected = true -%}
+                    {%- endif -%}
+                    <label class="pdp-hero-option{% if is_selected %} is-selected{% endif %}" data-selling-option data-selling-plan="{{ plan.id }}">
+                      <input class="pdp-hero-radio" type="radio" name="purchase_option" value="{{ plan.id }}" data-selling-input{% if is_selected %} checked{% endif %}>
+                      <div class="pdp-hero-option-left">
+                        <span class="pdp-hero-option-name">{{ plan.name }}</span>
+                        {%- if save_text != '' -%}
+                          <span class="pdp-hero-option-save">{{ save_text }}</span>
+                        {%- endif -%}
+                      </div>
+                      <div class="pdp-hero-option-right">
+                        <span class="pdp-hero-option-old">{{ selected_variant.price | money }}</span>
+                        <span class="pdp-hero-option-new">{{ allocation.price | default: selected_variant.price | money }}</span>
+                      </div>
+                    </label>
+                  {%- endfor -%}
+                {%- endfor -%}
+              {%- else -%}
+                <label class="pdp-hero-option is-selected" data-selling-option data-selling-plan="">
+                  <input class="pdp-hero-radio" type="radio" name="purchase_option" value="onetime" data-selling-input checked>
+                  <div class="pdp-hero-option-left">
+                    <span class="pdp-hero-option-name">Einmalig</span>
+                  </div>
+                  <div class="pdp-hero-option-right">
+                    <span class="pdp-hero-option-new">{{ selected_variant.price | money }}</span>
+                  </div>
+                </label>
+              {%- endif -%}
+            </div>
+
+            <button class="pdp-hero-cta" id="order-cta" type="submit" name="add">In den Warenkorb</button>
+
+            <div class="pdp-hero-trust">
+              <span>✓ Kostenloser Versand</span>
+              <span>✓ Jederzeit kündbar</span>
+              <span>✓ 30-Tage-Geld-zurück</span>
+            </div>
+          {%- endform -%}
+
+          <div class="pdp-hero-partners">
+            <p class="pdp-hero-partners-kicker">Formuliert von Wissenschaftler:innen dieser Institutionen</p>
+            <div class="pdp-hero-partners-logos">
+              <img class="partner-img is-png" src="{{ 'sm_howl_looks_logo_02.png' | asset_url }}" alt="Stanford" loading="lazy">
+              <img class="partner-img on-dark" src="{{ '6144ac488b51c665750238.png' | asset_url }}" alt="TUM" loading="lazy" style="transform:scale(1.4)">
+              <img class="partner-img is-png" src="{{ 'TU-Logo-Austria_CMYK.png' | asset_url }}" alt="TU Wien" loading="lazy" style="transform:scale(0.72)">
+              <img class="partner-img" src="{{ 'LMU_Muenchen_Logo.svg' | asset_url }}" alt="LMU" loading="lazy" style="transform:scale(0.82)">
+              <img class="partner-img" src="{{ 'Paracelsus-Medical-University-Logo-Vertical-EN.svg' | asset_url }}" alt="PMU" loading="lazy" style="transform:scale(0.92)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bio-Optimized Banner -->
+    <section class="pdp-bio" aria-label="Bio-optimierte Aufnahme">
+      <div class="pdp-bio-inner">
+        <div class="pdp-bio-copy">
+          <h2>Bio‑optimiert<br>für schnellere Aufnahme.</h2>
+        </div>
+        <div class="pdp-bio-text">
+          <p>Unsere Wirkstoffe sind präzise formuliert, um die Löslichkeit und den Transport über Lipidmembranen zu verbessern. Dieses Delivery‑Design unterstützt einen schnelleren Eintritt in den Kreislauf.*</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Timeline -->
+    <section class="pdp-timeline" aria-labelledby="pdp-timeline-title">
+      <div class="pdp-timeline-inner">
+        <header class="pdp-timeline-header">
+          <h2 id="pdp-timeline-title">Der Hr²‑Unterschied:<br>Vorteile, die sich aufbauen</h2>
+          <p>Ergebnisse spürbar ab <strong>4 Wochen</strong>.*</p>
+          <a class="pdp-timeline-link" href="{{ pages['forschung'].url | default: '/pages/forschung' }}">Klinische Evidenz ansehen →</a>
+        </header>
+
+        <div class="pdp-timeline-body">
+          <div class="pdp-timeline-track">
+            <div class="pdp-timeline-step">
+              <div class="pdp-timeline-dot"></div>
+              <div class="pdp-timeline-content">
+                <span class="pdp-timeline-badge">4 Wochen</span>
+                <strong>Stärkt die Nährstoffversorgung†</strong>
+                <ul>
+                  <li>Füllt häufige Nährstofflücken auf</li>
+                  <li>Unterstützt den natürlichen Haarzyklus</li>
+                  <li>Versorgt Kopfhaut &amp; Haarwurzeln</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pdp-timeline-step">
+              <div class="pdp-timeline-dot"></div>
+              <div class="pdp-timeline-content">
+                <span class="pdp-timeline-badge">8 Wochen</span>
+                <strong>Stärkt Haarstruktur &amp; Kopfhaut*</strong>
+                <ul>
+                  <li>Unterstützt kräftigeres Haar</li>
+                  <li>Fördert die Kopfhautbalance</li>
+                  <li>Verbessert die Haarqualität</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pdp-timeline-step">
+              <div class="pdp-timeline-dot"></div>
+              <div class="pdp-timeline-content">
+                <span class="pdp-timeline-badge">12 Wochen</span>
+                <strong>Sichtbar volleres Haar*</strong>
+                <ul>
+                  <li>Unterstützt gesundes Haarwachstum</li>
+                  <li>Verringert übermäßigen Haarausfall</li>
+                  <li>Stärkt die Verankerung der Haarwurzeln</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pdp-timeline-step">
+              <div class="pdp-timeline-dot"></div>
+              <div class="pdp-timeline-content">
+                <span class="pdp-timeline-badge">6 Monate</span>
+                <strong>Langfristige Haargesundheit*</strong>
+                <ul>
+                  <li>Unterstützt die Stressresilienz</li>
+                  <li>Fördert langfristige Haardichte</li>
+                  <li>Stärkt das allgemeine Wohlbefinden</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pdp-timeline-media">
+            <video autoplay loop muted playsinline preload="metadata" poster="{{ 'haarwurzel.png' | asset_url }}">
+              <source src="{{ 'causes-hairprom1.mp4' | asset_url }}" type="video/mp4">
+            </video>
+            <div class="pdp-timeline-media-grid">
+              <img src="{{ 'testing.png' | asset_url }}" alt="Labor" loading="lazy" decoding="async">
+              <img src="{{ 'capsule3.png' | asset_url }}" alt="Kapseln" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <div class="pdp-timeline-howto">
+          <img class="pdp-timeline-howto-img" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
+          <div class="pdp-timeline-howto-copy">
+            <strong>Anwendung:</strong>
+            <p>Nimm 2 Kapseln täglich, mit oder ohne Mahlzeit, morgens oder abends.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ingredients Breakdown -->
+    <section class="pdp-ingredients" aria-labelledby="pdp-ingredients-title">
+      <div class="pdp-ingredients-inner">
+        <div class="pdp-ingredients-top">
+          <h2 id="pdp-ingredients-title">20+ Inhaltsstoffe für<br>ganzheitliche Haargesundheit</h2>
+          <a class="pdp-timeline-link" href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">Inhaltsstoffe &amp; Dosierung ansehen →</a>
+        </div>
+
+        <div class="pdp-ingredients-layout">
+          <div class="pdp-ingredients-visual">
+            <img src="{{ 'capsule3.png' | asset_url }}" alt="Hr² Kapsel" loading="lazy" decoding="async">
+          </div>
+
+          <div class="pdp-ingredients-list">
+            <div class="pdp-ingredients-row">
+              <span class="pdp-ingredients-cat">Haarwachstum &amp; DHT‑Balance</span>
+              <span class="pdp-ingredients-detail">Anagain, Sägepalme, Granatapfel <span class="pdp-ingredients-plus">+</span></span>
+            </div>
+            <div class="pdp-ingredients-row">
+              <span class="pdp-ingredients-cat">Nährstoffversorgung</span>
+              <span class="pdp-ingredients-detail">Biotin, Zink, B‑Vitamine, Eisen <span class="pdp-ingredients-plus">+</span></span>
+            </div>
+            <div class="pdp-ingredients-row">
+              <span class="pdp-ingredients-cat">Kopfhaut &amp; Haarstruktur</span>
+              <span class="pdp-ingredients-detail">L‑Cystein, L‑Lysin, Kupfer <span class="pdp-ingredients-plus">+</span></span>
+            </div>
+            <div class="pdp-ingredients-row">
+              <span class="pdp-ingredients-cat">Stressbalance &amp; Energie</span>
+              <span class="pdp-ingredients-detail">Ashwagandha, Selen, Vitamin D <span class="pdp-ingredients-plus">+</span></span>
+            </div>
+
+            <div class="pdp-ingredients-badges" role="list" aria-label="Qualitätsstandards">
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M24 12v4M20 14l-2 3M19 22c0-3 2.2-5 5-5s5 2 5 5c0 4-5 8-5 11-0-3-5-7-5-11Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span>Vegan</span>
+              </div>
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M20 14c0 0-3 6 0 10s2 10 2 10M24 14c0 0-3 6 0 10s2 10 2 10M28 14c0 0-3 6 0 10s2 10 2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Gluten‑geprüft</span>
+              </div>
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M17 18h14v3a7 7 0 0 1-14 0v-3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M24 28v5M20 33h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M15 14l18 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                <span>Milchprodukte‑geprüft</span>
+              </div>
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><ellipse cx="24" cy="24" rx="6" ry="8" stroke="currentColor" stroke-width="1.3"/><path d="M24 16c2-3 6-4 8-2s1 6-1 9M24 32c2 3 6 4 8 2s1-6-1-9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                <span>Soja‑geprüft</span>
+              </div>
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><ellipse cx="21" cy="22" rx="4" ry="5" stroke="currentColor" stroke-width="1.3"/><ellipse cx="27" cy="22" rx="4" ry="5" stroke="currentColor" stroke-width="1.3"/><path d="M20 27c1 3 3 5 4 7 1-2 3-4 4-7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Nuss‑geprüft</span>
+              </div>
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M20 15h8M20 15v6l-4 8.5a2.5 2.5 0 0 0 2.2 3.5h11.6a2.5 2.5 0 0 0 2.2-3.5L28 21v-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 28h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                <span>Glyphosat‑geprüft</span>
+              </div>
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M17 24h14M24 17v14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M15 15l18 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                <span>Ohne Bindemittel</span>
+              </div>
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M20 16v10a4 4 0 0 0 8 0V16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 30v5M20 35h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                <span>Ohne Konservierungsstoffe</span>
+              </div>
+              <div class="pdp-ingredients-badge" role="listitem">
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M24 16v8l-4 4M18 16h12a4 4 0 0 1 4 4v4a10 10 0 0 1-10 10h0a10 10 0 0 1-10-10v-4a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span>Schwermetall‑geprüft</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="pdp-compare" aria-labelledby="pdp-compare-title">
+      <div class="pdp-compare-inner">
+        <h2 id="pdp-compare-title">Wie Hr²<br>sich vergleicht:</h2>
+        <div class="pdp-compare-table-wrap">
+          <table class="pdp-compare-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th><span class="pdp-compare-pill">Hr²</span></th>
+                <th>Andere Produkte</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Multi‑zielgerichtete Formel</td>
+                <td><span class="pdp-compare-dot"></span></td>
+                <td>Selten</td>
+              </tr>
+              <tr>
+                <td>100 % ohne Arzneistoffe</td>
+                <td><span class="pdp-compare-dot"></span></td>
+                <td>Wenige</td>
+              </tr>
+              <tr>
+                <td>Bio‑optimierte Bioverfügbarkeit</td>
+                <td><span class="pdp-compare-dot"></span></td>
+                <td>Selten</td>
+              </tr>
+              <tr>
+                <td>Klinisch belegte Inhaltsstoffe</td>
+                <td><span class="pdp-compare-dot"></span></td>
+                <td>Wenige</td>
+              </tr>
+              <tr>
+                <td>Beeinflusst die Libido nicht</td>
+                <td><span class="pdp-compare-dot"></span></td>
+                <td>Wenige</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pdp-faq" aria-labelledby="pdp-faq-title">
+      <div class="pdp-faq-inner">
+        <h2 id="pdp-faq-title">Häufig gestellte Fragen</h2>
+
+        <div class="pdp-faq-list">
+          <div class="pdp-faq-item open">
+            <button class="pdp-faq-question" type="button" aria-expanded="true">
+              <span>Was ist Hr²?</span>
+              <span class="pdp-faq-toggle">−</span>
+            </button>
+            <div class="pdp-faq-answer">
+              Hr² ist ein tägliches Nahrungsergänzungsmittel mit über 20 ausgewählten Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenextrakte und Aminosäuren – zur langfristigen Unterstützung der Haargesundheit.
+            </div>
+          </div>
+          <div class="pdp-faq-item">
+            <button class="pdp-faq-question" type="button" aria-expanded="false">
+              <span>Wie lange sollte ich Hr² einnehmen?</span>
+              <span class="pdp-faq-toggle">+</span>
+            </button>
+            <div class="pdp-faq-answer" hidden>
+              Wir empfehlen eine konsequente Einnahme über 3 bis 6 Monate, um individuelle Veränderungen beurteilen zu können. Die Haargesundheit verbessert sich schrittweise.
+            </div>
+          </div>
+          <div class="pdp-faq-item">
+            <button class="pdp-faq-question" type="button" aria-expanded="false">
+              <span>Enthält Hr² Arzneistoffe?</span>
+              <span class="pdp-faq-toggle">+</span>
+            </button>
+            <div class="pdp-faq-answer" hidden>
+              Nein. Hr² ist ein Nahrungsergänzungsmittel und enthält keine Arzneistoffe. Es liefert ausgewählte Nährstoffe zur täglichen Unterstützung.
+            </div>
+          </div>
+          <div class="pdp-faq-item">
+            <button class="pdp-faq-question" type="button" aria-expanded="false">
+              <span>Funktioniert Hr² für meinen Haartyp?</span>
+              <span class="pdp-faq-toggle">+</span>
+            </button>
+            <div class="pdp-faq-answer" hidden>
+              Hr² ist für die langfristige Unterstützung der Haargesundheit entwickelt – unabhängig von Haartyp oder Haarstruktur. Ergebnisse können individuell variieren.
+            </div>
+          </div>
+          <div class="pdp-faq-item">
+            <button class="pdp-faq-question" type="button" aria-expanded="false">
+              <span>Gibt es ein Risiko, dass Hr² meine Libido senkt?</span>
+              <span class="pdp-faq-toggle">+</span>
+            </button>
+            <div class="pdp-faq-answer" hidden>
+              Hr² enthält keine Arzneistoffe und ist nicht darauf ausgerichtet, in den Hormonhaushalt einzugreifen. Wenn du Veränderungen bemerkst, pausiere und sprich mit medizinischem Fachpersonal.
+            </div>
+          </div>
+          <div class="pdp-faq-item">
+            <button class="pdp-faq-question" type="button" aria-expanded="false">
+              <span>Wo finde ich alle Inhaltsstoffe und Studien?</span>
+              <span class="pdp-faq-toggle">+</span>
+            </button>
+            <div class="pdp-faq-answer" hidden>
+              Eine Übersicht findest du auf den Seiten <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">Inhaltsstoffe</a> und <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">Forschung</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Delivery Banner -->
+    <section class="pdp-delivery" aria-label="Lieferung">
+      <div class="pdp-delivery-inner">
+        <p>Bequem geliefert, monatlich.</p>
+      </div>
+    </section>
+
+{% schema %}
+{
+  "name": "Product main"
+}
+{% endschema %}

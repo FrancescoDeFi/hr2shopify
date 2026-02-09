@@ -1,0 +1,91 @@
+<section class="partners" aria-labelledby="partners-title">
+  <div class="partners-inner">
+    <p class="partners-kicker" id="partners-title">{{ section.settings.heading | default: 'Formuliert von Wissenschaftler:innen dieser Institutionen' }}</p>
+    <div class="partners-logos" role="list" aria-label="Partnerinstitutionen">
+      {% for block in section.blocks %}
+        {% if block.type == 'partner' %}
+          <div class="partner-logo" role="listitem" aria-label="{{ block.settings.name }}" {{ block.shopify_attributes }}>
+            {% if block.settings.logo != blank %}
+              <img class="partner-img {% if block.settings.is_png %}is-png{% endif %} {% if block.settings.on_dark %}on-dark{% endif %}"
+                   src="{{ block.settings.logo | image_url: width: 200 }}"
+                   alt="Logo von {{ block.settings.name }}"
+                   loading="lazy"
+                   decoding="async">
+            {% elsif block.settings.asset_filename != blank %}
+              <img class="partner-img {% if block.settings.is_png %}is-png{% endif %} {% if block.settings.on_dark %}on-dark{% endif %}"
+                   src="{{ block.settings.asset_filename | asset_url }}"
+                   alt="Logo von {{ block.settings.name }}"
+                   loading="lazy"
+                   decoding="async">
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Partner Logos",
+  "tag": "section",
+  "class": "section-partners",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Formuliert von Wissenschaftler:innen dieser Institutionen"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "partner",
+      "name": "Partner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Partner Name",
+          "default": "Stanford"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo (Upload)"
+        },
+        {
+          "type": "text",
+          "id": "asset_filename",
+          "label": "Logo Dateiname (aus Assets)",
+          "info": "Fallback falls kein Upload. z.B. 'sm_howl_looks_logo_02.png'"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_png",
+          "label": "PNG Format (für Styling)",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "on_dark",
+          "label": "Für dunklen Hintergrund",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Partner Logos",
+      "blocks": [
+        { "type": "partner", "settings": { "name": "Stanford", "asset_filename": "sm_howl_looks_logo_02.png", "is_png": true } },
+        { "type": "partner", "settings": { "name": "TUM", "asset_filename": "6144ac488b51c665750238.png", "on_dark": true } },
+        { "type": "partner", "settings": { "name": "TU Wien", "asset_filename": "TU-Logo-Austria_CMYK.png", "is_png": true } },
+        { "type": "partner", "settings": { "name": "LMU München", "asset_filename": "LMU_Muenchen_Logo.svg" } },
+        { "type": "partner", "settings": { "name": "PMU", "asset_filename": "Paracelsus-Medical-University-Logo-Vertical-EN.svg" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,113 @@
+<div class="customer-page">
+  <div class="customer-page-inner">
+    <h1 class="customer-page-title">Anmelden</h1>
+
+    {%- form 'customer_login' -%}
+      {{ form.errors | default_errors }}
+
+      <div class="form-field">
+        <label for="CustomerEmail">E-Mail</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="CustomerEmail"
+          autocomplete="email"
+          autocorrect="off"
+          autocapitalize="off"
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="CustomerPassword">Passwort</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="CustomerPassword"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="primary-btn">Anmelden</button>
+      </div>
+
+      <div class="customer-page-links">
+        <a href="#recover" id="RecoverPassword">Passwort vergessen?</a>
+        <a href="{{ routes.account_register_url }}">Konto erstellen</a>
+      </div>
+    {%- endform -%}
+
+    <div id="recover" class="customer-recover" style="display:none;">
+      <h2>Passwort zurücksetzen</h2>
+      <p>Wir senden dir eine E-Mail zum Zurücksetzen deines Passworts.</p>
+
+      {%- form 'recover_customer_password' -%}
+        {{ form.errors | default_errors }}
+
+        {%- if form.posted_successfully? -%}
+          <div class="form-success">
+            <p>Wir haben dir eine E-Mail mit einem Link zum Zurücksetzen deines Passworts gesendet.</p>
+          </div>
+        {%- endif -%}
+
+        <div class="form-field">
+          <label for="RecoverEmail">E-Mail</label>
+          <input
+            type="email"
+            name="email"
+            id="RecoverEmail"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            required
+          >
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="primary-btn">Absenden</button>
+        </div>
+
+        <div class="customer-page-links">
+          <a href="#" id="HideRecoverPassword">Zurück zur Anmeldung</a>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var recoverLink = document.getElementById('RecoverPassword');
+    var hideLink = document.getElementById('HideRecoverPassword');
+    var recoverForm = document.getElementById('recover');
+    if (!recoverLink || !recoverForm) return;
+
+    recoverLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      recoverForm.style.display = 'block';
+      recoverLink.closest('form').style.display = 'none';
+    });
+
+    if (hideLink) {
+      hideLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        recoverForm.style.display = 'none';
+        recoverLink.closest('form').style.display = 'block';
+      });
+    }
+
+    if (window.location.hash === '#recover') {
+      recoverLink.click();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Kundenlogin",
+  "tag": "section",
+  "class": "section-customer-login"
+}
+{% endschema %}

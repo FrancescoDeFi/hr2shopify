@@ -1,0 +1,158 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Hr² Theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Hr² Team",
+    "theme_documentation_url": "https://gethr2.com"
+  },
+  {
+    "name": "Logo & Branding",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 250,
+        "step": 10,
+        "unit": "px",
+        "label": "Logobreite (Desktop)",
+        "default": 120
+      }
+    ]
+  },
+  {
+    "name": "Farben",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primärfarbe",
+        "default": "#3c0c1c"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Sekundärfarbe (Sand)",
+        "default": "#f3f1e7"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Textfarbe",
+        "default": "#0c0c0c"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Hintergrundfarbe",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Produkt",
+    "settings": [
+      {
+        "type": "text",
+        "id": "primary_product_handle",
+        "label": "Primärprodukt Handle",
+        "default": "hr2",
+        "info": "Der URL-Handle des Hauptprodukts (z.B. 'hr2')"
+      },
+      {
+        "type": "text",
+        "id": "onetime_price",
+        "label": "Einmaliger Kaufpreis",
+        "default": "39€"
+      },
+      {
+        "type": "text",
+        "id": "onetime_shipping",
+        "label": "Versandkosten (einmalig)",
+        "default": "4,95€"
+      }
+    ]
+  },
+  {
+    "name": "Analytics & Integrationen",
+    "settings": [
+      {
+        "type": "text",
+        "id": "google_tag_id",
+        "label": "Google Tag ID",
+        "default": "G-MS0QQTJHYY",
+        "info": "Google Analytics / Tag Manager ID"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_linkedin",
+        "label": "LinkedIn URL"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      }
+    ]
+  },
+  {
+    "name": "Cookie-Banner",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cookie_banner_enabled",
+        "label": "Cookie-Banner aktivieren",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "cookie_text",
+        "label": "Cookie-Banner Text",
+        "default": "Wir verwenden Cookies, um dir die bestmögliche Erfahrung auf unserer Website zu bieten."
+      }
+    ]
+  },
+  {
+    "name": "Checkout",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_show_shipping_note",
+        "label": "Versandhinweis im Warenkorb anzeigen",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_shipping_note",
+        "label": "Versandhinweis Text",
+        "default": "Versandkosten werden an der Kasse berechnet."
+      }
+    ]
+  }
+]

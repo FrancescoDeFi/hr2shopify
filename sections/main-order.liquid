@@ -1,0 +1,106 @@
+<div class="customer-page">
+  <div class="customer-page-inner customer-page-wide">
+    <a href="{{ routes.account_url }}" class="link-arrow">← Zurück zum Konto</a>
+
+    <h1 class="customer-page-title">Bestellung {{ order.name }}</h1>
+    <p class="order-date">Bestellt am {{ order.created_at | date: "%d.%m.%Y" }}</p>
+
+    {% if order.cancelled %}
+      <div class="form-error">
+        <p>Bestellung storniert am {{ order.cancelled_at | date: "%d.%m.%Y" }} – {{ order.cancel_reason_label }}</p>
+      </div>
+    {% endif %}
+
+    <table class="account-table">
+      <thead>
+        <tr>
+          <th>Produkt</th>
+          <th>Menge</th>
+          <th>Preis</th>
+          <th>Gesamt</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for line_item in order.line_items %}
+          <tr>
+            <td>
+              {{ line_item.title }}
+              {% if line_item.selling_plan_allocation %}
+                <br><small>{{ line_item.selling_plan_allocation.selling_plan.name }}</small>
+              {% endif %}
+            </td>
+            <td>{{ line_item.quantity }}</td>
+            <td>{{ line_item.original_price | money }}</td>
+            <td>{{ line_item.final_line_price | money }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Zwischensumme</td>
+          <td>{{ order.line_items_subtotal_price | money }}</td>
+        </tr>
+
+        {% for discount_application in order.discount_applications %}
+          <tr>
+            <td colspan="3">Rabatt ({{ discount_application.title }})</td>
+            <td>-{{ discount_application.total_allocated_amount | money }}</td>
+          </tr>
+        {% endfor %}
+
+        {% for shipping_method in order.shipping_methods %}
+          <tr>
+            <td colspan="3">Versand ({{ shipping_method.title }})</td>
+            <td>{{ shipping_method.price | money }}</td>
+          </tr>
+        {% endfor %}
+
+        {% for tax_line in order.tax_lines %}
+          <tr>
+            <td colspan="3">Steuer ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
+            <td>{{ tax_line.price | money }}</td>
+          </tr>
+        {% endfor %}
+
+        <tr class="order-total">
+          <td colspan="3"><strong>Gesamt</strong></td>
+          <td><strong>{{ order.total_price | money }}</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="account-grid">
+      <div class="account-details">
+        <h2>Rechnungsadresse</h2>
+        <p>{{ order.billing_address.name }}</p>
+        <p>
+          {{ order.billing_address.address1 }}<br>
+          {% if order.billing_address.address2 != blank %}{{ order.billing_address.address2 }}<br>{% endif %}
+          {{ order.billing_address.zip }} {{ order.billing_address.city }}<br>
+          {{ order.billing_address.country }}
+        </p>
+        <p>Zahlungsstatus: {{ order.financial_status_label }}</p>
+      </div>
+
+      <div class="account-details">
+        <h2>Lieferadresse</h2>
+        <p>{{ order.shipping_address.name }}</p>
+        <p>
+          {{ order.shipping_address.address1 }}<br>
+          {% if order.shipping_address.address2 != blank %}{{ order.shipping_address.address2 }}<br>{% endif %}
+          {{ order.shipping_address.zip }} {{ order.shipping_address.city }}<br>
+          {{ order.shipping_address.country }}
+        </p>
+        <p>Versandstatus: {{ order.fulfillment_status_label }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Bestelldetails",
+  "tag": "section",
+  "class": "section-customer-order"
+}
+{% endschema %}

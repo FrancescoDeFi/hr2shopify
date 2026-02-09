@@ -1,0 +1,127 @@
+<section class="community">
+  <div class="community-header">
+    <div>
+      <h2>{{ section.settings.heading | default: 'Klinisch geprüft, von echten Menschen gelebt' }}</h2>
+      <p>{{ section.settings.subheading | default: 'Erfahre von unserer Community, wie Hr² ihren Alltag verändert hat.' }}</p>
+    </div>
+    {% if section.settings.show_controls %}
+      <div class="experts-controls">
+        <button class="icon-btn dark" aria-label="Zurück">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 6l-6 6 6 6"></path>
+          </svg>
+        </button>
+        <button class="icon-btn dark" aria-label="Weiter">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 6l6 6-6 6"></path>
+          </svg>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="community-grid">
+    {% for block in section.blocks %}
+      {% if block.type == 'testimonial' %}
+        <article class="expert-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.name }}" loading="lazy" decoding="async">
+          {% endif %}
+          <h3>{{ block.settings.name }}</h3>
+          <p class="subtitle">{{ block.settings.subtitle }}</p>
+          <p class="quote">{{ block.settings.quote }}</p>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section-testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Klinisch geprüft, von echten Menschen gelebt"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Unterüberschrift",
+      "default": "Erfahre von unserer Community, wie Hr² ihren Alltag verändert hat."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Navigation anzeigen",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Foto"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Aaron"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Untertitel",
+          "default": "Hr² MITGLIED SEIT 2025"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Zitat",
+          "default": "Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Aaron",
+            "subtitle": "Hr² MITGLIED SEIT 2025",
+            "quote": "Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt. Hr² fühlt sich eher wie eine langfristige Entscheidung an, die mir mit Inhaltsstoffen, welche speziell den Haarwuchs fördern, hilft. Nach ein paar Monaten fühlen sich meine Haare widerstandsfähiger an und ich habe wieder Vertrauen, dass ich dem Haarausfall aktiv entgegenwirke."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Lukas",
+            "subtitle": "Hr² MITGLIED SEIT 2025",
+            "quote": "In stressigen Phasen habe ich immer zuerst an meinen Haaren gemerkt, dass etwas nicht passt. Hr² ist für mich wie ein kleines tägliches Reset. Ich fühle mich versorgt und muss mir darüber keine Gedanken mehr machen. Mittlerweile ist es Teil meiner Morgenroutine und ich habe endlich das Gefühl, etwas Sinnvolles für mich zu tun, statt nur zu hoffen, dass es besser wird."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Patrick",
+            "subtitle": "Hr² MITGLIED SEIT 2025",
+            "quote": "Ich arbeite und trainiere viel und hart. Die damit verbundene Anstrengung und der Stress haben aber auch ihre Schattenseiten. Irgendwann habe ich gemerkt, dass ich einen wichtigen Aspekt komplett vernachlässigt habe: meine Haare. Seit ich Hr² nehme, habe ich dieses unangenehme Gefühl nach dem Duschen, auf den Boden zu schauen und meine abgeflogenen Haare zählen zu wollen, endlich überwunden."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

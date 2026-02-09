@@ -1,0 +1,74 @@
+<div class="customer-page">
+  <div class="customer-page-inner">
+    <h1 class="customer-page-title">Konto erstellen</h1>
+
+    {%- form 'create_customer' -%}
+      {{ form.errors | default_errors }}
+
+      <div class="form-field">
+        <label for="FirstName">Vorname</label>
+        <input
+          type="text"
+          name="customer[first_name]"
+          id="FirstName"
+          autocomplete="given-name"
+          {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="LastName">Nachname</label>
+        <input
+          type="text"
+          name="customer[last_name]"
+          id="LastName"
+          autocomplete="family-name"
+          {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="Email">E-Mail</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="Email"
+          autocomplete="email"
+          autocorrect="off"
+          autocapitalize="off"
+          {% if form.email %}value="{{ form.email }}"{% endif %}
+          required
+        >
+      </div>
+
+      <div class="form-field">
+        <label for="CreatePassword">Passwort</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="CreatePassword"
+          autocomplete="new-password"
+          required
+        >
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="primary-btn">Konto erstellen</button>
+      </div>
+
+      <div class="customer-page-links">
+        <a href="{{ routes.account_login_url }}">Du hast bereits ein Konto? Anmelden</a>
+      </div>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kundenregistrierung",
+  "tag": "section",
+  "class": "section-customer-register"
+}
+{% endschema %}

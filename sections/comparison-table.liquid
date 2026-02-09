@@ -1,0 +1,131 @@
+<section class="hair-growth-comparison" aria-label="Produktvergleich">
+  <div class="comparison-showdown">
+    <article class="comparison-panel comparison-panel-hr2" aria-label="HR2 Präsentation">
+      {% if section.settings.product_image != blank %}
+        <img class="comparison-bottle" src="{{ section.settings.product_image | image_url: width: 400 }}" alt="{{ section.settings.product_image.alt | default: 'HR2 Flasche' }}" loading="lazy" decoding="async">
+      {% else %}
+        <img class="comparison-bottle" src="{{ 'bottlenew2.png' | asset_url }}" alt="HR2 Flasche" loading="lazy" decoding="async">
+      {% endif %}
+      <a class="comparison-pill-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.cta_text | default: 'Hr² kaufen' }}</a>
+      <p class="comparison-note">{{ section.settings.price_note | default: 'ab 32 € pro Monat' }}</p>
+    </article>
+
+    <article class="comparison-panel comparison-panel-others" aria-label="Produktvergleichstabelle">
+      <h3 class="comparison-table-title">{{ section.settings.table_title | default: 'Vergleich' }}</h3>
+      <ul class="comparison-table-list" role="list">
+        <li class="comparison-table-row comparison-table-head">
+          <span class="comparison-table-feature">Merkmal</span>
+          <span class="comparison-table-col">Hr²</span>
+          <span class="comparison-table-col">Andere</span>
+        </li>
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            <li class="comparison-table-row" {{ block.shopify_attributes }}>
+              <span class="comparison-table-feature">{{ block.settings.feature_name }}</span>
+              <span class="comparison-table-value">{{ block.settings.hr2_value }}</span>
+              <span class="comparison-table-value {% if block.settings.others_value == 'X' %}comparison-table-value-x{% endif %}">{{ block.settings.others_value }}</span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Vergleichstabelle",
+  "tag": "section",
+  "class": "section-comparison",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Produktbild"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Hr² kaufen"
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Preisnotiz",
+      "default": "ab 32 € pro Monat"
+    },
+    {
+      "type": "text",
+      "id": "table_title",
+      "label": "Tabellen-Titel",
+      "default": "Vergleich"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Merkmal",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_name",
+          "label": "Merkmal Name",
+          "default": "Klinisch belegt"
+        },
+        {
+          "type": "text",
+          "id": "hr2_value",
+          "label": "Hr² Wert",
+          "default": "✓"
+        },
+        {
+          "type": "text",
+          "id": "others_value",
+          "label": "Andere Wert",
+          "default": "~"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vergleichstabelle",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Klinisch belegt",
+            "hr2_value": "✓",
+            "others_value": "~"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Bio-optimiert",
+            "hr2_value": "✓",
+            "others_value": "X"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Ohne Arzneistoffe",
+            "hr2_value": "✓",
+            "others_value": "~"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Libido-freundlich",
+            "hr2_value": "✓",
+            "others_value": "~"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

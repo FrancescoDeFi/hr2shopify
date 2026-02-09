@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="120" viewBox="0 0 520 120" role="img" aria-label="Stanford">
+  <rect width="520" height="120" fill="none"/>
+  <g fill="none" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M68 92c10-9 16-22 16-36 0-18-10-34-25-43-15 9-25 25-25 43 0 14 6 27 16 36"/>
+    <path d="M59 82c-12 3-22 10-28 20"/>
+    <path d="M77 82c12 3 22 10 28 20"/>
+    <path d="M59 64c6-6 9-13 9-21 0-7-3-13-9-18-6 5-9 11-9 18 0 8 3 15 9 21Z"/>
+  </g>
+  <text x="140" y="78" font-family="system-ui, -apple-system, Segoe UI, Inter, Arial, sans-serif" font-size="56" font-weight="700" letter-spacing="10" fill="#000">
+    STANFORD
+  </text>
+</svg>
+

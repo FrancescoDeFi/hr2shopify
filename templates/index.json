@@ -1,0 +1,157 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "clinical",
+            "text": "KLINISCH<br>GEPRÜFTE FORMEL"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "drug_free",
+            "text": "100% OHNE<br>ARZNEISTOFFE"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "results",
+            "text": "ERGEBNISSE IN 3–6<br>MONATEN"
+          }
+        }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3"],
+      "settings": {
+        "heading": "Dein täglicher<br> Haar-Boost",
+        "show_quiz_button": true,
+        "show_clinicians_badge": true
+      }
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "blocks": {
+        "feature_1": { "type": "feature", "settings": { "feature_name": "Klinisch belegt", "hr2_value": "✓", "others_value": "~" } },
+        "feature_2": { "type": "feature", "settings": { "feature_name": "Bio-optimiert", "hr2_value": "✓", "others_value": "X" } },
+        "feature_3": { "type": "feature", "settings": { "feature_name": "Ohne Arzneistoffe", "hr2_value": "✓", "others_value": "~" } },
+        "feature_4": { "type": "feature", "settings": { "feature_name": "Libido-freundlich", "hr2_value": "✓", "others_value": "~" } }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3", "feature_4"]
+    },
+    "causes": {
+      "type": "causes-accordion",
+      "blocks": {
+        "cause_1": { "type": "cause", "settings": { "cause_id": "stress", "title": "STRESS", "description": "Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen.", "default_open": false } },
+        "cause_2": { "type": "cause", "settings": { "cause_id": "hormones", "title": "HORMONE", "description": "Hormonsignale können die Empfindlichkeit der Follikel beeinflussen und so langfristig zur Ausdünnung beitragen.", "default_open": false } },
+        "cause_3": { "type": "cause", "settings": { "cause_id": "dht", "title": "DHT", "description": "Schlaf, Aktivität und Gewohnheiten beeinflussen Regeneration und das Umfeld, das Haare brauchen, um zu wachsen.", "default_open": false } },
+        "cause_4": { "type": "cause", "settings": { "cause_id": "nutrition", "title": "ERNÄHRUNG", "description": "Nährstofflücken, die durch Ernährung oder ein unausgeglichenes Darmmikrobiom entstehen können.", "default_open": true } },
+        "cause_5": { "type": "cause", "settings": { "cause_id": "aging", "title": "ALTERUNG", "description": "Mit zunehmendem Alter können Wachstumsphasen kürzer werden – Haardichte lässt sich dann schwerer erhalten.", "default_open": false } }
+      },
+      "block_order": ["cause_1", "cause_2", "cause_3", "cause_4", "cause_5"]
+    },
+    "partners": {
+      "type": "partners",
+      "blocks": {
+        "partner_1": { "type": "partner", "settings": { "name": "Stanford", "asset_filename": "sm_howl_looks_logo_02.png", "is_png": true } },
+        "partner_2": { "type": "partner", "settings": { "name": "TUM", "asset_filename": "6144ac488b51c665750238.png", "on_dark": true } },
+        "partner_3": { "type": "partner", "settings": { "name": "TU Wien", "asset_filename": "TU-Logo-Austria_CMYK.png", "is_png": true } },
+        "partner_4": { "type": "partner", "settings": { "name": "LMU München", "asset_filename": "LMU_Muenchen_Logo.svg" } },
+        "partner_5": { "type": "partner", "settings": { "name": "PMU", "asset_filename": "Paracelsus-Medical-University-Logo-Vertical-EN.svg" } }
+      },
+      "block_order": ["partner_1", "partner_2", "partner_3", "partner_4", "partner_5"]
+    },
+    "ingredients": {
+      "type": "ingredients-explorer",
+      "blocks": {
+        "ing_1": { "type": "ingredient", "settings": { "id": "anagain", "name": "Anagain", "description": "Ein pflanzlicher Erbsensprossen-Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>" } },
+        "ing_2": { "type": "ingredient", "settings": { "id": "sawpalmetto", "name": "Sägepalmenextrakt", "description": "Ein Pflanzenextrakt, der Faktoren unterstützt, die mit der Erhaltung voller Haare in Verbindung stehen.<sup>4</sup>" } },
+        "ing_3": { "type": "ingredient", "settings": { "id": "pomegranate", "name": "Granatapfelextrakt", "description": "Ein polyphenolreicher Extrakt mit antioxidativen Eigenschaften – unterstützt den Schutz vor oxidativem Stress.<sup>4</sup>" } },
+        "ing_4": { "type": "ingredient", "settings": { "id": "ashwagandha", "name": "Ashwagandha", "description": "Ein Adaptogen, das die Stressbalance unterstützt – ein wichtiger Faktor für gesunde Haarzyklen.<sup>4</sup>" } },
+        "ing_5": { "type": "ingredient", "settings": { "id": "lcysteine", "name": "L-Cysteine", "description": "Eine Aminosäure, die als Baustein von Keratin dient – unterstützt die natürliche Haarstruktur.<sup>4</sup>" } },
+        "ing_6": { "type": "ingredient", "settings": { "id": "llysine", "name": "L-Lysine", "description": "Eine essentielle Aminosäure, die am Aufbau von Strukturproteinen beteiligt ist.<sup>4</sup>" } },
+        "ing_7": { "type": "ingredient", "settings": { "id": "zinc", "name": "Zink", "description": "Zink trägt zur Erhaltung normaler Haare und Nägel bei.<sup>4</sup>" } },
+        "ing_8": { "type": "ingredient", "settings": { "id": "biotin", "name": "Biotin", "description": "Biotin trägt zur Erhaltung normaler Haare und Haut bei.<sup>4</sup>" } }
+      },
+      "block_order": ["ing_1", "ing_2", "ing_3", "ing_4", "ing_5", "ing_6", "ing_7", "ing_8"]
+    },
+    "clinical": {
+      "type": "clinical-stats",
+      "blocks": {
+        "stat_1": { "type": "stat", "settings": { "value": "95%", "text": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls<sup>1</sup>" } },
+        "stat_2": { "type": "stat", "settings": { "value": "60%", "text": "der Probanten, die mit der aktiven Studienformulierung (Saw Palmetto) behandelt wurden wurden beim letzten Besuch als verbessert beurteilt.<sup>2</sup>" } },
+        "stat_3": { "type": "stat", "settings": { "value": "100%", "text": "der Teilnehmen mit einem Defizit an Biotin erlebten eine Verbesserung des Haarausfalls<sup>3</sup>" } },
+        "source_1": { "type": "source", "settings": { "url": "https://onlinelibrary.wiley.com/doi/10.1002/ptr.6528" } },
+        "source_2": { "type": "source", "settings": { "url": "https://pubmed.ncbi.nlm.nih.gov/12006122/" } },
+        "source_3": { "type": "source", "settings": { "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5582478/" } }
+      },
+      "block_order": ["stat_1", "stat_2", "stat_3", "source_1", "source_2", "source_3"]
+    },
+    "offer": {
+      "type": "offer-pricing",
+      "blocks": {
+        "plan_1": { "type": "plan", "settings": { "value": "monthly", "name": "Monatliche Lieferung", "badge": "Spare 10%", "price_new": "35€", "price_old": "39€", "description": "1-Monats-Vorrat, Lieferung monatlich." } },
+        "plan_2": { "type": "plan", "settings": { "value": "3month", "name": "3-Monats-Lieferung", "badge": "Spare 15%", "price_new": "99€", "price_old": "117€", "description": "3-Monats-Vorrat mit Nachlieferung alle 3 Monate." } },
+        "plan_3": { "type": "plan", "settings": { "value": "6month", "name": "6-Monats-Lieferung", "badge": "Spare 20%", "price_new": "187€", "price_old": "234€", "description": "6-Monats-Vorrat mit Nachlieferung alle 6 Monate." } }
+      },
+      "block_order": ["plan_1", "plan_2", "plan_3"]
+    },
+    "quality": {
+      "type": "quality-badges",
+      "blocks": {
+        "feat_1": { "type": "feature", "settings": { "text": "Hausinterne mikrobiologische Analyse jeder Charge" } },
+        "feat_2": { "type": "feature", "settings": { "text": "HACCP- & ISO-Standards in der Herstellung" } },
+        "feat_3": { "type": "feature", "settings": { "text": "Rohstoffe geprüft auf Pestizidrückstände" } },
+        "badge_1": { "type": "badge", "settings": { "icon": "vegan", "label": "Vegan" } },
+        "badge_2": { "type": "badge", "settings": { "icon": "gluten", "label": "Gluten-geprüft" } },
+        "badge_3": { "type": "badge", "settings": { "icon": "dairy", "label": "Milchprodukte-geprüft" } },
+        "badge_4": { "type": "badge", "settings": { "icon": "soy", "label": "Soja-geprüft" } },
+        "badge_5": { "type": "badge", "settings": { "icon": "nut", "label": "Nuss-geprüft" } },
+        "badge_6": { "type": "badge", "settings": { "icon": "shellfish", "label": "Schalentier-geprüft" } },
+        "badge_7": { "type": "badge", "settings": { "icon": "sesame", "label": "Sesam-geprüft" } },
+        "badge_8": { "type": "badge", "settings": { "icon": "corn", "label": "Mais-geprüft" } },
+        "badge_9": { "type": "badge", "settings": { "icon": "glyphosate", "label": "Glyphosat / AMPA-geprüft" } },
+        "badge_10": { "type": "badge", "settings": { "icon": "no_fillers", "label": "Ohne Bindemittel" } },
+        "badge_11": { "type": "badge", "settings": { "icon": "no_preservatives", "label": "Ohne Konservierungsstoffe" } },
+        "badge_12": { "type": "badge", "settings": { "icon": "heavy_metals", "label": "Schwermetall-geprüft" } }
+      },
+      "block_order": ["feat_1", "feat_2", "feat_3", "badge_1", "badge_2", "badge_3", "badge_4", "badge_5", "badge_6", "badge_7", "badge_8", "badge_9", "badge_10", "badge_11", "badge_12"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "test_1": { "type": "testimonial", "settings": { "name": "Aaron", "subtitle": "Hr² MITGLIED SEIT 2025", "quote": "Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt. Hr² fühlt sich eher wie eine langfristige Entscheidung an, die mir mit Inhaltsstoffen, welche speziell den Haarwuchs fördern, hilft. Nach ein paar Monaten fühlen sich meine Haare widerstandsfähiger an und ich habe wieder Vertrauen, dass ich dem Haarausfall aktiv entgegenwirke." } },
+        "test_2": { "type": "testimonial", "settings": { "name": "Lukas", "subtitle": "Hr² MITGLIED SEIT 2025", "quote": "In stressigen Phasen habe ich immer zuerst an meinen Haaren gemerkt, dass etwas nicht passt. Hr² ist für mich wie ein kleines tägliches Reset. Ich fühle mich versorgt und muss mir darüber keine Gedanken mehr machen." } },
+        "test_3": { "type": "testimonial", "settings": { "name": "Patrick", "subtitle": "Hr² MITGLIED SEIT 2025", "quote": "Ich arbeite und trainiere viel und hart. Die damit verbundene Anstrengung und der Stress haben aber auch ihre Schattenseiten. Irgendwann habe ich gemerkt, dass ich einen wichtigen Aspekt komplett vernachlässigt habe: meine Haare. Seit ich Hr² nehme, habe ich dieses unangenehme Gefühl überwunden." } }
+      },
+      "block_order": ["test_1", "test_2", "test_3"]
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q_1": { "type": "question", "settings": { "question": "Was ist Hr²?", "answer": "<p>Hr² ist ein täglicher Nährstoff-Boost mit über 70 hochwertigen Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenstoffe und Bakterienkulturen. Entwickelt von Expert:innen, wissenschaftlich fundiert und weltweit von High Performern empfohlen.</p>" } },
+        "q_2": { "type": "question", "settings": { "question": "Funktioniert Hr² für meinen Haartyp?", "answer": "<p>Hr² ist für die tägliche, langfristige Unterstützung der Haargesundheit entwickelt – unabhängig von Haartyp oder Haarstruktur. Da Ursachen für Haarausfall und Haarausdünnung unterschiedlich sind, können Ergebnisse individuell variieren.</p>" } },
+        "q_3": { "type": "question", "settings": { "question": "Wirkt es für Frauen und Männer?", "answer": "<p>Ja. Hr² ist für Frauen und Männer entwickelt und unterstützt die Haargesundheit unabhängig vom Geschlecht.</p>" } },
+        "q_4": { "type": "question", "settings": { "question": "Enthält Hr² Arzneistoffe?", "answer": "<p>Nein. Hr² ist ein Nahrungsergänzungsmittel und enthält keine Arzneistoffe.</p>" } },
+        "q_5": { "type": "question", "settings": { "question": "Ich weiß, dass manche Haarwuchs-Behandlungen Nebenwirkungen haben. Gilt das auch für Hr²?", "answer": "<p>Hr² ist als Nahrungsergänzungsmittel in der Regel gut verträglich. Wie bei allen Supplements kann es jedoch individuell zu Unverträglichkeiten kommen.</p>" } },
+        "q_6": { "type": "question", "settings": { "question": "Gibt es ein Risiko, dass Hr² meine Libido senkt?", "answer": "<p>Hr² enthält keine Arzneistoffe und ist nicht darauf ausgerichtet, in den Hormonhaushalt einzugreifen.</p>" } }
+      },
+      "block_order": ["q_1", "q_2", "q_3", "q_4", "q_5", "q_6"]
+    }
+  },
+  "order": [
+    "hero",
+    "comparison",
+    "causes",
+    "partners",
+    "ingredients",
+    "clinical",
+    "offer",
+    "quality",
+    "testimonials",
+    "faq"
+  ]
+}
