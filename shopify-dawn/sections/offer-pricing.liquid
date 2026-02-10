@@ -18,26 +18,23 @@
               {% endif %}
             </div>
             <div class="offer-plan-price">
-              <div class="offer-plan-price-new">{{ block.settings.price_new }}</div>
               {% if block.settings.price_old != blank %}
                 <div class="offer-plan-price-old">{{ block.settings.price_old }}</div>
               {% endif %}
+              <div class="offer-plan-price-new">{{ block.settings.price_new }}</div>
             </div>
-            <div class="offer-plan-desc">{{ block.settings.description }}</div>
           </label>
         {% endif %}
       {% endfor %}
     </div>
 
-    <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.cta_text | default: 'In den Warenkorb' }} <span aria-hidden="true">→</span></a>
+    <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.cta_text | default: 'In den Warenkorb' }}</a>
 
-    {% if section.settings.show_one_time %}
-      <div class="offer-once">
-        <a class="offer-once-link" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.one_time_text | default: 'Einmal kaufen für 39€ + 4,95€ Versand' }}</a>
-      </div>
-    {% endif %}
-
-    <p class="offer-guarantee-note">{{ section.settings.guarantee_text | default: 'Kostenloser Versand. Jederzeit pausieren oder kündigen.' }}</p>
+    <div class="offer-guarantee-row">
+      <span>✔ Kostenloser Versand</span>
+      <span>✔ Jederzeit kündbar</span>
+      <span>✔ 30‑Tage‑Geld‑zurück</span>
+    </div>
   </div>
 
   <div class="offer-right">
@@ -167,33 +164,30 @@
           "type": "plan",
           "settings": {
             "value": "monthly",
-            "name": "Monatliche Lieferung",
-            "badge": "Spare 10%",
-            "price_new": "35€",
-            "price_old": "39€",
-            "description": "1-Monats-Vorrat, Lieferung monatlich."
+            "name": "Monatlich",
+            "badge": "Spare 15%",
+            "price_new": "29€",
+            "price_old": "49€"
           }
         },
         {
           "type": "plan",
           "settings": {
             "value": "3month",
-            "name": "3-Monats-Lieferung",
-            "badge": "Spare 15%",
-            "price_new": "99€",
-            "price_old": "117€",
-            "description": "3-Monats-Vorrat mit Nachlieferung alle 3 Monate."
+            "name": "3 Monate",
+            "badge": "Spare 20%",
+            "price_new": "58€",
+            "price_old": "98€"
           }
         },
         {
           "type": "plan",
           "settings": {
             "value": "6month",
-            "name": "6-Monats-Lieferung",
-            "badge": "Spare 20%",
-            "price_new": "187€",
-            "price_old": "234€",
-            "description": "6-Monats-Vorrat mit Nachlieferung alle 6 Monate."
+            "name": "6 Monate",
+            "badge": "Spare 25%",
+            "price_new": "116€",
+            "price_old": "196€"
           }
         }
       ]

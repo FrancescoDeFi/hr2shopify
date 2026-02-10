@@ -15,6 +15,8 @@
                       aria-selected="{{ is_first }}"
                       data-ingredient="{{ block.settings.id }}"
                       data-description="{{ block.settings.description | escape }}"
+                      data-curve-top="{{ block.settings.curve_top | default: '' | escape }}"
+                      data-curve-bottom="{{ block.settings.curve_bottom | default: '' | escape }}"
                       {{ block.shopify_attributes }}>
                 <span class="chip-dot" aria-hidden="true"></span>
                 {{ block.settings.name }}
@@ -35,14 +37,28 @@
       </div>
 
       <div class="ingredients-visual" aria-hidden="true">
-        <div class="ingredients-card">
-          <div class="ingredients-ring">
-            {% if section.settings.capsule_image != blank %}
-              <img class="ingredients-capsule" src="{{ section.settings.capsule_image | image_url: width: 400 }}" alt="" loading="lazy" decoding="async">
-            {% else %}
-              <img class="ingredients-capsule" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
-            {% endif %}
-          </div>
+        <div class="ingredients-circle" id="ingredients-circle">
+          <svg class="ingredients-curved-text" viewBox="0 0 400 400" aria-hidden="true">
+            <defs>
+              <path id="curve-top" d="M 30,200 A 170,170 0 0,1 370,200" fill="none"/>
+              <path id="curve-bottom" d="M 370,200 A 170,170 0 0,1 30,200" fill="none"/>
+            </defs>
+            <text>
+              <textPath id="text-top" href="#curve-top" startOffset="50%" text-anchor="middle">
+                {% for block in section.blocks %}{% if block.type == 'ingredient' and forloop.first %}{{ block.settings.curve_top | default: 'UNTERSTÜTZT HAARWACHSTUM' }}{% endif %}{% endfor %}
+              </textPath>
+            </text>
+            <text>
+              <textPath id="text-bottom" href="#curve-bottom" startOffset="50%" text-anchor="middle">
+                {% for block in section.blocks %}{% if block.type == 'ingredient' and forloop.first %}{{ block.settings.curve_bottom | default: 'ERBSENSPROSSEN-EXTRAKT' }}{% endif %}{% endfor %}
+              </textPath>
+            </text>
+          </svg>
+          {% if section.settings.capsule_image != blank %}
+            <img class="ingredients-capsule" src="{{ section.settings.capsule_image | image_url: width: 400 }}" alt="" loading="lazy" decoding="async">
+          {% else %}
+            <img class="ingredients-capsule" src="{{ 'capsule.svg' | asset_url }}" alt="" loading="lazy" decoding="async">
+          {% endif %}
         </div>
       </div>
     </div>
@@ -95,6 +111,18 @@
           "id": "description",
           "label": "Beschreibung",
           "default": "Ein pflanzlicher Erbsensprossen-Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>"
+        },
+        {
+          "type": "text",
+          "id": "curve_top",
+          "label": "Kreistext oben",
+          "default": "UNTERSTÜTZT HAARWACHSTUM"
+        },
+        {
+          "type": "text",
+          "id": "curve_bottom",
+          "label": "Kreistext unten",
+          "default": "ERBSENSPROSSEN-EXTRAKT"
         }
       ]
     }
@@ -103,14 +131,14 @@
     {
       "name": "Inhaltsstoffe Explorer",
       "blocks": [
-        { "type": "ingredient", "settings": { "id": "anagain", "name": "Anagain", "description": "Ein pflanzlicher Erbsensprossen-Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>" } },
-        { "type": "ingredient", "settings": { "id": "sawpalmetto", "name": "Sägepalmenextrakt", "description": "Ein Pflanzenextrakt, der Faktoren unterstützt, die mit der Erhaltung voller Haare in Verbindung stehen.<sup>4</sup>" } },
-        { "type": "ingredient", "settings": { "id": "pomegranate", "name": "Granatapfelextrakt", "description": "Ein polyphenolreicher Extrakt mit antioxidativen Eigenschaften – unterstützt den Schutz vor oxidativem Stress.<sup>4</sup>" } },
-        { "type": "ingredient", "settings": { "id": "ashwagandha", "name": "Ashwagandha", "description": "Ein Adaptogen, das die Stressbalance unterstützt – ein wichtiger Faktor für gesunde Haarzyklen.<sup>4</sup>" } },
-        { "type": "ingredient", "settings": { "id": "lcysteine", "name": "L-Cysteine", "description": "Eine Aminosäure, die als Baustein von Keratin dient – unterstützt die natürliche Haarstruktur.<sup>4</sup>" } },
-        { "type": "ingredient", "settings": { "id": "llysine", "name": "L-Lysine", "description": "Eine essentielle Aminosäure, die am Aufbau von Strukturproteinen beteiligt ist.<sup>4</sup>" } },
-        { "type": "ingredient", "settings": { "id": "zinc", "name": "Zink", "description": "Zink trägt zur Erhaltung normaler Haare und Nägel bei.<sup>4</sup>" } },
-        { "type": "ingredient", "settings": { "id": "biotin", "name": "Biotin", "description": "Biotin trägt zur Erhaltung normaler Haare und Haut bei.<sup>4</sup>" } }
+        { "type": "ingredient", "settings": { "id": "anagain", "name": "Anagain", "description": "Ein pflanzlicher Erbsensprossen-Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>", "curve_top": "UNTERSTÜTZT HAARWACHSTUM", "curve_bottom": "ERBSENSPROSSEN-EXTRAKT" } },
+        { "type": "ingredient", "settings": { "id": "sawpalmetto", "name": "Sägepalmenextrakt", "description": "Ein Pflanzenextrakt, der Faktoren unterstützt, die mit der Erhaltung voller Haare in Verbindung stehen.<sup>4</sup>", "curve_top": "ERHALTUNG VOLLER HAARE", "curve_bottom": "NATÜRLICHER PFLANZENEXTRAKT" } },
+        { "type": "ingredient", "settings": { "id": "pomegranate", "name": "Granatapfelextrakt", "description": "Ein polyphenolreicher Extrakt mit antioxidativen Eigenschaften – unterstützt den Schutz vor oxidativem Stress.<sup>4</sup>", "curve_top": "ANTIOXIDATIVER SCHUTZ", "curve_bottom": "POLYPHENOLREICHER EXTRAKT" } },
+        { "type": "ingredient", "settings": { "id": "ashwagandha", "name": "Ashwagandha", "description": "Ein Adaptogen, das die Stressbalance unterstützt – ein wichtiger Faktor für gesunde Haarzyklen.<sup>4</sup>", "curve_top": "STRESSBALANCE FÖRDERND", "curve_bottom": "ADAPTOGENES HEILKRAUT" } },
+        { "type": "ingredient", "settings": { "id": "lcysteine", "name": "L-Cysteine", "description": "Eine Aminosäure, die als Baustein von Keratin dient – unterstützt die natürliche Haarstruktur.<sup>4</sup>", "curve_top": "BAUSTEIN VON KERATIN", "curve_bottom": "ESSENTIELLE AMINOSÄURE" } },
+        { "type": "ingredient", "settings": { "id": "llysine", "name": "L-Lysine", "description": "Eine essentielle Aminosäure, die am Aufbau von Strukturproteinen beteiligt ist.<sup>4</sup>", "curve_top": "AUFBAU STRUKTURPROTEINE", "curve_bottom": "ESSENTIELLE AMINOSÄURE" } },
+        { "type": "ingredient", "settings": { "id": "zinc", "name": "Zink", "description": "Zink trägt zur Erhaltung normaler Haare und Nägel bei.<sup>4</sup>", "curve_top": "ERHALTUNG NORMALER HAARE", "curve_bottom": "ESSENTIELLES SPURENELEMENT" } },
+        { "type": "ingredient", "settings": { "id": "biotin", "name": "Biotin", "description": "Biotin trägt zur Erhaltung normaler Haare und Haut bei.<sup>4</sup>", "curve_top": "ERHALTUNG NORMALER HAARE", "curve_bottom": "ESSENTIELLES B-VITAMIN" } }
       ]
     }
   ]

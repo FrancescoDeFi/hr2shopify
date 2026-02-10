@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 80" width="40" height="80">
+  <defs>
+    <linearGradient id="cap-top" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5e1525"/>
+      <stop offset="40%" stop-color="#4a0f1e"/>
+      <stop offset="100%" stop-color="#3c0c1c"/>
+    </linearGradient>
+    <linearGradient id="cap-bot" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6a1a2a"/>
+      <stop offset="50%" stop-color="#521220"/>
+      <stop offset="100%" stop-color="#3c0c1c"/>
+    </linearGradient>
+    <linearGradient id="cap-shine" x1="0.25" y1="0" x2="0.75" y2="0">
+      <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="35%" stop-color="rgba(255,255,255,0.22)"/>
+      <stop offset="55%" stop-color="rgba(255,255,255,0.22)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <linearGradient id="cap-edge-l" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="rgba(20,4,8,0.4)"/>
+      <stop offset="35%" stop-color="rgba(20,4,8,0)"/>
+    </linearGradient>
+    <linearGradient id="cap-edge-r" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="rgba(20,4,8,0.3)"/>
+      <stop offset="35%" stop-color="rgba(20,4,8,0)"/>
+    </linearGradient>
+    <linearGradient id="cap-band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2e0816"/>
+      <stop offset="50%" stop-color="#451020"/>
+      <stop offset="100%" stop-color="#2e0816"/>
+    </linearGradient>
+    <clipPath id="clip-top">
+      <rect x="0" y="0" width="40" height="41"/>
+    </clipPath>
+    <clipPath id="clip-bot">
+      <rect x="0" y="39" width="40" height="41"/>
+    </clipPath>
+  </defs>
+
+  <rect x="3" y="2" width="34" height="76" rx="17" ry="17" fill="url(#cap-top)" clip-path="url(#clip-top)"/>
+  <rect x="3" y="2" width="34" height="76" rx="17" ry="17" fill="url(#cap-bot)" clip-path="url(#clip-bot)"/>
+
+  <rect x="3" y="38" width="34" height="4" fill="url(#cap-band)" opacity="0.85"/>
+  <line x1="3" y1="38" x2="37" y2="38" stroke="#200610" stroke-width="0.5" opacity="0.4"/>
+  <line x1="3" y1="42" x2="37" y2="42" stroke="#200610" stroke-width="0.5" opacity="0.4"/>
+
+  <rect x="3" y="2" width="34" height="76" rx="17" ry="17" fill="url(#cap-edge-l)"/>
+  <rect x="3" y="2" width="34" height="76" rx="17" ry="17" fill="url(#cap-edge-r)"/>
+  <rect x="3" y="2" width="34" height="76" rx="17" ry="17" fill="url(#cap-shine)"/>
+
+  <ellipse cx="18" cy="15" rx="9" ry="7" fill="rgba(255,255,255,0.15)"/>
+
+  <g opacity="0.18" clip-path="url(#clip-bot)">
+    <circle cx="15" cy="51" r="4" fill="#1a0610"/>
+    <circle cx="25" cy="49" r="5" fill="#1a0610"/>
+    <circle cx="19" cy="59" r="3" fill="#1a0610"/>
+    <circle cx="27" cy="57" r="3" fill="#1a0610"/>
+    <circle cx="13" cy="60" r="4" fill="#1a0610"/>
+    <circle cx="22" cy="66" r="3" fill="#1a0610"/>
+  </g>
+</svg>

@@ -1,4 +1,5 @@
 <section class="quality">
+  <div class="quality-inner">
   <div class="quality-left">
     <h2>{{ section.settings.heading | default: 'Unabhängig getestet für alle, die alles geben' }}</h2>
     <p>{{ section.settings.description | default: 'Unsere Qualitätsstandards beginnen bei der Rohstoffauswahl und enden nicht bei der Kapsel. Jede Charge wird zusätzlich hausintern mikrobiologisch analysiert und nach strengen Standards geprüft – damit Hr² hält, was es verspricht.' }}</p>
@@ -96,6 +97,7 @@
         </div>
       {% endif %}
     {% endfor %}
+  </div>
   </div>
 </section>
 

@@ -6,6 +6,10 @@
   --card-shadow: 0 14px 38px rgba(0, 0, 0, 0.12);
 }
 
+body {
+  zoom: 0.8;
+}
+
 .skip-to-content-link {
   position: absolute;
   top: -100%;
@@ -652,8 +656,7 @@ html {
 }
 
 .ingredients-explorer {
-  background: radial-gradient(1200px 600px at 15% 20%, rgba(255, 221, 108, 0.16) 0%, rgba(60, 12, 28, 0) 55%),
-    radial-gradient(900px 520px at 80% 10%, rgba(255, 255, 255, 0.08) 0%, rgba(60, 12, 28, 0) 55%),
+  background: radial-gradient(900px 520px at 80% 10%, rgba(255, 255, 255, 0.06) 0%, rgba(60, 12, 28, 0) 55%),
     linear-gradient(180deg, #2a0713 0%, #3c0c1c 100%);
   color: #ffffff;
   padding: 96px 70px 110px;
@@ -741,14 +744,14 @@ html {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(235, 205, 122, 0.85);
-  box-shadow: 0 0 0 3px rgba(235, 205, 122, 0.18);
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.10);
   flex: 0 0 auto;
 }
 
 .ingredient-chip.active .chip-dot {
-  background: #c59b3a;
-  box-shadow: 0 0 0 3px rgba(197, 155, 58, 0.22);
+  background: #3c0c1c;
+  box-shadow: 0 0 0 3px rgba(60, 12, 28, 0.18);
 }
 
 .ingredient-description {
@@ -774,54 +777,46 @@ html {
 
 .ingredients-visual {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 
-.ingredients-card {
-  width: 100%;
-  max-width: 620px;
-  background: transparent;
-  border-radius: 2px;
-  min-height: 620px;
+.ingredients-circle {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: #ffffff;
   position: relative;
-  box-shadow: none;
-  overflow: hidden;
-}
-
-.ingredients-ring {
-  position: absolute;
-  inset: 0;
   display: grid;
   place-items: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ingredients-ring::before {
-  content: "";
-  width: min(430px, 68%);
-  aspect-ratio: 1 / 1;
-  border: 4px dotted rgba(16, 32, 38, 0.55);
-  border-radius: 50%;
-  opacity: 0.75;
+.ingredients-circle.spin {
+  transform: rotate(360deg);
 }
 
-.ingredients-ring::after {
-  content: "";
+.ingredients-curved-text {
   position: absolute;
-  width: 2px;
-  height: 120px;
-  background: rgba(16, 32, 38, 0.20);
-  bottom: 26px;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ingredients-curved-text text {
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  fill: #0c0c0c;
+  text-transform: uppercase;
 }
 
 .ingredients-capsule {
-  position: absolute;
-  /* capsule3.png: larger */
-  width: 620px;
+  width: 120px;
   height: auto;
-  max-width: 92%;
-  max-height: 92%;
+  position: relative;
+  z-index: 1;
 }
 
 /* Ingredients page (grid + slide-in drawer) */
@@ -3765,27 +3760,40 @@ html {
 }
 
 .offer-start-btn {
-  margin-top: 2px;
+  margin-top: 6px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 62px;
+  min-height: 64px;
   border-radius: 999px;
   background: #ffffff;
   color: #3c0c1c;
   text-decoration: none;
-  font-size: clamp(16px, 1.5vw, 22px);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: clamp(17px, 1.5vw, 22px);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  transition: opacity 160ms ease;
 }
 
-.offer-guarantee-note {
-  margin: 2px 0 0;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(12px, 0.9vw, 14px);
-  line-height: 1.3;
+.offer-start-btn:hover {
+  opacity: 0.9;
+}
+
+.offer-guarantee-row {
+  margin: 8px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+}
+
+.offer-guarantee-row span {
+  white-space: nowrap;
 }
 
 /* Offer – plan selector (3‑tier) */
@@ -3795,15 +3803,17 @@ html {
 }
 
 .offer-plan {
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
-  padding: 18px 18px 18px 48px;
+  padding: 20px 24px 20px 52px;
   position: relative;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   background: transparent;
+  color: #ffffff;
   transition: border-color 160ms ease, background 160ms ease;
 }
 
@@ -3812,16 +3822,17 @@ html {
 }
 
 .offer-plan.is-selected {
-  border-color: rgba(255, 255, 255, 0.80);
+  border-color: #ffffff;
   background: rgba(255, 255, 255, 0.06);
 }
 
 .offer-plan-radio {
   position: absolute;
-  left: 16px;
-  top: 22px;
-  width: 18px;
-  height: 18px;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
   accent-color: #ffffff;
   cursor: pointer;
 }
@@ -3829,25 +3840,25 @@ html {
 .offer-plan-title {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  grid-column: 1;
 }
 
 .offer-plan-name {
   font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
-  font-size: clamp(15px, 1.3vw, 20px);
+  font-size: clamp(16px, 1.4vw, 22px);
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  color: #ffffff;
 }
 
 .offer-plan-badge {
-  padding: 5px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
-  background: rgba(235, 205, 122, 0.92);
-  color: #1a1a1a;
-  font-size: 11px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -3855,55 +3866,26 @@ html {
 }
 
 .offer-plan-price {
-  text-align: right;
-  grid-row: 1 / 3;
-  grid-column: 2;
-  align-self: center;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.offer-plan-price-old {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.40);
+  font-weight: 600;
 }
 
 .offer-plan-price-new {
   font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
-  font-size: clamp(24px, 2vw, 32px);
+  font-size: clamp(24px, 2vw, 34px);
   letter-spacing: -0.02em;
   line-height: 1;
-}
-
-.offer-plan-price-old {
-  font-size: 15px;
-  text-decoration: line-through;
-  color: rgba(255, 255, 255, 0.48);
-  text-align: right;
-  margin-top: 4px;
-  font-weight: 600;
-}
-
-.offer-plan-desc {
-  font-size: clamp(13px, 1vw, 15px);
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.4;
-  grid-column: 1;
-}
-
-.offer-plan-sub {
-  font-size: clamp(12px, 0.9vw, 14px);
-  color: rgba(255, 255, 255, 0.56);
-  grid-column: 1;
-  line-height: 1.35;
-}
-
-.offer-once {
-  text-align: center;
-}
-
-.offer-once-link {
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  font-weight: 850;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: clamp(11px, 0.9vw, 13px);
+  color: #ffffff;
 }
 
 .offer-panel-divider {
@@ -4024,12 +4006,17 @@ html {
 }
 
 .quality {
+  background: #f5f4ee;
+  padding: 96px 70px;
+}
+
+.quality-inner {
+  max-width: 1180px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas:
     "left cards";
-  background: #f5f4ee;
-  padding: 96px 80px;
   gap: 56px;
   align-items: start;
 }
@@ -5233,13 +5220,18 @@ html {
     min-height: auto;
   }
 
-  .ingredients-card {
-    min-height: 520px;
-    max-width: 100%;
+  .ingredients-circle {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
   }
 
-  .ingredients-ring::after {
-    height: 90px;
+  .ingredients-curved-text text {
+    font-size: 15px;
+  }
+
+  .ingredients-capsule {
+    width: 96px;
   }
 
   .causes-header h2 {
@@ -5401,6 +5393,10 @@ html {
   }
 
   .quality {
+    padding: 96px 28px;
+  }
+
+  .quality-inner {
     grid-template-columns: 1fr;
     grid-template-areas:
       "left"
@@ -5411,12 +5407,6 @@ html {
   .quality-badges {
     grid-template-columns: repeat(2, 1fr);
     gap: 22px 28px;
-  }
-
-  .quality {
-    grid-template-areas:
-      "left"
-      "cards";
   }
 
   .testing-inner {
