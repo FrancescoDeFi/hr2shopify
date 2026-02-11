@@ -81,8 +81,37 @@
                 {%- assign first_plan = first_group.selling_plans.first -%}
                 {%- for group in product.selling_plan_groups -%}
                   {%- for plan in group.selling_plans -%}
-                    {%- assign allocation = allocations | where: 'selling_plan_id', plan.id | first -%}
+                    {%- assign matched_allocation = blank -%}
+                    {%- for allocation in allocations -%}
+                      {%- if allocation.selling_plan and allocation.selling_plan.id == plan.id -%}
+                        {%- assign matched_allocation = allocation -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
                     {%- assign adjustment = plan.price_adjustments | first -%}
+                    {%- assign option_old_price = selected_variant.price -%}
+                    {%- assign option_new_price = selected_variant.price -%}
+
+                    {%- if matched_allocation and matched_allocation.price -%}
+                      {%- assign option_new_price = matched_allocation.price -%}
+                      {%- if matched_allocation.compare_at_price and matched_allocation.compare_at_price > matched_allocation.price -%}
+                        {%- assign option_old_price = matched_allocation.compare_at_price -%}
+                      {%- endif -%}
+                    {%- elsif adjustment -%}
+                      {%- if adjustment.value_type == 'percentage' -%}
+                        {%- assign discount_amount = selected_variant.price | times: adjustment.value | divided_by: 100 -%}
+                        {%- assign option_new_price = selected_variant.price | minus: discount_amount -%}
+                      {%- elsif adjustment.value_type == 'fixed_amount' -%}
+                        {%- assign option_new_price = selected_variant.price | minus: adjustment.value -%}
+                      {%- elsif adjustment.value_type == 'price' -%}
+                        {%- assign option_new_price = adjustment.value -%}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {%- if option_new_price < 0 -%}
+                      {%- assign option_new_price = 0 -%}
+                    {%- endif -%}
+
                     {%- assign save_text = '' -%}
                     {%- if adjustment and adjustment.value_type == 'percentage' -%}
                       {%- assign save_text = 'SPARE ' | append: adjustment.value | append: '%' -%}
@@ -102,8 +131,10 @@
                         {%- endif -%}
                       </div>
                       <div class="pdp-hero-option-right">
-                        <span class="pdp-hero-option-old">{{ selected_variant.price | money }}</span>
-                        <span class="pdp-hero-option-new">{{ allocation.price | default: selected_variant.price | money }}</span>
+                        {%- if option_new_price < option_old_price -%}
+                          <span class="pdp-hero-option-old">{{ option_old_price | money }}</span>
+                        {%- endif -%}
+                        <span class="pdp-hero-option-new">{{ option_new_price | money }}</span>
                       </div>
                     </label>
                   {%- endfor -%}
