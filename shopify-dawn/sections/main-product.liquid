@@ -73,6 +73,7 @@
             {%- endif -%}
             <input type="hidden" name="id" value="{{ selected_variant.id }}">
             <input type="hidden" name="selling_plan" value="{{ initial_plan_id }}">
+            <input type="hidden" name="return_to" value="/checkout">
 
             <div class="pdp-hero-options" role="radiogroup" aria-label="Lieferoptionen" data-selling-options>
               {%- if product.selling_plan_groups.size > 0 -%}

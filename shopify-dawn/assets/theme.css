@@ -5455,6 +5455,29 @@ html {
 }
 
 @media (max-width: 720px) {
+  .hero-image {
+    display: none;
+  }
+
+  .clinical-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .clinical-left {
+    order: 1;
+  }
+
+  .clinical-right {
+    order: 2;
+    justify-content: flex-start;
+  }
+
+  .clinical-stats {
+    margin-top: 0;
+    max-width: none;
+  }
+
   .navbar {
     padding: 0 16px;
     gap: 12px;
