@@ -118,6 +118,20 @@
                     {%- elsif adjustment and adjustment.value_type == 'fixed_amount' -%}
                       {%- assign save_text = 'SPARE ' | append: adjustment.value | money -%}
                     {%- endif -%}
+                    {%- assign localized_plan_name = plan.name
+                      | replace: 'Deliver every month', 'Lieferung jeden Monat'
+                      | replace: 'Deliver every 1 month', 'Lieferung jeden Monat'
+                      | replace: 'Deliver every 3 months', 'Lieferung alle 3 Monate'
+                      | replace: 'Deliver every 6 months', 'Lieferung alle 6 Monate'
+                      | replace: 'DELIVER EVERY MONTH', 'LIEFERUNG JEDEN MONAT'
+                      | replace: 'DELIVER EVERY 1 MONTH', 'LIEFERUNG JEDEN MONAT'
+                      | replace: 'DELIVER EVERY 3 MONTHS', 'LIEFERUNG ALLE 3 MONATE'
+                      | replace: 'DELIVER EVERY 6 MONTHS', 'LIEFERUNG ALLE 6 MONATE'
+                      | replace: 'Subscribe and save', 'Abonnieren und sparen'
+                      | replace: 'SUBSCRIBE AND SAVE', 'ABONNIEREN UND SPAREN'
+                      | replace: '% off', '% sparen'
+                      | replace: '% OFF', '% SPAREN'
+                    -%}
                     {%- assign is_selected = false -%}
                     {%- if plan.id == first_plan.id -%}
                       {%- assign is_selected = true -%}
@@ -125,7 +139,7 @@
                     <label class="pdp-hero-option{% if is_selected %} is-selected{% endif %}" data-selling-option data-selling-plan="{{ plan.id }}">
                       <input class="pdp-hero-radio" type="radio" name="purchase_option" value="{{ plan.id }}" data-selling-input{% if is_selected %} checked{% endif %}>
                       <div class="pdp-hero-option-left">
-                        <span class="pdp-hero-option-name">{{ plan.name }}</span>
+                        <span class="pdp-hero-option-name">{{ localized_plan_name }}</span>
                         {%- if save_text != '' -%}
                           <span class="pdp-hero-option-save">{{ save_text }}</span>
                         {%- endif -%}
