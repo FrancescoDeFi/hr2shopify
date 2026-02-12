@@ -131,6 +131,12 @@
                       | replace: 'SUBSCRIBE AND SAVE', 'ABONNIEREN UND SPAREN'
                       | replace: '% off', '% sparen'
                       | replace: '% OFF', '% SPAREN'
+                      | replace: ', 15% sparen', ''
+                      | replace: ', 20% sparen', ''
+                      | replace: ', 25% sparen', ''
+                      | replace: ', 15% SPAREN', ''
+                      | replace: ', 20% SPAREN', ''
+                      | replace: ', 25% SPAREN', ''
                     -%}
                     {%- assign is_selected = false -%}
                     {%- if plan.id == first_plan.id -%}
