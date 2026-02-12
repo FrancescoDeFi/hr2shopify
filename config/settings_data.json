@@ -1,0 +1,50 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "primary_product_handle": "hr2",
+    "onetime_price": "39€",
+    "onetime_shipping": "4,95€",
+    "google_tag_id": "G-MS0QQTJHYY",
+    "color_primary": "#3c0c1c",
+    "color_secondary": "#f3f1e7",
+    "color_text": "#0c0c0c",
+    "color_background": "#ffffff",
+    "logo_width": 120,
+    "social_instagram": "",
+    "social_linkedin": "",
+    "social_tiktok": "",
+    "social_youtube": "",
+    "cookie_banner_enabled": true,
+    "cart_show_shipping_note": true,
+    "cart_shipping_note": "Versandkosten werden an der Kasse berechnet.",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "show_account_icon": true,
+          "show_cart_icon": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}
