@@ -5353,7 +5353,7 @@ html {
 
   .offer-plan-radio {
     left: 14px;
-    top: 18px;
+    top: 50%;
   }
 
   .offer-plan-name {
@@ -5653,7 +5653,7 @@ html {
 
   .offer-plan-radio {
     left: 12px;
-    top: 16px;
+    top: 50%;
     width: 16px;
     height: 16px;
   }
