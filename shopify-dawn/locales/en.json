@@ -143,11 +143,20 @@
   },
   "sections": {
     "hero": {
-      "heading": "Your daily hair boost",
+      "heading": "Your daily<br> hair boost",
+      "subheading": "Hr² is your all-in-one hair supplement - clinically reviewed for daily support of hair roots, scalp, and nutrient supply. Scientifically developed, trusted by a global community.",
       "cta_buy": "Buy now",
       "cta_quiz": "Take the quiz for a personalized plan",
       "clinicians_title": "Recommended by doctors",
-      "clinicians_body": "Science-backed. Developed by leading medical experts."
+      "clinicians_body": "Science-backed. Developed by leading medical experts.",
+      "benefit_clinical": "CLINICALLY<br>PROVEN FORMULA",
+      "benefit_drug_free": "100% WITHOUT<br>MEDICINES",
+      "benefit_results": "RESULTS IN 3-6<br>MONTHS",
+      "aria_benefits": "Product benefits",
+      "aria_ctas": "Purchase options",
+      "aria_quiz": "Start quiz for a personalized plan",
+      "aria_clinicians": "Clinical credibility",
+      "product_image_alt": "Hr² product"
     },
     "comparison": {
       "title": "Comparison",

@@ -143,11 +143,20 @@
   },
   "sections": {
     "hero": {
-      "heading": "Dein täglicher Haar-Boost",
+      "heading": "Dein täglicher<br> Haar-Boost",
+      "subheading": "Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.",
       "cta_buy": "Jetzt kaufen",
       "cta_quiz": "Mach dein Quiz für einen personalisierten Plan",
       "clinicians_title": "Von Ärzten empfohlen",
-      "clinicians_body": "Wissenschaftlich fundiert. Entwickelt von den führenden medizinischen Expert:innen."
+      "clinicians_body": "Wissenschaftlich fundiert. Entwickelt von den führenden medizinischen Expert:innen.",
+      "benefit_clinical": "KLINISCH<br>GEPRÜFTE FORMEL",
+      "benefit_drug_free": "100% OHNE<br>ARZNEISTOFFE",
+      "benefit_results": "ERGEBNISSE IN 3–6<br>MONATEN",
+      "aria_benefits": "Produktvorteile",
+      "aria_ctas": "Kaufoptionen",
+      "aria_quiz": "Quiz für einen personalisierten Plan starten",
+      "aria_clinicians": "Klinischer Nachweis",
+      "product_image_alt": "Hr² Produkt"
     },
     "comparison": {
       "title": "Vergleich",
