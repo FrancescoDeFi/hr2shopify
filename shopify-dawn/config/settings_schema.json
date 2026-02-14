@@ -122,6 +122,17 @@
     ]
   },
   {
+    "name": "Lokalisierung",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_language_switcher",
+        "label": "Sprachumschalter anzeigen",
+        "default": true
+      }
+    ]
+  },
+  {
     "name": "Cookie-Banner",
     "settings": [
       {

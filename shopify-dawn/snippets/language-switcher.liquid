@@ -1,0 +1,31 @@
+{%- if localization.available_languages.size > 1 -%}
+  {%- assign switcher_id = id | default: 'language-switcher' -%}
+  {%- assign show_label = show_label | default: false -%}
+  <div class="language-switcher-wrapper">
+    {%- form 'localization', class: 'language-switcher-form' -%}
+      <input type="hidden" name="return_to" value="{{ request.path }}">
+      {%- if show_label -%}
+        <label class="language-switcher-label" for="{{ switcher_id }}">
+          {{ 'theme.switcher.language' | t }}
+        </label>
+      {%- else -%}
+        <label class="visually-hidden" for="{{ switcher_id }}">
+          {{ 'theme.switcher.language' | t }}
+        </label>
+      {%- endif -%}
+      <select
+        id="{{ switcher_id }}"
+        name="locale_code"
+        class="language-switcher-select"
+        aria-label="{{ 'theme.switcher.language' | t }}"
+        onchange="this.form.submit()"
+      >
+        {%- for language in localization.available_languages -%}
+          <option value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>
+            {{ language.iso_code | upcase }}
+          </option>
+        {%- endfor -%}
+      </select>
+    {%- endform -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,132 @@
+<section class="faq" aria-label="Help Center">
+  <div class="faq-left">
+    <h2>Help Center (FAQ)</h2>
+    <p>
+      Here you can find answers about contact, shipping, and returns. If you need help, write to us at
+      <a class="faq-link" href="mailto:info@gethr2.com">info@gethr2.com</a>.
+    </p>
+    <p style="margin-top: 16px;">
+      <a class="faq-link" href="#help-center">Help Center (FAQ)</a><br>
+      <a class="faq-link" href="#contact">Contact</a><br>
+      <a class="faq-link" href="#shipping">Shipping &amp; Delivery</a><br>
+      <a class="faq-link" href="#returns">Returns</a>
+    </p>
+  </div>
+
+  <div class="faq-right">
+    <h3 id="help-center">Help Center (FAQ)</h3>
+
+    <div class="faq-item open">
+      <button class="faq-question" type="button" aria-expanded="true">
+        <span>What is the fastest way to reach support?</span>
+        <span class="faq-toggle">–</span>
+      </button>
+      <div class="faq-answer">
+        The fastest way is by email at <a class="faq-link" href="mailto:info@gethr2.com">info@gethr2.com</a>.
+        If available, include your order number so we can help you faster.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Where can I find information on ingredients and research?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        You can find ingredient details on <a class="faq-link" href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">Ingredients</a>
+        and background on quality and evidence on <a class="faq-link" href="{{ pages['forschung'].url | default: '/pages/forschung' }}">Research</a>.
+      </div>
+    </div>
+
+    <h3 id="contact" style="margin-top: 28px;">Contact</h3>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Which contact details can I use?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        Email: <a class="faq-link" href="mailto:info@gethr2.com">info@gethr2.com</a><br>
+        For legal information, please also see our <a class="faq-link" href="{{ pages['impressum'].url | default: '/pages/impressum' }}">Legal Notice</a>.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>How quickly will I receive a response?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        We respond as quickly as possible. During peak times it can take longer. If your request concerns an order,
+        your order number helps us assign it quickly.
+      </div>
+    </div>
+
+    <h3 id="shipping" style="margin-top: 28px;">Shipping &amp; Delivery</h3>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>How long does shipping take?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        Delivery time depends on destination country and shipping method. The estimated delivery time is shown at checkout
+        or in your order confirmation.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>How much are shipping costs?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        Shipping costs vary by destination country and are displayed transparently at checkout before you complete your order.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Can I track my shipment?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        Once your order has shipped, you will receive a shipping confirmation with tracking information (if available).
+      </div>
+    </div>
+
+    <h3 id="returns" style="margin-top: 28px;">Returns</h3>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>How do I start a return?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        Email us at <a class="faq-link" href="mailto:info@gethr2.com">info@gethr2.com</a> with your order number and reason for return.
+        We will reply with the next steps.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>Is there a right of withdrawal?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        Information on withdrawal is available on our <a class="faq-link" href="{{ pages['widerruf'].url | default: '/pages/widerruf' }}">Right of Withdrawal</a> page.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" type="button" aria-expanded="false">
+        <span>When will I receive my refund?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer" hidden>
+        After receiving and checking your return, we refund to the original payment method. Depending on your payment provider,
+        it may take a few days for the credit to appear.
+      </div>
+    </div>
+  </div>
+</section>

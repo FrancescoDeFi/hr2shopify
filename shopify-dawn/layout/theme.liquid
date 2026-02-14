@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page_title }}{% if current_tags %} – {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} – Seite {{ current_page }}{% endif %} – {{ shop.name }}</title>
+  <title>{{ page_title }}{% if current_tags %} – {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} – {{ 'general.meta.page_number' | t: number: current_page }}{% endif %} – {{ shop.name }}</title>
   {%- if page_description -%}
     <meta name="description" content="{{ page_description | escape }}">
   {%- endif -%}
@@ -44,7 +44,7 @@
   {%- endif -%}
 </head>
 <body class="template-{{ template.name | handle }}">
-  <a class="skip-to-content-link" href="#MainContent">Zum Inhalt springen</a>
+  <a class="skip-to-content-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   {% section 'header' %}
 

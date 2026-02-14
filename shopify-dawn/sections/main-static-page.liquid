@@ -1,20 +1,53 @@
+{%- assign is_english = request.locale.iso_code == 'en' -%}
 {%- case page.handle -%}
 {%- when 'inhaltsstoffe' -%}
-  {%- render 'page-inhaltsstoffe' -%}
+  {%- if is_english -%}
+    {%- render 'page-inhaltsstoffe-en' -%}
+  {%- else -%}
+    {%- render 'page-inhaltsstoffe' -%}
+  {%- endif -%}
 {%- when 'forschung' -%}
-  {%- render 'page-forschung' -%}
+  {%- if is_english -%}
+    {%- render 'page-forschung-en' -%}
+  {%- else -%}
+    {%- render 'page-forschung' -%}
+  {%- endif -%}
 {%- when 'hilfe' -%}
-  {%- render 'page-hilfe' -%}
+  {%- if is_english -%}
+    {%- render 'page-hilfe-en' -%}
+  {%- else -%}
+    {%- render 'page-hilfe' -%}
+  {%- endif -%}
 {%- when 'datenschutz' -%}
-  {%- render 'page-datenschutz' -%}
+  {%- if is_english -%}
+    {%- render 'page-datenschutz-en' -%}
+  {%- else -%}
+    {%- render 'page-datenschutz' -%}
+  {%- endif -%}
 {%- when 'impressum' -%}
-  {%- render 'page-impressum' -%}
+  {%- if is_english -%}
+    {%- render 'page-impressum-en' -%}
+  {%- else -%}
+    {%- render 'page-impressum' -%}
+  {%- endif -%}
 {%- when 'agb' -%}
-  {%- render 'page-agb' -%}
+  {%- if is_english -%}
+    {%- render 'page-agb-en' -%}
+  {%- else -%}
+    {%- render 'page-agb' -%}
+  {%- endif -%}
 {%- when 'widerruf' -%}
-  {%- render 'page-widerruf' -%}
+  {%- if is_english -%}
+    {%- render 'page-widerruf-en' -%}
+  {%- else -%}
+    {%- render 'page-widerruf' -%}
+  {%- endif -%}
 {%- when 'beschwerden' -%}
-  {%- render 'page-beschwerden' -%}
+  {%- if is_english -%}
+    {%- render 'page-beschwerden-en' -%}
+  {%- else -%}
+    {%- render 'page-beschwerden' -%}
+  {%- endif -%}
 {%- else -%}
   <section class="legal-page" aria-labelledby="legal-title">
     <div class="legal-inner">

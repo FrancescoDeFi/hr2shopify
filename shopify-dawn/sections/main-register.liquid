@@ -1,12 +1,12 @@
 <div class="customer-page">
   <div class="customer-page-inner">
-    <h1 class="customer-page-title">Konto erstellen</h1>
+    <h1 class="customer-page-title">{{ 'customer.register.title' | t }}</h1>
 
     {%- form 'create_customer' -%}
       {{ form.errors | default_errors }}
 
       <div class="form-field">
-        <label for="FirstName">Vorname</label>
+        <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
         <input
           type="text"
           name="customer[first_name]"
@@ -18,7 +18,7 @@
       </div>
 
       <div class="form-field">
-        <label for="LastName">Nachname</label>
+        <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
         <input
           type="text"
           name="customer[last_name]"
@@ -30,7 +30,7 @@
       </div>
 
       <div class="form-field">
-        <label for="Email">E-Mail</label>
+        <label for="Email">{{ 'customer.register.email' | t }}</label>
         <input
           type="email"
           name="customer[email]"
@@ -44,7 +44,7 @@
       </div>
 
       <div class="form-field">
-        <label for="CreatePassword">Passwort</label>
+        <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
         <input
           type="password"
           name="customer[password]"
@@ -55,11 +55,11 @@
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="primary-btn">Konto erstellen</button>
+        <button type="submit" class="primary-btn">{{ 'customer.register.submit' | t }}</button>
       </div>
 
       <div class="customer-page-links">
-        <a href="{{ routes.account_login_url }}">Du hast bereits ein Konto? Anmelden</a>
+        <a href="{{ routes.account_login_url }}">{{ 'customer.register.already_have_account' | t }} {{ 'customer.login.submit' | t }}</a>
       </div>
     {%- endform -%}
   </div>

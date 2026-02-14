@@ -5,35 +5,35 @@
       <div class="pdp-hero-inner">
         <!-- Left: Product image carousel -->
         <div class="pdp-hero-image">
-          <span class="pdp-hero-shipping">Kostenloser Versand ab 50 €</span>
+          <span class="pdp-hero-shipping">{{ 'product_page.shipping_threshold' | t }}</span>
           <div class="pdp-hero-carousel">
             <div class="pdp-hero-carousel-track">
               <div class="pdp-hero-carousel-slide active">
-                <img src="{{ 'bottlenew2.png' | asset_url }}" alt="Hr² Haar-Supplement" loading="eager" decoding="async">
+                <img src="{{ 'bottlenew2.png' | asset_url }}" alt="{{ 'product_page.image_alt_1' | t }}" loading="eager" decoding="async">
               </div>
               <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'capsule3.png' | asset_url }}" alt="Hr² Kapseln" loading="lazy" decoding="async">
+                <img src="{{ 'capsule3.png' | asset_url }}" alt="{{ 'product_page.image_alt_2' | t }}" loading="lazy" decoding="async">
               </div>
               <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'heroimage.png' | asset_url }}" alt="Hr² Anwendung" loading="lazy" decoding="async">
+                <img src="{{ 'heroimage.png' | asset_url }}" alt="{{ 'product_page.image_alt_3' | t }}" loading="lazy" decoding="async">
               </div>
               <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'testing.png' | asset_url }}" alt="Hr² Qualität" loading="lazy" decoding="async">
+                <img src="{{ 'testing.png' | asset_url }}" alt="{{ 'product_page.image_alt_4' | t }}" loading="lazy" decoding="async">
               </div>
               <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'bottlew.png' | asset_url }}" alt="Hr² Flasche" loading="lazy" decoding="async">
+                <img src="{{ 'bottlew.png' | asset_url }}" alt="{{ 'product_page.image_alt_5' | t }}" loading="lazy" decoding="async">
               </div>
               <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'capsule.png' | asset_url }}" alt="Hr² Details" loading="lazy" decoding="async">
+                <img src="{{ 'capsule.png' | asset_url }}" alt="{{ 'product_page.image_alt_6' | t }}" loading="lazy" decoding="async">
               </div>
             </div>
             <div class="pdp-hero-carousel-dots">
-              <button class="pdp-carousel-dot active" aria-label="Bild 1" data-index="0"></button>
-              <button class="pdp-carousel-dot" aria-label="Bild 2" data-index="1"></button>
-              <button class="pdp-carousel-dot" aria-label="Bild 3" data-index="2"></button>
-              <button class="pdp-carousel-dot" aria-label="Bild 4" data-index="3"></button>
-              <button class="pdp-carousel-dot" aria-label="Bild 5" data-index="4"></button>
-              <button class="pdp-carousel-dot" aria-label="Bild 6" data-index="5"></button>
+              <button class="pdp-carousel-dot active" aria-label="{{ 'product_page.image_dot' | t: number: 1 }}" data-index="0"></button>
+              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 2 }}" data-index="1"></button>
+              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 3 }}" data-index="2"></button>
+              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 4 }}" data-index="3"></button>
+              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 5 }}" data-index="4"></button>
+              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 6 }}" data-index="5"></button>
             </div>
           </div>
         </div>
@@ -41,27 +41,27 @@
         <!-- Right: Product info -->
         <div class="pdp-hero-info">
           <h1 class="pdp-hero-title" id="product-title">{{ product.title }}</h1>
-          <p class="pdp-hero-subtitle">Tägliches Haar-Supplement</p>
+          <p class="pdp-hero-subtitle">{{ 'product_page.subtitle' | t }}</p>
 
           <div class="pdp-hero-tags">
-            <span class="pdp-hero-tag">Haarwachstum</span>
-            <span class="pdp-hero-tag">DHT-Balance</span>
-            <span class="pdp-hero-tag">Kopfhaut</span>
-            <span class="pdp-hero-tag">Nährstoffversorgung</span>
+            <span class="pdp-hero-tag">{{ 'product_page.tag_1' | t }}</span>
+            <span class="pdp-hero-tag">{{ 'product_page.tag_2' | t }}</span>
+            <span class="pdp-hero-tag">{{ 'product_page.tag_3' | t }}</span>
+            <span class="pdp-hero-tag">{{ 'product_page.tag_4' | t }}</span>
           </div>
 
           <p class="pdp-hero-desc">
-            Hr² ist ein tägliches Supplement für die Haargesundheit – entwickelt mit klinisch untersuchten Inhaltsstoffen wie Anagain, Sägepalmenextrakt und Biotin. Formuliert von Wissenschaftler:innen für eine einfache Routine ohne Arzneistoffe.
+            {{ 'product_page.description' | t }}
           </p>
 
           <ul class="pdp-hero-benefits">
-            <li>Bio‑optimierte Aufnahme für bessere Bioverfügbarkeit</li>
-            <li>Klinisch untersuchte, natürliche Wirkstoffe</li>
-            <li>Ohne Arzneistoffe – keine Nebenwirkungen auf die Libido</li>
-            <li>Formuliert von Wissenschaftler:innen führender Institutionen</li>
+            <li>{{ 'product_page.benefit_1' | t }}</li>
+            <li>{{ 'product_page.benefit_2' | t }}</li>
+            <li>{{ 'product_page.benefit_3' | t }}</li>
+            <li>{{ 'product_page.benefit_4' | t }}</li>
           </ul>
 
-          <p class="pdp-hero-capsule-note">60 Kapseln · Nahrungsergänzungsmittel</p>
+          <p class="pdp-hero-capsule-note">{{ 'product_page.capsule_note' | t }}</p>
 
           <div class="pdp-hero-divider"></div>
 
@@ -75,7 +75,7 @@
             <input type="hidden" name="selling_plan" value="{{ initial_plan_id }}">
             <input type="hidden" name="return_to" value="/checkout">
 
-            <div class="pdp-hero-options" role="radiogroup" aria-label="Lieferoptionen" data-selling-options>
+            <div class="pdp-hero-options" role="radiogroup" aria-label="{{ 'product_page.delivery_options' | t }}" data-selling-options>
               {%- if product.selling_plan_groups.size > 0 -%}
                 {%- assign first_group = product.selling_plan_groups.first -%}
                 {%- assign first_plan = first_group.selling_plans.first -%}
@@ -114,30 +114,33 @@
 
                     {%- assign save_text = '' -%}
                     {%- if adjustment and adjustment.value_type == 'percentage' -%}
-                      {%- assign save_text = 'SPARE ' | append: adjustment.value | append: '%' -%}
+                      {%- assign save_text = 'product_page.save_prefix' | t | append: ' ' | append: adjustment.value | append: '%' -%}
                     {%- elsif adjustment and adjustment.value_type == 'fixed_amount' -%}
-                      {%- assign save_text = 'SPARE ' | append: adjustment.value | money -%}
+                      {%- assign save_text = 'product_page.save_prefix' | t | append: ' ' | append: adjustment.value | money -%}
                     {%- endif -%}
-                    {%- assign localized_plan_name = plan.name
-                      | replace: 'Deliver every month', 'Lieferung jeden Monat'
-                      | replace: 'Deliver every 1 month', 'Lieferung jeden Monat'
-                      | replace: 'Deliver every 3 months', 'Lieferung alle 3 Monate'
-                      | replace: 'Deliver every 6 months', 'Lieferung alle 6 Monate'
-                      | replace: 'DELIVER EVERY MONTH', 'LIEFERUNG JEDEN MONAT'
-                      | replace: 'DELIVER EVERY 1 MONTH', 'LIEFERUNG JEDEN MONAT'
-                      | replace: 'DELIVER EVERY 3 MONTHS', 'LIEFERUNG ALLE 3 MONATE'
-                      | replace: 'DELIVER EVERY 6 MONTHS', 'LIEFERUNG ALLE 6 MONATE'
-                      | replace: 'Subscribe and save', 'Abonnieren und sparen'
-                      | replace: 'SUBSCRIBE AND SAVE', 'ABONNIEREN UND SPAREN'
-                      | replace: '% off', '% sparen'
-                      | replace: '% OFF', '% SPAREN'
-                      | replace: ', 15% sparen', ''
-                      | replace: ', 20% sparen', ''
-                      | replace: ', 25% sparen', ''
-                      | replace: ', 15% SPAREN', ''
-                      | replace: ', 20% SPAREN', ''
-                      | replace: ', 25% SPAREN', ''
-                    -%}
+                    {%- assign localized_plan_name = plan.name -%}
+                    {%- if request.locale.iso_code == 'de' -%}
+                      {%- assign localized_plan_name = plan.name
+                        | replace: 'Deliver every month', 'Lieferung jeden Monat'
+                        | replace: 'Deliver every 1 month', 'Lieferung jeden Monat'
+                        | replace: 'Deliver every 3 months', 'Lieferung alle 3 Monate'
+                        | replace: 'Deliver every 6 months', 'Lieferung alle 6 Monate'
+                        | replace: 'DELIVER EVERY MONTH', 'LIEFERUNG JEDEN MONAT'
+                        | replace: 'DELIVER EVERY 1 MONTH', 'LIEFERUNG JEDEN MONAT'
+                        | replace: 'DELIVER EVERY 3 MONTHS', 'LIEFERUNG ALLE 3 MONATE'
+                        | replace: 'DELIVER EVERY 6 MONTHS', 'LIEFERUNG ALLE 6 MONATE'
+                        | replace: 'Subscribe and save', 'Abonnieren und sparen'
+                        | replace: 'SUBSCRIBE AND SAVE', 'ABONNIEREN UND SPAREN'
+                        | replace: '% off', '% sparen'
+                        | replace: '% OFF', '% SPAREN'
+                        | replace: ', 15% sparen', ''
+                        | replace: ', 20% sparen', ''
+                        | replace: ', 25% sparen', ''
+                        | replace: ', 15% SPAREN', ''
+                        | replace: ', 20% SPAREN', ''
+                        | replace: ', 25% SPAREN', ''
+                      -%}
+                    {%- endif -%}
                     {%- assign is_selected = false -%}
                     {%- if plan.id == first_plan.id -%}
                       {%- assign is_selected = true -%}
@@ -163,7 +166,7 @@
                 <label class="pdp-hero-option is-selected" data-selling-option data-selling-plan="">
                   <input class="pdp-hero-radio" type="radio" name="purchase_option" value="onetime" data-selling-input checked>
                   <div class="pdp-hero-option-left">
-                    <span class="pdp-hero-option-name">Einmalig</span>
+                    <span class="pdp-hero-option-name">{{ 'product_page.one_time' | t }}</span>
                   </div>
                   <div class="pdp-hero-option-right">
                     <span class="pdp-hero-option-new">{{ selected_variant.price | money }}</span>
@@ -172,17 +175,17 @@
               {%- endif -%}
             </div>
 
-            <button class="pdp-hero-cta" id="order-cta" type="submit" name="add">In den Warenkorb</button>
+            <button class="pdp-hero-cta" id="order-cta" type="submit" name="add">{{ 'products.product.add_to_cart' | t }}</button>
 
             <div class="pdp-hero-trust">
-              <span>✓ Kostenloser Versand</span>
-              <span>✓ Jederzeit kündbar</span>
-              <span>✓ 30-Tage-Geld-zurück</span>
+              <span>✓ {{ 'products.product.free_shipping' | t }}</span>
+              <span>✓ {{ 'products.product.cancel_anytime' | t }}</span>
+              <span>✓ {{ 'products.product.money_back' | t }}</span>
             </div>
           {%- endform -%}
 
           <div class="pdp-hero-partners">
-            <p class="pdp-hero-partners-kicker">Formuliert von Wissenschaftler:innen dieser Institutionen</p>
+            <p class="pdp-hero-partners-kicker">{{ 'sections.partners.kicker' | t }}</p>
             <div class="pdp-hero-partners-logos">
               <img class="partner-img is-png" src="{{ 'sm_howl_looks_logo_02.png' | asset_url }}" alt="Stanford" loading="lazy">
               <img class="partner-img on-dark" src="{{ '6144ac488b51c665750238.png' | asset_url }}" alt="TUM" loading="lazy" style="transform:scale(1.4)">
@@ -196,13 +199,13 @@
     </section>
 
     <!-- Bio-Optimized Banner -->
-    <section class="pdp-bio" aria-label="Bio-optimierte Aufnahme">
+    <section class="pdp-bio" aria-label="{{ 'product_page.bio_aria' | t }}">
       <div class="pdp-bio-inner">
         <div class="pdp-bio-copy">
-          <h2>Bio‑optimiert<br>für schnellere Aufnahme.</h2>
+          <h2>{{ 'product_page.bio_title' | t }}</h2>
         </div>
         <div class="pdp-bio-text">
-          <p>Unsere Wirkstoffe sind präzise formuliert, um die Löslichkeit und den Transport über Lipidmembranen zu verbessern. Dieses Delivery‑Design unterstützt einen schnelleren Eintritt in den Kreislauf.*</p>
+          <p>{{ 'product_page.bio_text' | t }}</p>
         </div>
       </div>
     </section>
@@ -211,9 +214,9 @@
     <section class="pdp-timeline" aria-labelledby="pdp-timeline-title">
       <div class="pdp-timeline-inner">
         <header class="pdp-timeline-header">
-          <h2 id="pdp-timeline-title">Der Hr²‑Unterschied:<br>Vorteile, die sich aufbauen</h2>
-          <p>Ergebnisse spürbar ab <strong>4 Wochen</strong>.*</p>
-          <a class="pdp-timeline-link" href="{{ pages['forschung'].url | default: '/pages/forschung' }}">Klinische Evidenz ansehen →</a>
+          <h2 id="pdp-timeline-title">{{ 'product_page.timeline_title' | t }}</h2>
+          <p>{{ 'product_page.timeline_intro' | t }}</p>
+          <a class="pdp-timeline-link" href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'product_page.timeline_link' | t }} →</a>
         </header>
 
         <div class="pdp-timeline-body">
@@ -221,12 +224,12 @@
             <div class="pdp-timeline-step">
               <div class="pdp-timeline-dot"></div>
               <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">4 Wochen</span>
-                <strong>Stärkt die Nährstoffversorgung†</strong>
+                <span class="pdp-timeline-badge">{{ 'product_page.step_1_badge' | t }}</span>
+                <strong>{{ 'product_page.step_1_title' | t }}</strong>
                 <ul>
-                  <li>Füllt häufige Nährstofflücken auf</li>
-                  <li>Unterstützt den natürlichen Haarzyklus</li>
-                  <li>Versorgt Kopfhaut &amp; Haarwurzeln</li>
+                  <li>{{ 'product_page.step_1_line_1' | t }}</li>
+                  <li>{{ 'product_page.step_1_line_2' | t }}</li>
+                  <li>{{ 'product_page.step_1_line_3' | t }}</li>
                 </ul>
               </div>
             </div>
@@ -234,12 +237,12 @@
             <div class="pdp-timeline-step">
               <div class="pdp-timeline-dot"></div>
               <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">8 Wochen</span>
-                <strong>Stärkt Haarstruktur &amp; Kopfhaut*</strong>
+                <span class="pdp-timeline-badge">{{ 'product_page.step_2_badge' | t }}</span>
+                <strong>{{ 'product_page.step_2_title' | t }}</strong>
                 <ul>
-                  <li>Unterstützt kräftigeres Haar</li>
-                  <li>Fördert die Kopfhautbalance</li>
-                  <li>Verbessert die Haarqualität</li>
+                  <li>{{ 'product_page.step_2_line_1' | t }}</li>
+                  <li>{{ 'product_page.step_2_line_2' | t }}</li>
+                  <li>{{ 'product_page.step_2_line_3' | t }}</li>
                 </ul>
               </div>
             </div>
@@ -247,12 +250,12 @@
             <div class="pdp-timeline-step">
               <div class="pdp-timeline-dot"></div>
               <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">12 Wochen</span>
-                <strong>Sichtbar volleres Haar*</strong>
+                <span class="pdp-timeline-badge">{{ 'product_page.step_3_badge' | t }}</span>
+                <strong>{{ 'product_page.step_3_title' | t }}</strong>
                 <ul>
-                  <li>Unterstützt gesundes Haarwachstum</li>
-                  <li>Verringert übermäßigen Haarausfall</li>
-                  <li>Stärkt die Verankerung der Haarwurzeln</li>
+                  <li>{{ 'product_page.step_3_line_1' | t }}</li>
+                  <li>{{ 'product_page.step_3_line_2' | t }}</li>
+                  <li>{{ 'product_page.step_3_line_3' | t }}</li>
                 </ul>
               </div>
             </div>
@@ -260,12 +263,12 @@
             <div class="pdp-timeline-step">
               <div class="pdp-timeline-dot"></div>
               <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">6 Monate</span>
-                <strong>Langfristige Haargesundheit*</strong>
+                <span class="pdp-timeline-badge">{{ 'product_page.step_4_badge' | t }}</span>
+                <strong>{{ 'product_page.step_4_title' | t }}</strong>
                 <ul>
-                  <li>Unterstützt die Stressresilienz</li>
-                  <li>Fördert langfristige Haardichte</li>
-                  <li>Stärkt das allgemeine Wohlbefinden</li>
+                  <li>{{ 'product_page.step_4_line_1' | t }}</li>
+                  <li>{{ 'product_page.step_4_line_2' | t }}</li>
+                  <li>{{ 'product_page.step_4_line_3' | t }}</li>
                 </ul>
               </div>
             </div>
@@ -276,8 +279,8 @@
               <source src="{{ 'causes-hairprom1.mp4' | asset_url }}" type="video/mp4">
             </video>
             <div class="pdp-timeline-media-grid">
-              <img src="{{ 'testing.png' | asset_url }}" alt="Labor" loading="lazy" decoding="async">
-              <img src="{{ 'capsule3.png' | asset_url }}" alt="Kapseln" loading="lazy" decoding="async">
+              <img src="{{ 'testing.png' | asset_url }}" alt="{{ 'product_page.lab_alt' | t }}" loading="lazy" decoding="async">
+              <img src="{{ 'capsule3.png' | asset_url }}" alt="{{ 'product_page.capsules_alt' | t }}" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -285,8 +288,8 @@
         <div class="pdp-timeline-howto">
           <img class="pdp-timeline-howto-img" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
           <div class="pdp-timeline-howto-copy">
-            <strong>Anwendung:</strong>
-            <p>Nimm 2 Kapseln täglich, mit oder ohne Mahlzeit, morgens oder abends.</p>
+            <strong>{{ 'product_page.how_to_title' | t }}</strong>
+            <p>{{ 'product_page.how_to_text' | t }}</p>
           </div>
         </div>
       </div>
@@ -296,69 +299,69 @@
     <section class="pdp-ingredients" aria-labelledby="pdp-ingredients-title">
       <div class="pdp-ingredients-inner">
         <div class="pdp-ingredients-top">
-          <h2 id="pdp-ingredients-title">20+ Inhaltsstoffe für<br>ganzheitliche Haargesundheit</h2>
-          <a class="pdp-timeline-link" href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">Inhaltsstoffe &amp; Dosierung ansehen →</a>
+          <h2 id="pdp-ingredients-title">{{ 'product_page.ingredients_title' | t }}</h2>
+          <a class="pdp-timeline-link" href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'product_page.ingredients_link' | t }} →</a>
         </div>
 
         <div class="pdp-ingredients-layout">
           <div class="pdp-ingredients-visual">
-            <img src="{{ 'capsule3.png' | asset_url }}" alt="Hr² Kapsel" loading="lazy" decoding="async">
+            <img src="{{ 'capsule3.png' | asset_url }}" alt="{{ 'product_page.capsule_alt' | t }}" loading="lazy" decoding="async">
           </div>
 
           <div class="pdp-ingredients-list">
             <div class="pdp-ingredients-row">
-              <span class="pdp-ingredients-cat">Haarwachstum &amp; DHT‑Balance</span>
-              <span class="pdp-ingredients-detail">Anagain, Sägepalme, Granatapfel <span class="pdp-ingredients-plus">+</span></span>
+              <span class="pdp-ingredients-cat">{{ 'product_page.ingredient_cat_1' | t }}</span>
+              <span class="pdp-ingredients-detail">{{ 'product_page.ingredient_detail_1' | t }} <span class="pdp-ingredients-plus">+</span></span>
             </div>
             <div class="pdp-ingredients-row">
-              <span class="pdp-ingredients-cat">Nährstoffversorgung</span>
-              <span class="pdp-ingredients-detail">Biotin, Zink, B‑Vitamine, Eisen <span class="pdp-ingredients-plus">+</span></span>
+              <span class="pdp-ingredients-cat">{{ 'product_page.ingredient_cat_2' | t }}</span>
+              <span class="pdp-ingredients-detail">{{ 'product_page.ingredient_detail_2' | t }} <span class="pdp-ingredients-plus">+</span></span>
             </div>
             <div class="pdp-ingredients-row">
-              <span class="pdp-ingredients-cat">Kopfhaut &amp; Haarstruktur</span>
-              <span class="pdp-ingredients-detail">L‑Cystein, L‑Lysin, Kupfer <span class="pdp-ingredients-plus">+</span></span>
+              <span class="pdp-ingredients-cat">{{ 'product_page.ingredient_cat_3' | t }}</span>
+              <span class="pdp-ingredients-detail">{{ 'product_page.ingredient_detail_3' | t }} <span class="pdp-ingredients-plus">+</span></span>
             </div>
             <div class="pdp-ingredients-row">
-              <span class="pdp-ingredients-cat">Stressbalance &amp; Energie</span>
-              <span class="pdp-ingredients-detail">Ashwagandha, Selen, Vitamin D <span class="pdp-ingredients-plus">+</span></span>
+              <span class="pdp-ingredients-cat">{{ 'product_page.ingredient_cat_4' | t }}</span>
+              <span class="pdp-ingredients-detail">{{ 'product_page.ingredient_detail_4' | t }} <span class="pdp-ingredients-plus">+</span></span>
             </div>
 
-            <div class="pdp-ingredients-badges" role="list" aria-label="Qualitätsstandards">
+            <div class="pdp-ingredients-badges" role="list" aria-label="{{ 'product_page.quality_standards' | t }}">
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M24 12v4M20 14l-2 3M19 22c0-3 2.2-5 5-5s5 2 5 5c0 4-5 8-5 11-0-3-5-7-5-11Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-                <span>Vegan</span>
+                <span>{{ 'product_page.badge_vegan' | t }}</span>
               </div>
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M20 14c0 0-3 6 0 10s2 10 2 10M24 14c0 0-3 6 0 10s2 10 2 10M28 14c0 0-3 6 0 10s2 10 2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Gluten‑geprüft</span>
+                <span>{{ 'product_page.badge_gluten' | t }}</span>
               </div>
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M17 18h14v3a7 7 0 0 1-14 0v-3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M24 28v5M20 33h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M15 14l18 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                <span>Milchprodukte‑geprüft</span>
+                <span>{{ 'product_page.badge_dairy' | t }}</span>
               </div>
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><ellipse cx="24" cy="24" rx="6" ry="8" stroke="currentColor" stroke-width="1.3"/><path d="M24 16c2-3 6-4 8-2s1 6-1 9M24 32c2 3 6 4 8 2s1-6-1-9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                <span>Soja‑geprüft</span>
+                <span>{{ 'product_page.badge_soy' | t }}</span>
               </div>
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><ellipse cx="21" cy="22" rx="4" ry="5" stroke="currentColor" stroke-width="1.3"/><ellipse cx="27" cy="22" rx="4" ry="5" stroke="currentColor" stroke-width="1.3"/><path d="M20 27c1 3 3 5 4 7 1-2 3-4 4-7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Nuss‑geprüft</span>
+                <span>{{ 'product_page.badge_nut' | t }}</span>
               </div>
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M20 15h8M20 15v6l-4 8.5a2.5 2.5 0 0 0 2.2 3.5h11.6a2.5 2.5 0 0 0 2.2-3.5L28 21v-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 28h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                <span>Glyphosat‑geprüft</span>
+                <span>{{ 'product_page.badge_glyphosate' | t }}</span>
               </div>
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M17 24h14M24 17v14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M15 15l18 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                <span>Ohne Bindemittel</span>
+                <span>{{ 'product_page.badge_no_fillers' | t }}</span>
               </div>
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M20 16v10a4 4 0 0 0 8 0V16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 30v5M20 35h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                <span>Ohne Konservierungsstoffe</span>
+                <span>{{ 'product_page.badge_no_preservatives' | t }}</span>
               </div>
               <div class="pdp-ingredients-badge" role="listitem">
                 <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/><path d="M24 16v8l-4 4M18 16h12a4 4 0 0 1 4 4v4a10 10 0 0 1-10 10h0a10 10 0 0 1-10-10v-4a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-                <span>Schwermetall‑geprüft</span>
+                <span>{{ 'product_page.badge_heavy_metals' | t }}</span>
               </div>
             </div>
           </div>
@@ -369,41 +372,41 @@
     <!-- Comparison -->
     <section class="pdp-compare" aria-labelledby="pdp-compare-title">
       <div class="pdp-compare-inner">
-        <h2 id="pdp-compare-title">Wie Hr²<br>sich vergleicht:</h2>
+        <h2 id="pdp-compare-title">{{ 'product_page.compare_title' | t }}</h2>
         <div class="pdp-compare-table-wrap">
           <table class="pdp-compare-table">
             <thead>
               <tr>
                 <th></th>
                 <th><span class="pdp-compare-pill">Hr²</span></th>
-                <th>Andere Produkte</th>
+                <th>{{ 'product_page.compare_others' | t }}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Multi‑zielgerichtete Formel</td>
+                <td>{{ 'product_page.compare_row_1' | t }}</td>
                 <td><span class="pdp-compare-dot"></span></td>
-                <td>Selten</td>
+                <td>{{ 'product_page.compare_value_rare' | t }}</td>
               </tr>
               <tr>
-                <td>100 % ohne Arzneistoffe</td>
+                <td>{{ 'product_page.compare_row_2' | t }}</td>
                 <td><span class="pdp-compare-dot"></span></td>
-                <td>Wenige</td>
+                <td>{{ 'product_page.compare_value_few' | t }}</td>
               </tr>
               <tr>
-                <td>Bio‑optimierte Bioverfügbarkeit</td>
+                <td>{{ 'product_page.compare_row_3' | t }}</td>
                 <td><span class="pdp-compare-dot"></span></td>
-                <td>Selten</td>
+                <td>{{ 'product_page.compare_value_rare' | t }}</td>
               </tr>
               <tr>
-                <td>Klinisch belegte Inhaltsstoffe</td>
+                <td>{{ 'product_page.compare_row_4' | t }}</td>
                 <td><span class="pdp-compare-dot"></span></td>
-                <td>Wenige</td>
+                <td>{{ 'product_page.compare_value_few' | t }}</td>
               </tr>
               <tr>
-                <td>Beeinflusst die Libido nicht</td>
+                <td>{{ 'product_page.compare_row_5' | t }}</td>
                 <td><span class="pdp-compare-dot"></span></td>
-                <td>Wenige</td>
+                <td>{{ 'product_page.compare_value_few' | t }}</td>
               </tr>
             </tbody>
           </table>
@@ -414,61 +417,61 @@
     <!-- FAQ -->
     <section class="pdp-faq" aria-labelledby="pdp-faq-title">
       <div class="pdp-faq-inner">
-        <h2 id="pdp-faq-title">Häufig gestellte Fragen</h2>
+        <h2 id="pdp-faq-title">{{ 'product_page.faq_title' | t }}</h2>
 
         <div class="pdp-faq-list">
           <div class="pdp-faq-item open">
             <button class="pdp-faq-question" type="button" aria-expanded="true">
-              <span>Was ist Hr²?</span>
+              <span>{{ 'product_page.faq_q1' | t }}</span>
               <span class="pdp-faq-toggle">−</span>
             </button>
             <div class="pdp-faq-answer">
-              Hr² ist ein tägliches Nahrungsergänzungsmittel mit über 20 ausgewählten Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenextrakte und Aminosäuren – zur langfristigen Unterstützung der Haargesundheit.
+              {{ 'product_page.faq_a1' | t }}
             </div>
           </div>
           <div class="pdp-faq-item">
             <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>Wie lange sollte ich Hr² einnehmen?</span>
+              <span>{{ 'product_page.faq_q2' | t }}</span>
               <span class="pdp-faq-toggle">+</span>
             </button>
             <div class="pdp-faq-answer" hidden>
-              Wir empfehlen eine konsequente Einnahme über 3 bis 6 Monate, um individuelle Veränderungen beurteilen zu können. Die Haargesundheit verbessert sich schrittweise.
+              {{ 'product_page.faq_a2' | t }}
             </div>
           </div>
           <div class="pdp-faq-item">
             <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>Enthält Hr² Arzneistoffe?</span>
+              <span>{{ 'product_page.faq_q3' | t }}</span>
               <span class="pdp-faq-toggle">+</span>
             </button>
             <div class="pdp-faq-answer" hidden>
-              Nein. Hr² ist ein Nahrungsergänzungsmittel und enthält keine Arzneistoffe. Es liefert ausgewählte Nährstoffe zur täglichen Unterstützung.
+              {{ 'product_page.faq_a3' | t }}
             </div>
           </div>
           <div class="pdp-faq-item">
             <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>Funktioniert Hr² für meinen Haartyp?</span>
+              <span>{{ 'product_page.faq_q4' | t }}</span>
               <span class="pdp-faq-toggle">+</span>
             </button>
             <div class="pdp-faq-answer" hidden>
-              Hr² ist für die langfristige Unterstützung der Haargesundheit entwickelt – unabhängig von Haartyp oder Haarstruktur. Ergebnisse können individuell variieren.
+              {{ 'product_page.faq_a4' | t }}
             </div>
           </div>
           <div class="pdp-faq-item">
             <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>Gibt es ein Risiko, dass Hr² meine Libido senkt?</span>
+              <span>{{ 'product_page.faq_q5' | t }}</span>
               <span class="pdp-faq-toggle">+</span>
             </button>
             <div class="pdp-faq-answer" hidden>
-              Hr² enthält keine Arzneistoffe und ist nicht darauf ausgerichtet, in den Hormonhaushalt einzugreifen. Wenn du Veränderungen bemerkst, pausiere und sprich mit medizinischem Fachpersonal.
+              {{ 'product_page.faq_a5' | t }}
             </div>
           </div>
           <div class="pdp-faq-item">
             <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>Wo finde ich alle Inhaltsstoffe und Studien?</span>
+              <span>{{ 'product_page.faq_q6' | t }}</span>
               <span class="pdp-faq-toggle">+</span>
             </button>
             <div class="pdp-faq-answer" hidden>
-              Eine Übersicht findest du auf den Seiten <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">Inhaltsstoffe</a> und <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">Forschung</a>.
+              {{ 'product_page.faq_a6_prefix' | t }} <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'theme.header.ingredients' | t }}</a> {{ 'product_page.faq_a6_middle' | t }} <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'theme.header.research' | t }}</a>.
             </div>
           </div>
         </div>
@@ -476,9 +479,9 @@
     </section>
 
     <!-- Delivery Banner -->
-    <section class="pdp-delivery" aria-label="Lieferung">
+    <section class="pdp-delivery" aria-label="{{ 'product_page.delivery' | t }}">
       <div class="pdp-delivery-inner">
-        <p>Bequem geliefert, monatlich.</p>
+        <p>{{ 'product_page.delivery_text' | t }}</p>
       </div>
     </section>
 

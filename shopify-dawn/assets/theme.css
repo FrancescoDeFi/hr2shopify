@@ -30,6 +30,17 @@ body {
   top: 0;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 *,
 *::before,
 *::after {
@@ -121,6 +132,48 @@ html {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.language-switcher-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.language-switcher-form {
+  margin: 0;
+}
+
+.language-switcher-label {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 13px;
+  color: #4a4a4a;
+}
+
+.language-switcher-select {
+  border: 1px solid #d6d6d6;
+  background: #fff;
+  color: #111;
+  border-radius: 999px;
+  padding: 6px 28px 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #6c6c6c 50%),
+    linear-gradient(135deg, #6c6c6c 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) calc(50% - 1px),
+    calc(100% - 9px) calc(50% - 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.language-switcher-select:focus {
+  outline: 2px solid #3c0c1c;
+  outline-offset: 1px;
 }
 
 .primary-btn {
@@ -8002,6 +8055,31 @@ body:has(.pdp-sticky-bar) footer.footer {
   color: var(--text, #0c0c0c);
   border-bottom: 1px solid #eee;
   text-decoration: none;
+}
+
+.mobile-nav-language {
+  padding-top: 18px;
+}
+
+.mobile-nav .language-switcher-wrapper {
+  width: 100%;
+}
+
+.mobile-nav .language-switcher-form {
+  width: 100%;
+}
+
+.mobile-nav .language-switcher-label {
+  display: block;
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.mobile-nav .language-switcher-select {
+  width: 100%;
+  font-size: 14px;
+  padding: 10px 32px 10px 12px;
+  border-radius: 8px;
 }
 
 body.mobile-nav-open {

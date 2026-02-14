@@ -9,14 +9,14 @@
     </a>
   </div>
 
-  <nav class="nav-links" aria-label="Hauptnavigation">
-    <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">Inhaltsstoffe</a>
-    <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">Forschung</a>
+  <nav class="nav-links" aria-label="{{ 'theme.header.main_navigation' | t }}">
+    <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'theme.header.ingredients' | t }}</a>
+    <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'theme.header.research' | t }}</a>
   </nav>
 
   <div class="nav-actions">
     {%- if customer -%}
-      <a class="nav-account-link" href="{{ routes.account_url }}" aria-label="Mein Konto">
+      <a class="nav-account-link" href="{{ routes.account_url }}" aria-label="{{ 'theme.header.account' | t }}">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
           <circle cx="12" cy="7" r="4"/>
@@ -24,7 +24,7 @@
       </a>
     {%- endif -%}
 
-    <a class="nav-cart-link" href="{{ routes.cart_url }}" aria-label="Warenkorb ({{ cart.item_count }})">
+    <a class="nav-cart-link" href="{{ routes.cart_url }}" aria-label="{{ 'theme.header.cart_with_count' | t: count: cart.item_count }}">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -35,9 +35,13 @@
       {%- endif -%}
     </a>
 
-    <a class="primary-btn small no-arrow nav-buy" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}"{% if template.name == 'product' %} aria-current="page"{% endif %}>Hr² kaufen</a>
+    {%- if settings.show_language_switcher -%}
+      {% render 'language-switcher', id: 'HeaderLanguageSwitcher' %}
+    {%- endif -%}
 
-    <button class="mobile-nav-toggle" data-mobile-nav-toggle aria-label="Menü öffnen" aria-expanded="false">
+    <a class="primary-btn small no-arrow nav-buy" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}"{% if template.name == 'product' %} aria-current="page"{% endif %}>{{ 'theme.header.buy' | t }}</a>
+
+    <button class="mobile-nav-toggle" data-mobile-nav-toggle aria-label="{{ 'general.accessibility.open_menu' | t }}" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -47,16 +51,21 @@
 
 <div class="mobile-nav-overlay" data-mobile-nav-overlay></div>
 
-<nav class="mobile-nav" data-mobile-nav aria-label="Mobile Navigation">
-  <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">Inhaltsstoffe</a>
-  <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">Forschung</a>
-  <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">Hr² kaufen</a>
-  <a href="{{ routes.cart_url }}">Warenkorb{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
+<nav class="mobile-nav" data-mobile-nav aria-label="{{ 'theme.header.mobile_navigation' | t }}">
+  <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'theme.header.ingredients' | t }}</a>
+  <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'theme.header.research' | t }}</a>
+  <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'theme.header.buy' | t }}</a>
+  <a href="{{ routes.cart_url }}">{{ 'theme.header.cart' | t }}{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
   {%- if customer -%}
-    <a href="{{ routes.account_url }}">Mein Konto</a>
-    <a href="{{ routes.account_logout_url }}">Abmelden</a>
+    <a href="{{ routes.account_url }}">{{ 'theme.header.account' | t }}</a>
+    <a href="{{ routes.account_logout_url }}">{{ 'customer.account.logout' | t }}</a>
   {%- else -%}
-    <a href="{{ routes.account_login_url }}">Anmelden</a>
+    <a href="{{ routes.account_login_url }}">{{ 'customer.login.submit' | t }}</a>
+  {%- endif -%}
+  {%- if settings.show_language_switcher -%}
+    <div class="mobile-nav-language">
+      {% render 'language-switcher', id: 'MobileLanguageSwitcher', show_label: true %}
+    </div>
   {%- endif -%}
 </nav>
 

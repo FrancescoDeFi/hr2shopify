@@ -1,18 +1,22 @@
 <div class="customer-page">
+  {%- assign account_order_date_format = "%d.%m.%Y" -%}
+  {%- if request.locale.iso_code == 'en' -%}
+    {%- assign account_order_date_format = "%m/%d/%Y" -%}
+  {%- endif -%}
   <div class="customer-page-inner customer-page-wide">
     <div class="account-header">
-      <h1 class="customer-page-title">Mein Konto</h1>
-      <a href="{{ routes.account_logout_url }}" class="outline-btn">Abmelden</a>
+      <h1 class="customer-page-title">{{ 'customer.account.title' | t }}</h1>
+      <a href="{{ routes.account_logout_url }}" class="outline-btn">{{ 'customer.account.logout' | t }}</a>
     </div>
 
     <div class="account-grid">
       <div class="account-details">
-        <h2>Kontoinformationen</h2>
+        <h2>{{ 'customer.account.details' | t }}</h2>
         <p>{{ customer.name }}</p>
         <p>{{ customer.email }}</p>
 
         {% if customer.default_address %}
-          <h3>Standardadresse</h3>
+          <h3>{{ 'customer.account.default_address' | t }}</h3>
           <p>
             {{ customer.default_address.address1 }}<br>
             {% if customer.default_address.address2 != blank %}{{ customer.default_address.address2 }}<br>{% endif %}
@@ -21,20 +25,20 @@
           </p>
         {% endif %}
 
-        <a href="{{ routes.account_addresses_url }}" class="link-arrow">Adressen verwalten →</a>
+        <a href="{{ routes.account_addresses_url }}" class="link-arrow">{{ 'customer.account.manage_addresses' | t }} →</a>
       </div>
 
       <div class="account-orders">
-        <h2>Bestellungen</h2>
+        <h2>{{ 'customer.account.orders' | t }}</h2>
 
         {% if customer.orders.size > 0 %}
           <table class="account-table">
             <thead>
               <tr>
-                <th>Bestellung</th>
-                <th>Datum</th>
-                <th>Status</th>
-                <th>Betrag</th>
+                <th>{{ 'customer_pages.order_number' | t }}</th>
+                <th>{{ 'customer_pages.order_date' | t }}</th>
+                <th>{{ 'customer_pages.order_status' | t }}</th>
+                <th>{{ 'customer_pages.order_amount' | t }}</th>
               </tr>
             </thead>
             <tbody>
@@ -43,7 +47,7 @@
                   <td>
                     <a href="{{ order.customer_url }}">{{ order.name }}</a>
                   </td>
-                  <td>{{ order.created_at | date: "%d.%m.%Y" }}</td>
+                  <td>{{ order.created_at | date: account_order_date_format }}</td>
                   <td>{{ order.financial_status_label }}</td>
                   <td>{{ order.total_price | money }}</td>
                 </tr>
@@ -59,8 +63,8 @@
             {% endif %}
           {% endpaginate %}
         {% else %}
-          <p>Du hast noch keine Bestellungen aufgegeben.</p>
-          <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}" class="primary-btn">Jetzt kaufen</a>
+          <p>{{ 'customer.account.no_orders' | t }}</p>
+          <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}" class="primary-btn">{{ 'products.product.buy_now' | t }}</a>
         {% endif %}
       </div>
     </div>

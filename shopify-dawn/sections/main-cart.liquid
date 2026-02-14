@@ -1,15 +1,44 @@
 <div class="cart-page">
+  {%- assign cart_title = section.settings.title -%}
+  {%- assign cart_empty_title = section.settings.empty_title -%}
+  {%- assign cart_empty_message = section.settings.empty_message -%}
+  {%- assign cart_empty_cta = section.settings.empty_cta -%}
+  {%- assign cart_subtotal_label = section.settings.subtotal_label -%}
+  {%- assign cart_shipping_note = section.settings.shipping_note -%}
+  {%- assign cart_update_button = section.settings.update_button -%}
+  {%- assign cart_checkout_button = section.settings.checkout_button -%}
+  {%- assign cart_continue_shopping_text = section.settings.continue_shopping_text -%}
+  {%- if request.locale.iso_code == 'en' -%}
+    {%- assign cart_title = blank -%}
+    {%- assign cart_empty_title = blank -%}
+    {%- assign cart_empty_message = blank -%}
+    {%- assign cart_empty_cta = blank -%}
+    {%- assign cart_subtotal_label = blank -%}
+    {%- assign cart_shipping_note = blank -%}
+    {%- assign cart_update_button = blank -%}
+    {%- assign cart_checkout_button = blank -%}
+    {%- assign cart_continue_shopping_text = blank -%}
+  {%- endif -%}
+  {%- if cart_title == blank -%}{%- assign cart_title = 'cart.title' | t -%}{%- endif -%}
+  {%- if cart_empty_title == blank -%}{%- assign cart_empty_title = 'cart.empty' | t -%}{%- endif -%}
+  {%- if cart_empty_message == blank -%}{%- assign cart_empty_message = 'cart.empty_message' | t -%}{%- endif -%}
+  {%- if cart_empty_cta == blank -%}{%- assign cart_empty_cta = 'cart.empty_cta' | t -%}{%- endif -%}
+  {%- if cart_subtotal_label == blank -%}{%- assign cart_subtotal_label = 'cart.subtotal' | t -%}{%- endif -%}
+  {%- if cart_shipping_note == blank -%}{%- assign cart_shipping_note = 'cart.shipping_note' | t -%}{%- endif -%}
+  {%- if cart_update_button == blank -%}{%- assign cart_update_button = 'cart.update' | t -%}{%- endif -%}
+  {%- if cart_checkout_button == blank -%}{%- assign cart_checkout_button = 'cart.checkout' | t -%}{%- endif -%}
+  {%- if cart_continue_shopping_text == blank -%}{%- assign cart_continue_shopping_text = 'cart.continue_shopping' | t -%}{%- endif -%}
   <div class="cart-inner">
     {% if cart.item_count == 0 %}
       <div class="cart-empty">
-        <h1>{{ section.settings.empty_title | default: 'Dein Warenkorb ist leer' }}</h1>
-        <p>{{ section.settings.empty_message | default: 'Entdecke unsere Produkte und starte deine Haar-Gesundheitsreise.' }}</p>
+        <h1>{{ cart_empty_title }}</h1>
+        <p>{{ cart_empty_message }}</p>
         <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}" class="primary-btn">
-          {{ section.settings.empty_cta | default: 'Jetzt einkaufen' }}
+          {{ cart_empty_cta }}
         </a>
       </div>
     {% else %}
-      <h1 class="cart-title">{{ section.settings.title | default: 'Warenkorb' }}</h1>
+      <h1 class="cart-title">{{ cart_title }}</h1>
 
       <form action="{{ routes.cart_url }}" method="post" id="cart-form">
         <div class="cart-items">
@@ -45,22 +74,22 @@
               </div>
 
               <div class="cart-item-quantity">
-                <label for="updates_{{ item.key }}" class="visually-hidden">Menge</label>
+                <label for="updates_{{ item.key }}" class="visually-hidden">{{ 'cart.quantity' | t }}</label>
                 <div class="quantity-selector">
-                  <button type="button" class="quantity-btn quantity-minus" aria-label="Menge verringern" data-action="decrease">−</button>
+                  <button type="button" class="quantity-btn quantity-minus" aria-label="{{ 'cart.quantity_decrease' | t }}" data-action="decrease">−</button>
                   <input type="number"
                          name="updates[]"
                          id="updates_{{ item.key }}"
                          value="{{ item.quantity }}"
                          min="0"
-                         aria-label="Menge für {{ item.product.title }}"
+                         aria-label="{{ 'cart.quantity_for' | t: title: item.product.title }}"
                          class="quantity-input">
-                  <button type="button" class="quantity-btn quantity-plus" aria-label="Menge erhöhen" data-action="increase">+</button>
+                  <button type="button" class="quantity-btn quantity-plus" aria-label="{{ 'cart.quantity_increase' | t }}" data-action="increase">+</button>
                 </div>
               </div>
 
               <div class="cart-item-remove">
-                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-btn" aria-label="Entfernen">
+                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-btn" aria-label="{{ 'cart.remove' | t }}">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                     <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
                   </svg>
@@ -84,19 +113,19 @@
             {% endif %}
 
             <div class="cart-subtotal">
-              <span>{{ section.settings.subtotal_label | default: 'Zwischensumme' }}</span>
+              <span>{{ cart_subtotal_label }}</span>
               <span>{{ cart.total_price | money }}</span>
             </div>
 
-            <p class="cart-note">{{ section.settings.shipping_note | default: 'Versandkosten werden beim Checkout berechnet.' }}</p>
+            <p class="cart-note">{{ cart_shipping_note }}</p>
           </div>
 
           <div class="cart-actions">
             <button type="submit" name="update" class="outline-btn cart-update-btn">
-              {{ section.settings.update_button | default: 'Warenkorb aktualisieren' }}
+              {{ cart_update_button }}
             </button>
             <button type="submit" name="checkout" class="primary-btn cart-checkout-btn">
-              {{ section.settings.checkout_button | default: 'Zur Kasse' }} <span aria-hidden="true">→</span>
+              {{ cart_checkout_button }} <span aria-hidden="true">→</span>
             </button>
           </div>
         </div>
@@ -105,7 +134,7 @@
       {% if section.settings.show_continue_shopping %}
         <div class="cart-continue">
           <a href="{{ routes.all_products_collection_url | default: routes.root_url }}" class="link-arrow">
-            ← {{ section.settings.continue_shopping_text | default: 'Weiter einkaufen' }}
+            ← {{ cart_continue_shopping_text }}
           </a>
         </div>
       {% endif %}

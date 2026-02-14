@@ -1,20 +1,37 @@
 {%- assign offer_product = all_products[settings.primary_product_handle] -%}
 {%- assign offer_variant = nil -%}
 {%- assign offer_allocations = nil -%}
+{%- assign offer_product_title = section.settings.product_title -%}
+{%- assign offer_product_description = section.settings.product_description -%}
+{%- assign offer_cta_text = section.settings.cta_text -%}
+{%- assign offer_promo_tagline = section.settings.promo_tagline -%}
+{%- assign offer_promo_heading = section.settings.promo_heading -%}
 {%- if offer_product != blank -%}
   {%- assign offer_variant = offer_product.selected_or_first_available_variant -%}
   {%- assign offer_allocations = offer_variant.selling_plan_allocations -%}
 {%- endif -%}
+{%- if request.locale.iso_code == 'en' -%}
+  {%- assign offer_product_title = blank -%}
+  {%- assign offer_product_description = blank -%}
+  {%- assign offer_cta_text = blank -%}
+  {%- assign offer_promo_tagline = blank -%}
+  {%- assign offer_promo_heading = blank -%}
+{%- endif -%}
+{%- if offer_product_title == blank -%}{%- assign offer_product_title = 'offer.product_title' | t -%}{%- endif -%}
+{%- if offer_product_description == blank -%}{%- assign offer_product_description = 'offer.product_description' | t -%}{%- endif -%}
+{%- if offer_cta_text == blank -%}{%- assign offer_cta_text = 'offer.cta' | t -%}{%- endif -%}
+{%- if offer_promo_tagline == blank -%}{%- assign offer_promo_tagline = 'offer.promo_tagline' | t -%}{%- endif -%}
+{%- if offer_promo_heading == blank -%}{%- assign offer_promo_heading = 'offer.promo_heading' | t -%}{%- endif -%}
 
 <section class="offer">
   <div class="offer-left">
-    <h2 class="offer-product-title">{{ section.settings.product_title | default: 'Hr²' }}</h2>
+    <h2 class="offer-product-title">{{ offer_product_title }}</h2>
 
     <p class="offer-product-description">
-      {{ section.settings.product_description | default: 'Hr² ist dein tägliches Supplement für die Haargesundheit – entwickelt mit einem Fokus auf ausgewählte Inhaltsstoffe, Qualitätssicherung und eine einfache Routine.' }}
+      {{ offer_product_description }}
     </p>
 
-    <div class="offer-plans" role="radiogroup" aria-label="Lieferoptionen">
+    <div class="offer-plans" role="radiogroup" aria-label="{{ 'offer.delivery_options' | t }}">
       {%- if offer_product != blank and offer_variant != blank and offer_product.selling_plan_groups.size > 0 -%}
         {%- assign offer_group = offer_product.selling_plan_groups.first -%}
         {%- for plan in offer_group.selling_plans limit: 3 -%}
@@ -52,30 +69,33 @@
 
           {%- assign save_text = '' -%}
           {%- if adjustment and adjustment.value_type == 'percentage' -%}
-            {%- assign save_text = 'SPARE ' | append: adjustment.value | append: '%' -%}
+            {%- assign save_text = 'offer.save_prefix' | t | append: ' ' | append: adjustment.value | append: '%' -%}
           {%- elsif adjustment and adjustment.value_type == 'fixed_amount' -%}
-            {%- assign save_text = 'SPARE ' | append: adjustment.value | money -%}
+            {%- assign save_text = 'offer.save_prefix' | t | append: ' ' | append: adjustment.value | money -%}
           {%- endif -%}
-          {%- assign localized_plan_name = plan.name
-            | replace: 'Deliver every month', 'Lieferung jeden Monat'
-            | replace: 'Deliver every 1 month', 'Lieferung jeden Monat'
-            | replace: 'Deliver every 3 months', 'Lieferung alle 3 Monate'
-            | replace: 'Deliver every 6 months', 'Lieferung alle 6 Monate'
-            | replace: 'DELIVER EVERY MONTH', 'LIEFERUNG JEDEN MONAT'
-            | replace: 'DELIVER EVERY 1 MONTH', 'LIEFERUNG JEDEN MONAT'
-            | replace: 'DELIVER EVERY 3 MONTHS', 'LIEFERUNG ALLE 3 MONATE'
-            | replace: 'DELIVER EVERY 6 MONTHS', 'LIEFERUNG ALLE 6 MONATE'
-            | replace: 'Subscribe and save', 'Abonnieren und sparen'
-            | replace: 'SUBSCRIBE AND SAVE', 'ABONNIEREN UND SPAREN'
-            | replace: '% off', '% sparen'
-            | replace: '% OFF', '% SPAREN'
-            | replace: ', 15% sparen', ''
-            | replace: ', 20% sparen', ''
-            | replace: ', 25% sparen', ''
-            | replace: ', 15% SPAREN', ''
-            | replace: ', 20% SPAREN', ''
-            | replace: ', 25% SPAREN', ''
-          -%}
+          {%- assign localized_plan_name = plan.name -%}
+          {%- if request.locale.iso_code == 'de' -%}
+            {%- assign localized_plan_name = plan.name
+              | replace: 'Deliver every month', 'Lieferung jeden Monat'
+              | replace: 'Deliver every 1 month', 'Lieferung jeden Monat'
+              | replace: 'Deliver every 3 months', 'Lieferung alle 3 Monate'
+              | replace: 'Deliver every 6 months', 'Lieferung alle 6 Monate'
+              | replace: 'DELIVER EVERY MONTH', 'LIEFERUNG JEDEN MONAT'
+              | replace: 'DELIVER EVERY 1 MONTH', 'LIEFERUNG JEDEN MONAT'
+              | replace: 'DELIVER EVERY 3 MONTHS', 'LIEFERUNG ALLE 3 MONATE'
+              | replace: 'DELIVER EVERY 6 MONTHS', 'LIEFERUNG ALLE 6 MONATE'
+              | replace: 'Subscribe and save', 'Abonnieren und sparen'
+              | replace: 'SUBSCRIBE AND SAVE', 'ABONNIEREN UND SPAREN'
+              | replace: '% off', '% sparen'
+              | replace: '% OFF', '% SPAREN'
+              | replace: ', 15% sparen', ''
+              | replace: ', 20% sparen', ''
+              | replace: ', 25% sparen', ''
+              | replace: ', 15% SPAREN', ''
+              | replace: ', 20% SPAREN', ''
+              | replace: ', 25% SPAREN', ''
+            -%}
+          {%- endif -%}
 
           <label class="offer-plan{% if forloop.first %} is-selected{% endif %}">
             <input class="offer-plan-radio" type="radio" name="offer-plan" value="{{ plan.id }}" {% if forloop.first %}checked{% endif %}>
@@ -116,22 +136,26 @@
       {%- endif -%}
     </div>
 
-    <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.cta_text | default: 'In den Warenkorb' }}</a>
+    <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ offer_cta_text }}</a>
 
     <div class="offer-guarantee-row">
-      <span>✔ Kostenloser Versand</span>
-      <span>✔ Jederzeit kündbar</span>
-      <span>✔ 30‑Tage‑Geld‑zurück</span>
+      <span>✔ {{ 'offer.free_shipping' | t }}</span>
+      <span>✔ {{ 'offer.cancel_anytime' | t }}</span>
+      <span>✔ {{ 'offer.money_back' | t }}</span>
     </div>
   </div>
 
   <div class="offer-right">
-    <div class="offer-tagline">{{ section.settings.promo_tagline | default: 'Das erste Mal. Nur für kurze Zeit.' }}</div>
-    <h3>{{ section.settings.promo_heading | default: 'Dein Hr² jetzt für 29€' }}</h3>
+    <div class="offer-tagline">{{ offer_promo_tagline }}</div>
+    <h3>{{ offer_promo_heading }}</h3>
     {% if section.settings.promo_image != blank %}
-      <img src="{{ section.settings.promo_image | image_url: width: 600 }}" alt="{{ section.settings.promo_image.alt | default: 'Hr² Bundle' }}" loading="lazy" decoding="async">
+      {%- assign promo_alt = section.settings.promo_image.alt -%}
+      {%- if request.locale.iso_code == 'en' or promo_alt == blank -%}
+        {%- assign promo_alt = 'offer.bundle_alt' | t -%}
+      {%- endif -%}
+      <img src="{{ section.settings.promo_image | image_url: width: 600 }}" alt="{{ promo_alt }}" loading="lazy" decoding="async">
     {% else %}
-      <img src="{{ 'bottlew.png' | asset_url }}" alt="Hr² Bundle" loading="lazy" decoding="async">
+      <img src="{{ 'bottlew.png' | asset_url }}" alt="{{ 'offer.bundle_alt' | t }}" loading="lazy" decoding="async">
     {% endif %}
   </div>
 </section>

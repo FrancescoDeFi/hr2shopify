@@ -1,23 +1,29 @@
 <div class="customer-page">
+  {%- assign order_date_format = "%d.%m.%Y" -%}
+  {%- if request.locale.iso_code == 'en' -%}
+    {%- assign order_date_format = "%m/%d/%Y" -%}
+  {%- endif -%}
+  {%- assign order_created_date = order.created_at | date: order_date_format -%}
+  {%- assign order_cancelled_date = order.cancelled_at | date: order_date_format -%}
   <div class="customer-page-inner customer-page-wide">
-    <a href="{{ routes.account_url }}" class="link-arrow">← Zurück zum Konto</a>
+    <a href="{{ routes.account_url }}" class="link-arrow">← {{ 'customer_pages.back_to_account' | t }}</a>
 
-    <h1 class="customer-page-title">Bestellung {{ order.name }}</h1>
-    <p class="order-date">Bestellt am {{ order.created_at | date: "%d.%m.%Y" }}</p>
+    <h1 class="customer-page-title">{{ 'customer.order.title' | t: name: order.name }}</h1>
+    <p class="order-date">{{ 'customer.order.date' | t: date: order_created_date }}</p>
 
     {% if order.cancelled %}
       <div class="form-error">
-        <p>Bestellung storniert am {{ order.cancelled_at | date: "%d.%m.%Y" }} – {{ order.cancel_reason_label }}</p>
+        <p>{{ 'customer.order.cancelled' | t: date: order_cancelled_date }} – {{ order.cancel_reason_label }}</p>
       </div>
     {% endif %}
 
     <table class="account-table">
       <thead>
         <tr>
-          <th>Produkt</th>
-          <th>Menge</th>
-          <th>Preis</th>
-          <th>Gesamt</th>
+          <th>{{ 'customer.order.product' | t }}</th>
+          <th>{{ 'customer.order.quantity' | t }}</th>
+          <th>{{ 'customer.order.price' | t }}</th>
+          <th>{{ 'customer.order.total' | t }}</th>
         </tr>
       </thead>
       <tbody>
@@ -37,33 +43,33 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="3">Zwischensumme</td>
+          <td colspan="3">{{ 'customer.order.subtotal' | t }}</td>
           <td>{{ order.line_items_subtotal_price | money }}</td>
         </tr>
 
         {% for discount_application in order.discount_applications %}
           <tr>
-            <td colspan="3">Rabatt ({{ discount_application.title }})</td>
+            <td colspan="3">{{ 'customer.order.discount' | t }} ({{ discount_application.title }})</td>
             <td>-{{ discount_application.total_allocated_amount | money }}</td>
           </tr>
         {% endfor %}
 
         {% for shipping_method in order.shipping_methods %}
           <tr>
-            <td colspan="3">Versand ({{ shipping_method.title }})</td>
+            <td colspan="3">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</td>
             <td>{{ shipping_method.price | money }}</td>
           </tr>
         {% endfor %}
 
         {% for tax_line in order.tax_lines %}
           <tr>
-            <td colspan="3">Steuer ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
+            <td colspan="3">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
             <td>{{ tax_line.price | money }}</td>
           </tr>
         {% endfor %}
 
         <tr class="order-total">
-          <td colspan="3"><strong>Gesamt</strong></td>
+          <td colspan="3"><strong>{{ 'customer.order.total' | t }}</strong></td>
           <td><strong>{{ order.total_price | money }}</strong></td>
         </tr>
       </tfoot>
@@ -71,7 +77,7 @@
 
     <div class="account-grid">
       <div class="account-details">
-        <h2>Rechnungsadresse</h2>
+        <h2>{{ 'customer.order.billing_address' | t }}</h2>
         <p>{{ order.billing_address.name }}</p>
         <p>
           {{ order.billing_address.address1 }}<br>
@@ -79,11 +85,11 @@
           {{ order.billing_address.zip }} {{ order.billing_address.city }}<br>
           {{ order.billing_address.country }}
         </p>
-        <p>Zahlungsstatus: {{ order.financial_status_label }}</p>
+        <p>{{ 'customer.order.payment_status' | t }}: {{ order.financial_status_label }}</p>
       </div>
 
       <div class="account-details">
-        <h2>Lieferadresse</h2>
+        <h2>{{ 'customer.order.shipping_address' | t }}</h2>
         <p>{{ order.shipping_address.name }}</p>
         <p>
           {{ order.shipping_address.address1 }}<br>
@@ -91,7 +97,7 @@
           {{ order.shipping_address.zip }} {{ order.shipping_address.city }}<br>
           {{ order.shipping_address.country }}
         </p>
-        <p>Versandstatus: {{ order.fulfillment_status_label }}</p>
+        <p>{{ 'customer.order.fulfillment_status' | t }}: {{ order.fulfillment_status_label }}</p>
       </div>
     </div>
   </div>

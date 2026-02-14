@@ -1,12 +1,12 @@
 <div class="customer-page">
   <div class="customer-page-inner">
-    <h1 class="customer-page-title">Anmelden</h1>
+    <h1 class="customer-page-title">{{ 'customer.login.title' | t }}</h1>
 
     {%- form 'customer_login' -%}
       {{ form.errors | default_errors }}
 
       <div class="form-field">
-        <label for="CustomerEmail">E-Mail</label>
+        <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
         <input
           type="email"
           name="customer[email]"
@@ -19,7 +19,7 @@
       </div>
 
       <div class="form-field">
-        <label for="CustomerPassword">Passwort</label>
+        <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
         <input
           type="password"
           name="customer[password]"
@@ -30,30 +30,30 @@
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="primary-btn">Anmelden</button>
+        <button type="submit" class="primary-btn">{{ 'customer.login.submit' | t }}</button>
       </div>
 
       <div class="customer-page-links">
-        <a href="#recover" id="RecoverPassword">Passwort vergessen?</a>
-        <a href="{{ routes.account_register_url }}">Konto erstellen</a>
+        <a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
+        <a href="{{ routes.account_register_url }}">{{ 'customer.login.create_account' | t }}</a>
       </div>
     {%- endform -%}
 
     <div id="recover" class="customer-recover" style="display:none;">
-      <h2>Passwort zurücksetzen</h2>
-      <p>Wir senden dir eine E-Mail zum Zurücksetzen deines Passworts.</p>
+      <h2>{{ 'customer.recover_password.title' | t }}</h2>
+      <p>{{ 'customer.recover_password.subtext' | t }}</p>
 
       {%- form 'recover_customer_password' -%}
         {{ form.errors | default_errors }}
 
         {%- if form.posted_successfully? -%}
           <div class="form-success">
-            <p>Wir haben dir eine E-Mail mit einem Link zum Zurücksetzen deines Passworts gesendet.</p>
+            <p>{{ 'customer.recover_password.success' | t }}</p>
           </div>
         {%- endif -%}
 
         <div class="form-field">
-          <label for="RecoverEmail">E-Mail</label>
+          <label for="RecoverEmail">{{ 'customer.login.email' | t }}</label>
           <input
             type="email"
             name="email"
@@ -66,11 +66,11 @@
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="primary-btn">Absenden</button>
+          <button type="submit" class="primary-btn">{{ 'customer.recover_password.submit' | t }}</button>
         </div>
 
         <div class="customer-page-links">
-          <a href="#" id="HideRecoverPassword">Zurück zur Anmeldung</a>
+          <a href="#" id="HideRecoverPassword">{{ 'customer.recover_password.back_to_login' | t }}</a>
         </div>
       {%- endform -%}
     </div>
