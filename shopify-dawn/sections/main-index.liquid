@@ -1,15 +1,15 @@
 <section class="hero">
       <div class="hero-text">
-        <h1>Dein täglicher<br> Haar-Boost</h1>
-        <p class="lead">Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.</p>
-        <div class="hero-benefits" aria-label="Produktvorteile">
+        <h1>{{ 'sections.hero.heading' | t }}</h1>
+        <p class="lead">{{ 'sections.hero.subheading' | t }}</p>
+        <div class="hero-benefits" aria-label="{{ 'sections.hero.aria_benefits' | t }}">
           <div class="hero-benefit">
             <svg class="hero-benefit-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="22" cy="22" r="18" stroke="currentColor" stroke-width="1.4"/>
               <path d="M14 28c3-7 13-7 16 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
               <circle cx="22" cy="18" r="2.4" fill="#000000"/>
             </svg>
-            <div class="hero-benefit-text">KLINISCH<br>GEPRÜFTE FORMEL</div>
+            <div class="hero-benefit-text">{{ 'sections.hero.benefit_clinical' | t }}</div>
           </div>
           <div class="hero-benefit">
             <svg class="hero-benefit-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -18,7 +18,7 @@
               <path d="M28 16L16 28" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
               <circle cx="30" cy="14" r="2" fill="#000000"/>
             </svg>
-            <div class="hero-benefit-text">100% OHNE<br>ARZNEISTOFFE</div>
+            <div class="hero-benefit-text">{{ 'sections.hero.benefit_drug_free' | t }}</div>
           </div>
           <div class="hero-benefit">
             <svg class="hero-benefit-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -26,13 +26,13 @@
               <path d="M22 12v8l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               <circle cx="22" cy="22" r="2.4" fill="#000000"/>
             </svg>
-            <div class="hero-benefit-text">ERGEBNISSE IN 3–6<br>MONATEN</div>
+            <div class="hero-benefit-text">{{ 'sections.hero.benefit_results' | t }}</div>
           </div>
         </div>
-        <div class="hero-ctas" aria-label="Kaufoptionen">
-          <a class="primary-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">Jetzt kaufen</a>
-          <a class="outline-btn hero-quiz-btn" href="#" aria-label="Quiz für einen personalisierten Plan starten">
-            Mach dein Quiz für einen personalisierten Plan <span aria-hidden="true">→</span>
+        <div class="hero-ctas" aria-label="{{ 'sections.hero.aria_ctas' | t }}">
+          <a class="primary-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.hero.cta_buy' | t }}</a>
+          <a class="outline-btn hero-quiz-btn" href="#" aria-label="{{ 'sections.hero.aria_quiz' | t }}">
+            {{ 'sections.hero.cta_quiz' | t }} <span aria-hidden="true">→</span>
           </a>
         </div>
 
@@ -46,7 +46,7 @@
               <ellipse cx="11.1" cy="19.8" rx="2" ry="1.2" transform="rotate(3 11.1 19.8)" fill="currentColor"/>
             </svg>
             <span class="hero-clinicians-med" aria-hidden="true">&#9877;</span>
-            <span>Von Ärzten empfohlen</span>
+            <span>{{ 'sections.hero.clinicians_title' | t }}</span>
             <svg class="hero-clinicians-laurel hero-clinicians-laurel-right" viewBox="0 0 24 28" aria-hidden="true">
               <path d="M20 3C13 8 12 18 18 25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
               <ellipse cx="12.2" cy="7.1" rx="2" ry="1.2" transform="rotate(-33 12.2 7.1)" fill="currentColor"/>
@@ -56,48 +56,48 @@
             </svg>
           </div>
           <div class="hero-clinicians-body">
-            <p>Wissenschaftlich fundiert. Entwickelt von den führenden medizinischen Expert:innen.</p>
+            <p>{{ 'sections.hero.clinicians_body' | t }}</p>
           </div>
         </aside>
       </div>
       <div class="hero-image">
-        <img src="{{ 'heroimage.png' | asset_url }}" alt="Hr² Produkt">
+        <img src="{{ 'heroimage.png' | asset_url }}" alt="{{ 'sections.hero.product_image_alt' | t }}">
       </div>
     </section>
 
-    <section class="hair-growth-comparison" aria-label="Produktvergleich">
+    <section class="hair-growth-comparison" aria-label="{{ 'sections.comparison.aria_label' | t }}">
       <div class="comparison-showdown">
-        <article class="comparison-panel comparison-panel-hr2" aria-label="HR2 Präsentation">
-          <img class="comparison-bottle" src="{{ 'bottlenew2.png' | asset_url }}" alt="HR2 Flasche" loading="lazy" decoding="async">
-          <a class="comparison-pill-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">Hr&sup2; kaufen</a>
-          <p class="comparison-note">ab 32&nbsp;€ pro Monat</p>
+        <article class="comparison-panel comparison-panel-hr2" aria-label="{{ 'sections.comparison.hr2_aria' | t }}">
+          <img class="comparison-bottle" src="{{ 'bottlenew2.png' | asset_url }}" alt="{{ 'sections.comparison.bottle_alt' | t }}" loading="lazy" decoding="async">
+          <a class="comparison-pill-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.comparison.buy_cta' | t }}</a>
+          <p class="comparison-note">{{ 'sections.comparison.price_note' | t }}</p>
         </article>
 
-        <article class="comparison-panel comparison-panel-others" aria-label="Produktvergleichstabelle">
-          <h3 class="comparison-table-title">Vergleich</h3>
+        <article class="comparison-panel comparison-panel-others" aria-label="{{ 'sections.comparison.table_aria' | t }}">
+          <h3 class="comparison-table-title">{{ 'sections.comparison.title' | t }}</h3>
           <ul class="comparison-table-list" role="list">
             <li class="comparison-table-row comparison-table-head">
-              <span class="comparison-table-feature">Merkmal</span>
-              <span class="comparison-table-col">Hr&sup2;</span>
-              <span class="comparison-table-col">Andere</span>
+              <span class="comparison-table-feature">{{ 'sections.comparison.feature' | t }}</span>
+              <span class="comparison-table-col">{{ 'sections.comparison.hr2' | t }}</span>
+              <span class="comparison-table-col">{{ 'sections.comparison.others' | t }}</span>
             </li>
             <li class="comparison-table-row">
-              <span class="comparison-table-feature">Klinisch belegt</span>
+              <span class="comparison-table-feature">{{ 'sections.comparison.row_clinical' | t }}</span>
               <span class="comparison-table-value">&#10003;</span>
               <span class="comparison-table-value">~</span>
             </li>
             <li class="comparison-table-row">
-              <span class="comparison-table-feature">Bio-optimiert</span>
+              <span class="comparison-table-feature">{{ 'sections.comparison.row_biooptimized' | t }}</span>
               <span class="comparison-table-value">&#10003;</span>
               <span class="comparison-table-value comparison-table-value-x">X</span>
             </li>
             <li class="comparison-table-row">
-              <span class="comparison-table-feature">Ohne Arzneistoffe</span>
+              <span class="comparison-table-feature">{{ 'sections.comparison.row_drug_free' | t }}</span>
               <span class="comparison-table-value">&#10003;</span>
               <span class="comparison-table-value">~</span>
             </li>
             <li class="comparison-table-row">
-              <span class="comparison-table-feature">Libido-freundlich</span>
+              <span class="comparison-table-feature">{{ 'sections.comparison.row_libido' | t }}</span>
               <span class="comparison-table-value">&#10003;</span>
               <span class="comparison-table-value">~</span>
             </li>
@@ -109,31 +109,30 @@
     <section class="causes" aria-labelledby="causes-title">
       <div class="causes-inner">
         <header class="causes-header">
-          <h2 id="causes-title">DEIN HAARAUSFALL MUSS NICHT<br>DEM ZUFALL ÜBERLASSEN WERDEN.</h2>
+          <h2 id="causes-title">{{ 'sections.causes.heading' | t }}</h2>
           <p class="causes-sub">
-            Männerhaar wird aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das,
-            wofür Hr² entwickelt wurde.
+            {{ 'sections.causes.subheading' | t }}
           </p>
         </header>
 
         <div class="causes-grid">
-          <div class="causes-accordion" role="tablist" aria-label="Ursachen">
+          <div class="causes-accordion" role="tablist" aria-label="{{ 'sections.causes.aria_accordion' | t }}">
             <div class="cause-item">
               <button class="cause-btn" type="button" role="tab" aria-selected="false" aria-expanded="false" data-cause="stress">
-                <span class="cause-label">STRESS</span>
+                <span class="cause-label">{{ 'sections.causes.stress_label' | t }}</span>
                 <span class="cause-icon" aria-hidden="true">+</span>
               </button>
               <div class="cause-body" role="tabpanel">
-                Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen.
+                {{ 'sections.causes.stress_body' | t }}
               </div>
             </div>
             <div class="cause-item">
               <button class="cause-btn" type="button" role="tab" aria-selected="false" aria-expanded="false" data-cause="hormones">
-                <span class="cause-label">HORMONE</span>
+                <span class="cause-label">{{ 'sections.causes.hormones_label' | t }}</span>
                 <span class="cause-icon" aria-hidden="true">+</span>
               </button>
               <div class="cause-body" role="tabpanel">
-                Hormonsignale können die Empfindlichkeit der Follikel beeinflussen und so langfristig zur Ausdünnung beitragen.
+                {{ 'sections.causes.hormones_body' | t }}
               </div>
             </div>
             <div class="cause-item">
@@ -142,36 +141,35 @@
                 <span class="cause-icon" aria-hidden="true">+</span>
               </button>
               <div class="cause-body" role="tabpanel">
-                Schlaf, Aktivität und Gewohnheiten beeinflussen Regeneration und das Umfeld, das Haare brauchen, um zu wachsen.
+                {{ 'sections.causes.dht_body' | t }}
               </div>
             </div>
             <div class="cause-item">
               <button class="cause-btn active" type="button" role="tab" aria-selected="true" aria-expanded="true" data-cause="nutrition">
-                <span class="cause-label">ERNÄHRUNG</span>
+                <span class="cause-label">{{ 'sections.causes.nutrition_label' | t }}</span>
                 <span class="cause-icon" aria-hidden="true">−</span>
               </button>
               <div class="cause-body open" role="tabpanel">
-                Nährstofflücken, die durch Ernährung oder ein unausgeglichenes Darmmikrobiom entstehen können.
+                {{ 'sections.causes.nutrition_body' | t }}
               </div>
             </div>
             <div class="cause-item">
               <button class="cause-btn" type="button" role="tab" aria-selected="false" aria-expanded="false" data-cause="aging">
-                <span class="cause-label">ALTERUNG</span>
+                <span class="cause-label">{{ 'sections.causes.aging_label' | t }}</span>
                 <span class="cause-icon" aria-hidden="true">+</span>
               </button>
               <div class="cause-body" role="tabpanel">
-                Mit zunehmendem Alter können Wachstumsphasen kürzer werden – Haardichte lässt sich dann schwerer erhalten.
+                {{ 'sections.causes.aging_body' | t }}
               </div>
             </div>
           </div>
 
-	          <figure class="causes-visual" aria-label="Ursachen-Visualisierung">
+	          <figure class="causes-visual" aria-label="{{ 'sections.causes.visual_aria' | t }}">
 	            <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" poster="{{ 'causes-haarwurzel.png' | asset_url }}">
 	              <source src="{{ 'causes-hairprom.mp4' | asset_url }}" type="video/mp4">
 	            </video>
 	            <figcaption class="causes-caption">
-	              Der Körper braucht Nährstoffe zur Versorgung und zur Unterstützung eines gesunden Haarwachstumszyklus. Diese Nährstoffe können
-	              z.&nbsp;B. durch eine unausgewogene Ernährung reduziert werden – das kann Haarstärke und allgemeine Gesundheit beeinflussen.
+	              {{ 'sections.causes.caption' | t }}
 	            </figcaption>
 	          </figure>
         </div>
@@ -180,22 +178,22 @@
 
     <section class="partners" aria-labelledby="partners-title">
       <div class="partners-inner">
-        <p class="partners-kicker" id="partners-title">Formuliert von Wissenschaftler:innen dieser Institutionen</p>
-        <div class="partners-logos" role="list" aria-label="Partnerinstitutionen">
+        <p class="partners-kicker" id="partners-title">{{ 'sections.partners.kicker' | t }}</p>
+        <div class="partners-logos" role="list" aria-label="{{ 'sections.partners.aria_logos' | t }}">
           <div class="partner-logo" role="listitem" aria-label="Stanford">
-            <img class="partner-img is-png" src="{{ 'sm_howl_looks_logo_02.png' | asset_url }}" alt="Logo von Stanford" loading="lazy" decoding="async">
+            <img class="partner-img is-png" src="{{ 'sm_howl_looks_logo_02.png' | asset_url }}" alt="{{ 'sections.partners.alt_stanford' | t }}" loading="lazy" decoding="async">
           </div>
           <div class="partner-logo" role="listitem" aria-label="TU (TUM)">
-            <img class="partner-img on-dark" src="{{ '6144ac488b51c665750238.png' | asset_url }}" alt="Logo der Technischen Universität München (TUM)" loading="lazy" decoding="async">
+            <img class="partner-img on-dark" src="{{ '6144ac488b51c665750238.png' | asset_url }}" alt="{{ 'sections.partners.alt_tum' | t }}" loading="lazy" decoding="async">
           </div>
           <div class="partner-logo" role="listitem" aria-label="TU Vienna">
-            <img class="partner-img is-png" src="{{ 'TU-Logo-Austria_CMYK.png' | asset_url }}" alt="Logo der TU Wien" loading="lazy" decoding="async">
+            <img class="partner-img is-png" src="{{ 'TU-Logo-Austria_CMYK.png' | asset_url }}" alt="{{ 'sections.partners.alt_tu_wien' | t }}" loading="lazy" decoding="async">
           </div>
           <div class="partner-logo" role="listitem" aria-label="LMU München">
-            <img class="partner-img" src="{{ 'LMU_Muenchen_Logo.svg' | asset_url }}" alt="Logo der LMU München" loading="lazy" decoding="async">
+            <img class="partner-img" src="{{ 'LMU_Muenchen_Logo.svg' | asset_url }}" alt="{{ 'sections.partners.alt_lmu' | t }}" loading="lazy" decoding="async">
           </div>
           <div class="partner-logo" role="listitem" aria-label="PMU">
-            <img class="partner-img" src="{{ 'Paracelsus-Medical-University-Logo-Vertical-EN.svg' | asset_url }}" alt="Logo der PMU" loading="lazy" decoding="async">
+            <img class="partner-img" src="{{ 'Paracelsus-Medical-University-Logo-Vertical-EN.svg' | asset_url }}" alt="{{ 'sections.partners.alt_pmu' | t }}" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -203,22 +201,22 @@
 
     <section class="ingredients-explorer" aria-labelledby="ingredients-title">
       <div class="ingredients-inner">
-        <h2 class="ingredients-title" id="ingredients-title">DIE PREISGEKRÖNTE<br>PRÄZISIONSMISCHUNG AN INHALTSSTOFFEN.</h2>
+        <h2 class="ingredients-title" id="ingredients-title">{{ 'sections.ingredients.heading' | t }}</h2>
 
         <div class="ingredients-grid">
-          <div class="ingredients-panel" aria-label="Inhaltsstoff-Details">
-            <div class="ingredients-chips" role="tablist" aria-label="Inhaltsstoffe">
+          <div class="ingredients-panel" aria-label="{{ 'sections.ingredients.aria_details' | t }}">
+            <div class="ingredients-chips" role="tablist" aria-label="{{ 'sections.ingredients.aria_tabs' | t }}">
               <button class="ingredient-chip active" type="button" role="tab" aria-selected="true" data-ingredient="anagain">
                 <span class="chip-dot" aria-hidden="true"></span>
                 Anagain
               </button>
               <button class="ingredient-chip" type="button" role="tab" aria-selected="false" data-ingredient="sawpalmetto">
                 <span class="chip-dot" aria-hidden="true"></span>
-                Sägepalmenextrakt
+                {{ 'sections.ingredients.sawpalmetto' | t }}
               </button>
               <button class="ingredient-chip" type="button" role="tab" aria-selected="false" data-ingredient="pomegranate">
                 <span class="chip-dot" aria-hidden="true"></span>
-                Granatapfelextrakt
+                {{ 'sections.ingredients.pomegranate' | t }}
               </button>
               <button class="ingredient-chip" type="button" role="tab" aria-selected="false" data-ingredient="ashwagandha">
                 <span class="chip-dot" aria-hidden="true"></span>
@@ -234,7 +232,7 @@
               </button>
               <button class="ingredient-chip" type="button" role="tab" aria-selected="false" data-ingredient="zinc">
                 <span class="chip-dot" aria-hidden="true"></span>
-                Zink
+                {{ 'sections.ingredients.zinc' | t }}
               </button>
               <button class="ingredient-chip" type="button" role="tab" aria-selected="false" data-ingredient="biotin">
                 <span class="chip-dot" aria-hidden="true"></span>
@@ -242,10 +240,10 @@
               </button>
             </div>
 
-            <div class="ingredients-more">und 20+ mehr</div>
+            <div class="ingredients-more">{{ 'sections.ingredients.more' | t }}</div>
 
             <p class="ingredient-description" id="ingredient-description">
-              Ein pflanzlicher Erbsensprossen‑Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>
+              {{ 'sections.ingredients.anagain_desc' | t }}<sup>4</sup>
             </p>
           </div>
 
@@ -263,30 +261,30 @@
     <section class="clinical-standard" aria-labelledby="clinical-title">
       <div class="clinical-inner">
         <div class="clinical-left">
-          <h2 class="clinical-title" id="clinical-title">Klinische Tests sind kein Extra –<br>sie sind unser Standard.</h2>
+        <h2 class="clinical-title" id="clinical-title">{{ 'sections.clinical.heading' | t }}</h2>
           <a class="clinical-cta" href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">
             <span class="cta-icon" aria-hidden="true">→</span>
-            Unsere Inhaltsstoffe entdecken
+            {{ 'sections.clinical.cta' | t }}
           </a>
-          <p class="clinical-foot">Innovationen für Haargesundheit,<br>denen du vertrauen kannst – dank<br>branchenführender Haarmessung.</p>
+          <p class="clinical-foot">{{ 'sections.clinical.footer' | t }}</p>
         </div>
 
-        <div class="clinical-right" aria-label="Klinische Kennzahlen">
+        <div class="clinical-right" aria-label="{{ 'sections.clinical.aria_stats' | t }}">
           <div class="clinical-stats">
             <div class="clinical-stat">
               <div class="stat-value">95%</div>
-              <div class="stat-text">der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls<sup>1</sup></div>
+              <div class="stat-text">{{ 'sections.clinical.stat1_text' | t }}<sup>1</sup></div>
             </div>
             <div class="clinical-stat">
               <div class="stat-value">60%</div>
-              <div class="stat-text">der Probanten, die mit der aktiven Studienformulierung (Saw Palmetto) behandelt wurden wurden beim letzten Besuch als verbessert beurteilt.<sup>2</sup></div>
+              <div class="stat-text">{{ 'sections.clinical.stat2_text' | t }}<sup>2</sup></div>
             </div>
             <div class="clinical-stat">
               <div class="stat-value">100%</div>
-              <div class="stat-text">der Teilnehmen mit einem Defizit an Biotin erlebten eine Verbesserung des Haarausfalls<sup>3</sup></div>
+              <div class="stat-text">{{ 'sections.clinical.stat3_text' | t }}<sup>3</sup></div>
             </div>
 
-            <ol class="clinical-notes" aria-label="Quellen">
+            <ol class="clinical-notes" aria-label="{{ 'sections.clinical.sources_aria' | t }}">
               <li><a href="https://onlinelibrary.wiley.com/doi/10.1002/ptr.6528" target="_blank" rel="noopener noreferrer">https://onlinelibrary.wiley.com/doi/10.1002/ptr.6528</a></li>
               <li><a href="https://pubmed.ncbi.nlm.nih.gov/12006122/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/12006122/</a></li>
               <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5582478/" target="_blank" rel="noopener noreferrer">https://pmc.ncbi.nlm.nih.gov/articles/PMC5582478/</a></li>
@@ -395,94 +393,94 @@
 
     <section class="offer">
       <div class="offer-left">
-        <h2 class="offer-product-title">Hr²</h2>
+        <h2 class="offer-product-title">{{ 'sections.offer.title' | t }}</h2>
 
         <p class="offer-product-description">
-          Hr² ist dein tägliches Supplement für die Haargesundheit – entwickelt mit einem Fokus auf ausgewählte Inhaltsstoffe, Qualitätssicherung und eine einfache Routine.
+          {{ 'offer.product_description' | t }}
         </p>
 
-        <div class="offer-plans" role="radiogroup" aria-label="Lieferoptionen">
+        <div class="offer-plans" role="radiogroup" aria-label="{{ 'offer.delivery_options' | t }}">
           <label class="offer-plan is-selected">
             <input class="offer-plan-radio" type="radio" name="offer-plan" value="monthly" checked>
             <div class="offer-plan-title">
-              <span class="offer-plan-name">Monatliche Lieferung</span>
-              <span class="offer-plan-badge">Spare 10%</span>
+              <span class="offer-plan-name">{{ 'sections.offer.plan_monthly' | t }}</span>
+              <span class="offer-plan-badge">{{ 'sections.offer.save_10' | t }}</span>
             </div>
             <div class="offer-plan-price">
               <div class="offer-plan-price-new">35€</div>
               <div class="offer-plan-price-old">39€</div>
             </div>
-            <div class="offer-plan-desc">1‑Monats‑Vorrat, Lieferung monatlich.</div>
+            <div class="offer-plan-desc">{{ 'sections.offer.plan_1_desc' | t }}</div>
              </label>
 
           <label class="offer-plan">
             <input class="offer-plan-radio" type="radio" name="offer-plan" value="3month">
             <div class="offer-plan-title">
-              <span class="offer-plan-name">3‑Monats‑Lieferung</span>
-              <span class="offer-plan-badge">Spare 15%</span>
+              <span class="offer-plan-name">{{ 'sections.offer.plan_3month' | t }}</span>
+              <span class="offer-plan-badge">{{ 'sections.offer.save_15' | t }}</span>
             </div>
             <div class="offer-plan-price">
               <div class="offer-plan-price-new">99€</div>
               <div class="offer-plan-price-old">117€</div>
             </div>
-            <div class="offer-plan-desc">3‑Monats‑Vorrat mit Nachlieferung alle 3 Monate.</div>
+            <div class="offer-plan-desc">{{ 'sections.offer.plan_3_desc' | t }}</div>
                </label>
 
           <label class="offer-plan">
             <input class="offer-plan-radio" type="radio" name="offer-plan" value="6month">
             <div class="offer-plan-title">
-              <span class="offer-plan-name">6‑Monats‑Lieferung</span>
-              <span class="offer-plan-badge">Spare 20%</span>
+              <span class="offer-plan-name">{{ 'sections.offer.plan_6month' | t }}</span>
+              <span class="offer-plan-badge">{{ 'sections.offer.save_20' | t }}</span>
             </div>
             <div class="offer-plan-price">
               <div class="offer-plan-price-new">187€</div>
               <div class="offer-plan-price-old">234€</div>
             </div>
-            <div class="offer-plan-desc">6‑Monats‑Vorrat mit Nachlieferung alle 6 Monate.</div>
+            <div class="offer-plan-desc">{{ 'sections.offer.plan_6_desc' | t }}</div>
             </label>
         </div>
 
-        <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">In den Warenkorb <span aria-hidden="true">→</span></a>
+        <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.offer.cta' | t }} <span aria-hidden="true">→</span></a>
 
         <div class="offer-once">
-          <a class="offer-once-link" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">Einmal kaufen für 39€ + 4,95€ Versand</a>
+          <a class="offer-once-link" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.offer.once_text' | t }}</a>
         </div>
-        <p class="offer-guarantee-note">Kostenloser Versand. Jederzeit pausieren oder kündigen.</p>
+        <p class="offer-guarantee-note">{{ 'sections.offer.guarantee' | t }}</p>
       </div>
       <div class="offer-right">
-        <div class="offer-tagline">Das erste Mal. Nur für kurze Zeit.</div>
-        <h3>Dein Hr² jetzt für <span class="strike"></span> 29€</h3>
-        <img src="{{ 'bottlew.png' | asset_url }}" alt="Hr² Bundle" loading="lazy" decoding="async">
+        <div class="offer-tagline">{{ 'sections.offer.tagline' | t }}</div>
+        <h3>{{ 'offer.promo_heading' | t }}</h3>
+        <img src="{{ 'bottlew.png' | asset_url }}" alt="{{ 'offer.bundle_alt' | t }}" loading="lazy" decoding="async">
       </div>
     </section>
 
 	    <section class="quality">
 	      <div class="quality-left">
-	        <h2>Unabhängig getestet für alle, die alles geben</h2>
-	        <p>Unsere Qualitätsstandards beginnen bei der Rohstoffauswahl und enden nicht bei der Kapsel. Jede Charge wird zusätzlich hausintern mikrobiologisch analysiert und nach strengen Standards geprüft – damit Hr² hält, was es verspricht.</p>
-	        <a class="link-arrow" href="{{ pages['forschung'].url | default: '/pages/forschung' }}#sec-05">Mehr zu unseren Tests →</a>
+	        <h2>{{ 'sections.quality.heading' | t }}</h2>
+	        <p>{{ 'sections.quality.description' | t }}</p>
+	        <a class="link-arrow" href="{{ pages['forschung'].url | default: '/pages/forschung' }}#sec-05">{{ 'sections.quality.cta' | t }} →</a>
 	        <ul class="quality-list">
-	          <li>✓ Hausinterne mikrobiologische Analyse jeder Charge</li>
-	          <li>✓ HACCP‑ &amp; ISO‑Standards in der Herstellung</li>
-	          <li>✓ Rohstoffe geprüft auf Pestizidrückstände</li>
+	          <li>✓ {{ 'sections.quality.list_1' | t }}</li>
+	          <li>✓ {{ 'sections.quality.list_2' | t }}</li>
+	          <li>✓ {{ 'sections.quality.list_3' | t }}</li>
 	        </ul>
 	      </div>
 
-      <div class="quality-badges" role="list" aria-label="Qualitätsstandards">
+      <div class="quality-badges" role="list" aria-label="{{ 'sections.quality.aria_badges' | t }}">
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
             <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/>
             <path d="M24 12v4M24 32v4M20 14l-2 3M30 27l-2 3M16 18l-3 1M35 25l-3 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
             <path d="M19 22c0-3 2.2-5 5-5s5 2 5 5c0 4-5 8-5 11-0-3-5-7-5-11Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
           </svg>
-          <span>Vegan</span>
+          <span>{{ 'product_page.badge_vegan' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
             <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.4"/>
             <path d="M20 14c0 0-3 6 0 10s2 10 2 10M24 14c0 0-3 6 0 10s2 10 2 10M28 14c0 0-3 6 0 10s2 10 2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span>Gluten‑geprüft</span>
+          <span>{{ 'product_page.badge_gluten' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -491,7 +489,7 @@
             <path d="M24 28v5M20 33h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
             <path d="M15 14l18 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
-          <span>Milchprodukte‑geprüft</span>
+          <span>{{ 'product_page.badge_dairy' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -499,7 +497,7 @@
             <ellipse cx="24" cy="24" rx="6" ry="8" stroke="currentColor" stroke-width="1.3"/>
             <path d="M24 16c2-3 6-4 8-2s1 6-1 9M24 32c2 3 6 4 8 2s1-6-1-9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
-          <span>Soja‑geprüft</span>
+          <span>{{ 'product_page.badge_soy' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -508,7 +506,7 @@
             <ellipse cx="27" cy="22" rx="4" ry="5" stroke="currentColor" stroke-width="1.3"/>
             <path d="M20 27c1 3 3 5 4 7 1-2 3-4 4-7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span>Nuss‑geprüft</span>
+          <span>{{ 'product_page.badge_nut' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -517,7 +515,7 @@
             <path d="M16 32c2.5-1.5 5-2 8-2s5.5.5 8 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
             <path d="M15 14l18 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
-          <span>Schalentier‑geprüft</span>
+          <span>{{ 'sections.quality.badge_shellfish' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -525,7 +523,7 @@
             <path d="M24 14c-5 4-7 8-7 12a7 7 0 0 0 14 0c0-4-2-8-7-12Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M22 28c0-2 2-4 4-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
-          <span>Sesam‑geprüft</span>
+          <span>{{ 'sections.quality.badge_sesame' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -533,7 +531,7 @@
             <path d="M18 34V18l4 3 4-3 4 3V34" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M18 26h12M18 30h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
-          <span>Mais‑geprüft</span>
+          <span>{{ 'sections.quality.badge_corn' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -541,7 +539,7 @@
             <path d="M20 15h8M20 15v6l-4 8.5a2.5 2.5 0 0 0 2.2 3.5h11.6a2.5 2.5 0 0 0 2.2-3.5L28 21v-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M18 28h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
-          <span>Glyphosat / AMPA‑geprüft</span>
+          <span>{{ 'sections.quality.badge_glyphosate_ampa' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -549,7 +547,7 @@
             <path d="M17 24h14M24 17v14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
             <path d="M15 15l18 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
-          <span>Ohne Bindemittel</span>
+          <span>{{ 'product_page.badge_no_fillers' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -557,7 +555,7 @@
             <path d="M20 16v10a4 4 0 0 0 8 0V16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M24 30v5M20 35h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
-          <span>Ohne Konservierungsstoffe</span>
+          <span>{{ 'product_page.badge_no_preservatives' | t }}</span>
         </div>
         <div class="quality-badge" role="listitem">
           <svg class="quality-badge-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -565,7 +563,7 @@
             <path d="M24 16v8l-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M18 16h12a4 4 0 0 1 4 4v4a10 10 0 0 1-10 10h0a10 10 0 0 1-10-10v-4a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
           </svg>
-          <span>Schwermetall‑geprüft</span>
+          <span>{{ 'product_page.badge_heavy_metals' | t }}</span>
         </div>
       </div>
 	    </section>
@@ -631,16 +629,16 @@
     <section class="community">
       <div class="community-header">
         <div>
-          <h2>Klinisch geprüft, von echten Menschen gelebt</h2>
-          <p>Erfahre von unserer Community, wie Hr² ihren Alltag verändert hat.</p>
+          <h2>{{ 'sections.community.heading' | t }}</h2>
+          <p>{{ 'sections.community.subheading' | t }}</p>
         </div>
         <div class="experts-controls">
-          <button class="icon-btn dark" aria-label="Zurück">
+          <button class="icon-btn dark" aria-label="{{ 'general.accessibility.previous' | t }}">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M15 6l-6 6 6 6"></path>
             </svg>
           </button>
-          <button class="icon-btn dark" aria-label="Weiter">
+          <button class="icon-btn dark" aria-label="{{ 'general.accessibility.next' | t }}">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 6l6 6-6 6"></path>
             </svg>
@@ -651,20 +649,20 @@
         <article class="expert-card">
           <img src="{{ 'aaron.jpeg' | asset_url }}" alt="Aaron" loading="lazy" decoding="async">
           <h3>Aaron</h3>
-          <p class="subtitle">Hr² MITGLIED SEIT 2025</p>
-          <p class="quote">Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt. Hr² fühlt sich eher wie eine langfristige Entscheidung an, die mir mit Inhaltsstoffen, welche speziell den Haarwuchs fördern, hilft. Nach ein paar Monaten fühlen sich meine Haare widerstandsfähiger an und ich habe wieder Vertrauen, dass ich dem Haarausfall aktiv entgegenwirke. Es gibt mir das Gefühl, meine Haar-Gesundheit im Griff zu haben und nicht einfach zuzusehen.</p>
+          <p class="subtitle">{{ 'sections.community.member_since' | t: year: 2025 }}</p>
+          <p class="quote">{{ 'sections.community.quote_1' | t }}</p>
         </article>
         <article class="expert-card">
           <img src="{{ 'lukas2.jpeg' | asset_url }}" alt="Lukas" loading="lazy" decoding="async">
           <h3>Lukas</h3>
-          <p class="subtitle">Hr² MITGLIED SEIT 2025</p>
-          <p class="quote">In stressigen Phasen habe ich immer zuerst an meinen Haaren gemerkt, dass etwas nicht passt. Hr² ist für mich wie ein kleines tägliches Reset. Ich fühle mich versorgt und muss mir darüber keine Gedanken mehr machen. Mittlerweile ist es Teil meiner Morgenroutine und ich habe endlich das Gefühl, etwas Sinnvolles für mich zu tun, statt nur zu hoffen, dass es besser wird.</p>
+          <p class="subtitle">{{ 'sections.community.member_since' | t: year: 2025 }}</p>
+          <p class="quote">{{ 'sections.community.quote_2' | t }}</p>
         </article>
         <article class="expert-card">
           <img src="{{ 'Patrick.jpeg' | asset_url }}" alt="Patrick" loading="lazy" decoding="async">
           <h3>Patrick</h3>
-          <p class="subtitle">Hr² MITGLIED SEIT 2025</p>
-          <p class="quote">Ich arbeite und trainiere viel und hart. Die damit verbundene Anstrengung und der Stress haben aber auch ihre Schattenseiten. Irgendwann habe ich gemerkt, dass ich einen wichtigen Aspekt komplett vernachlässigt habe: meine Haare. Seit ich Hr² nehme, habe ich dieses unangenehme Gefühl nach dem Duschen, auf den Boden zu schauen und meine abgeflogenen Haare zählen zu wollen, endlich überwunden.</p>
+          <p class="subtitle">{{ 'sections.community.member_since' | t: year: 2025 }}</p>
+          <p class="quote">{{ 'sections.community.quote_3' | t }}</p>
         </article>
       </div>
     </section>
@@ -715,86 +713,86 @@
 
     <section class="faq">
       <div class="faq-left">
-        <h2>Du hast Fragen, wir die Antworten</h2>
-        <p>Du findest nicht, wonach du suchst? Besuch unser <a href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#hilfecenter" class="faq-link">Hilfecenter</a> – wir sind da, um dir zu helfen.</p>
+        <h2>{{ 'sections.faq.heading' | t }}</h2>
+        <p>{{ 'sections.faq.subheading_html' | t: help_url: "{{ pages['hilfe'].url | default: '/pages/hilfe' }}#hilfecenter" }}</p>
       </div>
       <div class="faq-right">
         <div class="faq-item open">
           <button class="faq-question" type="button" aria-expanded="true">
-            <span>Was ist Hr²?</span>
+            <span>{{ 'sections.faq.q1' | t }}</span>
             <span class="faq-toggle">–</span>
           </button>
-          <div class="faq-answer">Hr² ist ein täglicher Nährstoff-Boost mit über 70 hochwertigen Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenstoffe und Bakterienkulturen. Entwickelt von Expert:innen, wissenschaftlich fundiert und weltweit von High Performern empfohlen, macht es Hr² einfach, Körper und Geist täglich zu unterstützen. Mehr erfährst du dazu <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}" class="faq-link">hier</a>.</div>
+          <div class="faq-answer">{{ 'sections.faq.a1_html' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Funktioniert Hr² für meinen Haartyp?</span>
+            <span>{{ 'sections.faq.q2' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Hr² ist für die tägliche, langfristige Unterstützung der Haargesundheit entwickelt – unabhängig von Haartyp oder Haarstruktur. Da Ursachen für Haarausfall und Haarausdünnung unterschiedlich sind (z.&nbsp;B. Nährstoffstatus, Stress, Hormone, genetische Faktoren), können Ergebnisse individuell variieren.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a2' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Wirkt es für Frauen und Männer?</span>
+            <span>{{ 'sections.faq.q3' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Ja. Hr² ist für Frauen und Männer entwickelt und unterstützt die Haargesundheit unabhängig vom Geschlecht. Da Ursachen und Ausgangslage (z.&nbsp;B. Nährstoffstatus, Stress, Hormone, Genetik) individuell sind, können Ergebnisse variieren.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a3' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Enthält Hr² Arzneistoffe?</span>
+            <span>{{ 'sections.faq.q4' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Nein. Hr² ist ein Nahrungsergänzungsmittel und enthält keine Arzneistoffe. Es liefert ausgewählte Inhaltsstoffe wie Vitamine, Mineralstoffe, Pflanzenextrakte und Aminosäuren zur täglichen Unterstützung.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a4' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Ich weiß, dass manche Haarwuchs‑Behandlungen Nebenwirkungen haben. Gilt das auch für Hr²?</span>
+            <span>{{ 'sections.faq.q5' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Hr² ist als Nahrungsergänzungsmittel in der Regel gut verträglich. Wie bei allen Supplements kann es jedoch individuell zu Unverträglichkeiten kommen (z.&nbsp;B. Magen‑Darm‑Beschwerden). Wenn du Beschwerden bemerkst, pausiere die Einnahme und sprich mit Ärzt:in – insbesondere bei Vorerkrankungen, Schwangerschaft/Stillzeit oder Medikamenteneinnahme.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a5' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Gibt es ein Risiko, dass Hr² meine Libido senkt?</span>
+            <span>{{ 'sections.faq.q6' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Hr² enthält keine Arzneistoffe und ist nicht darauf ausgerichtet, in den Hormonhaushalt einzugreifen. Individuelle Reaktionen sind trotzdem möglich – wenn du Veränderungen bemerkst, pausiere und sprich mit medizinischem Fachpersonal.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a6' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Sorgt Hr² für unerwünschtes Haarwachstum an anderen Körperstellen?</span>
+            <span>{{ 'sections.faq.q7' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Hr² ist darauf ausgerichtet, die allgemeine Nährstoffversorgung und Haargesundheit zu unterstützen – nicht, gezielt Körperbehaarung zu fördern. Da Haarwachstum biologisch komplex ist, können individuelle Effekte variieren.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a7' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Ist Hr² durch unabhängige Dritte zertifiziert?</span>
+            <span>{{ 'sections.faq.q8' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Wir legen Wert auf Qualitätssicherung und prüfen Rohstoffe sowie Endprodukt im Rahmen von Qualitätskontrollen. Wenn du konkrete Nachweise oder Prüfdokumente benötigst, kontaktiere bitte unseren Support.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a8' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Ist Hr² von der EMA zugelassen?</span>
+            <span>{{ 'sections.faq.q9' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Hr² ist ein Nahrungsergänzungsmittel. Nahrungsergänzungsmittel werden in der Regel nicht wie Arzneimittel von der EMA „zugelassen“. Die Einordnung und Anforderungen hängen vom jeweiligen Markt und den geltenden gesetzlichen Vorgaben ab.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a9' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Kann ich Hr² zusammen mit anderen haarunterstützenden Produkten und Nahrungsergänzungsmitteln einnehmen?</span>
+            <span>{{ 'sections.faq.q10' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Grundsätzlich ist das möglich, achte aber auf doppelte Dosierungen (z.&nbsp;B. Zink, Biotin oder andere Mikronährstoffe) und die empfohlene Tagesmenge. Wenn du Medikamente einnimmst oder gesundheitliche Themen hast, kläre die Kombination am besten mit Ärzt:in oder Apotheke.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a10' | t }}</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button" aria-expanded="false">
-            <span>Hilft Hr² bei genetisch bedingter Haarausdünnung?</span>
+            <span>{{ 'sections.faq.q11' | t }}</span>
             <span class="faq-toggle">+</span>
           </button>
-          <div class="faq-answer" hidden>Genetik spielt bei Haarausdünnung häufig eine große Rolle. Hr² kann die Nährstoffversorgung und Haargesundheit unterstützen, ersetzt jedoch keine medizinische Diagnose oder Therapie. Wenn du starke oder zunehmende Haarausdünnung bemerkst, ist eine Abklärung bei Dermatolog:in sinnvoll.</div>
+          <div class="faq-answer" hidden>{{ 'sections.faq.a11' | t }}</div>
         </div>
       </div>
     </section>

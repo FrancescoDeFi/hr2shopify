@@ -1,5 +1,57 @@
 <section class="legal-page" aria-labelledby="legal-title">
       <div class="legal-inner">
+        {% if request.locale.iso_code == 'en' %}
+        <h1 class="legal-title" id="legal-title">Legal Notice</h1>
+        <p class="legal-updated">Last updated: 22.12.2025</p>
+
+        <div class="legal-card">
+          <h2>Information pursuant to § 5 TMG</h2>
+          <p>
+            <strong>Elevo Health Limited</strong><br>
+            VENTURE HUB, 136 CAPEL STREET<br>
+            DUBLIN, D01 T2C9<br>
+            IRELAND
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            Email: <a href="mailto:info@gethr2.com">info@gethr2.com</a>
+          </p>
+
+          <h2>Authorized Representatives</h2>
+          <p>
+            Managing Director: Patrick Hilpold
+          </p>
+
+          <h2>Company Registration</h2>
+          <p>
+            Company Registration Number: 800508
+          </p>
+
+          <h2>Responsible for Content</h2>
+          <p>
+            Patrick Hilpold
+          </p>
+
+          <h2>Liability for Content</h2>
+          <p>
+            As a service provider, we are responsible for our own content on these pages in accordance with general law.
+            However, we assume no guarantee for the accuracy, completeness, or timeliness of the content.
+          </p>
+
+          <h2>Liability for Links</h2>
+          <p>
+            Our website contains links to external third-party websites, over whose content we have no influence.
+            We therefore cannot accept any liability for this external content.
+          </p>
+
+          <h2>Copyright</h2>
+          <p>
+            The content and works created by the site operators on these pages are subject to German copyright law.
+          </p>
+
+        </div>
+        {% else %}
         <h1 class="legal-title" id="legal-title">Impressum</h1>
         <p class="legal-updated">Stand: 22.12.2025</p>
 
@@ -27,7 +79,6 @@
             Company Registration Number: 800508
           </p>
 
-
           <h2>Inhaltlich Verantwortliche</h2>
           <p>
             Patrick Hilpold
@@ -51,5 +102,6 @@
           </p>
 
         </div>
+        {% endif %}
       </div>
     </section>

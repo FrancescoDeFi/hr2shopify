@@ -15,6 +15,6 @@
     "social_youtube": "",
     "cookie_banner_enabled": true,
     "cart_show_shipping_note": true,
-    "cart_shipping_note": "Versandkosten werden an der Kasse berechnet."
+    "cart_shipping_note": "Shipping costs will be calculated at checkout."
   }
 }

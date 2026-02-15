@@ -164,44 +164,133 @@
       "hr2": "Hr²",
       "others": "Others",
       "buy_cta": "Buy Hr²",
-      "price_note": "from €32 per month"
+      "price_note": "from €32 per month",
+      "aria_label": "Product comparison",
+      "hr2_aria": "HR2 presentation",
+      "bottle_alt": "HR2 bottle",
+      "table_aria": "Product comparison table",
+      "row_clinical": "Clinically proven",
+      "row_biooptimized": "Bio-optimized",
+      "row_drug_free": "Drug-free",
+      "row_libido": "Libido-friendly"
     },
     "causes": {
       "heading": "YOUR HAIR LOSS DOESN'T HAVE TO BE LEFT TO CHANCE.",
-      "subheading": "Men's hair thins for more than one reason. And addressing multiple causes is exactly what Hr² was designed to do."
+      "subheading": "Men's hair thins for more than one reason. And addressing multiple causes is exactly what Hr² was designed to do.",
+      "aria_accordion": "Causes",
+      "stress_label": "STRESS",
+      "stress_body": "Chronic stress can disrupt healthy hair cycles and influence shedding patterns.",
+      "hormones_label": "HORMONES",
+      "hormones_body": "Hormonal signals can affect follicle sensitivity and contribute to long-term thinning.",
+      "dht_body": "Sleep, activity, and habits influence regeneration and the environment hair needs to grow.",
+      "nutrition_label": "NUTRITION",
+      "nutrition_body": "Nutrient gaps that can arise from diet or an imbalanced gut microbiome.",
+      "aging_label": "AGING",
+      "aging_body": "With increasing age, growth phases can become shorter – making it harder to maintain hair density.",
+      "visual_aria": "Causes visualization",
+      "caption": "The body needs nutrients to nourish and support a healthy hair growth cycle. These nutrients can be reduced, for example, by an unbalanced diet – which can affect hair strength and overall health."
     },
     "partners": {
-      "kicker": "Formulated by scientists from these institutions"
+      "kicker": "Formulated by scientists from these institutions",
+      "aria_logos": "Partner institutions",
+      "alt_stanford": "Stanford logo",
+      "alt_tum": "Technical University of Munich (TUM) logo",
+      "alt_tu_wien": "TU Vienna logo",
+      "alt_lmu": "LMU Munich logo",
+      "alt_pmu": "PMU logo"
     },
     "ingredients": {
       "heading": "THE AWARD-WINNING PRECISION BLEND OF INGREDIENTS.",
-      "more": "and 20+ more"
+      "more": "and 20+ more",
+      "aria_details": "Ingredient details",
+      "aria_tabs": "Ingredients",
+      "sawpalmetto": "Saw palmetto extract",
+      "pomegranate": "Pomegranate extract",
+      "zinc": "Zinc",
+      "anagain_desc": "A plant-based pea sprout extract that supports hair root activity and promotes healthy hair growth."
     },
     "clinical": {
       "heading": "Clinical testing isn't an extra – it's our standard.",
       "cta": "Discover our ingredients",
-      "footer": "Hair health innovations you can trust – powered by industry-leading hair measurement."
+      "footer": "Hair health innovations you can trust – powered by industry-leading hair measurement.",
+      "aria_stats": "Clinical metrics",
+      "stat1_text": "of participants using AnaGain experienced a reduction in hair loss",
+      "stat2_text": "of subjects treated with the active study formulation (saw palmetto) were rated as improved at last visit.",
+      "stat3_text": "of participants with a biotin deficiency experienced an improvement in hair loss",
+      "sources_aria": "Sources"
     },
     "offer": {
       "title": "Hr²",
       "cta": "Add to cart",
       "once_link": "Buy once for {{ price }} + {{ shipping }} shipping",
       "guarantee": "Free shipping. Pause or cancel anytime.",
-      "tagline": "First time. For a limited time only."
+      "tagline": "First time. For a limited time only.",
+      "plan_monthly": "Monthly delivery",
+      "save_10": "Save 10%",
+      "plan_1_desc": "1-month supply, delivered monthly.",
+      "plan_3month": "3-month delivery",
+      "save_15": "Save 15%",
+      "plan_3_desc": "3-month supply with refill every 3 months.",
+      "plan_6month": "6-month delivery",
+      "save_20": "Save 20%",
+      "plan_6_desc": "6-month supply with refill every 6 months.",
+      "once_text": "Buy once for €39 + €4.95 shipping",
+      "product_description": "Hr² is your daily hair health supplement – developed with a focus on selected ingredients, quality assurance, and a simple routine.",
+      "delivery_options": "Delivery options",
+      "promo_heading": "Your Hr² now for €29",
+      "bundle_alt": "Hr² bundle"
     },
     "quality": {
       "heading": "Independently tested for those who give it their all",
-      "cta": "Learn more about our testing"
+      "cta": "Learn more about our testing",
+      "description": "Our quality standards start with raw material selection and don't end at the capsule. Every batch is additionally analyzed in-house microbiologically and tested to rigorous standards – so Hr² delivers on its promise.",
+      "list_1": "In-house microbiological analysis of every batch",
+      "list_2": "HACCP & ISO standards in manufacturing",
+      "list_3": "Raw materials tested for pesticide residues",
+      "aria_badges": "Quality standards",
+      "badge_shellfish": "Shellfish-tested",
+      "badge_sesame": "Sesame-tested",
+      "badge_corn": "Corn-tested",
+      "badge_glyphosate_ampa": "Glyphosate / AMPA-tested"
     },
     "community": {
       "heading": "Clinically tested, lived by real people",
-      "subheading": "Hear from our community how Hr² has changed their daily routine."
+      "subheading": "Hear from our community how Hr² has changed their daily routine.",
+      "member_since": "Hr² MEMBER SINCE {{ year }}",
+      "quote_1": "I didn't want something that makes quick promises but ultimately, from a scientific perspective, doesn't really deliver. Hr² feels more like a long-term decision that helps me with ingredients specifically designed to promote hair growth. After a few months, my hair feels more resilient, and I've regained confidence that I'm actively fighting hair loss. It gives me the feeling of being in control of my hair health instead of just watching.",
+      "quote_2": "During stressful phases, my hair was always the first thing to show that something was off. Hr² is like a little daily reset for me. I feel nourished and don't have to worry about it anymore. By now, it's part of my morning routine, and I finally feel like I'm doing something meaningful for myself instead of just hoping things get better.",
+      "quote_3": "I work and train hard. The effort and stress that come with it have their downsides too. At some point, I realized I had completely neglected an important aspect: my hair. Since taking Hr², I've finally overcome that uncomfortable feeling of looking at the floor after a shower and wanting to count my fallen hairs."
     },
     "faq": {
       "heading": "You have questions, we have answers",
       "subheading": "Can't find what you're looking for? Visit our",
       "help_link": "Help Center",
-      "help_suffix": "– we're here to help."
+      "help_suffix": "– we're here to help.",
+      "here": "here",
+      "subheading_html": "Can't find what you're looking for? Visit our <a href='#hilfecenter' class='faq-link'>Help Center</a> – we're here to help.",
+      "a1_html": "Hr² is a daily nutrient boost with over 70 high-quality ingredients – including vitamins, minerals, botanicals, and bacterial cultures. Developed by experts, science-backed, and recommended by high performers worldwide, Hr² makes it easy to support body and mind every day.",
+      "q1": "What is Hr²?",
+      "a1": "Hr² is a daily nutrient boost with over 70 high-quality ingredients – including vitamins, minerals, botanicals, and bacterial cultures. Developed by experts, science-backed, and recommended by high performers worldwide, Hr² makes it easy to support body and mind every day. Learn more {{ link }}.",
+      "q2": "Does Hr² work for my hair type?",
+      "a2": "Hr² is designed for daily, long-term hair health support – regardless of hair type or texture. Since the causes of hair loss and thinning vary (e.g., nutrient status, stress, hormones, genetic factors), results may vary individually.",
+      "q3": "Does it work for both women and men?",
+      "a3": "Yes. Hr² is designed for both women and men and supports hair health regardless of gender. Since causes and starting points (e.g., nutrient status, stress, hormones, genetics) are individual, results may vary.",
+      "q4": "Does Hr² contain medicinal drugs?",
+      "a4": "No. Hr² is a food supplement and contains no medicinal drugs. It provides selected ingredients such as vitamins, minerals, plant extracts, and amino acids for daily support.",
+      "q5": "I know some hair growth treatments have side effects. Does that apply to Hr² as well?",
+      "a5": "As a food supplement, Hr² is generally well tolerated. As with all supplements, individual intolerances may occur (e.g., gastrointestinal discomfort). If you experience any issues, pause use and consult a doctor – especially if you have pre-existing conditions, are pregnant/breastfeeding, or are taking medication.",
+      "q6": "Is there a risk that Hr² lowers libido?",
+      "a6": "Hr² contains no medicinal drugs and is not intended to interfere with hormones. Individual reactions are still possible – if you notice changes, pause use and consult a medical professional.",
+      "q7": "Does Hr² cause unwanted hair growth on other body parts?",
+      "a7": "Hr² is designed to support overall nutrient supply and hair health – not to specifically promote body hair. Since hair growth is biologically complex, individual effects may vary.",
+      "q8": "Is Hr² certified by independent third parties?",
+      "a8": "We place great value on quality assurance and test both raw materials and finished products as part of our quality controls. If you need specific certifications or test documents, please contact our support team.",
+      "q9": "Is Hr² approved by the EMA?",
+      "a9": "Hr² is a food supplement. Food supplements are generally not 'approved' by the EMA like pharmaceutical drugs. Classification and requirements depend on the respective market and applicable regulatory standards.",
+      "q10": "Can I take Hr² together with other hair support products and supplements?",
+      "a10": "Generally yes, but watch out for double dosages (e.g., zinc, biotin, or other micronutrients) and the recommended daily amount. If you're taking medication or have health concerns, it's best to discuss the combination with your doctor or pharmacist.",
+      "q11": "Does Hr² help with genetic hair thinning?",
+      "a11": "Genetics often play a major role in hair thinning. Hr² can support nutrient supply and hair health, but does not replace medical diagnosis or therapy. If you notice significant or increasing hair thinning, a consultation with a dermatologist is recommended."
     }
   },
   "footer": {

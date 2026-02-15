@@ -1,5 +1,7 @@
 (() => {
-  const INGREDIENTS = [
+  var lang = (window.__LOCALE__ || "de").toLowerCase();
+
+  var INGREDIENTS_DE = [
     {
       id: "anagain",
       name: "Anagain",
@@ -246,6 +248,277 @@
     }
   ];
 
+  var INGREDIENTS_EN = [
+    {
+      id: "anagain",
+      name: "AnaGain",
+      subtitle: "Pea sprout extract",
+      category: "Naturstoffe",
+      amount: "100 mg",
+      nrv: null,
+      benefit: "Hair root activation",
+      description: "A plant-based pea sprout extract that supports hair root activity. It is often used for diffuse hair loss to support the hair cycle and build a foundation for stronger growth."
+    },
+    {
+      id: "sawpalmetto",
+      name: "Saw palmetto extract",
+      subtitle: "Serenoa repens",
+      category: "Naturstoffe",
+      amount: "50 mg",
+      nrv: null,
+      benefit: "Supports hair fullness",
+      contains: [{ name: "Fatty acids", amount: "12.5 mg", nrv: null }],
+      description: "Saw palmetto extract has traditionally been used in the context of fuller hair. It can support processes associated with maintaining hair fullness and complements a holistic routine for scalp and hair root."
+    },
+    {
+      id: "pomegranate",
+      name: "Pomegranate extract",
+      subtitle: "Punica granatum",
+      category: "Naturstoffe",
+      amount: "10 mg",
+      nrv: null,
+      benefit: "Antioxidant protection",
+      contains: [{ name: "Ellagic acid", amount: "4 mg", nrv: null }],
+      description: "Pomegranate is rich in polyphenols. Antioxidant plant compounds support the protection of cells from oxidative stress \u2013 a factor that can also be relevant for scalp and hair root."
+    },
+    {
+      id: "ashwagandha_extract",
+      name: "Ashwagandha extract",
+      subtitle: "KSM-66\u00ae",
+      category: "Sonstige Stoffe",
+      amount: "300 mg",
+      nrv: null,
+      benefit: "Stress balance",
+      contains: [{ name: "Withanolides", amount: "15 mg", nrv: null }],
+      description: "Ashwagandha is considered an adaptogen and is frequently used to support stress balance. Since stress can affect the hair cycle, better stress regulation can indirectly contribute to more stable hair cycles."
+    },
+    {
+      id: "vitamin_c",
+      name: "Vitamin C",
+      subtitle: null,
+      category: "Vitamine",
+      amount: "40 mg",
+      nrv: "50 %",
+      benefit: "Collagen formation",
+      description: "Vitamin C contributes to normal collagen formation for the normal function of the skin and protects cells from oxidative stress. Both are important for supporting the scalp as an environment for healthy hair."
+    },
+    {
+      id: "vitamin_e",
+      name: "Vitamin E (natural)",
+      subtitle: null,
+      category: "Vitamine",
+      amount: "18 mg",
+      nrv: "150 %",
+      benefit: "Cell protection",
+      description: "Vitamin E helps protect cells from oxidative stress. This can help support the scalp and hair root against damaging environmental influences."
+    },
+    {
+      id: "riboflavin",
+      name: "Riboflavin",
+      subtitle: "Vitamin B2",
+      category: "Vitamine",
+      amount: "1.4 mg",
+      nrv: "100 %",
+      benefit: "Healthy scalp",
+      description: "Riboflavin (Vitamin B2) contributes to the maintenance of normal skin and the protection of cells from oxidative stress. A healthy scalp is the foundation for strong hair."
+    },
+    {
+      id: "niacin",
+      name: "Niacin",
+      subtitle: "Vitamin B3",
+      category: "Vitamine",
+      amount: "20 mg",
+      nrv: "125 %",
+      benefit: "Skin barrier",
+      description: "Niacin (Vitamin B3) contributes to the maintenance of normal skin. Since hair grows from the scalp, a well-nourished skin barrier can support the hair environment."
+    },
+    {
+      id: "pantothenic_acid",
+      name: "Pantothenic acid",
+      subtitle: "Vitamin B5",
+      category: "Vitamine",
+      amount: "18 mg",
+      nrv: "300 %",
+      benefit: "Energy metabolism",
+      description: "Pantothenic acid (Vitamin B5) contributes to normal energy metabolism. Energy and nutrient processes are fundamental for the body to reliably supply \u201cnon-essential\u201d structures like hair."
+    },
+    {
+      id: "vitamin_b6",
+      name: "Vitamin B6",
+      subtitle: null,
+      category: "Vitamine",
+      amount: "7 mg",
+      nrv: "500 %",
+      benefit: "Protein metabolism",
+      description: "Vitamin B6 contributes to normal protein and energy metabolism. Since hair is primarily made of protein (keratin), a functioning protein metabolism is an important building block for hair structure and growth."
+    },
+    {
+      id: "folic_acid",
+      name: "Folic acid",
+      subtitle: null,
+      category: "Vitamine",
+      amount: "200 \u00b5g",
+      nrv: "100 %",
+      benefit: "Cell division",
+      description: "Folic acid contributes to normal cell division. Rapidly dividing cells also play a role in the hair follicle \u2013 a good folate supply therefore supports the physiological growth processes."
+    },
+    {
+      id: "vitamin_a",
+      name: "Vitamin A",
+      subtitle: null,
+      category: "Vitamine",
+      amount: "800 \u00b5g",
+      nrv: "100 %",
+      benefit: "Normal skin",
+      description: "Vitamin A contributes to the maintenance of normal skin. A healthy scalp supports the environment in which hair grows."
+    },
+    {
+      id: "beta_carotene",
+      name: "Beta carotene",
+      subtitle: null,
+      category: "Vitamine",
+      amount: "0.8 mg",
+      nrv: null,
+      benefit: "Vitamin A precursor",
+      description: "Beta-carotene is a precursor of Vitamin A. It supplements the supply of Vitamin A-related building blocks that are important for skin health (and therefore also for the scalp)."
+    },
+    {
+      id: "vitamin_d",
+      name: "Vitamin D",
+      subtitle: null,
+      category: "Vitamine",
+      amount: "10 \u00b5g",
+      nrv: "200 %",
+      benefit: "Immune system",
+      description: "Vitamin D contributes to normal immune system function and normal cell division. Both can be relevant for a balanced scalp environment that supports healthy hair."
+    },
+    {
+      id: "lcysteine",
+      name: "L\u2011Cysteine",
+      subtitle: "Amino acid",
+      category: "Aminos\u00e4uren",
+      amount: "50 mg",
+      nrv: null,
+      benefit: "Keratin building block",
+      description: "L\u2011Cysteine is an important building block of keratin, the structural protein of hair. An adequate supply can support the natural hair structure \u2013 especially for brittle or damaged hair."
+    },
+    {
+      id: "llysine_hcl",
+      name: "L\u2011Lysine HCL",
+      subtitle: null,
+      category: "Sonstige Stoffe",
+      amount: "100 mg",
+      nrv: null,
+      benefit: "Structural protein",
+      contains: [{ name: "L\u2011Lysine", amount: "79 mg", nrv: null }],
+      description: "L\u2011Lysine is an essential amino acid involved in building structural proteins. In hair care routines, it is often used to supplement the supply of protein building blocks that are important for hair structure."
+    },
+    {
+      id: "zinc",
+      name: "Zinc",
+      subtitle: "Mineral",
+      category: "Mineralstoffe",
+      amount: "10 mg",
+      nrv: "100 %",
+      benefit: "Maintenance of normal hair",
+      description: "Zinc contributes to the maintenance of normal hair and skin. It also supports the protection of cells from oxidative stress \u2013 both important factors for hair root and scalp."
+    },
+    {
+      id: "boron",
+      name: "Boron",
+      subtitle: null,
+      category: "Mineralstoffe",
+      amount: "1 mg",
+      nrv: null,
+      benefit: "Mineral balance",
+      description: "Boron is often used as a complementary trace nutrient in formulations. It can help to holistically round out mineral balance \u2013 indirectly relevant because hair benefits greatly from overall good nutrient supply."
+    },
+    {
+      id: "manganese",
+      name: "Manganese",
+      subtitle: null,
+      category: "Mineralstoffe",
+      amount: "1 mg",
+      nrv: "50 %",
+      benefit: "Connective tissue formation",
+      description: "Manganese contributes to the protection of cells from oxidative stress and to normal connective tissue formation. This can support the skin/scalp structure that is important for healthy hair conditions."
+    },
+    {
+      id: "copper",
+      name: "Copper",
+      subtitle: null,
+      category: "Mineralstoffe",
+      amount: "1 mg",
+      nrv: "100 %",
+      benefit: "Hair pigmentation",
+      description: "Copper contributes to normal hair pigmentation and supports the protection of cells from oxidative stress. It can therefore support both visual aspects (colour) and the general hair environment."
+    },
+    {
+      id: "iodine",
+      name: "Iodine",
+      subtitle: null,
+      category: "Mineralstoffe",
+      amount: "225 \u00b5g",
+      nrv: "150 %",
+      benefit: "Thyroid function",
+      description: "Iodine contributes to normal thyroid function and hormone production. Since hormones can influence the hair cycle, a good iodine supply can indirectly contribute to more stable hair conditions."
+    },
+    {
+      id: "selenium",
+      name: "Selenium",
+      subtitle: null,
+      category: "Mineralstoffe",
+      amount: "44 \u00b5g",
+      nrv: "80 %",
+      benefit: "Maintenance of normal hair",
+      description: "Selenium contributes to the maintenance of normal hair and supports the protection of cells from oxidative stress. This makes it a key trace element for hair and scalp health."
+    },
+    {
+      id: "biotin",
+      name: "Biotin",
+      subtitle: "Vitamin B7",
+      category: "Vitamine",
+      amount: "150 \u00b5g",
+      nrv: "300 %",
+      benefit: "Maintenance of normal hair",
+      description: "Biotin contributes to the maintenance of normal hair and skin. It is often used as a foundational nutrient when it comes to hair quality, resilience and support of the growth environment."
+    },
+    {
+      id: "sprouted_pea_seed",
+      name: "Sprouted pea seed extract powder",
+      subtitle: "AnaGain\u2122 Nu",
+      category: "Sonstige Stoffe",
+      amount: "100 mg",
+      nrv: null,
+      benefit: "Supports hair cycle",
+      description: "Sprouted pea seed extract is a plant-based source of functional ingredients often used in hair routines to support the hair root. It complements the formula with plant-based building blocks that can accompany the hair cycle."
+    }
+  ];
+
+  /* Category display names for English */
+  var CATEGORY_LABELS = {
+    "Naturstoffe": lang === "en" ? "Botanicals" : "Naturstoffe",
+    "Vitamine": lang === "en" ? "Vitamins" : "Vitamine",
+    "Mineralstoffe": lang === "en" ? "Minerals" : "Mineralstoffe",
+    "Aminos\u00e4uren": lang === "en" ? "Amino acids" : "Aminos\u00e4uren",
+    "Sonstige Stoffe": lang === "en" ? "Other substances" : "Sonstige Stoffe"
+  };
+
+  /* UI strings */
+  var UI = lang === "en" ? {
+    showMore: 'Show more <span aria-hidden="true">\u25be</span>',
+    showLess: 'Show less <span aria-hidden="true">\u25b4</span>',
+    capsules: "2 capsules",
+    viewLabel: "View"
+  } : {
+    showMore: 'Mehr anzeigen <span aria-hidden="true">\u25be</span>',
+    showLess: 'Weniger anzeigen <span aria-hidden="true">\u25b4</span>',
+    capsules: "2 Kapseln",
+    viewLabel: "anzeigen"
+  };
+
+  var INGREDIENTS = lang === "en" ? INGREDIENTS_EN : INGREDIENTS_DE;
+
   /* ─── Gallery rendering ─── */
   var gallery = document.getElementById("inh-gallery");
   var backdrop = document.getElementById("ingredient-backdrop");
@@ -287,7 +560,7 @@
     if (item.amount || item.nrv) {
       factsEl.hidden = false;
       factsEl.innerHTML =
-        '<div class="ingredient-fact-row"><div class="ingredient-fact-label">2 Kapseln</div><div class="ingredient-fact-value">' + (item.amount || "\u2013") + '</div></div>' +
+        '<div class="ingredient-fact-row"><div class="ingredient-fact-label">' + UI.capsules + '</div><div class="ingredient-fact-value">' + (item.amount || "\u2013") + '</div></div>' +
         '<div class="ingredient-fact-row"><div class="ingredient-fact-label">NRV (%)</div><div class="ingredient-fact-value">' + (item.nrv || "\u2013") + '</div></div>';
     } else {
       factsEl.hidden = true;
@@ -312,7 +585,7 @@
       containsEl.hidden = true;
       containsEl.innerHTML = "";
     }
-    kickerEl.textContent = (item.category || "NATURSTOFFE").toUpperCase();
+    kickerEl.textContent = (CATEGORY_LABELS[item.category] || item.category).toUpperCase();
 
     backdrop.hidden = false;
     drawer.classList.add("open");
@@ -335,7 +608,7 @@
       var card = document.createElement("button");
       card.type = "button";
       card.className = "inh-card";
-      card.setAttribute("aria-label", item.name + " anzeigen");
+      card.setAttribute("aria-label", item.name + " " + UI.viewLabel);
       card.dataset.category = item.category;
 
       if (activeFilter !== "all" && item.category !== activeFilter) {
@@ -343,6 +616,7 @@
       }
 
       var metaStr = metaLine(item);
+      var categoryDisplay = CATEGORY_LABELS[item.category] || item.category;
 
       card.innerHTML =
         '<div class="inh-pill-ring">' +
@@ -351,7 +625,7 @@
         '</div>' +
         '<div class="inh-card-name">' + item.name + '</div>' +
         (metaStr ? '<div class="inh-card-meta">' + metaStr + '</div>' : '') +
-        '<div class="inh-card-category">' + item.category + '</div>';
+        '<div class="inh-card-category">' + categoryDisplay + '</div>';
 
       card.addEventListener("click", function() { openDrawer(item); });
       gallery.appendChild(card);
@@ -397,7 +671,7 @@
       function setExpanded(expanded) {
         root.classList.toggle("is-expanded", expanded);
         btn.setAttribute("aria-expanded", expanded ? "true" : "false");
-        btn.innerHTML = expanded ? 'Weniger anzeigen <span aria-hidden="true">\u25b4</span>' : 'Mehr anzeigen <span aria-hidden="true">\u25be</span>';
+        btn.innerHTML = expanded ? UI.showLess : UI.showMore;
       }
       btn.addEventListener("click", function() {
         var expanded = btn.getAttribute("aria-expanded") === "true";

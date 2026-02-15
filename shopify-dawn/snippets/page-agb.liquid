@@ -1,5 +1,57 @@
 <section class="legal-page" aria-labelledby="legal-title">
       <div class="legal-inner">
+        {% if request.locale.iso_code == 'en' %}
+        <h1 class="legal-title" id="legal-title">Terms & Conditions</h1>
+        <p class="legal-updated">Last updated: 22.12.2025</p>
+
+        <div class="legal-card">
+          <h2>1. Scope</h2>
+          <p>
+            These Terms & Conditions apply to all orders placed through this website
+            between customers and Elevo Health Limited (Hr²).
+          </p>
+
+          <h2>2. Contract Formation</h2>
+          <p>
+            The display of products does not constitute a legally binding offer, but a non-binding product overview.
+            A contract is formed once we confirm your order or ship the goods.
+          </p>
+
+          <h2>3. Prices & Payment</h2>
+          <p>
+            All prices include the applicable statutory value-added tax (where applicable) and are exclusive of shipping costs,
+            where these are indicated. Available payment methods are displayed at checkout.
+          </p>
+
+          <h2>4. Delivery</h2>
+          <p>
+            Delivery times and shipping costs are stated during the ordering process. Partial deliveries are permitted where reasonable for you.
+          </p>
+
+          <h2>5. Right of Withdrawal</h2>
+          <p>
+            Consumers generally have a right of withdrawal. Details can be found on the
+            <a href="{{ pages['widerruf'].url | default: '/pages/widerruf' }}">Withdrawal</a> page.
+          </p>
+
+          <h2>6. Warranty</h2>
+          <p>
+            Statutory warranty rights apply.
+          </p>
+
+          <h2>7. Liability</h2>
+          <p>
+            We are liable without limitation for intent and gross negligence. In cases of simple negligence, we are only liable for breaches of material
+            contractual obligations (cardinal obligations), limited to the foreseeable, contract-typical damage. Mandatory statutory liability provisions remain unaffected.
+          </p>
+
+          <h2>8. Final Provisions</h2>
+          <p>
+            The laws of the Federal Republic of Germany apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG), unless mandatory consumer protection provisions dictate otherwise.
+          </p>
+
+        </div>
+        {% else %}
         <h1 class="legal-title" id="legal-title">Allgemeine Geschäftsbedingungen (AGB)</h1>
         <p class="legal-updated">Stand: 22.12.2025</p>
 
@@ -50,5 +102,6 @@
           </p>
 
         </div>
+        {% endif %}
       </div>
     </section>

@@ -1,5 +1,18 @@
-<section class="faq" aria-label="Hilfecenter">
+<section class="faq" aria-label="{% if request.locale.iso_code == 'en' %}Help Center{% else %}Hilfecenter{% endif %}">
       <div class="faq-left">
+        {% if request.locale.iso_code == 'en' %}
+        <h2>Help Center (FAQ)</h2>
+        <p>
+          Here you'll find answers about contact, shipping and returns. If you need help, email us at
+          <a class="faq-link" href="mailto:info@gethr2.com">info@gethr2.com</a>.
+        </p>
+        <p style="margin-top: 16px;">
+          <a class="faq-link" href="#hilfecenter">Help Center (FAQ)</a><br>
+          <a class="faq-link" href="#kontakt">Contact</a><br>
+          <a class="faq-link" href="#versand">Shipping & Delivery</a><br>
+          <a class="faq-link" href="#rueckgabe">Returns</a>
+        </p>
+        {% else %}
         <h2>Hilfecenter (FAQ)</h2>
         <p>
           Hier findest du Antworten rund um Kontakt, Versand und Rückgabe. Wenn du Hilfe brauchst, schreib uns an
@@ -11,9 +24,123 @@
           <a class="faq-link" href="#versand">Versand &amp; Lieferung</a><br>
           <a class="faq-link" href="#rueckgabe">Rückgabe</a>
         </p>
+        {% endif %}
       </div>
 
       <div class="faq-right">
+        {% if request.locale.iso_code == 'en' %}
+        <h3 id="hilfecenter">Help Center (FAQ)</h3>
+
+        <div class="faq-item open">
+          <button class="faq-question" type="button" aria-expanded="true">
+            <span>How can I reach support fastest?</span>
+            <span class="faq-toggle">–</span>
+          </button>
+          <div class="faq-answer">
+            The fastest way to reach us is by email at <a class="faq-link" href="mailto:info@gethr2.com">info@gethr2.com</a>.
+            Please include your order number (if available) so we can help you right away.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Where can I find information about ingredients and research?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            You can find details about the ingredients on <a class="faq-link" href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">Ingredients</a> and the background on quality & evidence on <a class="faq-link" href="{{ pages['forschung'].url | default: '/pages/forschung' }}">Research</a>.
+          </div>
+        </div>
+
+        <h3 id="kontakt" style="margin-top: 28px;">Contact</h3>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>What contact details can I use?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            Email: <a class="faq-link" href="mailto:info@gethr2.com">info@gethr2.com</a><br>
+            For legal information, please also see our <a class="faq-link" href="{{ pages['impressum'].url | default: '/pages/impressum' }}">Legal Notice</a>.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How quickly will I receive a response?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            We'll get back to you as soon as possible. During peak times it may take a bit longer – if it's about an order, including your order number helps us respond faster.
+          </div>
+        </div>
+
+        <h3 id="versand" style="margin-top: 28px;">Shipping & Delivery</h3>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How long does shipping take?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            Delivery time depends on the destination country and shipping method. The estimated delivery time is shown at checkout and in the order confirmation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How much does shipping cost?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            Shipping costs vary by destination and are displayed transparently at checkout before you complete your order.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Can I track my shipment?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            Once your order has been shipped, you'll receive (if available) a shipping confirmation with tracking information.
+          </div>
+        </div>
+
+        <h3 id="rueckgabe" style="margin-top: 28px;">Returns</h3>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>How can I start a return?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            Email us at <a class="faq-link" href="mailto:info@gethr2.com">info@gethr2.com</a> with your order number and reason for return.
+            We'll get back to you with the next steps.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>Is there a right of withdrawal?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            Information about withdrawal can be found on our <a class="faq-link" href="{{ pages['widerruf'].url | default: '/pages/widerruf' }}">Withdrawal</a> page.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>When will I receive my refund?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer" hidden>
+            After receipt and inspection of the return, we'll refund the amount to the original payment method. Depending on the payment provider, the credit may take a few days.
+          </div>
+        </div>
+
+        {% else %}
         <h3 id="hilfecenter">Hilfecenter (FAQ)</h3>
 
         <div class="faq-item open">
@@ -124,5 +251,6 @@
             Nach Eingang und Prüfung der Rücksendung erstatten wir den Betrag auf die ursprüngliche Zahlungsart. Je nach Zahlungsanbieter kann die Gutschrift einige Tage dauern.
           </div>
         </div>
+        {% endif %}
       </div>
     </section>

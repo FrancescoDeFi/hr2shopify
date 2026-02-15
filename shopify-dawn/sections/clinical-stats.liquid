@@ -1,15 +1,18 @@
 <section class="clinical-standard" aria-labelledby="clinical-title">
   <div class="clinical-inner">
     <div class="clinical-left">
-      <h2 class="clinical-title" id="clinical-title">{{ section.settings.heading | default: 'Klinische Tests sind kein Extra – sie sind unser Standard.' }}</h2>
+      {% assign clinical_heading = section.settings.heading | default: nil %}
+      {% assign clinical_cta_text = section.settings.cta_text | default: nil %}
+      {% assign clinical_footer = section.settings.footer_text | default: nil %}
+      <h2 class="clinical-title" id="clinical-title">{% if clinical_heading != blank %}{{ clinical_heading }}{% else %}{{ 'sections.clinical.heading' | t }}{% endif %}</h2>
       <a class="clinical-cta" href="{{ section.settings.cta_url | default: pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">
         <span class="cta-icon" aria-hidden="true">→</span>
-        {{ section.settings.cta_text | default: 'Unsere Inhaltsstoffe entdecken' }}
+        {% if clinical_cta_text != blank %}{{ clinical_cta_text }}{% else %}{{ 'sections.clinical.cta' | t }}{% endif %}
       </a>
-      <p class="clinical-foot">{{ section.settings.footer_text | default: 'Innovationen für Haargesundheit, denen du vertrauen kannst – dank branchenführender Haarmessung.' }}</p>
+      <p class="clinical-foot">{% if clinical_footer != blank %}{{ clinical_footer }}{% else %}{{ 'sections.clinical.footer' | t }}{% endif %}</p>
     </div>
 
-    <div class="clinical-right" aria-label="Klinische Kennzahlen">
+    <div class="clinical-right" aria-label="{{ 'sections.clinical.aria_stats' | t }}">
       <div class="clinical-stats">
         {% for block in section.blocks %}
           {% if block.type == 'stat' %}
@@ -87,7 +90,7 @@
           "type": "textarea",
           "id": "text",
           "label": "Beschreibung",
-          "default": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls<sup>1</sup>"
+          "default": "of participants using AnaGain experienced a reduction in hair loss<sup>1</sup>"
         }
       ]
     },
@@ -107,9 +110,9 @@
     {
       "name": "Klinische Statistiken",
       "blocks": [
-        { "type": "stat", "settings": { "value": "95%", "text": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls<sup>1</sup>" } },
-        { "type": "stat", "settings": { "value": "60%", "text": "der Probanten, die mit der aktiven Studienformulierung (Saw Palmetto) behandelt wurden wurden beim letzten Besuch als verbessert beurteilt.<sup>2</sup>" } },
-        { "type": "stat", "settings": { "value": "100%", "text": "der Teilnehmen mit einem Defizit an Biotin erlebten eine Verbesserung des Haarausfalls<sup>3</sup>" } },
+        { "type": "stat", "settings": { "value": "95%", "text": "of participants using AnaGain experienced a reduction in hair loss<sup>1</sup>" } },
+        { "type": "stat", "settings": { "value": "60%", "text": "of subjects treated with the active study formulation (saw palmetto) were rated as improved at last visit.<sup>2</sup>" } },
+        { "type": "stat", "settings": { "value": "100%", "text": "of participants with a biotin deficiency experienced an improvement in hair loss<sup>3</sup>" } },
         { "type": "source", "settings": { "url": "https://onlinelibrary.wiley.com/doi/10.1002/ptr.6528" } },
         { "type": "source", "settings": { "url": "https://pubmed.ncbi.nlm.nih.gov/12006122/" } },
         { "type": "source", "settings": { "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5582478/" } }
