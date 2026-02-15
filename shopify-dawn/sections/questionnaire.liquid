@@ -285,42 +285,31 @@
     {%- endif -%}
     <h2>{% if request.locale.iso_code == 'de' %}Trifft etwas davon auf Dich zu?{% else %}Any of these?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
+    {% assign lbl_yes = 'Yes' %}{% assign lbl_no = 'No' %}{% assign lbl_unsure = 'Not sure' %}
+    {% if request.locale.iso_code == 'de' %}{% assign lbl_yes = 'Ja' %}{% assign lbl_no = 'Nein' %}{% assign lbl_unsure = 'Unsicher' %}{% endif %}
     <div class="quiz-grid" data-key="iron_symptoms">
       <div class="quiz-grid-header">
-        <span></span>
-        <span>{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span>
-        <span>{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span>
-        <span>{% if request.locale.iso_code == 'de' %}Unsicher{% else %}Not sure{% endif %}</span>
+        <span></span><span>{{ lbl_yes }}</span><span>{{ lbl_no }}</span><span>{{ lbl_unsure }}</span>
       </div>
       <div class="quiz-grid-row" data-item="fatigue">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Müdigkeit oder geringe Ausdauer{% else %}Fatigue or low endurance{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="breath">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Kurzatmigkeit bei Belastung{% else %}Shortness of breath on exertion{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="dizziness">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Schwindel{% else %}Dizziness{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="cravings">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Verlangen nach Eis oder Nicht-Nahrungsmitteln{% else %}Craving ice or non-food items{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="nails">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Brüchige oder löffelförmige Nägel{% else %}Brittle nails or spoon-shaped nails{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
     </div>
     <button class="quiz-next-btn" data-next>
@@ -338,34 +327,23 @@
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
     <div class="quiz-grid" data-key="vitd_symptoms">
       <div class="quiz-grid-header">
-        <span></span>
-        <span>{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span>
-        <span>{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span>
-        <span>{% if request.locale.iso_code == 'de' %}Unsicher{% else %}Not sure{% endif %}</span>
+        <span></span><span>{{ lbl_yes }}</span><span>{{ lbl_no }}</span><span>{{ lbl_unsure }}</span>
       </div>
       <div class="quiz-grid-row" data-item="low_sun">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Wenig Sonneneinstrahlung{% else %}Low sun exposure{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="bone_aches">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Knochen- oder Muskelschmerzen{% else %}Bone or muscle aches{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="infections">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Häufige Infektionen{% else %}Frequent infections{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="winter_mood">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Gedrückte Stimmung im Winter{% else %}Low mood in winter{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
     </div>
     <button class="quiz-next-btn" data-next>
@@ -383,34 +361,23 @@
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
     <div class="quiz-grid" data-key="b12_symptoms">
       <div class="quiz-grid-header">
-        <span></span>
-        <span>{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span>
-        <span>{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span>
-        <span>{% if request.locale.iso_code == 'de' %}Unsicher{% else %}Not sure{% endif %}</span>
+        <span></span><span>{{ lbl_yes }}</span><span>{{ lbl_no }}</span><span>{{ lbl_unsure }}</span>
       </div>
       <div class="quiz-grid-row" data-item="tongue">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Brennende Zunge oder Mundgeschwüre{% else %}Burning tongue or mouth sores{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="memory">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Gedächtnis- oder Konzentrationsprobleme{% else %}Memory or concentration issues{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="wound">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Schlechte Wundheilung{% else %}Poor wound healing{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
       <div class="quiz-grid-row" data-item="cold_intolerance">
         <span class="grid-label">{% if request.locale.iso_code == 'de' %}Kälteintoleranz, Verstopfung, trockene Haut{% else %}Cold intolerance, constipation, dry skin{% endif %}</span>
-        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
-        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+        <div class="grid-cells"><span class="grid-cell"><span class="grid-radio" data-val="yes" data-label="{{ lbl_yes }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="no" data-label="{{ lbl_no }}"></span></span><span class="grid-cell"><span class="grid-radio" data-val="unsure" data-label="{{ lbl_unsure }}"></span></span></div>
       </div>
     </div>
     <button class="quiz-next-btn" data-next>
