@@ -1,0 +1,7 @@
+{
+  "layout": "theme.questionnaire",
+  "sections": {
+    "questionnaire": { "type": "questionnaire" }
+  },
+  "order": ["questionnaire"]
+}

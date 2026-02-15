@@ -1,0 +1,265 @@
+(function () {
+  "use strict";
+
+  /* ── State ── */
+  var answers = {};
+  var history = [];
+
+  /* ── Screen order (full flow) ── */
+  var fullFlow = [
+    "intro","q1","q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14","email","review"
+  ];
+
+  /* If user picks "no-loss" on Q1 → skip triage (Q2-Q6) and jump to Q7 */
+  var skipTriageFlow = [
+    "intro","q1","q7","q8","q9","q10","q11","q12","q13","q14","email","review"
+  ];
+
+  function getFlow() {
+    return answers.reason === "no-loss" ? skipTriageFlow : fullFlow;
+  }
+
+  /* ── DOM helpers ── */
+  var wrapper = document.getElementById("quizWrapper");
+  var progressBar = document.getElementById("quizProgress");
+  var backBtn = document.getElementById("quizBack");
+
+  function allScreens() {
+    return wrapper.querySelectorAll(".quiz-screen");
+  }
+
+  function currentScreen() {
+    return wrapper.querySelector(".quiz-screen.active");
+  }
+
+  function screenByName(name) {
+    return wrapper.querySelector('[data-screen="' + name + '"]');
+  }
+
+  /* ── Hide site header/footer ── */
+  document.body.classList.add("quiz-active");
+
+  /* ── Progress ── */
+  function updateProgress() {
+    var flow = getFlow();
+    var cur = currentScreen();
+    var name = cur ? cur.getAttribute("data-screen") : "intro";
+    var idx = flow.indexOf(name);
+    if (idx < 0) idx = 0;
+    var pct = Math.round((idx / (flow.length - 1)) * 100);
+    progressBar.style.width = pct + "%";
+  }
+
+  /* ── Navigate ── */
+  function goTo(screenName) {
+    var cur = currentScreen();
+    if (cur) {
+      var curName = cur.getAttribute("data-screen");
+      if (curName !== screenName) history.push(curName);
+      cur.classList.remove("active");
+    }
+    var next = screenByName(screenName);
+    if (next) {
+      next.classList.remove("active");
+      // Force reflow for animation
+      void next.offsetWidth;
+      next.classList.add("active");
+    }
+    backBtn.classList.toggle("visible", history.length > 0 && screenName !== "review");
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function goNext() {
+    var flow = getFlow();
+    var cur = currentScreen();
+    var name = cur ? cur.getAttribute("data-screen") : "intro";
+    var idx = flow.indexOf(name);
+    if (idx >= 0 && idx < flow.length - 1) {
+      goTo(flow[idx + 1]);
+    }
+  }
+
+  function goBack() {
+    if (history.length === 0) return;
+    var prev = history.pop();
+    var cur = currentScreen();
+    if (cur) cur.classList.remove("active");
+    var prevScreen = screenByName(prev);
+    if (prevScreen) {
+      prevScreen.classList.remove("active");
+      void prevScreen.offsetWidth;
+      prevScreen.classList.add("active");
+    }
+    backBtn.classList.toggle("visible", history.length > 0);
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  /* ── Start button ── */
+  document.getElementById("quizStart").addEventListener("click", function () {
+    goNext();
+  });
+
+  /* ── Back button ── */
+  backBtn.addEventListener("click", goBack);
+
+  /* ── Single-choice options: auto-advance ── */
+  wrapper.addEventListener("click", function (e) {
+    var option = e.target.closest(".quiz-option");
+    if (!option) return;
+
+    var container = option.closest(".quiz-options");
+    if (!container) return;
+
+    var type = container.getAttribute("data-type");
+    var key = container.getAttribute("data-key");
+
+    if (type === "single") {
+      container.querySelectorAll(".quiz-option").forEach(function (o) {
+        o.classList.remove("selected");
+      });
+      option.classList.add("selected");
+      answers[key] = option.getAttribute("data-value");
+
+      /* Show/hide conditional female questions */
+      if (key === "sex") {
+        var femBlock = document.getElementById("femaleQuestions");
+        if (femBlock) {
+          femBlock.classList.toggle("visible", option.getAttribute("data-value") === "female");
+        }
+        return; /* Don't auto-advance from sex selection inside Q7 */
+      }
+
+      /* Don't auto-advance if inside the personal info screen (nested options) */
+      var screen = option.closest(".quiz-screen");
+      if (screen && screen.getAttribute("data-screen") === "q7") return;
+
+      /* Auto-advance after short delay for single-choice top-level questions */
+      setTimeout(goNext, 350);
+
+    } else if (type === "multi") {
+      var isExclusive = option.getAttribute("data-exclusive") === "true";
+      if (isExclusive) {
+        /* "None" deselects everything else */
+        container.querySelectorAll(".quiz-option").forEach(function (o) {
+          o.classList.remove("selected");
+        });
+        option.classList.add("selected");
+      } else {
+        /* Deselect "None" if selecting something else */
+        var noneOpt = container.querySelector('[data-exclusive="true"]');
+        if (noneOpt) noneOpt.classList.remove("selected");
+        option.classList.toggle("selected");
+      }
+      /* Collect values */
+      var vals = [];
+      container.querySelectorAll(".quiz-option.selected").forEach(function (o) {
+        vals.push(o.getAttribute("data-value"));
+      });
+      answers[key] = vals;
+    }
+  });
+
+  /* ── Grid radios (yes/no/not-sure) ── */
+  wrapper.addEventListener("click", function (e) {
+    var radio = e.target.closest(".grid-radio");
+    if (!radio) return;
+
+    var row = radio.closest(".quiz-grid-row");
+    var grid = radio.closest(".quiz-grid");
+    if (!row || !grid) return;
+
+    var key = grid.getAttribute("data-key");
+    var item = row.getAttribute("data-item");
+    var val = radio.getAttribute("data-val");
+
+    /* Deselect siblings */
+    row.querySelectorAll(".grid-radio").forEach(function (r) {
+      r.classList.remove("selected");
+    });
+    radio.classList.add("selected");
+
+    if (!answers[key]) answers[key] = {};
+    answers[key][item] = val;
+  });
+
+  /* ── Next buttons (multi-choice & grid screens) ── */
+  wrapper.querySelectorAll("[data-next]").forEach(function (btn) {
+    btn.addEventListener("click", goNext);
+  });
+
+  /* ── Q7 Continue (validate age) ── */
+  var q7Next = document.getElementById("q7Next");
+  if (q7Next) {
+    q7Next.addEventListener("click", function (e) {
+      var ageInput = document.getElementById("qAge");
+      var age = ageInput ? ageInput.value.trim() : "";
+      if (age) answers.age = age;
+      if (!answers.sex) {
+        e.stopImmediatePropagation();
+        return;
+      }
+    });
+  }
+
+  /* ── Email submit ── */
+  document.getElementById("quizSubmitEmail").addEventListener("click", function () {
+    var emailInput = document.getElementById("qEmail");
+    var emailError = document.getElementById("emailError");
+    var email = emailInput.value.trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailInput.classList.add("error");
+      emailError.style.display = "block";
+      return;
+    }
+
+    emailInput.classList.remove("error");
+    emailError.style.display = "none";
+    answers.email = email;
+
+    /* Send data to Shopify (create customer or use contact form endpoint) */
+    submitQuizData(answers);
+
+    goTo("review");
+    backBtn.classList.remove("visible");
+  });
+
+  /* ── Submit to backend ── */
+  function submitQuizData(data) {
+    /* Try to save via Shopify's customer API (newsletter signup + note) */
+    var formData = new FormData();
+    formData.append("form_type", "customer");
+    formData.append("utf8", "✓");
+    formData.append("customer[email]", data.email);
+    formData.append("customer[tags]", "questionnaire");
+    formData.append("customer[note]", JSON.stringify(data));
+
+    fetch("/contact", {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" }
+    }).catch(function () {
+      /* Fallback: store locally */
+      try {
+        var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
+        stored.push({ timestamp: new Date().toISOString(), data: data });
+        localStorage.setItem("quiz_submissions", JSON.stringify(stored));
+      } catch (e) { /* silent */ }
+    });
+
+    /* Also try Klaviyo if available */
+    if (window._learnq) {
+      window._learnq.push(["identify", {
+        "$email": data.email,
+        "Quiz Reason": data.reason || "",
+        "Quiz Data": JSON.stringify(data)
+      }]);
+      window._learnq.push(["track", "Hair Quiz Completed", data]);
+    }
+  }
+
+  /* ── Initial state ── */
+  updateProgress();
+})();

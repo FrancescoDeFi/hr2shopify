@@ -1,0 +1,494 @@
+{{ 'questionnaire.css' | asset_url | stylesheet_tag }}
+
+{% assign doc_name = section.settings.doctor_name | default: "Dr. XX" %}
+{% assign doc_img = section.settings.doctor_image %}
+
+<div class="quiz-wrapper" id="quizWrapper">
+  <!-- Progress bar -->
+  <div class="quiz-progress"><div class="quiz-progress-fill" id="quizProgress"></div></div>
+
+  <!-- Top bar -->
+  <div class="quiz-topbar">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <button class="quiz-back-btn" id="quizBack" aria-label="Back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      </button>
+      <a class="quiz-logo" href="{{ routes.root_url }}">
+        {%- if settings.logo != blank -%}
+          <img src="{{ settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+        {%- else -%}
+          <img src="{{ 'logosvg.svg' | asset_url }}" alt="{{ shop.name }}">
+        {%- endif -%}
+      </a>
+    </div>
+    <div></div>
+  </div>
+
+  <!-- ════════ INTRO SCREEN ════════ -->
+  <div class="quiz-screen quiz-intro active" data-screen="intro">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo" src="{{ doc_img | image_url: width: 400 }}" alt="{{ doc_name }}">
+    {%- else -%}
+      <div class="doctor-photo" style="background:#e5e5e5;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#999;">👤</div>
+    {%- endif -%}
+    <h1>
+      {% if request.locale.iso_code == 'de' %}
+        Hallo!<br>Ich bin {{ doc_name }},<br>Ärztin bei Hair Squad.
+      {% else %}
+        Hello!<br>I'm {{ doc_name }},<br>physician at Hair Squad.
+      {% endif %}
+    </h1>
+    <p class="quiz-subtitle">
+      {% if request.locale.iso_code == 'de' %}
+        Gern schaue ich, wie wir Dein Haar verbessern können. Ich stelle Dir zunächst ein paar einfache Fragen.
+      {% else %}
+        I'd love to see how we can improve your hair health. Let me ask you a few simple questions first.
+      {% endif %}
+    </p>
+    <button class="quiz-start-btn" id="quizStart">
+      {% if request.locale.iso_code == 'de' %}Los geht's{% else %}Let's go{% endif %}
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ════════ Q1 – What brings you here? ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q1">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Was führt Dich heute hierher?{% else %}What brings you here today?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
+    <div class="quiz-options" data-type="single" data-key="reason">
+      <div class="quiz-option" data-value="losing">
+        <span class="indicator"></span>
+        <span class="option-label">{% if request.locale.iso_code == 'de' %}Ich verliere aktiv Haare (mehr Haarausfall oder Ausdünnung){% else %}I'm actively losing hair (more shedding or thinning){% endif %}</span>
+      </div>
+      <div class="quiz-option" data-value="stable">
+        <span class="indicator"></span>
+        <span class="option-label">{% if request.locale.iso_code == 'de' %}Mein Haarausfall ist stabil, aber ich möchte mögliche Ursachen verstehen{% else %}My hair loss is stable, but I want to understand possible causes{% endif %}</span>
+      </div>
+      <div class="quiz-option" data-value="no-loss">
+        <span class="indicator"></span>
+        <span class="option-label">{% if request.locale.iso_code == 'de' %}Ich verliere keine Haare, ich möchte einfach gesünderes, volleres Haar{% else %}I'm not losing hair, I just want healthier, thicker hair{% endif %}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ Q2 – When did hair loss start? ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q2">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Wann hat der Haarausfall begonnen?{% else %}When did the hair loss start?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
+    <div class="quiz-options" data-type="single" data-key="onset_time">
+      <div class="quiz-option" data-value="<3mo"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Weniger als 3 Monate{% else %}Less than 3 months{% endif %}</span></div>
+      <div class="quiz-option" data-value="3-6mo"><span class="indicator"></span><span class="option-label">3–6 {% if request.locale.iso_code == 'de' %}Monate{% else %}months{% endif %}</span></div>
+      <div class="quiz-option" data-value="6-12mo"><span class="indicator"></span><span class="option-label">6–12 {% if request.locale.iso_code == 'de' %}Monate{% else %}months{% endif %}</span></div>
+      <div class="quiz-option" data-value=">12mo"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Mehr als 12 Monate{% else %}More than 12 months{% endif %}</span></div>
+    </div>
+  </div>
+
+  <!-- ════════ Q3 – How did it start? ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q3">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Wie hat es angefangen?{% else %}How did it start?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
+    <div class="quiz-options" data-type="single" data-key="onset_type">
+      <div class="quiz-option" data-value="sudden"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Plötzlich{% else %}Sudden{% endif %}</span></div>
+      <div class="quiz-option" data-value="gradual"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Allmählich{% else %}Gradual{% endif %}</span></div>
+    </div>
+  </div>
+
+  <!-- ════════ Q4 – Main pattern ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q4">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Was ist das Hauptmuster?{% else %}What is the main pattern?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
+    <div class="quiz-options" data-type="single" data-key="pattern">
+      <div class="quiz-option" data-value="diffuse"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Diffuses Ausdünnen überall{% else %}Diffuse thinning all over{% endif %}</span></div>
+      <div class="quiz-option" data-value="shedding"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Mehr Haarausfall als üblich (mehr Haare in Dusche/Bürste){% else %}More shedding than usual (more hair in shower/brush){% endif %}</span></div>
+      <div class="quiz-option" data-value="widening"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Breiter werdender Scheitel oder Ausdünnung am Oberkopf{% else %}Widening part or crown thinning{% endif %}</span></div>
+      <div class="quiz-option" data-value="receding"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Zurückweichender Haaransatz/Schläfen{% else %}Receding hairline/temples{% endif %}</span></div>
+      <div class="quiz-option" data-value="patchy"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Fleckige kahle Stellen{% else %}Patchy bald spots{% endif %}</span></div>
+    </div>
+  </div>
+
+  <!-- ════════ Q5 – Scalp symptoms ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q5">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Hast Du Kopfhaut-Symptome?{% else %}Do you have scalp symptoms?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle alle zutreffenden aus.{% else %}Select all that apply.{% endif %}</p>
+    <div class="quiz-options" data-type="multi" data-key="scalp_symptoms" data-has-none="true">
+      <div class="quiz-option" data-value="itch"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Juckreiz{% else %}Itch{% endif %}</span></div>
+      <div class="quiz-option" data-value="burning"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Brennen{% else %}Burning{% endif %}</span></div>
+      <div class="quiz-option" data-value="pain"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Schmerzen{% else %}Pain{% endif %}</span></div>
+      <div class="quiz-option" data-value="dandruff"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Schuppen{% else %}Dandruff{% endif %}</span></div>
+      <div class="quiz-option" data-value="redness"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Rötung{% else %}Redness{% endif %}</span></div>
+      <div class="quiz-option" data-value="pimples"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Pickel{% else %}Pimples{% endif %}</span></div>
+      <div class="quiz-option" data-value="none" data-exclusive="true"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Keine{% else %}None{% endif %}</span></div>
+    </div>
+    <button class="quiz-next-btn" data-next>
+      {% if request.locale.iso_code == 'de' %}Weiter{% else %}Continue{% endif %}
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ════════ Q6 – Breakage vs shedding ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q6">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Haarbruch oder Haarausfall von der Wurzel?{% else %}Hair breakage or shedding from the root?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
+    <div class="quiz-options" data-type="single" data-key="breakage_vs_shedding">
+      <div class="quiz-option" data-value="breakage"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Hauptsächlich Haarbruch{% else %}Mostly breakage{% endif %}</span></div>
+      <div class="quiz-option" data-value="shedding"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Hauptsächlich Haarausfall{% else %}Mostly shedding{% endif %}</span></div>
+      <div class="quiz-option" data-value="both"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Beides{% else %}Both{% endif %}</span></div>
+      <div class="quiz-option" data-value="unsure"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Nicht sicher{% else %}Not sure{% endif %}</span></div>
+    </div>
+  </div>
+
+  <!-- ════════ Q7 – Personal basics ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q7">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Erzähl mir etwas über Dich{% else %}Tell me about yourself{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Grundlegende Informationen{% else %}Basic information{% endif %}</p>
+
+    <div class="quiz-options" style="max-width:380px;margin:0 auto;">
+      <!-- Age -->
+      <div class="quiz-input-group" style="margin-bottom:16px;">
+        <label for="qAge">{% if request.locale.iso_code == 'de' %}Alter{% else %}Age{% endif %}</label>
+        <input class="quiz-input" type="number" id="qAge" min="10" max="120" placeholder="{% if request.locale.iso_code == 'de' %}Dein Alter{% else %}Your age{% endif %}" data-key="age">
+      </div>
+
+      <!-- Sex at birth -->
+      <div class="quiz-input-group" style="margin-bottom:16px;">
+        <label>{% if request.locale.iso_code == 'de' %}Geschlecht bei Geburt{% else %}Sex at birth{% endif %}</label>
+        <div class="quiz-options" data-type="single" data-key="sex" style="gap:8px;">
+          <div class="quiz-option" data-value="female"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Weiblich{% else %}Female{% endif %}</span></div>
+          <div class="quiz-option" data-value="male"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Männlich{% else %}Male{% endif %}</span></div>
+        </div>
+      </div>
+
+      <!-- Conditional: Female questions -->
+      <div class="conditional-group" id="femaleQuestions">
+        <div class="quiz-input-group" style="margin-bottom:16px;">
+          <label>{% if request.locale.iso_code == 'de' %}Bist Du derzeit schwanger oder stillst Du?{% else %}Are you currently pregnant or breastfeeding?{% endif %}</label>
+          <div class="quiz-options" data-type="single" data-key="pregnant" style="gap:8px;">
+            <div class="quiz-option" data-value="yes"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span></div>
+            <div class="quiz-option" data-value="no"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span></div>
+          </div>
+        </div>
+        <div class="quiz-input-group" style="margin-bottom:16px;">
+          <label>{% if request.locale.iso_code == 'de' %}Warst Du in den letzten 12 Monaten postpartum?{% else %}In the last 12 months, have you been postpartum?{% endif %}</label>
+          <div class="quiz-options" data-type="single" data-key="postpartum" style="gap:8px;">
+            <div class="quiz-option" data-value="yes"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span></div>
+            <div class="quiz-option" data-value="no"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span></div>
+          </div>
+        </div>
+        <div class="quiz-input-group" style="margin-bottom:16px;">
+          <label>{% if request.locale.iso_code == 'de' %}Wenn Du menstruierst – Zyklen:{% else %}If you menstruate – Cycles:{% endif %}</label>
+          <div class="quiz-options" data-type="single" data-key="cycles" style="gap:8px;">
+            <div class="quiz-option" data-value="regular"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Regelmäßig{% else %}Regular{% endif %}</span></div>
+            <div class="quiz-option" data-value="irregular"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Unregelmäßig{% else %}Irregular{% endif %}</span></div>
+            <div class="quiz-option" data-value="na"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Nicht zutreffend{% else %}Not applicable{% endif %}</span></div>
+          </div>
+        </div>
+        <div class="quiz-input-group" style="margin-bottom:16px;">
+          <label>{% if request.locale.iso_code == 'de' %}Blutung:{% else %}Bleeding:{% endif %}</label>
+          <div class="quiz-options" data-type="single" data-key="bleeding" style="gap:8px;">
+            <div class="quiz-option" data-value="light"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Leicht{% else %}Light{% endif %}</span></div>
+            <div class="quiz-option" data-value="normal"><span class="indicator"></span><span class="option-label">Normal</span></div>
+            <div class="quiz-option" data-value="heavy"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Stark{% else %}Heavy{% endif %}</span></div>
+            <div class="quiz-option" data-value="very-heavy"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Sehr stark{% else %}Very heavy{% endif %}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="quiz-next-btn" data-next id="q7Next">
+      {% if request.locale.iso_code == 'de' %}Weiter{% else %}Continue{% endif %}
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ════════ Q8 – Diet pattern ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q8">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Wie ernährst Du Dich?{% else %}What is your diet pattern?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
+    <div class="quiz-options" data-type="single" data-key="diet">
+      <div class="quiz-option" data-value="omnivore"><span class="indicator"></span><span class="option-label">Omnivore</span></div>
+      <div class="quiz-option" data-value="pescatarian"><span class="indicator"></span><span class="option-label">Pescatarian</span></div>
+      <div class="quiz-option" data-value="vegetarian"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Vegetarisch{% else %}Vegetarian{% endif %}</span></div>
+      <div class="quiz-option" data-value="vegan"><span class="indicator"></span><span class="option-label">Vegan</span></div>
+    </div>
+  </div>
+
+  <!-- ════════ Q9 – Dieted recently? ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q9">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Hast Du in den letzten 6 Monaten eine Diät gemacht oder Kalorien eingeschränkt?{% else %}In the last 6 months, have you dieted or restricted calories?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
+    <div class="quiz-options" data-type="single" data-key="dieted">
+      <div class="quiz-option" data-value="yes"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span></div>
+      <div class="quiz-option" data-value="no"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span></div>
+    </div>
+  </div>
+
+  <!-- ════════ Q10 – Sun exposure ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q10">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Wie viel Sonne bekommst Du?{% else %}How much sun exposure do you get?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
+    <div class="quiz-options" data-type="single" data-key="sun">
+      <div class="quiz-option" data-value="most-days"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Die meisten Tage > 15 Min.{% else %}Most days > 15 min{% endif %}</span></div>
+      <div class="quiz-option" data-value="1-3-week"><span class="indicator"></span><span class="option-label">1–3 {% if request.locale.iso_code == 'de' %}mal pro Woche{% else %}times/week{% endif %}</span></div>
+      <div class="quiz-option" data-value="rarely"><span class="indicator"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Selten{% else %}Rarely{% endif %}</span></div>
+    </div>
+  </div>
+
+  <!-- ════════ Q11 – Dietary exclusions ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q11">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Hast Du diätbedingte Ausschlüsse?{% else %}Any of these dietary exclusions?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle alle zutreffenden aus.{% else %}Select all that apply.{% endif %}</p>
+    <div class="quiz-options" data-type="multi" data-key="exclusions" data-has-none="true">
+      <div class="quiz-option" data-value="gluten-free"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Glutenfrei{% else %}Gluten free{% endif %}</span></div>
+      <div class="quiz-option" data-value="dairy-free"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Milchfrei{% else %}Dairy free{% endif %}</span></div>
+      <div class="quiz-option" data-value="low-fat"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Fettarm{% else %}Low fat{% endif %}</span></div>
+      <div class="quiz-option" data-value="low-carb"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Sehr kohlenhydratarm{% else %}Very low carb{% endif %}</span></div>
+      <div class="quiz-option" data-value="none" data-exclusive="true"><span class="indicator checkbox"></span><span class="option-label">{% if request.locale.iso_code == 'de' %}Keine{% else %}None{% endif %}</span></div>
+    </div>
+    <button class="quiz-next-btn" data-next>
+      {% if request.locale.iso_code == 'de' %}Weiter{% else %}Continue{% endif %}
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ════════ Q12 – Iron deficiency symptoms ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q12">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Trifft etwas davon auf Dich zu?{% else %}Any of these?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
+    <div class="quiz-grid" data-key="iron_symptoms">
+      <div class="quiz-grid-header">
+        <span></span>
+        <span>{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span>
+        <span>{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span>
+        <span>{% if request.locale.iso_code == 'de' %}Unsicher{% else %}Not sure{% endif %}</span>
+      </div>
+      <div class="quiz-grid-row" data-item="fatigue">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Müdigkeit oder geringe Ausdauer{% else %}Fatigue or low endurance{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="breath">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Kurzatmigkeit bei Belastung{% else %}Shortness of breath on exertion{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="dizziness">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Schwindel{% else %}Dizziness{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="cravings">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Verlangen nach Eis oder Nicht-Nahrungsmitteln{% else %}Craving ice or non-food items{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="nails">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Brüchige oder löffelförmige Nägel{% else %}Brittle nails or spoon-shaped nails{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+    </div>
+    <button class="quiz-next-btn" data-next>
+      {% if request.locale.iso_code == 'de' %}Weiter{% else %}Continue{% endif %}
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ════════ Q13 – Vitamin D symptoms ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q13">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Trifft etwas davon auf Dich zu?{% else %}Any of these?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
+    <div class="quiz-grid" data-key="vitd_symptoms">
+      <div class="quiz-grid-header">
+        <span></span>
+        <span>{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span>
+        <span>{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span>
+        <span>{% if request.locale.iso_code == 'de' %}Unsicher{% else %}Not sure{% endif %}</span>
+      </div>
+      <div class="quiz-grid-row" data-item="low_sun">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Wenig Sonneneinstrahlung{% else %}Low sun exposure{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="bone_aches">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Knochen- oder Muskelschmerzen{% else %}Bone or muscle aches{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="infections">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Häufige Infektionen{% else %}Frequent infections{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="winter_mood">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Gedrückte Stimmung im Winter{% else %}Low mood in winter{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+    </div>
+    <button class="quiz-next-btn" data-next>
+      {% if request.locale.iso_code == 'de' %}Weiter{% else %}Continue{% endif %}
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ════════ Q14 – B12 / other symptoms ════════ -->
+  <div class="quiz-screen quiz-question" data-screen="q14">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
+    {%- endif -%}
+    <h2>{% if request.locale.iso_code == 'de' %}Und zum Schluss – trifft etwas davon zu?{% else %}And lastly – any of these?{% endif %}</h2>
+    <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
+    <div class="quiz-grid" data-key="b12_symptoms">
+      <div class="quiz-grid-header">
+        <span></span>
+        <span>{% if request.locale.iso_code == 'de' %}Ja{% else %}Yes{% endif %}</span>
+        <span>{% if request.locale.iso_code == 'de' %}Nein{% else %}No{% endif %}</span>
+        <span>{% if request.locale.iso_code == 'de' %}Unsicher{% else %}Not sure{% endif %}</span>
+      </div>
+      <div class="quiz-grid-row" data-item="tongue">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Brennende Zunge oder Mundgeschwüre{% else %}Burning tongue or mouth sores{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="memory">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Gedächtnis- oder Konzentrationsprobleme{% else %}Memory or concentration issues{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="wound">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Schlechte Wundheilung{% else %}Poor wound healing{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+      <div class="quiz-grid-row" data-item="cold_intolerance">
+        <span class="grid-label">{% if request.locale.iso_code == 'de' %}Kälteintoleranz, Verstopfung, trockene Haut{% else %}Cold intolerance, constipation, dry skin{% endif %}</span>
+        <span class="grid-cell"><span class="grid-radio" data-val="yes"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="no"></span></span>
+        <span class="grid-cell"><span class="grid-radio" data-val="unsure"></span></span>
+      </div>
+    </div>
+    <button class="quiz-next-btn" data-next>
+      {% if request.locale.iso_code == 'de' %}Weiter{% else %}Continue{% endif %}
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <!-- ════════ EMAIL SCREEN ════════ -->
+  <div class="quiz-screen quiz-email-screen" data-screen="email">
+    <div class="quiz-email-card">
+      <h2>
+        {% if request.locale.iso_code == 'de' %}Vielen Dank!{% else %}Thank you!{% endif %}
+      </h2>
+      <p class="email-subtitle">
+        {% if request.locale.iso_code == 'de' %}
+          Ich habe Deine Antworten erhalten. Bitte gib Deine E-Mail-Adresse ein, damit wir Dir Deine persönliche Haar-Empfehlung senden können.
+        {% else %}
+          I've received your answers. Please enter your email so we can send you your personalized hair recommendation.
+        {% endif %}
+      </p>
+      <div class="quiz-input-group" style="margin-bottom:16px;">
+        <label for="qEmail">E-Mail</label>
+        <input class="quiz-input" type="email" id="qEmail" placeholder="{% if request.locale.iso_code == 'de' %}Deine E-Mail-Adresse{% else %}Your email address{% endif %}">
+        <p class="quiz-error-text" id="emailError" style="display:none;">{% if request.locale.iso_code == 'de' %}Erforderlich{% else %}Required{% endif %}</p>
+      </div>
+      <button class="quiz-next-btn" id="quizSubmitEmail" style="max-width:100%;">
+        {% if request.locale.iso_code == 'de' %}Speichern und weiter{% else %}Save and continue{% endif %}
+        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ════════ REVIEW SCREEN ════════ -->
+  <div class="quiz-screen quiz-review-screen" data-screen="review">
+    <div class="quiz-spinner"></div>
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo" src="{{ doc_img | image_url: width: 400 }}" alt="{{ doc_name }}" style="width:120px;height:120px;">
+    {%- endif -%}
+    <h2>
+      {% if request.locale.iso_code == 'de' %}
+        {{ doc_name }} prüft Deine Angaben
+      {% else %}
+        {{ doc_name }} is reviewing your information
+      {% endif %}
+    </h2>
+    <p>
+      {% if request.locale.iso_code == 'de' %}
+        Wir melden uns in Kürze bei Dir. Vielen Dank für Dein Vertrauen!
+      {% else %}
+        We will get back in touch with you shortly. Thank you for your trust!
+      {% endif %}
+    </p>
+  </div>
+</div>
+
+<script src="{{ 'questionnaire.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Questionnaire",
+  "settings": [
+    {
+      "type": "text",
+      "id": "doctor_name",
+      "label": "Doctor Name",
+      "default": "Dr. XX"
+    },
+    {
+      "type": "image_picker",
+      "id": "doctor_image",
+      "label": "Doctor Photo"
+    }
+  ]
+}
+{% endschema %}
