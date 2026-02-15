@@ -263,28 +263,88 @@
     backBtn.classList.remove("visible");
   });
 
-  /* ── Submit to backend via Shopify contact form ── */
+  /* ── Format answers into readable text ── */
+  function formatAnswers(data) {
+    var lines = [];
+    lines.push("=== HAIR QUIZ SUBMISSION ===");
+    lines.push("Date: " + new Date().toISOString());
+    lines.push("Email: " + (data.email || ""));
+    lines.push("");
+
+    var labels = {
+      reason: "What brings you here",
+      onset_time: "When did hair loss start",
+      onset_type: "How did it start",
+      pattern: "Main pattern",
+      scalp_symptoms: "Scalp symptoms",
+      breakage_vs_shedding: "Breakage vs shedding",
+      age: "Age",
+      sex: "Sex at birth",
+      pregnant: "Pregnant or breastfeeding",
+      postpartum: "Postpartum in last 12 months",
+      cycles: "Menstrual cycles",
+      bleeding: "Bleeding",
+      diet: "Diet pattern",
+      dieted: "Dieted in last 6 months",
+      sun: "Sun exposure",
+      exclusions: "Dietary exclusions",
+      iron_symptoms: "Iron deficiency symptoms",
+      vitd_symptoms: "Vitamin D symptoms",
+      b12_symptoms: "B12 / other symptoms"
+    };
+
+    Object.keys(labels).forEach(function (key) {
+      if (data[key] === undefined) return;
+      var val = data[key];
+      if (Array.isArray(val)) {
+        val = val.join(", ");
+      } else if (typeof val === "object" && val !== null) {
+        var parts = [];
+        Object.keys(val).forEach(function (k) {
+          parts.push(k + ": " + val[k]);
+        });
+        val = parts.join(", ");
+      }
+      lines.push(labels[key] + ": " + val);
+    });
+
+    return lines.join("\n");
+  }
+
+  /* ── Submit to backend ── */
   function submitQuizData(data) {
     /*
-     * Shopify built-in contact form: posts to /contact
-     * Creates a "form submission" visible in Shopify Admin → Customers → (or) Settings → Notifications
-     * The email + all quiz answers are stored as a customer record with the "questionnaire" tag
-     * and all answers in the customer note field.
-     *
-     * You can also see submissions under:
-     *   Shopify Admin → Online Store → Pages → (your quiz page) → Form submissions
-     *   OR Shopify Admin → Customers (search by tag "questionnaire")
+     * Two submissions:
+     * 1. Create customer (email + marketing opt-in)
+     * 2. Contact form with all quiz answers → appears in:
+     *    - Shopify Admin → Settings → Notifications (store email)
+     *    - Shopify Inbox
+     *    The "body" field contains all formatted answers.
      */
-    var formData = new FormData();
-    formData.append("form_type", "customer");
-    formData.append("utf8", "\u2713");
-    formData.append("customer[email]", data.email);
-    formData.append("customer[tags]", "questionnaire");
-    formData.append("customer[note]", JSON.stringify(data, null, 2));
+
+    /* 1. Create customer */
+    var custForm = new FormData();
+    custForm.append("form_type", "customer");
+    custForm.append("utf8", "\u2713");
+    custForm.append("customer[email]", data.email);
 
     fetch("/contact", {
       method: "POST",
-      body: formData,
+      body: custForm,
+      headers: { Accept: "application/json" }
+    }).catch(function () {});
+
+    /* 2. Submit contact form with all answers */
+    var contactForm = new FormData();
+    contactForm.append("form_type", "contact");
+    contactForm.append("utf8", "\u2713");
+    contactForm.append("contact[email]", data.email);
+    contactForm.append("contact[subject]", "Hair Quiz Submission - " + data.email);
+    contactForm.append("contact[body]", formatAnswers(data));
+
+    fetch("/contact", {
+      method: "POST",
+      body: contactForm,
       headers: { Accept: "application/json" }
     }).catch(function () {
       /* Fallback: store locally so data is not lost */
