@@ -1,32 +1,92 @@
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
+
+{% assign causes_heading = section.settings.heading %}
+{% if use_locale_copy or causes_heading == blank %}
+  {% assign causes_heading = 'sections.causes.heading' | t %}
+{% endif %}
+
+{% assign causes_subheading = section.settings.subheading %}
+{% if use_locale_copy or causes_subheading == blank %}
+  {% assign causes_subheading = 'sections.causes.subheading' | t %}
+{% endif %}
+
+{% assign causes_caption = section.settings.caption %}
+{% if use_locale_copy or causes_caption == blank %}
+  {% assign causes_caption = 'sections.causes.caption' | t %}
+{% endif %}
+
 <section class="causes" aria-labelledby="causes-title">
   <div class="causes-inner">
     <header class="causes-header">
-      <h2 id="causes-title">{{ section.settings.heading | default: 'DEIN HAARAUSFALL MUSS NICHT DEM ZUFALL ÜBERLASSEN WERDEN.' }}</h2>
-      <p class="causes-sub">{{ section.settings.subheading | default: 'Männerhaar wird aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde.' }}</p>
+      <h2 id="causes-title">{{ causes_heading }}</h2>
+      <p class="causes-sub">{{ causes_subheading }}</p>
     </header>
 
     <div class="causes-grid">
-      <div class="causes-accordion" role="tablist" aria-label="Ursachen">
+      <div class="causes-accordion" role="tablist" aria-label="{{ 'sections.causes.aria.tablist' | t }}">
         {% for block in section.blocks %}
           {% if block.type == 'cause' %}
             {% assign is_active = false %}
             {% if block.settings.default_open %}
               {% assign is_active = true %}
             {% endif %}
+            {% assign cause_title = block.settings.title %}
+            {% assign cause_description = block.settings.description %}
+            {% if use_locale_copy %}
+              {% case block.settings.cause_id %}
+                {% when 'stress' %}
+                  {% assign cause_title = 'sections.causes.items.stress.title' | t %}
+                  {% assign cause_description = 'sections.causes.items.stress.description' | t %}
+                {% when 'hormones' %}
+                  {% assign cause_title = 'sections.causes.items.hormones.title' | t %}
+                  {% assign cause_description = 'sections.causes.items.hormones.description' | t %}
+                {% when 'dht' %}
+                  {% assign cause_title = 'sections.causes.items.dht.title' | t %}
+                  {% assign cause_description = 'sections.causes.items.dht.description' | t %}
+                {% when 'nutrition' %}
+                  {% assign cause_title = 'sections.causes.items.nutrition.title' | t %}
+                  {% assign cause_description = 'sections.causes.items.nutrition.description' | t %}
+                {% when 'aging' %}
+                  {% assign cause_title = 'sections.causes.items.aging.title' | t %}
+                  {% assign cause_description = 'sections.causes.items.aging.description' | t %}
+              {% endcase %}
+            {% elsif cause_title == blank or cause_description == blank %}
+              {% case block.settings.cause_id %}
+                {% when 'stress' %}
+                  {% if cause_title == blank %}{% assign cause_title = 'sections.causes.items.stress.title' | t %}{% endif %}
+                  {% if cause_description == blank %}{% assign cause_description = 'sections.causes.items.stress.description' | t %}{% endif %}
+                {% when 'hormones' %}
+                  {% if cause_title == blank %}{% assign cause_title = 'sections.causes.items.hormones.title' | t %}{% endif %}
+                  {% if cause_description == blank %}{% assign cause_description = 'sections.causes.items.hormones.description' | t %}{% endif %}
+                {% when 'dht' %}
+                  {% if cause_title == blank %}{% assign cause_title = 'sections.causes.items.dht.title' | t %}{% endif %}
+                  {% if cause_description == blank %}{% assign cause_description = 'sections.causes.items.dht.description' | t %}{% endif %}
+                {% when 'nutrition' %}
+                  {% if cause_title == blank %}{% assign cause_title = 'sections.causes.items.nutrition.title' | t %}{% endif %}
+                  {% if cause_description == blank %}{% assign cause_description = 'sections.causes.items.nutrition.description' | t %}{% endif %}
+                {% when 'aging' %}
+                  {% if cause_title == blank %}{% assign cause_title = 'sections.causes.items.aging.title' | t %}{% endif %}
+                  {% if cause_description == blank %}{% assign cause_description = 'sections.causes.items.aging.description' | t %}{% endif %}
+              {% endcase %}
+            {% endif %}
             <div class="cause-item" {{ block.shopify_attributes }}>
               <button class="cause-btn{% if is_active %} active{% endif %}" type="button" role="tab" aria-selected="{{ is_active }}" aria-expanded="{{ is_active }}" data-cause="{{ block.settings.cause_id }}">
-                <span class="cause-label">{{ block.settings.title }}</span>
+                <span class="cause-label">{{ cause_title }}</span>
                 <span class="cause-icon" aria-hidden="true">{% if is_active %}−{% else %}+{% endif %}</span>
               </button>
               <div class="cause-body{% if is_active %} open{% endif %}" role="tabpanel">
-                {{ block.settings.description }}
+                {{ cause_description }}
               </div>
             </div>
           {% endif %}
         {% endfor %}
       </div>
 
-      <figure class="causes-visual" aria-label="Ursachen-Visualisierung">
+      <figure class="causes-visual" aria-label="{{ 'sections.causes.aria.visual' | t }}">
         {% if section.settings.video_url != blank %}
           <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" poster="{{ section.settings.poster_image | image_url: width: 600 | default: 'causes-haarwurzel.png' | asset_url }}">
             <source src="{{ section.settings.video_url }}" type="video/mp4">
@@ -37,7 +97,7 @@
           </video>
         {% endif %}
         <figcaption class="causes-caption">
-          {{ section.settings.caption | default: 'Der Körper braucht Nährstoffe zur Versorgung und zur Unterstützung eines gesunden Haarwachstumszyklus. Diese Nährstoffe können z. B. durch eine unausgewogene Ernährung reduziert werden – das kann Haarstärke und allgemeine Gesundheit beeinflussen.' }}
+          {{ causes_caption }}
         </figcaption>
       </figure>
     </div>

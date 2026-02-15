@@ -1,21 +1,90 @@
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
+
+{% assign quality_heading = section.settings.heading %}
+{% if use_locale_copy or quality_heading == blank %}
+  {% assign quality_heading = 'sections.quality.heading' | t %}
+{% endif %}
+
+{% assign quality_description = section.settings.description %}
+{% if use_locale_copy or quality_description == blank %}
+  {% assign quality_description = 'sections.quality.description' | t %}
+{% endif %}
+
+{% assign quality_link_text = section.settings.link_text %}
+{% if use_locale_copy or quality_link_text == blank %}
+  {% assign quality_link_text = 'sections.quality.cta' | t %}
+{% endif %}
+
 <section class="quality">
-  <div class="quality-inner">
   <div class="quality-left">
-    <h2>{{ section.settings.heading | default: 'Unabhängig getestet für alle, die alles geben' }}</h2>
-    <p>{{ section.settings.description | default: 'Unsere Qualitätsstandards beginnen bei der Rohstoffauswahl und enden nicht bei der Kapsel. Jede Charge wird zusätzlich hausintern mikrobiologisch analysiert und nach strengen Standards geprüft – damit Hr² hält, was es verspricht.' }}</p>
-    <a class="link-arrow" href="{{ section.settings.link_url | default: pages['forschung'].url | default: '/pages/forschung' }}#sec-05">{{ section.settings.link_text | default: 'Mehr zu unseren Tests →' }}</a>
+    <h2>{{ quality_heading }}</h2>
+    <p>{{ quality_description }}</p>
+    <a class="link-arrow" href="{{ section.settings.link_url | default: pages['forschung'].url | default: '/pages/forschung' }}#sec-05">{{ quality_link_text }}</a>
     <ul class="quality-list">
       {% for block in section.blocks %}
         {% if block.type == 'feature' %}
-          <li {{ block.shopify_attributes }}>✓ {{ block.settings.text }}</li>
+          {% assign feature_text = block.settings.text %}
+          {% if use_locale_copy %}
+            {% case forloop.index %}
+              {% when 1 %}
+                {% assign feature_text = 'sections.quality.features.feature_1' | t %}
+              {% when 2 %}
+                {% assign feature_text = 'sections.quality.features.feature_2' | t %}
+              {% when 3 %}
+                {% assign feature_text = 'sections.quality.features.feature_3' | t %}
+            {% endcase %}
+          {% elsif feature_text == blank %}
+            {% case forloop.index %}
+              {% when 1 %}
+                {% assign feature_text = 'sections.quality.features.feature_1' | t %}
+              {% when 2 %}
+                {% assign feature_text = 'sections.quality.features.feature_2' | t %}
+              {% when 3 %}
+                {% assign feature_text = 'sections.quality.features.feature_3' | t %}
+            {% endcase %}
+          {% endif %}
+          <li {{ block.shopify_attributes }}>✓ {{ feature_text }}</li>
         {% endif %}
       {% endfor %}
     </ul>
   </div>
 
-  <div class="quality-badges" role="list" aria-label="Qualitätsstandards">
+  <div class="quality-badges" role="list" aria-label="{{ 'sections.quality.aria.standards' | t }}">
     {% for block in section.blocks %}
       {% if block.type == 'badge' %}
+        {% assign badge_label = block.settings.label %}
+        {% if use_locale_copy or badge_label == blank %}
+          {% case block.settings.icon %}
+            {% when 'vegan' %}
+              {% assign badge_label = 'sections.quality.badges.vegan' | t %}
+            {% when 'gluten' %}
+              {% assign badge_label = 'sections.quality.badges.gluten' | t %}
+            {% when 'dairy' %}
+              {% assign badge_label = 'sections.quality.badges.dairy' | t %}
+            {% when 'soy' %}
+              {% assign badge_label = 'sections.quality.badges.soy' | t %}
+            {% when 'nut' %}
+              {% assign badge_label = 'sections.quality.badges.nut' | t %}
+            {% when 'shellfish' %}
+              {% assign badge_label = 'sections.quality.badges.shellfish' | t %}
+            {% when 'sesame' %}
+              {% assign badge_label = 'sections.quality.badges.sesame' | t %}
+            {% when 'corn' %}
+              {% assign badge_label = 'sections.quality.badges.corn' | t %}
+            {% when 'glyphosate' %}
+              {% assign badge_label = 'sections.quality.badges.glyphosate' | t %}
+            {% when 'no_fillers' %}
+              {% assign badge_label = 'sections.quality.badges.no_fillers' | t %}
+            {% when 'no_preservatives' %}
+              {% assign badge_label = 'sections.quality.badges.no_preservatives' | t %}
+            {% when 'heavy_metals' %}
+              {% assign badge_label = 'sections.quality.badges.heavy_metals' | t %}
+          {% endcase %}
+        {% endif %}
         <div class="quality-badge" role="listitem" {{ block.shopify_attributes }}>
           {% case block.settings.icon %}
             {% when 'vegan' %}
@@ -93,11 +162,10 @@
                 <path d="M18 16h12a4 4 0 0 1 4 4v4a10 10 0 0 1-10 10h0a10 10 0 0 1-10-10v-4a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
               </svg>
           {% endcase %}
-          <span>{{ block.settings.label }}</span>
+          <span>{{ badge_label }}</span>
         </div>
       {% endif %}
     {% endfor %}
-  </div>
   </div>
 </section>
 

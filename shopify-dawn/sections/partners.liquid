@@ -1,20 +1,30 @@
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign partners_heading = section.settings.heading %}
+{% unless locale_prefix == 'de' %}
+  {% assign partners_heading = 'sections.partners.kicker' | t %}
+{% else %}
+  {% if partners_heading == blank %}
+    {% assign partners_heading = 'sections.partners.kicker' | t %}
+  {% endif %}
+{% endunless %}
+
 <section class="partners" aria-labelledby="partners-title">
   <div class="partners-inner">
-    <p class="partners-kicker" id="partners-title">{{ section.settings.heading | default: 'Formuliert von Wissenschaftler:innen dieser Institutionen' }}</p>
-    <div class="partners-logos" role="list" aria-label="Partnerinstitutionen">
+    <p class="partners-kicker" id="partners-title">{{ partners_heading }}</p>
+    <div class="partners-logos" role="list" aria-label="{{ 'sections.partners.aria.logos' | t }}">
       {% for block in section.blocks %}
         {% if block.type == 'partner' %}
           <div class="partner-logo" role="listitem" aria-label="{{ block.settings.name }}" {{ block.shopify_attributes }}>
             {% if block.settings.logo != blank %}
               <img class="partner-img {% if block.settings.is_png %}is-png{% endif %} {% if block.settings.on_dark %}on-dark{% endif %}"
                    src="{{ block.settings.logo | image_url: width: 200 }}"
-                   alt="Logo von {{ block.settings.name }}"
+                   alt="{{ 'sections.partners.aria.logo_alt' | t: name: block.settings.name }}"
                    loading="lazy"
                    decoding="async">
             {% elsif block.settings.asset_filename != blank %}
               <img class="partner-img {% if block.settings.is_png %}is-png{% endif %} {% if block.settings.on_dark %}on-dark{% endif %}"
                    src="{{ block.settings.asset_filename | asset_url }}"
-                   alt="Logo von {{ block.settings.name }}"
+                   alt="{{ 'sections.partners.aria.logo_alt' | t: name: block.settings.name }}"
                    loading="lazy"
                    decoding="async">
             {% endif %}

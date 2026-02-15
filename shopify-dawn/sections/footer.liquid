@@ -1,8 +1,7 @@
-<footer class="footer" aria-label="{{ 'theme.footer.label' | t }}">
-  {%- assign current_year = 'now' | date: '%Y' -%}
+<footer class="footer" aria-label="Footer">
   <div class="footer-top">
     <div class="footer-col footer-contact">
-      <h5>{{ 'theme.footer.contact_title' | t }}</h5>
+      <h5>{{ 'footer.contact_title' | t }}</h5>
 
       <div class="footer-contact-list">
         <div class="footer-contact-item">
@@ -12,44 +11,44 @@
           </svg>
           <div>
             <a class="footer-link" href="mailto:info@gethr2.com">info@gethr2.com</a>
-            <div class="footer-muted">{{ 'theme.footer.contact_help' | t }}</div>
+            <div class="footer-muted">{{ 'footer.contact_blurb' | t }}</div>
           </div>
         </div>
       </div>
 
       <p class="footer-disclaimer">
-        {{ 'theme.footer.disclaimer' | t }}
+        {{ 'footer.disclaimer' | t }}
       </p>
     </div>
 
     <div class="footer-col">
-      <h5>{{ 'theme.footer.product_title' | t }}</h5>
-      <a class="footer-link" href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'theme.header.ingredients' | t }}</a>
-      <a class="footer-link" href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'theme.header.research' | t }}</a>
+      <h5>{{ 'footer.product_title' | t }}</h5>
+      <a class="footer-link" href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'footer.links.inhaltsstoffe' | t }}</a>
+      <a class="footer-link" href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'footer.links.forschung' | t }}</a>
     </div>
 
     <div class="footer-col">
-      <h5>{{ 'theme.footer.legal_title' | t }}</h5>
-      <a class="footer-link" href="{{ pages['datenschutz'].url | default: '/pages/datenschutz' }}">{{ 'theme.footer.privacy' | t }}</a>
-      <a class="footer-link" href="{{ pages['agb'].url | default: '/pages/agb' }}">{{ 'theme.footer.terms' | t }}</a>
-      <a class="footer-link" href="{{ pages['widerruf'].url | default: '/pages/widerruf' }}">{{ 'theme.footer.withdrawal' | t }}</a>
-      <a class="footer-link" href="{{ pages['impressum'].url | default: '/pages/impressum' }}">{{ 'theme.footer.legal_notice' | t }}</a>
-      <a class="footer-link" href="{{ pages['beschwerden'].url | default: '/pages/beschwerden' }}">{{ 'theme.footer.complaints' | t }}</a>
+      <h5>{{ 'footer.legal_title' | t }}</h5>
+      <a class="footer-link" href="{{ pages['datenschutz'].url | default: '/pages/datenschutz' }}">{{ 'footer.links.datenschutz' | t }}</a>
+      <a class="footer-link" href="{{ pages['agb'].url | default: '/pages/agb' }}">{{ 'footer.links.agb' | t }}</a>
+      <a class="footer-link" href="{{ pages['widerruf'].url | default: '/pages/widerruf' }}">{{ 'footer.links.widerruf' | t }}</a>
+      <a class="footer-link" href="{{ pages['impressum'].url | default: '/pages/impressum' }}">{{ 'footer.links.impressum' | t }}</a>
+      <a class="footer-link" href="{{ pages['beschwerden'].url | default: '/pages/beschwerden' }}">{{ 'footer.links.beschwerden' | t }}</a>
     </div>
 
     <div class="footer-col">
-      <h5>{{ 'theme.footer.help_title' | t }}</h5>
-      <a class="footer-link" href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#hilfecenter">{{ 'theme.footer.help_center' | t }}</a>
-      <a class="footer-link" href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#kontakt">{{ 'theme.footer.contact' | t }}</a>
-      <a class="footer-link" href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#versand">{{ 'theme.footer.shipping' | t }}</a>
-      <a class="footer-link" href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#rueckgabe">{{ 'theme.footer.returns' | t }}</a>
+      <h5>{{ 'footer.help_title' | t }}</h5>
+      <a class="footer-link" href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#hilfecenter">{{ 'footer.help_links.faq' | t }}</a>
+      <a class="footer-link" href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#kontakt">{{ 'footer.help_links.contact' | t }}</a>
+      <a class="footer-link" href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#versand">{{ 'footer.help_links.shipping' | t }}</a>
+      <a class="footer-link" href="{{ pages['hilfe'].url | default: '/pages/hilfe' }}#rueckgabe">{{ 'footer.help_links.returns' | t }}</a>
     </div>
   </div>
 
   <div class="footer-divider" aria-hidden="true"></div>
 
-  <div class="footer-payments" aria-label="{{ 'theme.footer.payment_methods' | t }}">
-    <div class="footer-payments-icons" role="list" aria-label="{{ 'theme.footer.accepted_payment_methods' | t }}">
+  <div class="footer-payments" aria-label="{{ 'footer.payment_title' | t }}">
+    <div class="footer-payments-icons" role="list" aria-label="{{ 'footer.payments_accepted' | t }}">
       <img class="footer-payments-icon" src="{{ 'payments-amex.svg' | asset_url }}" alt="American Express" loading="lazy" decoding="async" onerror="this.closest('.footer-payments')?.classList.add('is-missing'); this.remove();">
       <img class="footer-payments-icon" src="{{ 'payments-applepay.svg' | asset_url }}" alt="Apple Pay" loading="lazy" decoding="async" onerror="this.closest('.footer-payments')?.classList.add('is-missing'); this.remove();">
       <img class="footer-payments-icon" src="{{ 'payments-googlepay.svg' | asset_url }}" alt="Google Pay" loading="lazy" decoding="async" onerror="this.closest('.footer-payments')?.classList.add('is-missing'); this.remove();">
@@ -60,14 +59,14 @@
       <img class="footer-payments-icon" src="{{ 'payments-visa.svg' | asset_url }}" alt="Visa" loading="lazy" decoding="async" onerror="this.closest('.footer-payments')?.classList.add('is-missing'); this.remove();">
     </div>
     <div class="footer-payments-fallback" aria-hidden="true">
-      {{ 'theme.footer.payment_fallback' | t }}
+      {{ 'footer.payments_fallback' | t }}
     </div>
   </div>
 
   <div class="footer-bottom">
     <div class="footer-brand">
       <img class="footer-logo" src="{{ 'logosvg.svg' | asset_url }}" alt="{{ shop.name }}">
-      <div class="footer-socials" aria-label="{{ 'theme.footer.social_media' | t }}">
+      <div class="footer-socials" aria-label="Social Media">
         <a class="footer-social" href="{{ settings.social_instagram | default: '#' }}" aria-label="Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 3.5h10a3.5 3.5 0 0 1 3.5 3.5v10A3.5 3.5 0 0 1 17 20.5H7A3.5 3.5 0 0 1 3.5 17V7A3.5 3.5 0 0 1 7 3.5Z" stroke="currentColor" stroke-width="1.5"/>
@@ -87,9 +86,10 @@
     </div>
 
     <div class="footer-meta">
-      <div class="footer-muted">{{ 'theme.footer.copyright' | t: year: current_year }}</div>
+      {% assign current_year = 'now' | date: '%Y' %}
+      <div class="footer-muted">{{ 'footer.copyright' | t: year: current_year }}</div>
       <div class="footer-muted footer-small">
-        {{ 'theme.footer.made_in_europe' | t }}
+        {{ 'footer.made_in_europe' | t }}
       </div>
     </div>
   </div>

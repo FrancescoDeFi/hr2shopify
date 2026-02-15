@@ -1,17 +1,33 @@
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
+
+{% assign community_heading = section.settings.heading %}
+{% if use_locale_copy or community_heading == blank %}
+  {% assign community_heading = 'sections.community.heading' | t %}
+{% endif %}
+
+{% assign community_subheading = section.settings.subheading %}
+{% if use_locale_copy or community_subheading == blank %}
+  {% assign community_subheading = 'sections.community.subheading' | t %}
+{% endif %}
+
 <section class="community">
   <div class="community-header">
     <div>
-      <h2>{{ section.settings.heading | default: 'Klinisch geprüft, von echten Menschen gelebt' }}</h2>
-      <p>{{ section.settings.subheading | default: 'Erfahre von unserer Community, wie Hr² ihren Alltag verändert hat.' }}</p>
+      <h2>{{ community_heading }}</h2>
+      <p>{{ community_subheading }}</p>
     </div>
     {% if section.settings.show_controls %}
       <div class="experts-controls">
-        <button class="icon-btn dark" aria-label="Zurück">
+        <button class="icon-btn dark" aria-label="{{ 'general.accessibility.previous' | t }}">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 6l-6 6 6 6"></path>
           </svg>
         </button>
-        <button class="icon-btn dark" aria-label="Weiter">
+        <button class="icon-btn dark" aria-label="{{ 'general.accessibility.next' | t }}">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 6l6 6-6 6"></path>
           </svg>
@@ -23,13 +39,49 @@
   <div class="community-grid">
     {% for block in section.blocks %}
       {% if block.type == 'testimonial' %}
+        {% assign testimonial_subtitle = block.settings.subtitle %}
+        {% assign testimonial_quote = block.settings.quote %}
+        {% if use_locale_copy %}
+          {% case block.settings.name %}
+            {% when 'Aaron' %}
+              {% assign testimonial_subtitle = 'sections.community.testimonials.aaron.subtitle' | t %}
+              {% assign testimonial_quote = 'sections.community.testimonials.aaron.quote' | t %}
+            {% when 'Lukas' %}
+              {% assign testimonial_subtitle = 'sections.community.testimonials.lukas.subtitle' | t %}
+              {% assign testimonial_quote = 'sections.community.testimonials.lukas.quote' | t %}
+            {% when 'Patrick' %}
+              {% assign testimonial_subtitle = 'sections.community.testimonials.patrick.subtitle' | t %}
+              {% assign testimonial_quote = 'sections.community.testimonials.patrick.quote' | t %}
+          {% endcase %}
+        {% else %}
+          {% if testimonial_subtitle == blank %}
+            {% case block.settings.name %}
+              {% when 'Aaron' %}
+                {% assign testimonial_subtitle = 'sections.community.testimonials.aaron.subtitle' | t %}
+              {% when 'Lukas' %}
+                {% assign testimonial_subtitle = 'sections.community.testimonials.lukas.subtitle' | t %}
+              {% when 'Patrick' %}
+                {% assign testimonial_subtitle = 'sections.community.testimonials.patrick.subtitle' | t %}
+            {% endcase %}
+          {% endif %}
+          {% if testimonial_quote == blank %}
+            {% case block.settings.name %}
+              {% when 'Aaron' %}
+                {% assign testimonial_quote = 'sections.community.testimonials.aaron.quote' | t %}
+              {% when 'Lukas' %}
+                {% assign testimonial_quote = 'sections.community.testimonials.lukas.quote' | t %}
+              {% when 'Patrick' %}
+                {% assign testimonial_quote = 'sections.community.testimonials.patrick.quote' | t %}
+            {% endcase %}
+          {% endif %}
+        {% endif %}
         <article class="expert-card" {{ block.shopify_attributes }}>
           {% if block.settings.image != blank %}
             <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.name }}" loading="lazy" decoding="async">
           {% endif %}
           <h3>{{ block.settings.name }}</h3>
-          <p class="subtitle">{{ block.settings.subtitle }}</p>
-          <p class="quote">{{ block.settings.quote }}</p>
+          <p class="subtitle">{{ testimonial_subtitle }}</p>
+          <p class="quote">{{ testimonial_quote }}</p>
         </article>
       {% endif %}
     {% endfor %}

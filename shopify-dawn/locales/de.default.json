@@ -61,12 +61,7 @@
     "quantity": "Menge",
     "update": "Aktualisieren",
     "shipping_note": "Versandkosten werden an der Kasse berechnet.",
-    "taxes_note": "Steuern werden an der Kasse berechnet.",
-    "empty_message": "Entdecke unsere Produkte und starte deine Haar-Gesundheitsreise.",
-    "empty_cta": "Jetzt einkaufen",
-    "quantity_decrease": "Menge verringern",
-    "quantity_increase": "Menge erhöhen",
-    "quantity_for": "Menge für {{ title }}"
+    "taxes_note": "Steuern werden an der Kasse berechnet."
   },
   "customer": {
     "account": {
@@ -143,20 +138,24 @@
   },
   "sections": {
     "hero": {
-      "heading": "Dein täglicher<br> Haar-Boost",
+      "heading": "Dein täglicher Haar-Boost",
       "subheading": "Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.",
       "cta_buy": "Jetzt kaufen",
       "cta_quiz": "Mach dein Quiz für einen personalisierten Plan",
       "clinicians_title": "Von Ärzten empfohlen",
       "clinicians_body": "Wissenschaftlich fundiert. Entwickelt von den führenden medizinischen Expert:innen.",
-      "benefit_clinical": "KLINISCH<br>GEPRÜFTE FORMEL",
-      "benefit_drug_free": "100% OHNE<br>ARZNEISTOFFE",
-      "benefit_results": "ERGEBNISSE IN 3–6<br>MONATEN",
-      "aria_benefits": "Produktvorteile",
-      "aria_ctas": "Kaufoptionen",
-      "aria_quiz": "Quiz für einen personalisierten Plan starten",
-      "aria_clinicians": "Klinischer Nachweis",
-      "product_image_alt": "Hr² Produkt"
+      "benefits": {
+        "clinical": "KLINISCH<br>GEPRÜFTE FORMEL",
+        "drug_free": "100% OHNE<br>ARZNEISTOFFE",
+        "results": "ERGEBNISSE IN 3–6<br>MONATEN"
+      },
+      "aria": {
+        "benefits": "Produktvorteile",
+        "purchase_options": "Kaufoptionen",
+        "quiz_start": "Quiz für einen personalisierten Plan starten",
+        "clinicians_choice": "Von Ärzt:innen empfohlen"
+      },
+      "product_alt": "Hr² Produkt"
     },
     "comparison": {
       "title": "Vergleich",
@@ -165,59 +164,129 @@
       "others": "Andere",
       "buy_cta": "Hr² kaufen",
       "price_note": "ab 32 € pro Monat",
-      "aria_label": "Produktvergleich",
-      "hr2_aria": "HR2 Präsentation",
-      "bottle_alt": "HR2 Flasche",
-      "table_aria": "Produktvergleichstabelle",
-      "row_clinical": "Klinisch belegt",
-      "row_biooptimized": "Bio-optimiert",
-      "row_drug_free": "Ohne Arzneistoffe",
-      "row_libido": "Libido-freundlich"
+      "aria": {
+        "section": "Produktvergleich",
+        "presentation": "Hr² Präsentation",
+        "table": "Produktvergleichstabelle"
+      },
+      "features": {
+        "clinically_proven": "Klinisch belegt",
+        "bio_optimized": "Bio-optimiert",
+        "without_drugs": "Ohne Arzneistoffe",
+        "libido_friendly": "Libido-freundlich"
+      }
     },
     "causes": {
       "heading": "DEIN HAARAUSFALL MUSS NICHT DEM ZUFALL ÜBERLASSEN WERDEN.",
       "subheading": "Männerhaar wird aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde.",
-      "aria_accordion": "Ursachen",
-      "stress_label": "STRESS",
-      "stress_body": "Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen.",
-      "hormones_label": "HORMONE",
-      "hormones_body": "Hormonsignale können die Empfindlichkeit der Follikel beeinflussen und so langfristig zur Ausdünnung beitragen.",
-      "dht_body": "Schlaf, Aktivität und Gewohnheiten beeinflussen Regeneration und das Umfeld, das Haare brauchen, um zu wachsen.",
-      "nutrition_label": "ERNÄHRUNG",
-      "nutrition_body": "Nährstofflücken, die durch Ernährung oder ein unausgeglichenes Darmmikrobiom entstehen können.",
-      "aging_label": "ALTERUNG",
-      "aging_body": "Mit zunehmendem Alter können Wachstumsphasen kürzer werden – Haardichte lässt sich dann schwerer erhalten.",
-      "visual_aria": "Ursachen-Visualisierung",
-      "caption": "Der Körper braucht Nährstoffe zur Versorgung und zur Unterstützung eines gesunden Haarwachstumszyklus. Diese Nährstoffe können z.\u00a0B. durch eine unausgewogene Ernährung reduziert werden – das kann Haarstärke und allgemeine Gesundheit beeinflussen."
+      "caption": "Der Körper braucht Nährstoffe zur Versorgung und zur Unterstützung eines gesunden Haarwachstumszyklus. Diese Nährstoffe können z. B. durch eine unausgewogene Ernährung reduziert werden – das kann Haarstärke und allgemeine Gesundheit beeinflussen.",
+      "aria": {
+        "tablist": "Ursachen",
+        "visual": "Ursachen-Visualisierung"
+      },
+      "items": {
+        "stress": {
+          "title": "STRESS",
+          "description": "Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen."
+        },
+        "hormones": {
+          "title": "HORMONE",
+          "description": "Hormonsignale können die Empfindlichkeit der Follikel beeinflussen und so langfristig zur Ausdünnung beitragen."
+        },
+        "dht": {
+          "title": "DHT",
+          "description": "Schlaf, Aktivität und Gewohnheiten beeinflussen Regeneration und das Umfeld, das Haare brauchen, um zu wachsen."
+        },
+        "nutrition": {
+          "title": "ERNÄHRUNG",
+          "description": "Nährstofflücken, die durch Ernährung oder ein unausgeglichenes Darmmikrobiom entstehen können."
+        },
+        "aging": {
+          "title": "ALTERUNG",
+          "description": "Mit zunehmendem Alter können Wachstumsphasen kürzer werden – Haardichte lässt sich dann schwerer erhalten."
+        }
+      }
     },
     "partners": {
       "kicker": "Formuliert von Wissenschaftler:innen dieser Institutionen",
-      "aria_logos": "Partnerinstitutionen",
-      "alt_stanford": "Logo von Stanford",
-      "alt_tum": "Logo der Technischen Universität München (TUM)",
-      "alt_tu_wien": "Logo der TU Wien",
-      "alt_lmu": "Logo der LMU München",
-      "alt_pmu": "Logo der PMU"
+      "aria": {
+        "logos": "Partnerinstitutionen",
+        "logo_alt": "Logo von {{ name }}"
+      }
     },
     "ingredients": {
       "heading": "DIE PREISGEKRÖNTE PRÄZISIONSMISCHUNG AN INHALTSSTOFFEN.",
       "more": "und 20+ mehr",
-      "aria_details": "Inhaltsstoff-Details",
-      "aria_tabs": "Inhaltsstoffe",
-      "sawpalmetto": "Sägepalmenextrakt",
-      "pomegranate": "Granatapfelextrakt",
-      "zinc": "Zink",
-      "anagain_desc": "Ein pflanzlicher Erbsensprossen‑Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet."
+      "default_curve_top": "UNTERSTÜTZT HAARWACHSTUM",
+      "default_curve_bottom": "ERBSENSPROSSEN-EXTRAKT",
+      "aria": {
+        "details": "Inhaltsstoff-Details",
+        "tabs": "Inhaltsstoffe"
+      },
+      "items": {
+        "anagain": {
+          "name": "Anagain",
+          "description": "Ein pflanzlicher Erbsensprossen-Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>",
+          "curve_top": "UNTERSTÜTZT HAARWACHSTUM",
+          "curve_bottom": "ERBSENSPROSSEN-EXTRAKT"
+        },
+        "sawpalmetto": {
+          "name": "Sägepalmenextrakt",
+          "description": "Ein Pflanzenextrakt, der Faktoren unterstützt, die mit der Erhaltung voller Haare in Verbindung stehen.<sup>4</sup>",
+          "curve_top": "ERHALTUNG VOLLER HAARE",
+          "curve_bottom": "NATÜRLICHER PFLANZENEXTRAKT"
+        },
+        "pomegranate": {
+          "name": "Granatapfelextrakt",
+          "description": "Ein polyphenolreicher Extrakt mit antioxidativen Eigenschaften – unterstützt den Schutz vor oxidativem Stress.<sup>4</sup>",
+          "curve_top": "ANTIOXIDATIVER SCHUTZ",
+          "curve_bottom": "POLYPHENOLREICHER EXTRAKT"
+        },
+        "ashwagandha": {
+          "name": "Ashwagandha",
+          "description": "Ein Adaptogen, das die Stressbalance unterstützt – ein wichtiger Faktor für gesunde Haarzyklen.<sup>4</sup>",
+          "curve_top": "STRESSBALANCE FÖRDERND",
+          "curve_bottom": "ADAPTOGENES HEILKRAUT"
+        },
+        "lcysteine": {
+          "name": "L-Cysteine",
+          "description": "Eine Aminosäure, die als Baustein von Keratin dient – unterstützt die natürliche Haarstruktur.<sup>4</sup>",
+          "curve_top": "BAUSTEIN VON KERATIN",
+          "curve_bottom": "AMINOSÄURE"
+        },
+        "llysine": {
+          "name": "L-Lysine",
+          "description": "Eine essentielle Aminosäure, die am Aufbau von Strukturproteinen beteiligt ist.<sup>4</sup>",
+          "curve_top": "AUFBAU STRUKTURPROTEINE",
+          "curve_bottom": "ESSENTIELLE AMINOSÄURE"
+        },
+        "zinc": {
+          "name": "Zink",
+          "description": "Zink trägt zur Erhaltung normaler Haare und Nägel bei.<sup>4</sup>",
+          "curve_top": "ERHALTUNG NORMALER HAARE",
+          "curve_bottom": "ESSENTIELLES SPURENELEMENT"
+        },
+        "biotin": {
+          "name": "Biotin",
+          "description": "Biotin trägt zur Erhaltung normaler Haare und Haut bei.<sup>4</sup>",
+          "curve_top": "ERHALTUNG NORMALER HAARE",
+          "curve_bottom": "ESSENTIELLES B-VITAMIN"
+        }
+      }
     },
     "clinical": {
       "heading": "Klinische Tests sind kein Extra – sie sind unser Standard.",
       "cta": "Unsere Inhaltsstoffe entdecken",
       "footer": "Innovationen für Haargesundheit, denen du vertrauen kannst – dank branchenführender Haarmessung.",
-      "aria_stats": "Klinische Kennzahlen",
-      "stat1_text": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls",
-      "stat2_text": "der Probanten, die mit der aktiven Studienformulierung (Saw Palmetto) behandelt wurden wurden beim letzten Besuch als verbessert beurteilt.",
-      "stat3_text": "der Teilnehmen mit einem Defizit an Biotin erlebten eine Verbesserung des Haarausfalls",
-      "sources_aria": "Quellen"
+      "aria": {
+        "stats": "Klinische Kennzahlen",
+        "sources": "Quellen"
+      },
+      "stats": {
+        "stat_1": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls.<sup>1</sup>",
+        "stat_2": "der Proband:innen, die mit der aktiven Studienformulierung (Saw Palmetto) behandelt wurden, wurden beim letzten Besuch als verbessert beurteilt.<sup>2</sup>",
+        "stat_3": "der Teilnehmenden mit einem Defizit an Biotin erlebten eine Verbesserung des Haarausfalls.<sup>3</sup>"
+      }
     },
     "offer": {
       "title": "Hr²",
@@ -225,72 +294,105 @@
       "once_link": "Einmal kaufen für {{ price }} + {{ shipping }} Versand",
       "guarantee": "Kostenloser Versand. Jederzeit pausieren oder kündigen.",
       "tagline": "Das erste Mal. Nur für kurze Zeit.",
-      "plan_monthly": "Monatliche Lieferung",
-      "save_10": "Spare 10%",
-      "plan_1_desc": "1‑Monats‑Vorrat, Lieferung monatlich.",
-      "plan_3month": "3‑Monats‑Lieferung",
-      "save_15": "Spare 15%",
-      "plan_3_desc": "3‑Monats‑Vorrat mit Nachlieferung alle 3 Monate.",
-      "plan_6month": "6‑Monats‑Lieferung",
-      "save_20": "Spare 20%",
-      "plan_6_desc": "6‑Monats‑Vorrat mit Nachlieferung alle 6 Monate.",
-      "once_text": "Einmal kaufen für 39€ + 4,95€ Versand",
-      "product_description": "Hr² ist dein tägliches Supplement für die Haargesundheit – entwickelt mit einem Fokus auf ausgewählte Inhaltsstoffe, Qualitätssicherung und eine einfache Routine.",
-      "delivery_options": "Lieferoptionen",
+      "description": "Hr² ist dein tägliches Supplement für die Haargesundheit – entwickelt mit einem Fokus auf ausgewählte Inhaltsstoffe, Qualitätssicherung und eine einfache Routine.",
       "promo_heading": "Dein Hr² jetzt für 29€",
-      "bundle_alt": "Hr² Bundle"
+      "aria": {
+        "delivery_options": "Lieferoptionen"
+      },
+      "plans": {
+        "monthly": {
+          "name": "Monatliche Lieferung",
+          "badge": "Spare 10%",
+          "description": "1-Monats-Vorrat, Lieferung monatlich."
+        },
+        "three_month": {
+          "name": "3-Monats-Lieferung",
+          "badge": "Spare 15%",
+          "description": "3-Monats-Vorrat mit Nachlieferung alle 3 Monate."
+        },
+        "six_month": {
+          "name": "6-Monats-Lieferung",
+          "badge": "Spare 20%",
+          "description": "6-Monats-Vorrat mit Nachlieferung alle 6 Monate."
+        }
+      }
     },
     "quality": {
       "heading": "Unabhängig getestet für alle, die alles geben",
       "cta": "Mehr zu unseren Tests",
       "description": "Unsere Qualitätsstandards beginnen bei der Rohstoffauswahl und enden nicht bei der Kapsel. Jede Charge wird zusätzlich hausintern mikrobiologisch analysiert und nach strengen Standards geprüft – damit Hr² hält, was es verspricht.",
-      "list_1": "Hausinterne mikrobiologische Analyse jeder Charge",
-      "list_2": "HACCP‑ & ISO‑Standards in der Herstellung",
-      "list_3": "Rohstoffe geprüft auf Pestizidrückstände",
-      "aria_badges": "Qualitätsstandards",
-      "badge_shellfish": "Schalentier‑geprüft",
-      "badge_sesame": "Sesam‑geprüft",
-      "badge_corn": "Mais‑geprüft",
-      "badge_glyphosate_ampa": "Glyphosat / AMPA‑geprüft"
+      "aria": {
+        "standards": "Qualitätsstandards"
+      },
+      "features": {
+        "feature_1": "Hausinterne mikrobiologische Analyse jeder Charge",
+        "feature_2": "HACCP- & ISO-Standards in der Herstellung",
+        "feature_3": "Rohstoffe geprüft auf Pestizidrückstände"
+      },
+      "badges": {
+        "vegan": "Vegan",
+        "gluten": "Gluten-geprüft",
+        "dairy": "Milchprodukte-geprüft",
+        "soy": "Soja-geprüft",
+        "nut": "Nuss-geprüft",
+        "shellfish": "Schalentier-geprüft",
+        "sesame": "Sesam-geprüft",
+        "corn": "Mais-geprüft",
+        "glyphosate": "Glyphosat / AMPA-geprüft",
+        "no_fillers": "Ohne Bindemittel",
+        "no_preservatives": "Ohne Konservierungsstoffe",
+        "heavy_metals": "Schwermetall-geprüft"
+      }
     },
     "community": {
       "heading": "Klinisch geprüft, von echten Menschen gelebt",
       "subheading": "Erfahre von unserer Community, wie Hr² ihren Alltag verändert hat.",
-      "member_since": "Hr² MITGLIED SEIT {{ year }}",
-      "quote_1": "Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt. Hr² fühlt sich eher wie eine langfristige Entscheidung an, die mir mit Inhaltsstoffen, welche speziell den Haarwuchs fördern, hilft. Nach ein paar Monaten fühlen sich meine Haare widerstandsfähiger an und ich habe wieder Vertrauen, dass ich dem Haarausfall aktiv entgegenwirke. Es gibt mir das Gefühl, meine Haar-Gesundheit im Griff zu haben und nicht einfach zuzusehen.",
-      "quote_2": "In stressigen Phasen habe ich immer zuerst an meinen Haaren gemerkt, dass etwas nicht passt. Hr² ist für mich wie ein kleines tägliches Reset. Ich fühle mich versorgt und muss mir darüber keine Gedanken mehr machen. Mittlerweile ist es Teil meiner Morgenroutine und ich habe endlich das Gefühl, etwas Sinnvolles für mich zu tun, statt nur zu hoffen, dass es besser wird.",
-      "quote_3": "Ich arbeite und trainiere viel und hart. Die damit verbundene Anstrengung und der Stress haben aber auch ihre Schattenseiten. Irgendwann habe ich gemerkt, dass ich einen wichtigen Aspekt komplett vernachlässigt habe: meine Haare. Seit ich Hr² nehme, habe ich dieses unangenehme Gefühl nach dem Duschen, auf den Boden zu schauen und meine abgeflogenen Haare zählen zu wollen, endlich überwunden."
+      "testimonials": {
+        "aaron": {
+          "subtitle": "Hr² MITGLIED SEIT 2025",
+          "quote": "Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt. Hr² fühlt sich eher wie eine langfristige Entscheidung an, die mir mit Inhaltsstoffen, welche speziell den Haarwuchs fördern, hilft. Nach ein paar Monaten fühlen sich meine Haare widerstandsfähiger an und ich habe wieder Vertrauen, dass ich dem Haarausfall aktiv entgegenwirke."
+        },
+        "lukas": {
+          "subtitle": "Hr² MITGLIED SEIT 2025",
+          "quote": "In stressigen Phasen habe ich immer zuerst an meinen Haaren gemerkt, dass etwas nicht passt. Hr² ist für mich wie ein kleines tägliches Reset. Ich fühle mich versorgt und muss mir darüber keine Gedanken mehr machen."
+        },
+        "patrick": {
+          "subtitle": "Hr² MITGLIED SEIT 2025",
+          "quote": "Ich arbeite und trainiere viel und hart. Die damit verbundene Anstrengung und der Stress haben aber auch ihre Schattenseiten. Irgendwann habe ich gemerkt, dass ich einen wichtigen Aspekt komplett vernachlässigt habe: meine Haare. Seit ich Hr² nehme, habe ich dieses unangenehme Gefühl überwunden."
+        }
+      }
     },
     "faq": {
       "heading": "Du hast Fragen, wir die Antworten",
       "subheading": "Du findest nicht, wonach du suchst? Besuch unser",
       "help_link": "Hilfecenter",
       "help_suffix": "– wir sind da, um dir zu helfen.",
-      "here": "hier",
-      "subheading_html": "Du findest nicht, wonach du suchst? Besuch unser <a href='#hilfecenter' class='faq-link'>Hilfecenter</a> – wir sind da, um dir zu helfen.",
-      "a1_html": "Hr² ist ein täglicher Nährstoff-Boost mit über 70 hochwertigen Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenstoffe und Bakterienkulturen. Entwickelt von Expert:innen, wissenschaftlich fundiert und weltweit von High Performern empfohlen, macht es Hr² einfach, Körper und Geist täglich zu unterstützen.",
-      "q1": "Was ist Hr²?",
-      "a1": "Hr² ist ein täglicher Nährstoff-Boost mit über 70 hochwertigen Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenstoffe und Bakterienkulturen. Entwickelt von Expert:innen, wissenschaftlich fundiert und weltweit von High Performern empfohlen, macht es Hr² einfach, Körper und Geist täglich zu unterstützen. Mehr erfährst du dazu {{ link }}.",
-      "q2": "Funktioniert Hr² für meinen Haartyp?",
-      "a2": "Hr² ist für die tägliche, langfristige Unterstützung der Haargesundheit entwickelt – unabhängig von Haartyp oder Haarstruktur. Da Ursachen für Haarausfall und Haarausdünnung unterschiedlich sind (z.\u00a0B. Nährstoffstatus, Stress, Hormone, genetische Faktoren), können Ergebnisse individuell variieren.",
-      "q3": "Wirkt es für Frauen und Männer?",
-      "a3": "Ja. Hr² ist für Frauen und Männer entwickelt und unterstützt die Haargesundheit unabhängig vom Geschlecht. Da Ursachen und Ausgangslage (z.\u00a0B. Nährstoffstatus, Stress, Hormone, Genetik) individuell sind, können Ergebnisse variieren.",
-      "q4": "Enthält Hr² Arzneistoffe?",
-      "a4": "Nein. Hr² ist ein Nahrungsergänzungsmittel und enthält keine Arzneistoffe. Es liefert ausgewählte Inhaltsstoffe wie Vitamine, Mineralstoffe, Pflanzenextrakte und Aminosäuren zur täglichen Unterstützung.",
-      "q5": "Ich weiß, dass manche Haarwuchs‑Behandlungen Nebenwirkungen haben. Gilt das auch für Hr²?",
-      "a5": "Hr² ist als Nahrungsergänzungsmittel in der Regel gut verträglich. Wie bei allen Supplements kann es jedoch individuell zu Unverträglichkeiten kommen (z.\u00a0B. Magen‑Darm‑Beschwerden). Wenn du Beschwerden bemerkst, pausiere die Einnahme und sprich mit Ärzt:in – insbesondere bei Vorerkrankungen, Schwangerschaft/Stillzeit oder Medikamenteneinnahme.",
-      "q6": "Gibt es ein Risiko, dass Hr² meine Libido senkt?",
-      "a6": "Hr² enthält keine Arzneistoffe und ist nicht darauf ausgerichtet, in den Hormonhaushalt einzugreifen. Individuelle Reaktionen sind trotzdem möglich – wenn du Veränderungen bemerkst, pausiere und sprich mit medizinischem Fachpersonal.",
-      "q7": "Sorgt Hr² für unerwünschtes Haarwachstum an anderen Körperstellen?",
-      "a7": "Hr² ist darauf ausgerichtet, die allgemeine Nährstoffversorgung und Haargesundheit zu unterstützen – nicht, gezielt Körperbehaarung zu fördern. Da Haarwachstum biologisch komplex ist, können individuelle Effekte variieren.",
-      "q8": "Ist Hr² durch unabhängige Dritte zertifiziert?",
-      "a8": "Wir legen Wert auf Qualitätssicherung und prüfen Rohstoffe sowie Endprodukt im Rahmen von Qualitätskontrollen. Wenn du konkrete Nachweise oder Prüfdokumente benötigst, kontaktiere bitte unseren Support.",
-      "q9": "Ist Hr² von der EMA zugelassen?",
-      "a9": "Hr² ist ein Nahrungsergänzungsmittel. Nahrungsergänzungsmittel werden in der Regel nicht wie Arzneimittel von der EMA „zugelassen“. Die Einordnung und Anforderungen hängen vom jeweiligen Markt und den geltenden gesetzlichen Vorgaben ab.",
-      "q10": "Kann ich Hr² zusammen mit anderen haarunterstützenden Produkten und Nahrungsergänzungsmitteln einnehmen?",
-      "a10": "Grundsätzlich ist das möglich, achte aber auf doppelte Dosierungen (z.\u00a0B. Zink, Biotin oder andere Mikronährstoffe) und die empfohlene Tagesmenge. Wenn du Medikamente einnimmst oder gesundheitliche Themen hast, kläre die Kombination am besten mit Ärzt:in oder Apotheke.",
-      "q11": "Hilft Hr² bei genetisch bedingter Haarausdünnung?",
-      "a11": "Genetik spielt bei Haarausdünnung häufig eine große Rolle. Hr² kann die Nährstoffversorgung und Haargesundheit unterstützen, ersetzt jedoch keine medizinische Diagnose oder Therapie. Wenn du starke oder zunehmende Haarausdünnung bemerkst, ist eine Abklärung bei Dermatolog:in sinnvoll."
+      "questions": {
+        "q1": {
+          "question": "Was ist Hr²?",
+          "answer": "<p>Hr² ist ein täglicher Nährstoff-Boost mit über 70 hochwertigen Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenstoffe und Bakterienkulturen. Entwickelt von Expert:innen, wissenschaftlich fundiert und weltweit von High Performern empfohlen.</p>"
+        },
+        "q2": {
+          "question": "Funktioniert Hr² für meinen Haartyp?",
+          "answer": "<p>Hr² ist für die tägliche, langfristige Unterstützung der Haargesundheit entwickelt – unabhängig von Haartyp oder Haarstruktur. Da Ursachen für Haarausfall und Haarausdünnung unterschiedlich sind, können Ergebnisse individuell variieren.</p>"
+        },
+        "q3": {
+          "question": "Wirkt es für Frauen und Männer?",
+          "answer": "<p>Ja. Hr² ist für Frauen und Männer entwickelt und unterstützt die Haargesundheit unabhängig vom Geschlecht.</p>"
+        },
+        "q4": {
+          "question": "Enthält Hr² Arzneistoffe?",
+          "answer": "<p>Nein. Hr² ist ein Nahrungsergänzungsmittel und enthält keine Arzneistoffe.</p>"
+        },
+        "q5": {
+          "question": "Ich weiß, dass manche Haarwuchs-Behandlungen Nebenwirkungen haben. Gilt das auch für Hr²?",
+          "answer": "<p>Hr² ist als Nahrungsergänzungsmittel in der Regel gut verträglich. Wie bei allen Supplements kann es jedoch individuell zu Unverträglichkeiten kommen.</p>"
+        },
+        "q6": {
+          "question": "Gibt es ein Risiko, dass Hr² meine Libido senkt?",
+          "answer": "<p>Hr² enthält keine Arzneistoffe und ist nicht darauf ausgerichtet, in den Hormonhaushalt einzugreifen.</p>"
+        }
+      }
     }
   },
   "footer": {
@@ -309,165 +411,25 @@
       "hilfe": "Hilfe",
       "inhaltsstoffe": "Inhaltsstoffe",
       "forschung": "Forschung"
-    }
-  },
-  "theme": {
-    "switcher": {
-      "language": "Sprache"
     },
-    "header": {
-      "main_navigation": "Hauptnavigation",
-      "mobile_navigation": "Mobile Navigation",
-      "ingredients": "Inhaltsstoffe",
-      "research": "Forschung",
-      "account": "Mein Konto",
-      "cart": "Warenkorb",
-      "cart_with_count": "Warenkorb ({{ count }})",
-      "buy": "Hr² kaufen"
-    },
-    "footer": {
-      "label": "Footer",
-      "contact_title": "Interesse, mehr zu erfahren?",
-      "contact_help": "Schick uns eine E-Mail, wir helfen dir gerne weiter!",
-      "disclaimer": "*Hinweis: Die Inhalte auf dieser Website dienen nur zu Informationszwecken und ersetzen keine ärztliche Beratung. Nahrungsergänzungsmittel sind kein Ersatz für eine ausgewogene Ernährung.",
-      "product_title": "Produkt",
-      "legal_title": "Rechtliches",
-      "privacy": "Datenschutzerklärung",
-      "terms": "AGB",
-      "withdrawal": "Widerruf",
-      "legal_notice": "Impressum",
-      "complaints": "Beschwerden",
-      "help_title": "Hilfe",
-      "help_center": "Hilfecenter (FAQ)",
+    "contact_blurb": "Schick uns eine E-Mail, wir helfen dir gerne weiter!",
+    "disclaimer": "*Hinweis: Die Inhalte auf dieser Website dienen nur zu Informationszwecken und ersetzen keine ärztliche Beratung. Nahrungsergänzungsmittel sind kein Ersatz für eine ausgewogene Ernährung.",
+    "product_title": "Produkt",
+    "payments_accepted": "Akzeptierte Zahlungsarten",
+    "payments_fallback": "Zahlungen über gängige Anbieter möglich.",
+    "made_in_europe": "Hergestellt mit Sorgfalt in Europa.",
+    "help_links": {
+      "faq": "Hilfecenter (FAQ)",
       "contact": "Kontakt",
       "shipping": "Versand & Lieferung",
-      "returns": "Rückgabe",
-      "payment_methods": "Zahlungsarten",
-      "accepted_payment_methods": "Akzeptierte Zahlungsarten",
-      "payment_fallback": "Zahlungen über gängige Anbieter möglich.",
-      "social_media": "Social Media",
-      "made_in_europe": "Hergestellt mit Sorgfalt in Europa.",
-      "copyright": "© {{ year }} Hr². Alle Rechte vorbehalten."
+      "returns": "Rückgabe"
     }
   },
-  "customer_pages": {
-    "back_to_account": "Zurück zum Konto",
-    "order_number": "Bestellung",
-    "order_date": "Datum",
-    "order_status": "Status",
-    "order_amount": "Betrag"
-  },
-  "offer": {
-    "product_title": "Hr²",
-    "product_description": "Hr² ist dein tägliches Supplement für die Haargesundheit – entwickelt mit einem Fokus auf ausgewählte Inhaltsstoffe, Qualitätssicherung und eine einfache Routine.",
-    "delivery_options": "Lieferoptionen",
-    "save_prefix": "SPARE",
-    "cta": "In den Warenkorb",
-    "free_shipping": "Kostenloser Versand",
-    "cancel_anytime": "Jederzeit kündbar",
-    "money_back": "30-Tage-Geld-zurück",
-    "promo_tagline": "Das erste Mal. Nur für kurze Zeit.",
-    "promo_heading": "Dein Hr² jetzt für 29€",
-    "bundle_alt": "Hr² Bundle"
-  },
-  "product_page": {
-    "shipping_threshold": "Kostenloser Versand ab 50 €",
-    "image_alt_1": "Hr² Haar-Supplement",
-    "image_alt_2": "Hr² Kapseln",
-    "image_alt_3": "Hr² Anwendung",
-    "image_alt_4": "Hr² Qualität",
-    "image_alt_5": "Hr² Flasche",
-    "image_alt_6": "Hr² Details",
-    "image_dot": "Bild {{ number }}",
-    "subtitle": "Tägliches Haar-Supplement",
-    "tag_1": "Haarwachstum",
-    "tag_2": "DHT-Balance",
-    "tag_3": "Kopfhaut",
-    "tag_4": "Nährstoffversorgung",
-    "description": "Hr² ist ein tägliches Supplement für die Haargesundheit – entwickelt mit klinisch untersuchten Inhaltsstoffen wie Anagain, Sägepalmenextrakt und Biotin. Formuliert von Wissenschaftler:innen für eine einfache Routine ohne Arzneistoffe.",
-    "benefit_1": "Bio-optimierte Aufnahme für bessere Bioverfügbarkeit",
-    "benefit_2": "Klinisch untersuchte, natürliche Wirkstoffe",
-    "benefit_3": "Ohne Arzneistoffe – keine Nebenwirkungen auf die Libido",
-    "benefit_4": "Formuliert von Wissenschaftler:innen führender Institutionen",
-    "capsule_note": "60 Kapseln · Nahrungsergänzungsmittel",
-    "delivery_options": "Lieferoptionen",
-    "save_prefix": "SPARE",
-    "one_time": "Einmalig",
-    "bio_aria": "Bio-optimierte Aufnahme",
-    "bio_title": "Bio-optimiert<br>für schnellere Aufnahme.",
-    "bio_text": "Unsere Wirkstoffe sind präzise formuliert, um die Löslichkeit und den Transport über Lipidmembranen zu verbessern. Dieses Delivery-Design unterstützt einen schnelleren Eintritt in den Kreislauf.*",
-    "timeline_title": "Der Hr²-Unterschied:<br>Vorteile, die sich aufbauen",
-    "timeline_intro": "Ergebnisse spürbar ab <strong>4 Wochen</strong>.*",
-    "timeline_link": "Klinische Evidenz ansehen",
-    "step_1_badge": "4 Wochen",
-    "step_1_title": "Stärkt die Nährstoffversorgung†",
-    "step_1_line_1": "Füllt häufige Nährstofflücken auf",
-    "step_1_line_2": "Unterstützt den natürlichen Haarzyklus",
-    "step_1_line_3": "Versorgt Kopfhaut & Haarwurzeln",
-    "step_2_badge": "8 Wochen",
-    "step_2_title": "Stärkt Haarstruktur & Kopfhaut*",
-    "step_2_line_1": "Unterstützt kräftigeres Haar",
-    "step_2_line_2": "Fördert die Kopfhautbalance",
-    "step_2_line_3": "Verbessert die Haarqualität",
-    "step_3_badge": "12 Wochen",
-    "step_3_title": "Sichtbar volleres Haar*",
-    "step_3_line_1": "Unterstützt gesundes Haarwachstum",
-    "step_3_line_2": "Verringert übermäßigen Haarausfall",
-    "step_3_line_3": "Stärkt die Verankerung der Haarwurzeln",
-    "step_4_badge": "6 Monate",
-    "step_4_title": "Langfristige Haargesundheit*",
-    "step_4_line_1": "Unterstützt die Stressresilienz",
-    "step_4_line_2": "Fördert langfristige Haardichte",
-    "step_4_line_3": "Stärkt das allgemeine Wohlbefinden",
-    "how_to_title": "Anwendung:",
-    "how_to_text": "Nimm 2 Kapseln täglich, mit oder ohne Mahlzeit, morgens oder abends.",
-    "ingredients_title": "20+ Inhaltsstoffe für<br>ganzheitliche Haargesundheit",
-    "ingredients_link": "Inhaltsstoffe & Dosierung ansehen",
-    "ingredient_cat_1": "Haarwachstum & DHT-Balance",
-    "ingredient_detail_1": "Anagain, Sägepalme, Granatapfel",
-    "ingredient_cat_2": "Nährstoffversorgung",
-    "ingredient_detail_2": "Biotin, Zink, B-Vitamine, Eisen",
-    "ingredient_cat_3": "Kopfhaut & Haarstruktur",
-    "ingredient_detail_3": "L-Cystein, L-Lysin, Kupfer",
-    "ingredient_cat_4": "Stressbalance & Energie",
-    "ingredient_detail_4": "Ashwagandha, Selen, Vitamin D",
-    "quality_standards": "Qualitätsstandards",
-    "badge_vegan": "Vegan",
-    "badge_gluten": "Gluten-geprüft",
-    "badge_dairy": "Milchprodukte-geprüft",
-    "badge_soy": "Soja-geprüft",
-    "badge_nut": "Nuss-geprüft",
-    "badge_glyphosate": "Glyphosat-geprüft",
-    "badge_no_fillers": "Ohne Bindemittel",
-    "badge_no_preservatives": "Ohne Konservierungsstoffe",
-    "badge_heavy_metals": "Schwermetall-geprüft",
-    "compare_title": "Wie Hr²<br>sich vergleicht:",
-    "compare_others": "Andere Produkte",
-    "compare_row_1": "Multi-zielgerichtete Formel",
-    "compare_row_2": "100 % ohne Arzneistoffe",
-    "compare_row_3": "Bio-optimierte Bioverfügbarkeit",
-    "compare_row_4": "Klinisch belegte Inhaltsstoffe",
-    "compare_row_5": "Beeinflusst die Libido nicht",
-    "compare_value_rare": "Selten",
-    "compare_value_few": "Wenige",
-    "faq_title": "Häufig gestellte Fragen",
-    "faq_q1": "Was ist Hr²?",
-    "faq_a1": "Hr² ist ein tägliches Nahrungsergänzungsmittel mit über 20 ausgewählten Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenextrakte und Aminosäuren – zur langfristigen Unterstützung der Haargesundheit.",
-    "faq_q2": "Wie lange sollte ich Hr² einnehmen?",
-    "faq_a2": "Wir empfehlen eine konsequente Einnahme über 3 bis 6 Monate, um individuelle Veränderungen beurteilen zu können. Die Haargesundheit verbessert sich schrittweise.",
-    "faq_q3": "Enthält Hr² Arzneistoffe?",
-    "faq_a3": "Nein. Hr² ist ein Nahrungsergänzungsmittel und enthält keine Arzneistoffe. Es liefert ausgewählte Nährstoffe zur täglichen Unterstützung.",
-    "faq_q4": "Funktioniert Hr² für meinen Haartyp?",
-    "faq_a4": "Hr² ist für die langfristige Unterstützung der Haargesundheit entwickelt – unabhängig von Haartyp oder Haarstruktur. Ergebnisse können individuell variieren.",
-    "faq_q5": "Gibt es ein Risiko, dass Hr² meine Libido senkt?",
-    "faq_a5": "Hr² enthält keine Arzneistoffe und ist nicht darauf ausgerichtet, in den Hormonhaushalt einzugreifen. Wenn du Veränderungen bemerkst, pausiere und sprich mit medizinischem Fachpersonal.",
-    "faq_q6": "Wo finde ich alle Inhaltsstoffe und Studien?",
-    "faq_a6_prefix": "Eine Übersicht findest du auf den Seiten",
-    "faq_a6_middle": "und",
-    "delivery": "Lieferung",
-    "delivery_text": "Bequem geliefert, monatlich.",
-    "lab_alt": "Labor",
-    "capsules_alt": "Kapseln",
-    "capsule_alt": "Hr² Kapsel"
+  "header": {
+    "aria": {
+      "main_nav": "Hauptnavigation",
+      "cart": "Warenkorb ({{ count }})",
+      "mobile_nav": "Mobile Navigation"
+    }
   }
 }

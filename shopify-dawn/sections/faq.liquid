@@ -1,7 +1,33 @@
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
+
+{% assign faq_heading = section.settings.heading %}
+{% if use_locale_copy or faq_heading == blank %}
+  {% assign faq_heading = 'sections.faq.heading' | t %}
+{% endif %}
+
+{% assign faq_subheading = section.settings.subheading %}
+{% if use_locale_copy or faq_subheading == blank %}
+  {% assign faq_subheading = 'sections.faq.subheading' | t %}
+{% endif %}
+
+{% assign faq_help_text = section.settings.help_text %}
+{% if use_locale_copy or faq_help_text == blank %}
+  {% assign faq_help_text = 'sections.faq.help_link' | t %}
+{% endif %}
+
+{% assign faq_help_suffix = section.settings.help_suffix %}
+{% if use_locale_copy or faq_help_suffix == blank %}
+  {% assign faq_help_suffix = 'sections.faq.help_suffix' | t %}
+{% endif %}
+
 <section class="faq">
   <div class="faq-left">
-    <h2>{{ section.settings.heading | default: 'Du hast Fragen, wir die Antworten' }}</h2>
-    <p>{{ section.settings.subheading | default: 'Du findest nicht, wonach du suchst?' }} <a href="{{ section.settings.help_url | default: pages['hilfe'].url | default: '/pages/hilfe' }}#hilfecenter" class="faq-link">{{ section.settings.help_text | default: 'Hilfecenter' }}</a> – {{ section.settings.help_suffix | default: 'wir sind da, um dir zu helfen.' }}</p>
+    <h2>{{ faq_heading }}</h2>
+    <p>{{ faq_subheading }} <a href="{{ section.settings.help_url | default: pages['hilfe'].url | default: '/pages/hilfe' }}#hilfecenter" class="faq-link">{{ faq_help_text }}</a> – {{ faq_help_suffix }}</p>
   </div>
 
   <div class="faq-right">
@@ -9,12 +35,47 @@
       {% if block.type == 'question' %}
         {% assign is_first = false %}
         {% if forloop.first %}{% assign is_first = true %}{% endif %}
+        {% assign faq_question = block.settings.question %}
+        {% assign faq_answer = block.settings.answer %}
+        {% assign faq_question_key = '' %}
+        {% assign faq_answer_key = '' %}
+        {% case forloop.index %}
+          {% when 1 %}
+            {% assign faq_question_key = 'sections.faq.questions.q1.question' %}
+            {% assign faq_answer_key = 'sections.faq.questions.q1.answer' %}
+          {% when 2 %}
+            {% assign faq_question_key = 'sections.faq.questions.q2.question' %}
+            {% assign faq_answer_key = 'sections.faq.questions.q2.answer' %}
+          {% when 3 %}
+            {% assign faq_question_key = 'sections.faq.questions.q3.question' %}
+            {% assign faq_answer_key = 'sections.faq.questions.q3.answer' %}
+          {% when 4 %}
+            {% assign faq_question_key = 'sections.faq.questions.q4.question' %}
+            {% assign faq_answer_key = 'sections.faq.questions.q4.answer' %}
+          {% when 5 %}
+            {% assign faq_question_key = 'sections.faq.questions.q5.question' %}
+            {% assign faq_answer_key = 'sections.faq.questions.q5.answer' %}
+          {% when 6 %}
+            {% assign faq_question_key = 'sections.faq.questions.q6.question' %}
+            {% assign faq_answer_key = 'sections.faq.questions.q6.answer' %}
+        {% endcase %}
+        {% if use_locale_copy and faq_question_key != blank %}
+          {% assign faq_question = faq_question_key | t %}
+          {% assign faq_answer = faq_answer_key | t %}
+        {% else %}
+          {% if faq_question == blank and faq_question_key != blank %}
+            {% assign faq_question = faq_question_key | t %}
+          {% endif %}
+          {% if faq_answer == blank and faq_answer_key != blank %}
+            {% assign faq_answer = faq_answer_key | t %}
+          {% endif %}
+        {% endif %}
         <div class="faq-item{% if is_first %} open{% endif %}" {{ block.shopify_attributes }}>
           <button class="faq-question" type="button" aria-expanded="{{ is_first }}">
-            <span>{{ block.settings.question }}</span>
+            <span>{{ faq_question }}</span>
             <span class="faq-toggle">{% if is_first %}–{% else %}+{% endif %}</span>
           </button>
-          <div class="faq-answer" {% unless is_first %}hidden{% endunless %}>{{ block.settings.answer }}</div>
+          <div class="faq-answer" {% unless is_first %}hidden{% endunless %}>{{ faq_answer }}</div>
         </div>
       {% endif %}
     {% endfor %}

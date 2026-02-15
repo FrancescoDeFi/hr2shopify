@@ -7,18 +7,9 @@
   'use strict';
 
   /**
-   * Ingredient descriptions for the ingredients explorer
+   * Keep fallback copy empty so locale-specific text always comes from Liquid data attributes.
    */
-  var ingredientCopy = {
-    anagain: 'Ein pflanzlicher Erbsensprossen-Extrakt, der die Haarwurzel in ihrer Aktivität unterstützt und so gesundes Haarwachstum begleitet.<sup>4</sup>',
-    sawpalmetto: 'Ein Pflanzenextrakt, der Faktoren unterstützt, die mit der Erhaltung voller Haare in Verbindung stehen.<sup>4</sup>',
-    pomegranate: 'Ein polyphenolreicher Extrakt mit antioxidativen Eigenschaften – unterstützt den Schutz vor oxidativem Stress.<sup>4</sup>',
-    ashwagandha: 'Ein Adaptogen, das die Stressbalance unterstützt – ein wichtiger Faktor für gesunde Haarzyklen.<sup>4</sup>',
-    lcysteine: 'Eine Aminosäure, die als Baustein von Keratin dient – unterstützt die natürliche Haarstruktur.<sup>4</sup>',
-    llysine: 'Eine essentielle Aminosäure, die am Aufbau von Strukturproteinen beteiligt ist.<sup>4</sup>',
-    zinc: 'Zink trägt zur Erhaltung normaler Haare und Nägel bei.<sup>4</sup>',
-    biotin: 'Biotin trägt zur Erhaltung normaler Haare und Haut bei.<sup>4</sup>'
-  };
+  var ingredientCopy = {};
 
   /**
    * Initialize ingredients explorer tabs

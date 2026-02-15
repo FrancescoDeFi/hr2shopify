@@ -1,38 +1,131 @@
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
+
+{% assign ingredients_heading = section.settings.heading %}
+{% if use_locale_copy or ingredients_heading == blank %}
+  {% assign ingredients_heading = 'sections.ingredients.heading' | t %}
+{% endif %}
+
+{% assign ingredients_more_text = section.settings.more_text %}
+{% if use_locale_copy or ingredients_more_text == blank %}
+  {% assign ingredients_more_text = 'sections.ingredients.more' | t %}
+{% endif %}
+
+{% assign first_description = '' %}
+{% assign first_curve_top = '' %}
+{% assign first_curve_bottom = '' %}
+{% assign default_curve_top = 'sections.ingredients.default_curve_top' | t %}
+{% assign default_curve_bottom = 'sections.ingredients.default_curve_bottom' | t %}
+
 <section class="ingredients-explorer" aria-labelledby="ingredients-title">
   <div class="ingredients-inner">
-    <h2 class="ingredients-title" id="ingredients-title">{{ section.settings.heading | default: 'DIE PREISGEKRÖNTE PRÄZISIONSMISCHUNG AN INHALTSSTOFFEN.' }}</h2>
+    <h2 class="ingredients-title" id="ingredients-title">{{ ingredients_heading }}</h2>
 
     <div class="ingredients-grid">
-      <div class="ingredients-panel" aria-label="Inhaltsstoff-Details">
-        <div class="ingredients-chips" role="tablist" aria-label="Inhaltsstoffe">
+      <div class="ingredients-panel" aria-label="{{ 'sections.ingredients.aria.details' | t }}">
+        <div class="ingredients-chips" role="tablist" aria-label="{{ 'sections.ingredients.aria.tabs' | t }}">
           {% for block in section.blocks %}
             {% if block.type == 'ingredient' %}
               {% assign is_first = false %}
               {% if forloop.first %}{% assign is_first = true %}{% endif %}
+              {% assign ingredient_name = block.settings.name %}
+              {% assign ingredient_description = block.settings.description %}
+              {% assign ingredient_curve_top = block.settings.curve_top %}
+              {% assign ingredient_curve_bottom = block.settings.curve_bottom %}
+              {% assign ingredient_key = block.settings.id %}
+              {% assign ingredient_name_key = '' %}
+              {% assign ingredient_description_key = '' %}
+              {% assign ingredient_curve_top_key = '' %}
+              {% assign ingredient_curve_bottom_key = '' %}
+              {% case ingredient_key %}
+                {% when 'anagain' %}
+                  {% assign ingredient_name_key = 'sections.ingredients.items.anagain.name' %}
+                  {% assign ingredient_description_key = 'sections.ingredients.items.anagain.description' %}
+                  {% assign ingredient_curve_top_key = 'sections.ingredients.items.anagain.curve_top' %}
+                  {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.anagain.curve_bottom' %}
+                {% when 'sawpalmetto' %}
+                  {% assign ingredient_name_key = 'sections.ingredients.items.sawpalmetto.name' %}
+                  {% assign ingredient_description_key = 'sections.ingredients.items.sawpalmetto.description' %}
+                  {% assign ingredient_curve_top_key = 'sections.ingredients.items.sawpalmetto.curve_top' %}
+                  {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.sawpalmetto.curve_bottom' %}
+                {% when 'pomegranate' %}
+                  {% assign ingredient_name_key = 'sections.ingredients.items.pomegranate.name' %}
+                  {% assign ingredient_description_key = 'sections.ingredients.items.pomegranate.description' %}
+                  {% assign ingredient_curve_top_key = 'sections.ingredients.items.pomegranate.curve_top' %}
+                  {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.pomegranate.curve_bottom' %}
+                {% when 'ashwagandha' %}
+                  {% assign ingredient_name_key = 'sections.ingredients.items.ashwagandha.name' %}
+                  {% assign ingredient_description_key = 'sections.ingredients.items.ashwagandha.description' %}
+                  {% assign ingredient_curve_top_key = 'sections.ingredients.items.ashwagandha.curve_top' %}
+                  {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.ashwagandha.curve_bottom' %}
+                {% when 'lcysteine' %}
+                  {% assign ingredient_name_key = 'sections.ingredients.items.lcysteine.name' %}
+                  {% assign ingredient_description_key = 'sections.ingredients.items.lcysteine.description' %}
+                  {% assign ingredient_curve_top_key = 'sections.ingredients.items.lcysteine.curve_top' %}
+                  {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.lcysteine.curve_bottom' %}
+                {% when 'llysine' %}
+                  {% assign ingredient_name_key = 'sections.ingredients.items.llysine.name' %}
+                  {% assign ingredient_description_key = 'sections.ingredients.items.llysine.description' %}
+                  {% assign ingredient_curve_top_key = 'sections.ingredients.items.llysine.curve_top' %}
+                  {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.llysine.curve_bottom' %}
+                {% when 'zinc' %}
+                  {% assign ingredient_name_key = 'sections.ingredients.items.zinc.name' %}
+                  {% assign ingredient_description_key = 'sections.ingredients.items.zinc.description' %}
+                  {% assign ingredient_curve_top_key = 'sections.ingredients.items.zinc.curve_top' %}
+                  {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.zinc.curve_bottom' %}
+                {% when 'biotin' %}
+                  {% assign ingredient_name_key = 'sections.ingredients.items.biotin.name' %}
+                  {% assign ingredient_description_key = 'sections.ingredients.items.biotin.description' %}
+                  {% assign ingredient_curve_top_key = 'sections.ingredients.items.biotin.curve_top' %}
+                  {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.biotin.curve_bottom' %}
+              {% endcase %}
+              {% if use_locale_copy and ingredient_name_key != blank %}
+                {% assign ingredient_name = ingredient_name_key | t %}
+                {% assign ingredient_description = ingredient_description_key | t %}
+                {% assign ingredient_curve_top = ingredient_curve_top_key | t %}
+                {% assign ingredient_curve_bottom = ingredient_curve_bottom_key | t %}
+              {% else %}
+                {% if ingredient_name == blank and ingredient_name_key != blank %}
+                  {% assign ingredient_name = ingredient_name_key | t %}
+                {% endif %}
+                {% if ingredient_description == blank and ingredient_description_key != blank %}
+                  {% assign ingredient_description = ingredient_description_key | t %}
+                {% endif %}
+                {% if ingredient_curve_top == blank and ingredient_curve_top_key != blank %}
+                  {% assign ingredient_curve_top = ingredient_curve_top_key | t %}
+                {% endif %}
+                {% if ingredient_curve_bottom == blank and ingredient_curve_bottom_key != blank %}
+                  {% assign ingredient_curve_bottom = ingredient_curve_bottom_key | t %}
+                {% endif %}
+              {% endif %}
+              {% if is_first %}
+                {% assign first_description = ingredient_description %}
+                {% assign first_curve_top = ingredient_curve_top %}
+                {% assign first_curve_bottom = ingredient_curve_bottom %}
+              {% endif %}
               <button class="ingredient-chip{% if is_first %} active{% endif %}"
                       type="button"
                       role="tab"
                       aria-selected="{{ is_first }}"
                       data-ingredient="{{ block.settings.id }}"
-                      data-description="{{ block.settings.description | escape }}"
-                      data-curve-top="{{ block.settings.curve_top | default: '' | escape }}"
-                      data-curve-bottom="{{ block.settings.curve_bottom | default: '' | escape }}"
+                      data-description="{{ ingredient_description | escape }}"
+                      data-curve-top="{{ ingredient_curve_top | default: '' | escape }}"
+                      data-curve-bottom="{{ ingredient_curve_bottom | default: '' | escape }}"
                       {{ block.shopify_attributes }}>
                 <span class="chip-dot" aria-hidden="true"></span>
-                {{ block.settings.name }}
+                {{ ingredient_name }}
               </button>
             {% endif %}
           {% endfor %}
         </div>
 
-        <div class="ingredients-more">{{ section.settings.more_text | default: 'und 20+ mehr' }}</div>
+        <div class="ingredients-more">{{ ingredients_more_text }}</div>
 
         <p class="ingredient-description" id="ingredient-description">
-          {% for block in section.blocks %}
-            {% if block.type == 'ingredient' and forloop.first %}
-              {{ block.settings.description }}
-            {% endif %}
-          {% endfor %}
+          {{ first_description }}
         </p>
       </div>
 
@@ -45,12 +138,12 @@
             </defs>
             <text>
               <textPath id="text-top" href="#curve-top" startOffset="50%" text-anchor="middle">
-                {% for block in section.blocks %}{% if block.type == 'ingredient' and forloop.first %}{{ block.settings.curve_top | default: 'UNTERSTÜTZT HAARWACHSTUM' }}{% endif %}{% endfor %}
+                {{ first_curve_top | default: default_curve_top }}
               </textPath>
             </text>
             <text>
               <textPath id="text-bottom" href="#curve-bottom" startOffset="50%" text-anchor="middle">
-                {% for block in section.blocks %}{% if block.type == 'ingredient' and forloop.first %}{{ block.settings.curve_bottom | default: 'ERBSENSPROSSEN-EXTRAKT' }}{% endif %}{% endfor %}
+                {{ first_curve_bottom | default: default_curve_bottom }}
               </textPath>
             </text>
           </svg>

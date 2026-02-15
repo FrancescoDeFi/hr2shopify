@@ -1,161 +1,129 @@
-{%- assign offer_product = all_products[settings.primary_product_handle] -%}
-{%- assign offer_variant = nil -%}
-{%- assign offer_allocations = nil -%}
-{%- assign offer_product_title = section.settings.product_title -%}
-{%- assign offer_product_description = section.settings.product_description -%}
-{%- assign offer_cta_text = section.settings.cta_text -%}
-{%- assign offer_promo_tagline = section.settings.promo_tagline -%}
-{%- assign offer_promo_heading = section.settings.promo_heading -%}
-{%- if offer_product != blank -%}
-  {%- assign offer_variant = offer_product.selected_or_first_available_variant -%}
-  {%- assign offer_allocations = offer_variant.selling_plan_allocations -%}
-{%- endif -%}
-{%- if request.locale.iso_code == 'en' -%}
-  {%- assign offer_product_title = blank -%}
-  {%- assign offer_product_description = blank -%}
-  {%- assign offer_cta_text = blank -%}
-  {%- assign offer_promo_tagline = blank -%}
-  {%- assign offer_promo_heading = blank -%}
-{%- endif -%}
-{%- if offer_product_title == blank -%}{%- assign offer_product_title = 'offer.product_title' | t -%}{%- endif -%}
-{%- if offer_product_description == blank -%}{%- assign offer_product_description = 'offer.product_description' | t -%}{%- endif -%}
-{%- if offer_cta_text == blank -%}{%- assign offer_cta_text = 'offer.cta' | t -%}{%- endif -%}
-{%- if offer_promo_tagline == blank -%}{%- assign offer_promo_tagline = 'offer.promo_tagline' | t -%}{%- endif -%}
-{%- if offer_promo_heading == blank -%}{%- assign offer_promo_heading = 'offer.promo_heading' | t -%}{%- endif -%}
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
+
+{% assign offer_title = section.settings.product_title %}
+{% if use_locale_copy or offer_title == blank %}
+  {% assign offer_title = 'sections.offer.title' | t %}
+{% endif %}
+
+{% assign offer_description = section.settings.product_description %}
+{% if use_locale_copy or offer_description == blank %}
+  {% assign offer_description = 'sections.offer.description' | t %}
+{% endif %}
+
+{% assign offer_cta = section.settings.cta_text %}
+{% if use_locale_copy or offer_cta == blank %}
+  {% assign offer_cta = 'sections.offer.cta' | t %}
+{% endif %}
+
+{% assign offer_one_time = section.settings.one_time_text %}
+{% if use_locale_copy or offer_one_time == blank %}
+  {% assign offer_one_time = 'sections.offer.once_link' | t: price: settings.onetime_price, shipping: settings.onetime_shipping %}
+{% endif %}
+
+{% assign offer_guarantee = section.settings.guarantee_text %}
+{% if use_locale_copy or offer_guarantee == blank %}
+  {% assign offer_guarantee = 'sections.offer.guarantee' | t %}
+{% endif %}
+
+{% assign offer_tagline = section.settings.promo_tagline %}
+{% if use_locale_copy or offer_tagline == blank %}
+  {% assign offer_tagline = 'sections.offer.tagline' | t %}
+{% endif %}
+
+{% assign offer_promo_heading = section.settings.promo_heading %}
+{% if use_locale_copy or offer_promo_heading == blank %}
+  {% assign offer_promo_heading = 'sections.offer.promo_heading' | t %}
+{% endif %}
 
 <section class="offer">
   <div class="offer-left">
-    <h2 class="offer-product-title">{{ offer_product_title }}</h2>
+    <h2 class="offer-product-title">{{ offer_title }}</h2>
 
     <p class="offer-product-description">
-      {{ offer_product_description }}
+      {{ offer_description }}
     </p>
 
-    <div class="offer-plans" role="radiogroup" aria-label="{{ 'offer.delivery_options' | t }}">
-      {%- if offer_product != blank and offer_variant != blank and offer_product.selling_plan_groups.size > 0 -%}
-        {%- assign offer_group = offer_product.selling_plan_groups.first -%}
-        {%- for plan in offer_group.selling_plans limit: 3 -%}
-          {%- assign matched_allocation = blank -%}
-          {%- for allocation in offer_allocations -%}
-            {%- if allocation.selling_plan and allocation.selling_plan.id == plan.id -%}
-              {%- assign matched_allocation = allocation -%}
-              {%- break -%}
-            {%- endif -%}
-          {%- endfor -%}
-
-          {%- assign adjustment = plan.price_adjustments | first -%}
-          {%- assign option_old_price = offer_variant.price -%}
-          {%- assign option_new_price = offer_variant.price -%}
-
-          {%- if matched_allocation and matched_allocation.price -%}
-            {%- assign option_new_price = matched_allocation.price -%}
-            {%- if matched_allocation.compare_at_price and matched_allocation.compare_at_price > matched_allocation.price -%}
-              {%- assign option_old_price = matched_allocation.compare_at_price -%}
-            {%- endif -%}
-          {%- elsif adjustment -%}
-            {%- if adjustment.value_type == 'percentage' -%}
-              {%- assign discount_amount = offer_variant.price | times: adjustment.value | divided_by: 100 -%}
-              {%- assign option_new_price = offer_variant.price | minus: discount_amount -%}
-            {%- elsif adjustment.value_type == 'fixed_amount' -%}
-              {%- assign option_new_price = offer_variant.price | minus: adjustment.value -%}
-            {%- elsif adjustment.value_type == 'price' -%}
-              {%- assign option_new_price = adjustment.value -%}
-            {%- endif -%}
-          {%- endif -%}
-
-          {%- if option_new_price < 0 -%}
-            {%- assign option_new_price = 0 -%}
-          {%- endif -%}
-
-          {%- assign save_text = '' -%}
-          {%- if adjustment and adjustment.value_type == 'percentage' -%}
-            {%- assign save_text = 'offer.save_prefix' | t | append: ' ' | append: adjustment.value | append: '%' -%}
-          {%- elsif adjustment and adjustment.value_type == 'fixed_amount' -%}
-            {%- assign save_text = 'offer.save_prefix' | t | append: ' ' | append: adjustment.value | money -%}
-          {%- endif -%}
-          {%- assign localized_plan_name = plan.name -%}
-          {%- if request.locale.iso_code == 'de' -%}
-            {%- assign localized_plan_name = plan.name
-              | replace: 'Deliver every month', 'Lieferung jeden Monat'
-              | replace: 'Deliver every 1 month', 'Lieferung jeden Monat'
-              | replace: 'Deliver every 3 months', 'Lieferung alle 3 Monate'
-              | replace: 'Deliver every 6 months', 'Lieferung alle 6 Monate'
-              | replace: 'DELIVER EVERY MONTH', 'LIEFERUNG JEDEN MONAT'
-              | replace: 'DELIVER EVERY 1 MONTH', 'LIEFERUNG JEDEN MONAT'
-              | replace: 'DELIVER EVERY 3 MONTHS', 'LIEFERUNG ALLE 3 MONATE'
-              | replace: 'DELIVER EVERY 6 MONTHS', 'LIEFERUNG ALLE 6 MONATE'
-              | replace: 'Subscribe and save', 'Abonnieren und sparen'
-              | replace: 'SUBSCRIBE AND SAVE', 'ABONNIEREN UND SPAREN'
-              | replace: '% off', '% sparen'
-              | replace: '% OFF', '% SPAREN'
-              | replace: ', 15% sparen', ''
-              | replace: ', 20% sparen', ''
-              | replace: ', 25% sparen', ''
-              | replace: ', 15% SPAREN', ''
-              | replace: ', 20% SPAREN', ''
-              | replace: ', 25% SPAREN', ''
-            -%}
-          {%- endif -%}
-
-          <label class="offer-plan{% if forloop.first %} is-selected{% endif %}">
-            <input class="offer-plan-radio" type="radio" name="offer-plan" value="{{ plan.id }}" {% if forloop.first %}checked{% endif %}>
+    <div class="offer-plans" role="radiogroup" aria-label="{{ 'sections.offer.aria.delivery_options' | t }}">
+      {% for block in section.blocks %}
+        {% if block.type == 'plan' %}
+          {% assign plan_name = block.settings.name %}
+          {% assign plan_badge = block.settings.badge %}
+          {% assign plan_description = block.settings.description %}
+          {% if use_locale_copy %}
+            {% case block.settings.value %}
+              {% when 'monthly' %}
+                {% assign plan_name = 'sections.offer.plans.monthly.name' | t %}
+                {% assign plan_badge = 'sections.offer.plans.monthly.badge' | t %}
+                {% assign plan_description = 'sections.offer.plans.monthly.description' | t %}
+              {% when '3month' %}
+                {% assign plan_name = 'sections.offer.plans.three_month.name' | t %}
+                {% assign plan_badge = 'sections.offer.plans.three_month.badge' | t %}
+                {% assign plan_description = 'sections.offer.plans.three_month.description' | t %}
+              {% when '6month' %}
+                {% assign plan_name = 'sections.offer.plans.six_month.name' | t %}
+                {% assign plan_badge = 'sections.offer.plans.six_month.badge' | t %}
+                {% assign plan_description = 'sections.offer.plans.six_month.description' | t %}
+            {% endcase %}
+          {% else %}
+            {% if plan_name == blank or plan_badge == blank or plan_description == blank %}
+              {% case block.settings.value %}
+                {% when 'monthly' %}
+                  {% if plan_name == blank %}{% assign plan_name = 'sections.offer.plans.monthly.name' | t %}{% endif %}
+                  {% if plan_badge == blank %}{% assign plan_badge = 'sections.offer.plans.monthly.badge' | t %}{% endif %}
+                  {% if plan_description == blank %}{% assign plan_description = 'sections.offer.plans.monthly.description' | t %}{% endif %}
+                {% when '3month' %}
+                  {% if plan_name == blank %}{% assign plan_name = 'sections.offer.plans.three_month.name' | t %}{% endif %}
+                  {% if plan_badge == blank %}{% assign plan_badge = 'sections.offer.plans.three_month.badge' | t %}{% endif %}
+                  {% if plan_description == blank %}{% assign plan_description = 'sections.offer.plans.three_month.description' | t %}{% endif %}
+                {% when '6month' %}
+                  {% if plan_name == blank %}{% assign plan_name = 'sections.offer.plans.six_month.name' | t %}{% endif %}
+                  {% if plan_badge == blank %}{% assign plan_badge = 'sections.offer.plans.six_month.badge' | t %}{% endif %}
+                  {% if plan_description == blank %}{% assign plan_description = 'sections.offer.plans.six_month.description' | t %}{% endif %}
+              {% endcase %}
+            {% endif %}
+          {% endif %}
+          <label class="offer-plan{% if forloop.first %} is-selected{% endif %}" {{ block.shopify_attributes }}>
+            <input class="offer-plan-radio" type="radio" name="offer-plan" value="{{ block.settings.value }}" {% if forloop.first %}checked{% endif %}>
             <div class="offer-plan-title">
-              <span class="offer-plan-name">{{ localized_plan_name }}</span>
-              {% if save_text != '' %}
-                <span class="offer-plan-badge">{{ save_text }}</span>
+              <span class="offer-plan-name">{{ plan_name }}</span>
+              {% if plan_badge != blank %}
+                <span class="offer-plan-badge">{{ plan_badge }}</span>
               {% endif %}
             </div>
             <div class="offer-plan-price">
-              {% if option_new_price < option_old_price %}
-                <div class="offer-plan-price-old">{{ option_old_price | money }}</div>
+              <div class="offer-plan-price-new">{{ block.settings.price_new }}</div>
+              {% if block.settings.price_old != blank %}
+                <div class="offer-plan-price-old">{{ block.settings.price_old }}</div>
               {% endif %}
-              <div class="offer-plan-price-new">{{ option_new_price | money }}</div>
             </div>
+            <div class="offer-plan-desc">{{ plan_description }}</div>
           </label>
-        {%- endfor -%}
-      {%- else -%}
-        {% for block in section.blocks %}
-          {% if block.type == 'plan' %}
-            <label class="offer-plan{% if forloop.first %} is-selected{% endif %}" {{ block.shopify_attributes }}>
-              <input class="offer-plan-radio" type="radio" name="offer-plan" value="{{ block.settings.value }}" {% if forloop.first %}checked{% endif %}>
-              <div class="offer-plan-title">
-                <span class="offer-plan-name">{{ block.settings.name }}</span>
-                {% if block.settings.badge != blank %}
-                  <span class="offer-plan-badge">{{ block.settings.badge }}</span>
-                {% endif %}
-              </div>
-              <div class="offer-plan-price">
-                {% if block.settings.price_old != blank %}
-                  <div class="offer-plan-price-old">{{ block.settings.price_old }}</div>
-                {% endif %}
-                <div class="offer-plan-price-new">{{ block.settings.price_new }}</div>
-              </div>
-            </label>
-          {% endif %}
-        {% endfor %}
-      {%- endif -%}
+        {% endif %}
+      {% endfor %}
     </div>
 
-    <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ offer_cta_text }}</a>
+    <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ offer_cta }} <span aria-hidden="true">→</span></a>
 
-    <div class="offer-guarantee-row">
-      <span>✔ {{ 'offer.free_shipping' | t }}</span>
-      <span>✔ {{ 'offer.cancel_anytime' | t }}</span>
-      <span>✔ {{ 'offer.money_back' | t }}</span>
-    </div>
+    {% if section.settings.show_one_time %}
+      <div class="offer-once">
+        <a class="offer-once-link" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ offer_one_time }}</a>
+      </div>
+    {% endif %}
+
+    <p class="offer-guarantee-note">{{ offer_guarantee }}</p>
   </div>
 
   <div class="offer-right">
-    <div class="offer-tagline">{{ offer_promo_tagline }}</div>
+    <div class="offer-tagline">{{ offer_tagline }}</div>
     <h3>{{ offer_promo_heading }}</h3>
     {% if section.settings.promo_image != blank %}
-      {%- assign promo_alt = section.settings.promo_image.alt -%}
-      {%- if request.locale.iso_code == 'en' or promo_alt == blank -%}
-        {%- assign promo_alt = 'offer.bundle_alt' | t -%}
-      {%- endif -%}
-      <img src="{{ section.settings.promo_image | image_url: width: 600 }}" alt="{{ promo_alt }}" loading="lazy" decoding="async">
+      <img src="{{ section.settings.promo_image | image_url: width: 600 }}" alt="{{ section.settings.promo_image.alt | default: 'Hr² Bundle' }}" loading="lazy" decoding="async">
     {% else %}
-      <img src="{{ 'bottlew.png' | asset_url }}" alt="{{ 'offer.bundle_alt' | t }}" loading="lazy" decoding="async">
+      <img src="{{ 'bottlew.png' | asset_url }}" alt="Hr² Bundle" loading="lazy" decoding="async">
     {% endif %}
   </div>
 </section>
@@ -276,30 +244,33 @@
           "type": "plan",
           "settings": {
             "value": "monthly",
-            "name": "Monatlich",
-            "badge": "Spare 15%",
-            "price_new": "29€",
-            "price_old": "49€"
+            "name": "Monatliche Lieferung",
+            "badge": "Spare 10%",
+            "price_new": "35€",
+            "price_old": "39€",
+            "description": "1-Monats-Vorrat, Lieferung monatlich."
           }
         },
         {
           "type": "plan",
           "settings": {
             "value": "3month",
-            "name": "3 Monate",
-            "badge": "Spare 20%",
-            "price_new": "58€",
-            "price_old": "98€"
+            "name": "3-Monats-Lieferung",
+            "badge": "Spare 15%",
+            "price_new": "99€",
+            "price_old": "117€",
+            "description": "3-Monats-Vorrat mit Nachlieferung alle 3 Monate."
           }
         },
         {
           "type": "plan",
           "settings": {
             "value": "6month",
-            "name": "6 Monate",
-            "badge": "Spare 25%",
-            "price_new": "116€",
-            "price_old": "196€"
+            "name": "6-Monats-Lieferung",
+            "badge": "Spare 20%",
+            "price_new": "187€",
+            "price_old": "234€",
+            "description": "6-Monats-Vorrat mit Nachlieferung alle 6 Monate."
           }
         }
       ]

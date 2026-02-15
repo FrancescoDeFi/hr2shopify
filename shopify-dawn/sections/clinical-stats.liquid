@@ -1,30 +1,68 @@
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
+
+{% assign clinical_heading = section.settings.heading %}
+{% if use_locale_copy or clinical_heading == blank %}
+  {% assign clinical_heading = 'sections.clinical.heading' | t %}
+{% endif %}
+
+{% assign clinical_cta_text = section.settings.cta_text %}
+{% if use_locale_copy or clinical_cta_text == blank %}
+  {% assign clinical_cta_text = 'sections.clinical.cta' | t %}
+{% endif %}
+
+{% assign clinical_footer = section.settings.footer_text %}
+{% if use_locale_copy or clinical_footer == blank %}
+  {% assign clinical_footer = 'sections.clinical.footer' | t %}
+{% endif %}
+
 <section class="clinical-standard" aria-labelledby="clinical-title">
   <div class="clinical-inner">
     <div class="clinical-left">
-      {% assign clinical_heading = section.settings.heading | default: nil %}
-      {% assign clinical_cta_text = section.settings.cta_text | default: nil %}
-      {% assign clinical_footer = section.settings.footer_text | default: nil %}
-      <h2 class="clinical-title" id="clinical-title">{% if clinical_heading != blank %}{{ clinical_heading }}{% else %}{{ 'sections.clinical.heading' | t }}{% endif %}</h2>
+      <h2 class="clinical-title" id="clinical-title">{{ clinical_heading }}</h2>
       <a class="clinical-cta" href="{{ section.settings.cta_url | default: pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">
         <span class="cta-icon" aria-hidden="true">→</span>
-        {% if clinical_cta_text != blank %}{{ clinical_cta_text }}{% else %}{{ 'sections.clinical.cta' | t }}{% endif %}
+        {{ clinical_cta_text }}
       </a>
-      <p class="clinical-foot">{% if clinical_footer != blank %}{{ clinical_footer }}{% else %}{{ 'sections.clinical.footer' | t }}{% endif %}</p>
+      <p class="clinical-foot">{{ clinical_footer }}</p>
     </div>
 
-    <div class="clinical-right" aria-label="{{ 'sections.clinical.aria_stats' | t }}">
+    <div class="clinical-right" aria-label="{{ 'sections.clinical.aria.stats' | t }}">
       <div class="clinical-stats">
         {% for block in section.blocks %}
           {% if block.type == 'stat' %}
+            {% assign stat_text = block.settings.text %}
+            {% if use_locale_copy %}
+              {% case forloop.index %}
+                {% when 1 %}
+                  {% assign stat_text = 'sections.clinical.stats.stat_1' | t %}
+                {% when 2 %}
+                  {% assign stat_text = 'sections.clinical.stats.stat_2' | t %}
+                {% when 3 %}
+                  {% assign stat_text = 'sections.clinical.stats.stat_3' | t %}
+              {% endcase %}
+            {% elsif stat_text == blank %}
+              {% case forloop.index %}
+                {% when 1 %}
+                  {% assign stat_text = 'sections.clinical.stats.stat_1' | t %}
+                {% when 2 %}
+                  {% assign stat_text = 'sections.clinical.stats.stat_2' | t %}
+                {% when 3 %}
+                  {% assign stat_text = 'sections.clinical.stats.stat_3' | t %}
+              {% endcase %}
+            {% endif %}
             <div class="clinical-stat" {{ block.shopify_attributes }}>
               <div class="stat-value">{{ block.settings.value }}</div>
-              <div class="stat-text">{{ block.settings.text }}</div>
+              <div class="stat-text">{{ stat_text }}</div>
             </div>
           {% endif %}
         {% endfor %}
 
         {% if section.settings.show_sources %}
-          <ol class="clinical-notes" aria-label="Quellen">
+          <ol class="clinical-notes" aria-label="{{ 'sections.clinical.aria.sources' | t }}">
             {% for block in section.blocks %}
               {% if block.type == 'source' %}
                 <li {{ block.shopify_attributes }}>
@@ -90,7 +128,7 @@
           "type": "textarea",
           "id": "text",
           "label": "Beschreibung",
-          "default": "of participants using AnaGain experienced a reduction in hair loss<sup>1</sup>"
+          "default": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls<sup>1</sup>"
         }
       ]
     },
@@ -110,9 +148,9 @@
     {
       "name": "Klinische Statistiken",
       "blocks": [
-        { "type": "stat", "settings": { "value": "95%", "text": "of participants using AnaGain experienced a reduction in hair loss<sup>1</sup>" } },
-        { "type": "stat", "settings": { "value": "60%", "text": "of subjects treated with the active study formulation (saw palmetto) were rated as improved at last visit.<sup>2</sup>" } },
-        { "type": "stat", "settings": { "value": "100%", "text": "of participants with a biotin deficiency experienced an improvement in hair loss<sup>3</sup>" } },
+        { "type": "stat", "settings": { "value": "95%", "text": "der Teilnehmenden mit Anagain erlebten eine Verringerung des Haarausfalls<sup>1</sup>" } },
+        { "type": "stat", "settings": { "value": "60%", "text": "der Probanten, die mit der aktiven Studienformulierung (Saw Palmetto) behandelt wurden wurden beim letzten Besuch als verbessert beurteilt.<sup>2</sup>" } },
+        { "type": "stat", "settings": { "value": "100%", "text": "der Teilnehmen mit einem Defizit an Biotin erlebten eine Verbesserung des Haarausfalls<sup>3</sup>" } },
         { "type": "source", "settings": { "url": "https://onlinelibrary.wiley.com/doi/10.1002/ptr.6528" } },
         { "type": "source", "settings": { "url": "https://pubmed.ncbi.nlm.nih.gov/12006122/" } },
         { "type": "source", "settings": { "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5582478/" } }

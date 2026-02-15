@@ -1,27 +1,61 @@
-<section class="hair-growth-comparison" aria-label="Produktvergleich">
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
+
+{% assign comparison_cta = section.settings.cta_text %}
+{% if use_locale_copy or comparison_cta == blank %}
+  {% assign comparison_cta = 'sections.comparison.buy_cta' | t %}
+{% endif %}
+
+{% assign comparison_price_note = section.settings.price_note %}
+{% if use_locale_copy or comparison_price_note == blank %}
+  {% assign comparison_price_note = 'sections.comparison.price_note' | t %}
+{% endif %}
+
+{% assign comparison_title = section.settings.table_title %}
+{% if use_locale_copy or comparison_title == blank %}
+  {% assign comparison_title = 'sections.comparison.title' | t %}
+{% endif %}
+
+<section class="hair-growth-comparison" aria-label="{{ 'sections.comparison.aria.section' | t }}">
   <div class="comparison-showdown">
-    <article class="comparison-panel comparison-panel-hr2" aria-label="HR2 Präsentation">
+    <article class="comparison-panel comparison-panel-hr2" aria-label="{{ 'sections.comparison.aria.presentation' | t }}">
       {% if section.settings.product_image != blank %}
         <img class="comparison-bottle" src="{{ section.settings.product_image | image_url: width: 400 }}" alt="{{ section.settings.product_image.alt | default: 'HR2 Flasche' }}" loading="lazy" decoding="async">
       {% else %}
         <img class="comparison-bottle" src="{{ 'bottlenew2.png' | asset_url }}" alt="HR2 Flasche" loading="lazy" decoding="async">
       {% endif %}
-      <a class="comparison-pill-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ section.settings.cta_text | default: 'Hr² kaufen' }}</a>
-      <p class="comparison-note">{{ section.settings.price_note | default: 'ab 32 € pro Monat' }}</p>
+      <a class="comparison-pill-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ comparison_cta }}</a>
+      <p class="comparison-note">{{ comparison_price_note }}</p>
     </article>
 
-    <article class="comparison-panel comparison-panel-others" aria-label="Produktvergleichstabelle">
-      <h3 class="comparison-table-title">{{ section.settings.table_title | default: 'Vergleich' }}</h3>
+    <article class="comparison-panel comparison-panel-others" aria-label="{{ 'sections.comparison.aria.table' | t }}">
+      <h3 class="comparison-table-title">{{ comparison_title }}</h3>
       <ul class="comparison-table-list" role="list">
         <li class="comparison-table-row comparison-table-head">
-          <span class="comparison-table-feature">Merkmal</span>
-          <span class="comparison-table-col">Hr²</span>
-          <span class="comparison-table-col">Andere</span>
+          <span class="comparison-table-feature">{{ 'sections.comparison.feature' | t }}</span>
+          <span class="comparison-table-col">{{ 'sections.comparison.hr2' | t }}</span>
+          <span class="comparison-table-col">{{ 'sections.comparison.others' | t }}</span>
         </li>
         {% for block in section.blocks %}
           {% if block.type == 'feature' %}
+            {% assign feature_name = block.settings.feature_name %}
+            {% if use_locale_copy %}
+              {% case feature_name %}
+                {% when 'Klinisch belegt' %}
+                  {% assign feature_name = 'sections.comparison.features.clinically_proven' | t %}
+                {% when 'Bio-optimiert' %}
+                  {% assign feature_name = 'sections.comparison.features.bio_optimized' | t %}
+                {% when 'Ohne Arzneistoffe' %}
+                  {% assign feature_name = 'sections.comparison.features.without_drugs' | t %}
+                {% when 'Libido-freundlich' %}
+                  {% assign feature_name = 'sections.comparison.features.libido_friendly' | t %}
+              {% endcase %}
+            {% endif %}
             <li class="comparison-table-row" {{ block.shopify_attributes }}>
-              <span class="comparison-table-feature">{{ block.settings.feature_name }}</span>
+              <span class="comparison-table-feature">{{ feature_name }}</span>
               <span class="comparison-table-value">{{ block.settings.hr2_value }}</span>
               <span class="comparison-table-value {% if block.settings.others_value == 'X' %}comparison-table-value-x{% endif %}">{{ block.settings.others_value }}</span>
             </li>

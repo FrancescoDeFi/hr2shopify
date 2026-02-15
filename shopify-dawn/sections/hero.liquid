@@ -1,32 +1,45 @@
-{% assign is_english = request.locale.iso_code == 'en' %}
-{% assign hero_heading = section.settings.heading %}
-{% assign hero_subheading = section.settings.subheading %}
-{% assign hero_cta_text = section.settings.cta_text %}
-{% assign hero_quiz_text = section.settings.quiz_text %}
-{% assign hero_clinicians_title = section.settings.clinicians_title %}
-{% assign hero_clinicians_text = section.settings.clinicians_text %}
-{% assign hero_image_alt = section.settings.hero_image.alt %}
+{% assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 %}
+{% assign use_locale_copy = false %}
+{% unless locale_prefix == 'de' %}
+  {% assign use_locale_copy = true %}
+{% endunless %}
 
-{% if hero_heading == blank or (is_english and hero_heading == 'Dein täglicher<br> Haar-Boost') %}
+{% assign hero_heading = section.settings.heading %}
+{% if use_locale_copy or hero_heading == blank %}
   {% assign hero_heading = 'sections.hero.heading' | t %}
 {% endif %}
-{% if hero_subheading == blank or (is_english and hero_subheading == 'Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.') %}
+
+{% assign legacy_subheading_de = 'Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.' %}
+{% assign hero_subheading = section.settings.subheading %}
+{% if use_locale_copy %}
+  {% assign hero_subheading = 'sections.hero.subheading' | t %}
+{% elsif hero_subheading == blank or hero_subheading == legacy_subheading_de %}
   {% assign hero_subheading = 'sections.hero.subheading' | t %}
 {% endif %}
-{% if hero_cta_text == blank or (is_english and hero_cta_text == 'Jetzt kaufen') %}
+
+{% assign hero_cta_text = section.settings.cta_text %}
+{% if use_locale_copy or hero_cta_text == blank %}
   {% assign hero_cta_text = 'sections.hero.cta_buy' | t %}
 {% endif %}
-{% if hero_quiz_text == blank or (is_english and hero_quiz_text == 'Mach dein Quiz für einen personalisierten Plan') %}
+
+{% assign hero_quiz_text = section.settings.quiz_text %}
+{% if use_locale_copy or hero_quiz_text == blank %}
   {% assign hero_quiz_text = 'sections.hero.cta_quiz' | t %}
 {% endif %}
-{% if hero_clinicians_title == blank or (is_english and hero_clinicians_title == 'Von Ärzten empfohlen') %}
+
+{% assign hero_clinicians_title = section.settings.clinicians_title %}
+{% if use_locale_copy or hero_clinicians_title == blank %}
   {% assign hero_clinicians_title = 'sections.hero.clinicians_title' | t %}
 {% endif %}
-{% if hero_clinicians_text == blank or (is_english and hero_clinicians_text == 'Wissenschaftlich fundiert. Entwickelt von den führenden medizinischen Expert:innen.') %}
-  {% assign hero_clinicians_text = 'sections.hero.clinicians_body' | t %}
+
+{% assign hero_clinicians_body = section.settings.clinicians_text %}
+{% if use_locale_copy or hero_clinicians_body == blank %}
+  {% assign hero_clinicians_body = 'sections.hero.clinicians_body' | t %}
 {% endif %}
-{% if hero_image_alt == blank or (is_english and hero_image_alt == 'Hr² Produkt') %}
-  {% assign hero_image_alt = 'sections.hero.product_image_alt' | t %}
+
+{% assign hero_image_alt = section.settings.hero_image.alt %}
+{% if hero_image_alt == blank %}
+  {% assign hero_image_alt = 'sections.hero.product_alt' | t %}
 {% endif %}
 
 <section class="hero">
@@ -34,28 +47,29 @@
     <h1>{{ hero_heading }}</h1>
     <p class="lead">{{ hero_subheading }}</p>
 
-    <div class="hero-benefits" aria-label="{{ 'sections.hero.aria_benefits' | t }}">
+    <div class="hero-benefits" aria-label="{{ 'sections.hero.aria.benefits' | t }}">
       {% for block in section.blocks %}
         {% if block.type == 'benefit' %}
           {% assign benefit_text = block.settings.text %}
-          {% assign de_benefit_default = '' %}
-          {% assign benefit_key = '' %}
-
-          {% if block.settings.icon == 'clinical' %}
-            {% assign de_benefit_default = 'KLINISCH<br>GEPRÜFTE FORMEL' %}
-            {% assign benefit_key = 'sections.hero.benefit_clinical' %}
-          {% elsif block.settings.icon == 'drug_free' %}
-            {% assign de_benefit_default = '100% OHNE<br>ARZNEISTOFFE' %}
-            {% assign benefit_key = 'sections.hero.benefit_drug_free' %}
-          {% elsif block.settings.icon == 'results' %}
-            {% assign de_benefit_default = 'ERGEBNISSE IN 3–6<br>MONATEN' %}
-            {% assign benefit_key = 'sections.hero.benefit_results' %}
+          {% if use_locale_copy %}
+            {% case block.settings.icon %}
+              {% when 'clinical' %}
+                {% assign benefit_text = 'sections.hero.benefits.clinical' | t %}
+              {% when 'drug_free' %}
+                {% assign benefit_text = 'sections.hero.benefits.drug_free' | t %}
+              {% when 'results' %}
+                {% assign benefit_text = 'sections.hero.benefits.results' | t %}
+            {% endcase %}
+          {% elsif benefit_text == blank %}
+            {% case block.settings.icon %}
+              {% when 'clinical' %}
+                {% assign benefit_text = 'sections.hero.benefits.clinical' | t %}
+              {% when 'drug_free' %}
+                {% assign benefit_text = 'sections.hero.benefits.drug_free' | t %}
+              {% when 'results' %}
+                {% assign benefit_text = 'sections.hero.benefits.results' | t %}
+            {% endcase %}
           {% endif %}
-
-          {% if benefit_key != '' and (benefit_text == blank or (is_english and benefit_text == de_benefit_default)) %}
-            {% assign benefit_text = benefit_key | t %}
-          {% endif %}
-
           <div class="hero-benefit" {{ block.shopify_attributes }}>
             {% if block.settings.icon == 'clinical' %}
               <svg class="hero-benefit-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -83,17 +97,17 @@
       {% endfor %}
     </div>
 
-    <div class="hero-ctas" aria-label="{{ 'sections.hero.aria_ctas' | t }}">
+    <div class="hero-ctas" aria-label="{{ 'sections.hero.aria.purchase_options' | t }}">
       <a class="primary-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ hero_cta_text }}</a>
       {% if section.settings.show_quiz_button %}
-        <a class="outline-btn hero-quiz-btn" href="{{ section.settings.quiz_url | default: '#' }}" aria-label="{{ 'sections.hero.aria_quiz' | t }}">
+        <a class="outline-btn hero-quiz-btn" href="{{ section.settings.quiz_url | default: '#' }}" aria-label="{{ 'sections.hero.aria.quiz_start' | t }}">
           {{ hero_quiz_text }} <span aria-hidden="true">→</span>
         </a>
       {% endif %}
     </div>
 
     {% if section.settings.show_clinicians_badge %}
-      <aside class="hero-clinicians-proof" aria-label="{{ 'sections.hero.aria_clinicians' | t }}">
+      <aside class="hero-clinicians-proof" aria-label="{{ 'sections.hero.aria.clinicians_choice' | t }}">
         <div class="hero-clinicians-title">
           <svg class="hero-clinicians-laurel" viewBox="0 0 24 28" aria-hidden="true">
             <path d="M20 3C13 8 12 18 18 25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -113,7 +127,7 @@
           </svg>
         </div>
         <div class="hero-clinicians-body">
-          <p>{{ hero_clinicians_text }}</p>
+          <p>{{ hero_clinicians_body }}</p>
         </div>
       </aside>
     {% endif %}
@@ -123,7 +137,7 @@
     {% if section.settings.hero_image != blank %}
       <img src="{{ section.settings.hero_image | image_url: width: 800 }}" alt="{{ hero_image_alt }}" loading="eager">
     {% else %}
-      <img src="{{ 'heroimage.png' | asset_url }}" alt="{{ 'sections.hero.product_image_alt' | t }}" loading="eager">
+      <img src="{{ 'heroimage.png' | asset_url }}" alt="{{ hero_image_alt }}" loading="eager">
     {% endif %}
   </div>
 </section>
