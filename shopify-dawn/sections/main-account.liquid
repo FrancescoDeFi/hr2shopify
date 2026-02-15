@@ -64,7 +64,7 @@
           {% endpaginate %}
         {% else %}
           <p>{{ 'customer.account.no_orders' | t }}</p>
-          <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}" class="primary-btn">{{ 'products.product.buy_now' | t }}</a>
+          <a href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}" class="primary-btn">{{ 'products.product.buy_now' | t }}</a>
         {% endif %}
       </div>
     </div>

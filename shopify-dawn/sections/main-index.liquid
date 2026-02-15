@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="hero-ctas" aria-label="{{ 'sections.hero.aria_ctas' | t }}">
-          <a class="primary-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.hero.cta_buy' | t }}</a>
+          <a class="primary-btn" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ 'sections.hero.cta_buy' | t }}</a>
           <a class="outline-btn hero-quiz-btn" href="#" aria-label="{{ 'sections.hero.aria_quiz' | t }}">
             {{ 'sections.hero.cta_quiz' | t }} <span aria-hidden="true">→</span>
           </a>
@@ -69,7 +69,7 @@
       <div class="comparison-showdown">
         <article class="comparison-panel comparison-panel-hr2" aria-label="{{ 'sections.comparison.hr2_aria' | t }}">
           <img class="comparison-bottle" src="{{ 'bottlenew2.png' | asset_url }}" alt="{{ 'sections.comparison.bottle_alt' | t }}" loading="lazy" decoding="async">
-          <a class="comparison-pill-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.comparison.buy_cta' | t }}</a>
+          <a class="comparison-pill-btn" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ 'sections.comparison.buy_cta' | t }}</a>
           <p class="comparison-note">{{ 'sections.comparison.price_note' | t }}</p>
         </article>
 
@@ -440,10 +440,10 @@
             </label>
         </div>
 
-        <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.offer.cta' | t }} <span aria-hidden="true">→</span></a>
+        <a class="offer-start-btn" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ 'sections.offer.cta' | t }} <span aria-hidden="true">→</span></a>
 
         <div class="offer-once">
-          <a class="offer-once-link" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.offer.once_text' | t }}</a>
+          <a class="offer-once-link" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ 'sections.offer.once_text' | t }}</a>
         </div>
         <p class="offer-guarantee-note">{{ 'sections.offer.guarantee' | t }}</p>
       </div>

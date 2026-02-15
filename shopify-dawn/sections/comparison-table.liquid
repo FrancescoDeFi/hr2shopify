@@ -27,7 +27,7 @@
       {% else %}
         <img class="comparison-bottle" src="{{ 'bottlenew2.png' | asset_url }}" alt="HR2 Flasche" loading="lazy" decoding="async">
       {% endif %}
-      <a class="comparison-pill-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ comparison_cta }}</a>
+      <a class="comparison-pill-btn" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ comparison_cta }}</a>
       <p class="comparison-note">{{ comparison_price_note }}</p>
     </article>
 

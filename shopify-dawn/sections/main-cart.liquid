@@ -33,7 +33,7 @@
       <div class="cart-empty">
         <h1>{{ cart_empty_title }}</h1>
         <p>{{ cart_empty_message }}</p>
-        <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}" class="primary-btn">
+        <a href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}" class="primary-btn">
           {{ cart_empty_cta }}
         </a>
       </div>

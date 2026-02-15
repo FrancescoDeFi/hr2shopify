@@ -106,11 +106,11 @@
       {% endfor %}
     </div>
 
-    <a class="offer-start-btn" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ offer_cta }} <span aria-hidden="true">→</span></a>
+    <a class="offer-start-btn" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ offer_cta }} <span aria-hidden="true">→</span></a>
 
     {% if section.settings.show_one_time %}
       <div class="offer-once">
-        <a class="offer-once-link" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ offer_one_time }}</a>
+        <a class="offer-once-link" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ offer_one_time }}</a>
       </div>
     {% endif %}
 

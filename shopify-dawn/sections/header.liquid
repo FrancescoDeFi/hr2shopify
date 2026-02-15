@@ -35,7 +35,7 @@
       {%- endif -%}
     </a>
 
-    <a class="primary-btn small no-arrow nav-buy" href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}"{% if template.name == 'product' %} aria-current="page"{% endif %}>{{ 'sections.comparison.buy_cta' | t }}</a>
+    <a class="primary-btn small no-arrow nav-buy" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}"{% if template.name == 'product' %} aria-current="page"{% endif %}>{{ 'sections.comparison.buy_cta' | t }}</a>
 
     <button class="mobile-nav-toggle" data-mobile-nav-toggle aria-label="{{ 'general.accessibility.open_menu' | t }}" aria-expanded="false">
       <span></span>
@@ -50,7 +50,7 @@
 <nav class="mobile-nav" data-mobile-nav aria-label="{{ 'header.aria.mobile_nav' | t }}">
   <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'footer.links.inhaltsstoffe' | t }}</a>
   <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'footer.links.forschung' | t }}</a>
-  <a href="{{ routes.root_url }}products/{{ settings.primary_product_handle }}">{{ 'sections.comparison.buy_cta' | t }}</a>
+  <a href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ 'sections.comparison.buy_cta' | t }}</a>
   <a href="{{ routes.cart_url }}">{{ 'cart.title' | t }}{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
   {%- if customer -%}
     <a href="{{ routes.account_url }}">{{ 'customer.account.title' | t }}</a>
