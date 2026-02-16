@@ -29,6 +29,7 @@
       "settings": {
         "heading": "Dein täglicher<br> Haar-Boost",
         "show_quiz_button": true,
+        "quiz_url": "/pages/hair-quiz",
         "show_clinicians_badge": true
       }
     },

@@ -1,6 +1,6 @@
 {{ 'questionnaire.css' | asset_url | stylesheet_tag }}
 
-{% assign doc_name = section.settings.doctor_name | default: "Dr. XX" %}
+{% assign doc_name = section.settings.doctor_name | default: "Dr. Patrick" %}
 {% assign doc_img = section.settings.doctor_image %}
 
 <div class="quiz-wrapper" id="quizWrapper">
@@ -28,8 +28,6 @@
   <div class="quiz-screen quiz-intro active" data-screen="intro">
     {%- if doc_img != blank -%}
       <img class="doctor-photo" src="{{ doc_img | image_url: width: 400 }}" alt="{{ doc_name }}">
-    {%- else -%}
-      <div class="doctor-photo" style="background:#e5e5e5;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#999;">👤</div>
     {%- endif -%}
     <h1>
       {% if request.locale.iso_code == 'de' %}
@@ -451,7 +449,6 @@
 
   <!-- ════════ REVIEW SCREEN ════════ -->
   <div class="quiz-screen quiz-review-screen" data-screen="review">
-    <div class="quiz-spinner"></div>
     {%- if doc_img != blank -%}
       <img class="doctor-photo" src="{{ doc_img | image_url: width: 400 }}" alt="{{ doc_name }}" style="width:120px;height:120px;">
     {%- endif -%}
@@ -482,7 +479,7 @@
       "type": "text",
       "id": "doctor_name",
       "label": "Doctor Name",
-      "default": "Dr. XX"
+      "default": "Dr. Patrick"
     },
     {
       "type": "image_picker",

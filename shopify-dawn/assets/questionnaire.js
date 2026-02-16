@@ -184,14 +184,68 @@
     answers[key][item] = val;
   });
 
-  /* ── Next buttons (multi-choice & grid screens) ── */
+  /* ── Validation helpers ── */
+  function validateScreen(screen) {
+    if (!screen) return false;
+    var name = screen.getAttribute("data-screen");
+
+    /* Multi-choice screens (Q5, Q11): at least one option selected */
+    var multiContainer = screen.querySelector('.quiz-options[data-type="multi"]');
+    if (multiContainer) {
+      return multiContainer.querySelectorAll(".quiz-option.selected").length > 0;
+    }
+
+    /* Grid screens (Q12, Q13, Q14): every row must have a selection */
+    var grid = screen.querySelector(".quiz-grid");
+    if (grid) {
+      var rows = grid.querySelectorAll(".quiz-grid-row");
+      var answered = grid.querySelectorAll(".quiz-grid-row:has(.grid-radio.selected)");
+      return rows.length > 0 && rows.length === answered.length;
+    }
+
+    /* Q7: require sex selection */
+    if (name === "q7") {
+      return !!answers.sex;
+    }
+
+    return true;
+  }
+
+  function updateNextButton(screen) {
+    if (!screen) return;
+    var btn = screen.querySelector("[data-next]");
+    if (!btn) return;
+    btn.disabled = !validateScreen(screen);
+  }
+
+  /* ── Initialize all data-next buttons as disabled ── */
   wrapper.querySelectorAll("[data-next]").forEach(function (btn) {
+    btn.disabled = true;
     btn.addEventListener("click", goNext);
   });
 
-  /* ── Q7 Continue (validate age) ── */
+  /* Re-validate after option clicks (multi-choice) */
+  wrapper.addEventListener("click", function (e) {
+    var option = e.target.closest(".quiz-option");
+    if (option) {
+      var screen = option.closest(".quiz-screen");
+      if (screen) setTimeout(function () { updateNextButton(screen); }, 0);
+    }
+  });
+
+  /* Re-validate after grid radio clicks */
+  wrapper.addEventListener("click", function (e) {
+    var radio = e.target.closest(".grid-radio");
+    if (radio) {
+      var screen = radio.closest(".quiz-screen");
+      if (screen) setTimeout(function () { updateNextButton(screen); }, 0);
+    }
+  });
+
+  /* ── Q7 Continue (validate age + sex) ── */
   var q7Next = document.getElementById("q7Next");
   if (q7Next) {
+    q7Next.disabled = true;
     q7Next.addEventListener("click", function (e) {
       var ageInput = document.getElementById("qAge");
       var age = ageInput ? ageInput.value.trim() : "";
@@ -199,6 +253,16 @@
       if (!answers.sex) {
         e.stopImmediatePropagation();
         return;
+      }
+    });
+  }
+
+  /* Re-validate Q7 when sex is selected (listen for answer changes) */
+  var q7Screen = screenByName("q7");
+  if (q7Screen) {
+    q7Screen.addEventListener("click", function (e) {
+      if (e.target.closest(".quiz-option")) {
+        setTimeout(function () { updateNextButton(q7Screen); }, 0);
       }
     });
   }

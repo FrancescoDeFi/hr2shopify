@@ -100,7 +100,7 @@
     <div class="hero-ctas" aria-label="{{ 'sections.hero.aria.purchase_options' | t }}">
       <a class="primary-btn" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ hero_cta_text }}</a>
       {% if section.settings.show_quiz_button %}
-        <a class="outline-btn hero-quiz-btn" href="{{ section.settings.quiz_url | default: '#' }}" aria-label="{{ 'sections.hero.aria.quiz_start' | t }}">
+        <a class="outline-btn hero-quiz-btn" href="{{ section.settings.quiz_url | default: '/pages/hair-quiz' }}" aria-label="{{ 'sections.hero.aria.quiz_start' | t }}">
           {{ hero_quiz_text }} <span aria-hidden="true">→</span>
         </a>
       {% endif %}
