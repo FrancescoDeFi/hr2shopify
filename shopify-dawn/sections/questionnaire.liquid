@@ -431,6 +431,21 @@
       {% endif %}
     </p>
   </div>
+
+  <div class="quiz-hidden-forms" aria-hidden="true" style="display:none;">
+    {% form 'customer', id: 'quizCustomerForm', class: 'quiz-hidden-form' %}
+      <input type="hidden" name="contact[email]" id="quizCustomerEmailInput">
+      <input type="hidden" name="contact[tags]" id="quizCustomerTagsInput">
+    {% endform %}
+
+    {% form 'contact', id: 'quizContactForm', class: 'quiz-hidden-form' %}
+      <input type="hidden" name="contact[name]" value="Hair Quiz">
+      <input type="hidden" name="contact[email]" id="quizContactEmailInput">
+      <input type="hidden" name="contact[tags]" id="quizContactTagsInput">
+      <input type="hidden" name="contact[subject]" id="quizContactSubjectInput">
+      <textarea name="contact[body]" id="quizContactBodyInput"></textarea>
+    {% endform %}
+  </div>
 </div>
 
 <script src="{{ 'questionnaire.js' | asset_url }}" defer></script>
