@@ -1,6 +1,6 @@
 {{ 'questionnaire.css' | asset_url | stylesheet_tag }}
 
-{% assign doc_name = section.settings.doctor_name | default: "Dr. Patrick" %}
+{% assign doc_name = section.settings.doctor_name | default: "Dr. XX" %}
 {% assign doc_img = section.settings.doctor_image %}
 
 <div class="quiz-wrapper" id="quizWrapper">
@@ -33,9 +33,9 @@
     {%- endif -%}
     <h1>
       {% if request.locale.iso_code == 'de' %}
-        Hallo!<br>Ich bin {{ doc_name }}.
+        Hallo!<br>Ich bin {{ doc_name }},<br>Ärztin bei Hair Squad.
       {% else %}
-        Hello!<br>I'm {{ doc_name }}.
+        Hello!<br>I'm {{ doc_name }},<br>physician at Hair Squad.
       {% endif %}
     </h1>
     <p class="quiz-subtitle">
@@ -482,7 +482,7 @@
       "type": "text",
       "id": "doctor_name",
       "label": "Doctor Name",
-      "default": "Dr. Patrick"
+      "default": "Dr. XX"
     },
     {
       "type": "image_picker",

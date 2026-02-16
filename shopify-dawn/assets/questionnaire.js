@@ -24,6 +24,10 @@
   var progressBar = document.getElementById("quizProgress");
   var backBtn = document.getElementById("quizBack");
 
+  function allScreens() {
+    return wrapper.querySelectorAll(".quiz-screen");
+  }
+
   function currentScreen() {
     return wrapper.querySelector(".quiz-screen.active");
   }
@@ -46,50 +50,6 @@
     progressBar.style.width = pct + "%";
   }
 
-  /* ── Validation: check if current screen has a valid answer ── */
-  function isScreenAnswered(screenName) {
-    if (screenName === "intro" || screenName === "email" || screenName === "review") return true;
-
-    var screen = screenByName(screenName);
-    if (!screen) return true;
-
-    /* Single-choice: check if the top-level quiz-options has a selected item */
-    var singleOpts = screen.querySelector('.quiz-options[data-type="single"][data-key]');
-    if (singleOpts) {
-      var key = singleOpts.getAttribute("data-key");
-      /* For Q7 the top-level container is not a quiz-options with data-key, so skip this */
-      if (key && !answers[key]) return false;
-    }
-
-    /* Multi-choice: check if at least one is selected */
-    var multiOpts = screen.querySelector('.quiz-options[data-type="multi"][data-key]');
-    if (multiOpts) {
-      var mkey = multiOpts.getAttribute("data-key");
-      if (!answers[mkey] || (Array.isArray(answers[mkey]) && answers[mkey].length === 0)) return false;
-    }
-
-    /* Grid: check if all rows have a selection */
-    var grid = screen.querySelector(".quiz-grid[data-key]");
-    if (grid) {
-      var gkey = grid.getAttribute("data-key");
-      var rows = grid.querySelectorAll(".quiz-grid-row[data-item]");
-      if (!answers[gkey]) return false;
-      for (var i = 0; i < rows.length; i++) {
-        var item = rows[i].getAttribute("data-item");
-        if (!answers[gkey][item]) return false;
-      }
-    }
-
-    /* Q7 special: need age + sex */
-    if (screenName === "q7") {
-      var ageInput = document.getElementById("qAge");
-      var age = ageInput ? ageInput.value.trim() : "";
-      if (!age || !answers.sex) return false;
-    }
-
-    return true;
-  }
-
   /* ── Navigate ── */
   function goTo(screenName) {
     var cur = currentScreen();
@@ -101,6 +61,7 @@
     var next = screenByName(screenName);
     if (next) {
       next.classList.remove("active");
+      // Force reflow for animation
       void next.offsetWidth;
       next.classList.add("active");
     }
@@ -113,10 +74,6 @@
     var flow = getFlow();
     var cur = currentScreen();
     var name = cur ? cur.getAttribute("data-screen") : "intro";
-
-    /* Block if not answered */
-    if (!isScreenAnswered(name)) return;
-
     var idx = flow.indexOf(name);
     if (idx >= 0 && idx < flow.length - 1) {
       goTo(flow[idx + 1]);
@@ -184,15 +141,18 @@
     } else if (type === "multi") {
       var isExclusive = option.getAttribute("data-exclusive") === "true";
       if (isExclusive) {
+        /* "None" deselects everything else */
         container.querySelectorAll(".quiz-option").forEach(function (o) {
           o.classList.remove("selected");
         });
         option.classList.add("selected");
       } else {
+        /* Deselect "None" if selecting something else */
         var noneOpt = container.querySelector('[data-exclusive="true"]');
         if (noneOpt) noneOpt.classList.remove("selected");
         option.classList.toggle("selected");
       }
+      /* Collect values */
       var vals = [];
       container.querySelectorAll(".quiz-option.selected").forEach(function (o) {
         vals.push(o.getAttribute("data-value"));
@@ -214,6 +174,7 @@
     var item = row.getAttribute("data-item");
     var val = radio.getAttribute("data-val");
 
+    /* Deselect siblings */
     row.querySelectorAll(".grid-radio").forEach(function (r) {
       r.classList.remove("selected");
     });
@@ -225,19 +186,20 @@
 
   /* ── Next buttons (multi-choice & grid screens) ── */
   wrapper.querySelectorAll("[data-next]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      goNext();
-    });
+    btn.addEventListener("click", goNext);
   });
 
-  /* ── Q7 Continue (capture age before validation) ── */
+  /* ── Q7 Continue (validate age) ── */
   var q7Next = document.getElementById("q7Next");
   if (q7Next) {
-    q7Next.addEventListener("click", function () {
+    q7Next.addEventListener("click", function (e) {
       var ageInput = document.getElementById("qAge");
       var age = ageInput ? ageInput.value.trim() : "";
       if (age) answers.age = age;
-      goNext();
+      if (!answers.sex) {
+        e.stopImmediatePropagation();
+        return;
+      }
     });
   }
 
@@ -257,43 +219,45 @@
     emailError.style.display = "none";
     answers.email = email;
 
+    /* Send data to Shopify (create customer or use contact form endpoint) */
     submitQuizData(answers);
 
     goTo("review");
     backBtn.classList.remove("visible");
   });
 
-  /* ── Submit to backend via Shopify contact form ── */
+  /* ── Submit to backend ── */
   function submitQuizData(data) {
-    /*
-     * Shopify built-in contact form: posts to /contact
-     * Creates a "form submission" visible in Shopify Admin → Customers → (or) Settings → Notifications
-     * The email + all quiz answers are stored as a customer record with the "questionnaire" tag
-     * and all answers in the customer note field.
-     *
-     * You can also see submissions under:
-     *   Shopify Admin → Online Store → Pages → (your quiz page) → Form submissions
-     *   OR Shopify Admin → Customers (search by tag "questionnaire")
-     */
+    /* Try to save via Shopify's customer API (newsletter signup + note) */
     var formData = new FormData();
     formData.append("form_type", "customer");
-    formData.append("utf8", "\u2713");
+    formData.append("utf8", "✓");
     formData.append("customer[email]", data.email);
     formData.append("customer[tags]", "questionnaire");
-    formData.append("customer[note]", JSON.stringify(data, null, 2));
+    formData.append("customer[note]", JSON.stringify(data));
 
     fetch("/contact", {
       method: "POST",
       body: formData,
       headers: { Accept: "application/json" }
     }).catch(function () {
-      /* Fallback: store locally so data is not lost */
+      /* Fallback: store locally */
       try {
         var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
         stored.push({ timestamp: new Date().toISOString(), data: data });
         localStorage.setItem("quiz_submissions", JSON.stringify(stored));
-      } catch (err) { /* silent */ }
+      } catch (e) { /* silent */ }
     });
+
+    /* Also try Klaviyo if available */
+    if (window._learnq) {
+      window._learnq.push(["identify", {
+        "$email": data.email,
+        "Quiz Reason": data.reason || "",
+        "Quiz Data": JSON.stringify(data)
+      }]);
+      window._learnq.push(["track", "Hair Quiz Completed", data]);
+    }
   }
 
   /* ── Initial state ── */
