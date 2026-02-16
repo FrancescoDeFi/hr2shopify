@@ -325,7 +325,7 @@
   }
 
   function buildCustomerTags(data) {
-    var tags = ["newsletter", "hair_quiz_submission"];
+    var tags = ["newsletter", "prospect", "hair_quiz_submission"];
     var dateTag = new Date().toISOString().slice(0, 10).replace(/-/g, "");
     addUniqueTag(tags, "hq_date_" + dateTag);
 
@@ -370,6 +370,33 @@
     return root + "contact";
   }
 
+  function uniqueEndpoints() {
+    var urls = [getContactEndpoint(), "/contact"];
+    var seen = {};
+    return urls.filter(function (url) {
+      if (seen[url]) return false;
+      seen[url] = true;
+      return true;
+    });
+  }
+
+  function postFormEncoded(url, fields) {
+    var params = new URLSearchParams();
+    Object.keys(fields).forEach(function (key) {
+      params.append(key, fields[key]);
+    });
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        Accept: "text/html"
+      },
+      body: params.toString(),
+      credentials: "same-origin",
+      redirect: "follow"
+    });
+  }
+
   /* ── Submit to backend ── */
   function submitQuizData(data) {
     /*
@@ -380,34 +407,30 @@
      */
 
     /* 1. Create/update customer with tags for dashboard visibility */
-    var custForm = new FormData();
-    custForm.append("form_type", "customer");
-    custForm.append("utf8", "\u2713");
     var customerTags = buildCustomerTags(data);
-    custForm.append("contact[email]", data.email);
-    custForm.append("contact[tags]", customerTags.join(", "));
+    var customerFields = {
+      form_type: "customer",
+      utf8: "\u2713",
+      "contact[email]": data.email,
+      "contact[tags]": customerTags.join(", ")
+    };
 
-    fetch(getContactEndpoint(), {
-      method: "POST",
-      body: custForm,
-      credentials: "same-origin",
-      redirect: "follow"
-    }).catch(function () {});
+    uniqueEndpoints().forEach(function (url) {
+      postFormEncoded(url, customerFields).catch(function () {});
+    });
 
     /* 2. Submit full answers through contact form */
-    var contactForm = new FormData();
-    contactForm.append("form_type", "contact");
-    contactForm.append("utf8", "\u2713");
-    contactForm.append("contact[name]", "Hair Quiz");
-    contactForm.append("contact[email]", data.email);
-    contactForm.append("contact[tags]", customerTags.join(", "));
-    contactForm.append("contact[subject]", "Hair Quiz Submission - " + data.email);
-    contactForm.append("contact[body]", formatAnswers(data));
+    var contactFields = {
+      form_type: "contact",
+      utf8: "\u2713",
+      "contact[name]": "Hair Quiz",
+      "contact[email]": data.email,
+      "contact[tags]": customerTags.join(", "),
+      "contact[subject]": "Hair Quiz Submission - " + data.email,
+      "contact[body]": formatAnswers(data)
+    };
 
-    fetch(getContactEndpoint(), {
-      method: "POST",
-      body: contactForm
-    }).catch(function () {
+    postFormEncoded(getContactEndpoint(), contactFields).catch(function () {
       /* Fallback: store locally so data is not lost */
       try {
         var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
