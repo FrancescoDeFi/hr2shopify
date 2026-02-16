@@ -413,6 +413,7 @@
 
   <!-- ════════ REVIEW SCREEN ════════ -->
   <div class="quiz-screen quiz-review-screen" data-screen="review">
+    <div class="quiz-spinner"></div>
     {%- if doc_img != blank -%}
       <img class="doctor-photo" src="{{ doc_img | image_url: width: 400 }}" alt="{{ doc_name }}" style="width:120px;height:120px;">
     {%- endif -%}
