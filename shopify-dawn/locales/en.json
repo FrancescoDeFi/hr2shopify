@@ -303,17 +303,17 @@
         "monthly": {
           "name": "Monthly delivery",
           "badge": "Save 10%",
-          "description": "1-month supply, delivered monthly."
+          "description": ""
         },
         "three_month": {
           "name": "3-month delivery",
           "badge": "Save 15%",
-          "description": "3-month supply with delivery every 3 months."
+          "description": ""
         },
         "six_month": {
           "name": "6-month delivery",
           "badge": "Save 20%",
-          "description": "6-month supply with delivery every 6 months."
+          "description": ""
         }
       }
     },

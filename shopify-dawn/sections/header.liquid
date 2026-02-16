@@ -15,6 +15,17 @@
   </nav>
 
   <div class="nav-actions">
+    <!-- Language Switcher -->
+    <div class="nav-lang-switcher">
+      {%- for locale in localization.available_locales -%}
+        {%- if locale.iso_code != localization.language.iso_code -%}
+          <a href="#" class="nav-lang-link" data-locale="{{ locale.iso_code }}" aria-label="Switch to {{ locale.endonym_name }}">
+            {{ locale.iso_code | upcase }}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
     {%- if customer -%}
       <a class="nav-account-link" href="{{ routes.account_url }}" aria-label="{{ 'customer.account.title' | t }}">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

@@ -7,29 +7,28 @@
           "type": "benefit",
           "settings": {
             "icon": "clinical",
-            "text": "KLINISCH<br>GEPRÜFTE FORMEL"
+            "text": "KLINISCH\nGEPRÜFTE FORMEL"
           }
         },
         "benefit_2": {
           "type": "benefit",
           "settings": {
             "icon": "drug_free",
-            "text": "100% OHNE<br>ARZNEISTOFFE"
+            "text": "100% OHNE\nARZNEISTOFFE"
           }
         },
         "benefit_3": {
           "type": "benefit",
           "settings": {
             "icon": "results",
-            "text": "ERGEBNISSE IN 3–6<br>MONATEN"
+            "text": "ERGEBNISSE IN 3–6\nMONATEN"
           }
         }
       },
       "block_order": ["benefit_1", "benefit_2", "benefit_3"],
       "settings": {
-        "heading": "Dein täglicher<br> Haar-Boost",
+        "heading": "Dein täglicher\n Haar-Boost",
         "show_quiz_button": true,
-        "quiz_url": "/pages/hair-quiz",
         "show_clinicians_badge": true
       }
     },

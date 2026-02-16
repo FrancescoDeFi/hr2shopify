@@ -133,12 +133,25 @@
                         | replace: 'SUBSCRIBE AND SAVE', 'ABONNIEREN UND SPAREN'
                         | replace: '% off', '% sparen'
                         | replace: '% OFF', '% SPAREN'
+                        | replace: ', 10% sparen', ''
                         | replace: ', 15% sparen', ''
                         | replace: ', 20% sparen', ''
                         | replace: ', 25% sparen', ''
+                        | replace: ', 10% SPAREN', ''
                         | replace: ', 15% SPAREN', ''
                         | replace: ', 20% SPAREN', ''
                         | replace: ', 25% SPAREN', ''
+                      -%}
+                    {%- else -%}
+                      {%- assign localized_plan_name = plan.name
+                        | replace: ', 10% off', ''
+                        | replace: ', 15% off', ''
+                        | replace: ', 20% off', ''
+                        | replace: ', 25% off', ''
+                        | replace: ', 10% OFF', ''
+                        | replace: ', 15% OFF', ''
+                        | replace: ', 20% OFF', ''
+                        | replace: ', 25% OFF', ''
                       -%}
                     {%- endif -%}
                     {%- assign is_selected = false -%}

@@ -134,6 +134,27 @@ html {
   gap: 12px;
 }
 
+.nav-lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-lang-link {
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-lang-link:hover {
+  background: #f5f5f5;
+  color: var(--brand-green);
+}
+
 .language-switcher-wrapper {
   display: inline-flex;
   align-items: center;
@@ -3834,6 +3855,22 @@ html {
   opacity: 0.9;
 }
 
+.offer-once {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.offer-once-link {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: underline;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.offer-once-link:hover {
+  color: #ffffff;
+}
+
 .offer-guarantee-row {
   margin: 8px 0 0;
   display: flex;
@@ -4093,12 +4130,12 @@ html {
 }
 
 .quality-list {
-  margin: 18px 0 0;
+  margin: 24px 0 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .quality-list li {

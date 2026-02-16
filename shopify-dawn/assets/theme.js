@@ -245,6 +245,41 @@
   }
 
   /**
+   * Language Switcher
+   * Handles locale switching via form submission
+   */
+  function initLanguageSwitcher() {
+    var langLinks = document.querySelectorAll('.nav-lang-link');
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var locale = this.getAttribute('data-locale');
+        if (!locale) return;
+
+        // Create and submit a form to switch locales
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = window.location.pathname;
+
+        var localeInput = document.createElement('input');
+        localeInput.type = 'hidden';
+        localeInput.name = 'locale_code';
+        localeInput.value = locale;
+
+        var returnInput = document.createElement('input');
+        returnInput.type = 'hidden';
+        returnInput.name = 'return_to';
+        returnInput.value = window.location.pathname + window.location.search;
+
+        form.appendChild(localeInput);
+        form.appendChild(returnInput);
+        document.body.appendChild(form);
+        form.submit();
+      });
+    });
+  }
+
+  /**
    * Initialize all theme functionality
    */
   function init() {
@@ -265,6 +300,7 @@
     cleanupQualityCards();
     initSmoothScroll();
     initLazyLoad();
+    initLanguageSwitcher();
   }
 
   // Run init when DOM is ready
