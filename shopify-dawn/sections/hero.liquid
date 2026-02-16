@@ -8,6 +8,11 @@
 {% if use_locale_copy or hero_heading == blank %}
   {% assign hero_heading = 'sections.hero.heading' | t %}
 {% endif %}
+{% assign hero_heading = hero_heading
+  | replace: '&lt;br&gt;', '<br>'
+  | replace: '&lt;br/&gt;', '<br>'
+  | replace: '&lt;br /&gt;', '<br>'
+%}
 
 {% assign legacy_subheading_de = 'Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.' %}
 {% assign hero_subheading = section.settings.subheading %}
@@ -70,6 +75,11 @@
                 {% assign benefit_text = 'sections.hero.benefits.results' | t %}
             {% endcase %}
           {% endif %}
+          {% assign benefit_text = benefit_text
+            | replace: '&lt;br&gt;', '<br>'
+            | replace: '&lt;br/&gt;', '<br>'
+            | replace: '&lt;br /&gt;', '<br>'
+          %}
           <div class="hero-benefit" {{ block.shopify_attributes }}>
             {% if block.settings.icon == 'clinical' %}
               <svg class="hero-benefit-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

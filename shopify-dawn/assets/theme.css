@@ -137,7 +137,38 @@ html {
 .nav-lang-switcher {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+}
+
+.nav-lang-form {
+  margin: 0;
+}
+
+.nav-lang-button {
+  padding: 7px 11px;
+  border: 1px solid rgba(12, 12, 12, 0.16);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #121212;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.nav-lang-button:hover {
+  border-color: rgba(60, 12, 28, 0.45);
+  color: #3c0c1c;
+  background: #faf7f8;
+}
+
+.nav-lang-button:focus-visible {
+  outline: 2px solid rgba(60, 12, 28, 0.4);
+  outline-offset: 2px;
 }
 
 .nav-lang-link {
@@ -2728,6 +2759,10 @@ html {
   font-size: 12px;
 }
 
+.order-once-link:visited {
+  color: rgba(16, 32, 38, 0.88);
+}
+
 .order-note {
   margin-top: 12px;
   font-size: 11px;
@@ -3861,13 +3896,19 @@ html {
 }
 
 .offer-once-link {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.82);
   text-decoration: underline;
+  text-underline-offset: 3px;
   font-size: 14px;
   transition: color 0.2s;
 }
 
-.offer-once-link:hover {
+.offer-once-link:visited {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.offer-once-link:hover,
+.offer-once-link:focus-visible {
   color: #ffffff;
 }
 
@@ -4141,8 +4182,20 @@ html {
 .quality-list li {
   font-size: 17px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
+  line-height: 1.45;
+}
+
+.quality-check {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  font-weight: 700;
+  color: #2c4a32;
+}
+
+.quality-feature-text {
+  flex: 1 1 auto;
 }
 
 .quality-badges {

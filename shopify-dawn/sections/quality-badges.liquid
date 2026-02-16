@@ -47,7 +47,10 @@
                 {% assign feature_text = 'sections.quality.features.feature_3' | t %}
             {% endcase %}
           {% endif %}
-          <li {{ block.shopify_attributes }}>✓ {{ feature_text }}</li>
+          <li {{ block.shopify_attributes }}>
+            <span class="quality-check" aria-hidden="true">✓</span>
+            <span class="quality-feature-text">{{ feature_text }}</span>
+          </li>
         {% endif %}
       {% endfor %}
     </ul>

@@ -303,17 +303,17 @@
         "monthly": {
           "name": "Monatliche Lieferung",
           "badge": "Spare 10%",
-          "description": ""
+          "description": "1-Monats-Vorrat"
         },
         "three_month": {
           "name": "3-Monats-Lieferung",
           "badge": "Spare 15%",
-          "description": ""
+          "description": "3-Monats-Vorrat"
         },
         "six_month": {
           "name": "6-Monats-Lieferung",
           "badge": "Spare 20%",
-          "description": ""
+          "description": "6-Monats-Vorrat"
         }
       }
     },

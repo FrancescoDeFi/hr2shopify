@@ -249,7 +249,7 @@
    * Handles locale switching via form submission
    */
   function initLanguageSwitcher() {
-    var langLinks = document.querySelectorAll('.nav-lang-link');
+    var langLinks = document.querySelectorAll('.nav-lang-link[data-locale]');
     langLinks.forEach(function(link) {
       link.addEventListener('click', function(e) {
         e.preventDefault();

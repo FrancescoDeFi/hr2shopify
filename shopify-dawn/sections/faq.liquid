@@ -70,6 +70,13 @@
             {% assign faq_answer = faq_answer_key | t %}
           {% endif %}
         {% endif %}
+        {% assign faq_answer = faq_answer
+          | replace: '&lt;p&gt;', '<p>'
+          | replace: '&lt;/p&gt;', '</p>'
+          | replace: '&lt;br&gt;', '<br>'
+          | replace: '&lt;br/&gt;', '<br>'
+          | replace: '&lt;br /&gt;', '<br>'
+        %}
         <div class="faq-item{% if is_first %} open{% endif %}" {{ block.shopify_attributes }}>
           <button class="faq-question" type="button" aria-expanded="{{ is_first }}">
             <span>{{ faq_question }}</span>

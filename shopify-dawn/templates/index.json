@@ -93,9 +93,9 @@
     "offer": {
       "type": "offer-pricing",
       "blocks": {
-        "plan_1": { "type": "plan", "settings": { "value": "monthly", "name": "Monatliche Lieferung", "badge": "Spare 10%", "price_new": "35€", "price_old": "39€", "description": "1-Monats-Vorrat, Lieferung monatlich." } },
-        "plan_2": { "type": "plan", "settings": { "value": "3month", "name": "3-Monats-Lieferung", "badge": "Spare 15%", "price_new": "99€", "price_old": "117€", "description": "3-Monats-Vorrat mit Nachlieferung alle 3 Monate." } },
-        "plan_3": { "type": "plan", "settings": { "value": "6month", "name": "6-Monats-Lieferung", "badge": "Spare 20%", "price_new": "187€", "price_old": "234€", "description": "6-Monats-Vorrat mit Nachlieferung alle 6 Monate." } }
+        "plan_1": { "type": "plan", "settings": { "value": "monthly", "name": "Monatliche Lieferung", "badge": "Spare 10%", "price_new": "35€", "price_old": "39€", "description": "1-Monats-Vorrat" } },
+        "plan_2": { "type": "plan", "settings": { "value": "3month", "name": "3-Monats-Lieferung", "badge": "Spare 15%", "price_new": "99€", "price_old": "117€", "description": "3-Monats-Vorrat" } },
+        "plan_3": { "type": "plan", "settings": { "value": "6month", "name": "6-Monats-Lieferung", "badge": "Spare 20%", "price_new": "187€", "price_old": "234€", "description": "6-Monats-Vorrat" } }
       },
       "block_order": ["plan_1", "plan_2", "plan_3"]
     },

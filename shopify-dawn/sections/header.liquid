@@ -15,16 +15,21 @@
   </nav>
 
   <div class="nav-actions">
-    <!-- Language Switcher -->
-    <div class="nav-lang-switcher">
-      {%- for locale in localization.available_locales -%}
-        {%- if locale.iso_code != localization.language.iso_code -%}
-          <a href="#" class="nav-lang-link" data-locale="{{ locale.iso_code }}" aria-label="Switch to {{ locale.endonym_name }}">
-            {{ locale.iso_code | upcase }}
-          </a>
-        {%- endif -%}
-      {%- endfor -%}
-    </div>
+    {%- if localization.available_languages.size > 1 -%}
+      <div class="nav-lang-switcher">
+        {%- for language in localization.available_languages -%}
+          {%- if language.iso_code != localization.language.iso_code -%}
+            {%- form 'localization', class: 'nav-lang-form' -%}
+              <input type="hidden" name="return_to" value="{{ request.path }}">
+              <input type="hidden" name="locale_code" value="{{ language.iso_code }}">
+              <button class="nav-lang-button" type="submit" aria-label="{{ 'theme.switcher.language' | t }}: {{ language.endonym_name }}">
+                {{ language.iso_code | upcase }}
+              </button>
+            {%- endform -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
 
     {%- if customer -%}
       <a class="nav-account-link" href="{{ routes.account_url }}" aria-label="{{ 'customer.account.title' | t }}">
