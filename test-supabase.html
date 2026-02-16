@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supabase Connection Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .section {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    button {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background: #059669;
+    }
+    #output {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .error {
+      color: #dc2626;
+    }
+    .success {
+      color: #10b981;
+    }
+  </style>
+</head>
+<body>
+  <h1>Supabase Connection Test</h1>
+
+  <div class="section">
+    <h2>Configuration</h2>
+    <p><strong>URL:</strong> https://dixwqzkpwwxyukcwygzt.supabase.co</p>
+    <p><strong>Key:</strong> sb_publishable_HuflliXdhboCnoXJ3mHI8Q_7wl49GnE</p>
+  </div>
+
+  <div class="section">
+    <h2>Tests</h2>
+    <button onclick="testConnection()">1. Test Connection</button>
+    <button onclick="testTableExists()">2. Test Table Exists</button>
+    <button onclick="testInsert()">3. Test Insert</button>
+    <button onclick="testRead()">4. Test Read</button>
+  </div>
+
+  <div class="section">
+    <h2>Output</h2>
+    <div id="output">Click a test button to start...</div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://dixwqzkpwwxyukcwygzt.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpeHdxemtwd3d4eXVrY3d5Z3p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyNTYyOTUsImV4cCI6MjA4NjgzMjI5NX0.3ieKZ66nwEAdhwU2v0xiPb17EuDUdjn5JwGxs3FR9qM';
+
+    function log(message, type = 'info') {
+      const output = document.getElementById('output');
+      const timestamp = new Date().toLocaleTimeString();
+      const className = type === 'error' ? 'error' : type === 'success' ? 'success' : '';
+      output.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function clear() {
+      document.getElementById('output').innerHTML = '';
+    }
+
+    async function testConnection() {
+      clear();
+      log('Testing connection to Supabase...');
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/`, {
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`
+          }
+        });
+
+        log(`Response status: ${response.status}`, 'info');
+        log(`Response headers: ${JSON.stringify([...response.headers.entries()], null, 2)}`, 'info');
+
+        if (response.ok) {
+          log('✓ Connection successful!', 'success');
+        } else {
+          log(`✗ Connection failed: ${response.statusText}`, 'error');
+          const text = await response.text();
+          log(`Response: ${text}`, 'error');
+        }
+      } catch (error) {
+        log(`✗ Error: ${error.message}`, 'error');
+        log(`Full error: ${JSON.stringify(error, null, 2)}`, 'error');
+      }
+    }
+
+    async function testTableExists() {
+      clear();
+      log('Testing if questionnaire_submissions table exists...');
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/questionnaire_submissions?limit=0`, {
+          method: 'GET',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        log(`Response status: ${response.status}`, 'info');
+
+        if (response.ok) {
+          log('✓ Table exists and is accessible!', 'success');
+        } else if (response.status === 401) {
+          log('✗ Authentication error - check your API key', 'error');
+        } else if (response.status === 404) {
+          log('✗ Table not found - did you run the SQL schema?', 'error');
+        } else {
+          const text = await response.text();
+          log(`✗ Error: ${response.statusText}`, 'error');
+          log(`Response: ${text}`, 'error');
+        }
+      } catch (error) {
+        log(`✗ Error: ${error.message}`, 'error');
+      }
+    }
+
+    async function testInsert() {
+      clear();
+      log('Testing insert into questionnaire_submissions...');
+
+      const testData = {
+        email: `test-${Date.now()}@example.com`,
+        reason: 'losing',
+        age: 30,
+        sex: 'female',
+        diet: 'omnivore',
+        full_data: {
+          test: true,
+          timestamp: new Date().toISOString()
+        }
+      };
+
+      log(`Inserting test data: ${JSON.stringify(testData, null, 2)}`, 'info');
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/questionnaire_submissions`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=representation'
+          },
+          body: JSON.stringify(testData)
+        });
+
+        log(`Response status: ${response.status}`, 'info');
+        const responseText = await response.text();
+        log(`Response body: ${responseText}`, 'info');
+
+        if (response.ok) {
+          log('✓ Insert successful!', 'success');
+          const result = JSON.parse(responseText);
+          log(`Inserted record: ${JSON.stringify(result, null, 2)}`, 'success');
+        } else {
+          log(`✗ Insert failed: ${response.statusText}`, 'error');
+          try {
+            const error = JSON.parse(responseText);
+            log(`Error details: ${JSON.stringify(error, null, 2)}`, 'error');
+          } catch (e) {
+            log(`Raw error: ${responseText}`, 'error');
+          }
+        }
+      } catch (error) {
+        log(`✗ Error: ${error.message}`, 'error');
+        log(`Stack: ${error.stack}`, 'error');
+      }
+    }
+
+    async function testRead() {
+      clear();
+      log('Testing read from questionnaire_submissions...');
+      log('Note: This will only work if you are authenticated (logged in to Supabase)', 'info');
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/questionnaire_submissions?select=*&limit=5&order=created_at.desc`, {
+          method: 'GET',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        log(`Response status: ${response.status}`, 'info');
+
+        if (response.ok) {
+          const data = await response.json();
+          log('✓ Read successful!', 'success');
+          log(`Found ${data.length} records`, 'success');
+          if (data.length > 0) {
+            log(`Latest records: ${JSON.stringify(data, null, 2)}`, 'success');
+          }
+        } else if (response.status === 401 || response.status === 403) {
+          log('✗ Not authorized to read - this is expected with anon key', 'error');
+          log('You can only read records when logged in to Supabase dashboard', 'info');
+        } else {
+          const text = await response.text();
+          log(`✗ Error: ${response.statusText}`, 'error');
+          log(`Response: ${text}`, 'error');
+        }
+      } catch (error) {
+        log(`✗ Error: ${error.message}`, 'error');
+      }
+    }
+
+    // Auto-test on load
+    log('Test page loaded. Click buttons above to run tests.', 'info');
+  </script>
+</body>
+</html>

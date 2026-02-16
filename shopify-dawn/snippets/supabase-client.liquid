@@ -1,27 +1,48 @@
 <script>
   // Supabase configuration
   window.SUPABASE_URL = 'https://dixwqzkpwwxyukcwygzt.supabase.co';
-  window.SUPABASE_KEY = 'sb_publishable_HuflliXdhboCnoXJ3mHI8Q_7wl49GnE';
+  window.SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpeHdxemtwd3d4eXVrY3d5Z3p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyNTYyOTUsImV4cCI6MjA4NjgzMjI5NX0.3ieKZ66nwEAdhwU2v0xiPb17EuDUdjn5JwGxs3FR9qM';
 
   // Simple Supabase client
   window.supabase = {
     async insert(table, data) {
-      const response = await fetch(`${window.SUPABASE_URL}/rest/v1/${table}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': window.SUPABASE_KEY,
-          'Authorization': `Bearer ${window.SUPABASE_KEY}`,
-          'Prefer': 'return=representation'
-        },
-        body: JSON.stringify(data)
-      });
+      console.log('[Supabase] Attempting to insert into table:', table);
+      console.log('[Supabase] Data:', JSON.stringify(data, null, 2));
 
-      if (!response.ok) {
-        throw new Error(`Supabase error: ${response.status}`);
+      try {
+        const response = await fetch(`${window.SUPABASE_URL}/rest/v1/${table}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': window.SUPABASE_KEY,
+            'Authorization': `Bearer ${window.SUPABASE_KEY}`,
+            'Prefer': 'return=representation'
+          },
+          body: JSON.stringify(data)
+        });
+
+        console.log('[Supabase] Response status:', response.status);
+        console.log('[Supabase] Response headers:', Object.fromEntries([...response.headers.entries()]));
+
+        const responseText = await response.text();
+        console.log('[Supabase] Response body:', responseText);
+
+        if (!response.ok) {
+          let errorDetails = responseText;
+          try {
+            const errorJson = JSON.parse(responseText);
+            errorDetails = JSON.stringify(errorJson, null, 2);
+          } catch (e) {
+            // Keep text as is
+          }
+          throw new Error(`Supabase error (${response.status}): ${errorDetails}`);
+        }
+
+        return JSON.parse(responseText);
+      } catch (error) {
+        console.error('[Supabase] Error:', error);
+        throw error;
       }
-
-      return await response.json();
     }
   };
 </script>
