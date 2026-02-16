@@ -228,18 +228,33 @@
 
   /* ── Submit to backend ── */
   function submitQuizData(data) {
-    /* Try to save via Shopify's customer API (newsletter signup + note) */
-    var formData = new FormData();
-    formData.append("form_type", "customer");
-    formData.append("utf8", "✓");
-    formData.append("customer[email]", data.email);
-    formData.append("customer[tags]", "questionnaire");
-    formData.append("customer[note]", JSON.stringify(data));
+    var shopifyForm = document.getElementById("shopifyCustomerForm");
+    if (!shopifyForm) return;
 
-    fetch("/contact", {
+    /* Fill in the hidden form fields */
+    var emailField = shopifyForm.querySelector('input[name="customer[email]"]');
+    if (!emailField) {
+      emailField = document.createElement("input");
+      emailField.type = "hidden";
+      emailField.name = "customer[email]";
+      shopifyForm.appendChild(emailField);
+    }
+    emailField.value = data.email;
+
+    var noteField = document.getElementById("customerNote");
+    if (noteField) noteField.value = JSON.stringify(data);
+
+    /* Submit via fetch using the real Shopify form (includes authenticity_token) */
+    var formData = new FormData(shopifyForm);
+
+    fetch(shopifyForm.action, {
       method: "POST",
       body: formData,
       headers: { Accept: "application/json" }
+    }).then(function (res) {
+      if (!res.ok) {
+        throw new Error("Shopify form submission failed: " + res.status);
+      }
     }).catch(function () {
       /* Fallback: store locally */
       try {
