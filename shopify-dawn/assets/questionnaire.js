@@ -325,7 +325,7 @@
   }
 
   function buildCustomerTags(data) {
-    var tags = ["hair_quiz_submission"];
+    var tags = ["newsletter", "hair_quiz_submission"];
     var dateTag = new Date().toISOString().slice(0, 10).replace(/-/g, "");
     addUniqueTag(tags, "hq_date_" + dateTag);
 
@@ -358,7 +358,16 @@
       if (valuePart) addUniqueTag(tags, "hq_" + keyPart + "_" + valuePart);
     });
 
-    return tags.slice(0, 200).join(", ");
+    return tags.slice(0, 200);
+  }
+
+  function getContactEndpoint() {
+    var root = "/";
+    if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) {
+      root = window.Shopify.routes.root;
+    }
+    if (root.charAt(root.length - 1) !== "/") root += "/";
+    return root + "contact";
   }
 
   /* ── Submit to backend ── */
@@ -374,12 +383,15 @@
     var custForm = new FormData();
     custForm.append("form_type", "customer");
     custForm.append("utf8", "\u2713");
+    var customerTags = buildCustomerTags(data);
     custForm.append("contact[email]", data.email);
-    custForm.append("contact[tags]", buildCustomerTags(data));
+    custForm.append("contact[tags]", customerTags.join(", "));
 
-    fetch("/contact", {
+    fetch(getContactEndpoint(), {
       method: "POST",
-      body: custForm
+      body: custForm,
+      credentials: "same-origin",
+      redirect: "follow"
     }).catch(function () {});
 
     /* 2. Submit full answers through contact form */
@@ -388,10 +400,11 @@
     contactForm.append("utf8", "\u2713");
     contactForm.append("contact[name]", "Hair Quiz");
     contactForm.append("contact[email]", data.email);
+    contactForm.append("contact[tags]", customerTags.join(", "));
     contactForm.append("contact[subject]", "Hair Quiz Submission - " + data.email);
     contactForm.append("contact[body]", formatAnswers(data));
 
-    fetch("/contact", {
+    fetch(getContactEndpoint(), {
       method: "POST",
       body: contactForm
     }).catch(function () {
