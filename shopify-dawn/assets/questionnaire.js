@@ -361,37 +361,40 @@
     return tags.slice(0, 200);
   }
 
-  function setFormFieldValue(fieldId, value) {
-    var field = document.getElementById(fieldId);
-    if (!field) return;
-    field.value = value;
+  function getContactEndpoint() {
+    var root = "/";
+    if (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) {
+      root = window.Shopify.routes.root;
+    }
+    if (root.charAt(root.length - 1) !== "/") root += "/";
+    return root + "contact";
   }
 
-  function submitShopifyForm(form) {
-    if (!form) return Promise.reject(new Error("Missing form element"));
-    var action = (form.getAttribute("action") || window.location.pathname).split("#")[0];
-    var method = (form.getAttribute("method") || "POST").toUpperCase();
-
-    return fetch(action, {
-      method: method,
-      body: new FormData(form),
-      credentials: "same-origin",
-      redirect: "follow",
-      headers: {
-        Accept: "text/html"
-      }
-    }).then(function (response) {
-      if (!response.ok) throw new Error("Shopify form submit failed with status " + response.status);
-      return response;
+  function uniqueEndpoints() {
+    var urls = [getContactEndpoint(), "/contact"];
+    var seen = {};
+    return urls.filter(function (url) {
+      if (seen[url]) return false;
+      seen[url] = true;
+      return true;
     });
   }
 
-  function saveSubmissionLocally(data) {
-    try {
-      var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
-      stored.push({ timestamp: new Date().toISOString(), data: data });
-      localStorage.setItem("quiz_submissions", JSON.stringify(stored));
-    } catch (err) { /* silent */ }
+  function postFormEncoded(url, fields) {
+    var params = new URLSearchParams();
+    Object.keys(fields).forEach(function (key) {
+      params.append(key, fields[key]);
+    });
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        Accept: "text/html"
+      },
+      body: params.toString(),
+      credentials: "same-origin",
+      redirect: "follow"
+    });
   }
 
   /* ── Submit to backend ── */
@@ -403,39 +406,37 @@
      * 2. Send full answer payload via contact form email.
      */
 
-    if (!data.email) return;
-
+    /* 1. Create/update customer with tags for dashboard visibility */
     var customerTags = buildCustomerTags(data);
-    var customerTagsValue = customerTags.join(", ");
-    var customerForm = document.getElementById("quizCustomerForm");
-    var contactForm = document.getElementById("quizContactForm");
-    var customerSubmitPromise = Promise.resolve();
+    var customerFields = {
+      form_type: "customer",
+      utf8: "\u2713",
+      "contact[email]": data.email,
+      "contact[tags]": customerTags.join(", ")
+    };
 
-    /* 1. Create/update customer in Shopify through native customer form */
-    if (customerForm) {
-      setFormFieldValue("quizCustomerEmailInput", data.email);
-      setFormFieldValue("quizCustomerTagsInput", customerTagsValue);
+    uniqueEndpoints().forEach(function (url) {
+      postFormEncoded(url, customerFields).catch(function () {});
+    });
 
-      customerSubmitPromise = submitShopifyForm(customerForm).catch(function () {
-        return null;
-      });
-    }
+    /* 2. Submit full answers through contact form */
+    var contactFields = {
+      form_type: "contact",
+      utf8: "\u2713",
+      "contact[name]": "Hair Quiz",
+      "contact[email]": data.email,
+      "contact[tags]": customerTags.join(", "),
+      "contact[subject]": "Hair Quiz Submission - " + data.email,
+      "contact[body]": formatAnswers(data)
+    };
 
-    /* 2. Send full answers through native Shopify contact form */
-    if (!contactForm) {
-      saveSubmissionLocally(data);
-      return;
-    }
-
-    setFormFieldValue("quizContactEmailInput", data.email);
-    setFormFieldValue("quizContactTagsInput", customerTagsValue);
-    setFormFieldValue("quizContactSubjectInput", "Hair Quiz Submission - " + data.email);
-    setFormFieldValue("quizContactBodyInput", formatAnswers(data));
-
-    customerSubmitPromise.then(function () {
-      return submitShopifyForm(contactForm);
-    }).catch(function () {
-      saveSubmissionLocally(data);
+    postFormEncoded(getContactEndpoint(), contactFields).catch(function () {
+      /* Fallback: store locally so data is not lost */
+      try {
+        var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
+        stored.push({ timestamp: new Date().toISOString(), data: data });
+        localStorage.setItem("quiz_submissions", JSON.stringify(stored));
+      } catch (err) { /* silent */ }
     });
   }
 
