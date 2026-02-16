@@ -242,15 +242,17 @@
     emailField.value = data.email;
 
     var noteField = document.getElementById("customerNote");
-    if (noteField) noteField.value = JSON.stringify(data);
+    if (noteField) {
+      var noteData = Object.assign({}, data, { source: "questionnaire" });
+      noteField.value = JSON.stringify(noteData);
+    }
 
     /* Submit via fetch using the real Shopify form (includes authenticity_token) */
     var formData = new FormData(shopifyForm);
 
     fetch(shopifyForm.action, {
       method: "POST",
-      body: formData,
-      headers: { Accept: "application/json" }
+      body: formData
     }).then(function (res) {
       if (!res.ok) {
         throw new Error("Shopify form submission failed: " + res.status);
