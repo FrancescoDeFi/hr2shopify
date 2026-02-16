@@ -31,6 +31,13 @@
 {% if use_locale_copy or hero_quiz_text == blank %}
   {% assign hero_quiz_text = 'sections.hero.cta_quiz' | t %}
 {% endif %}
+{% assign hero_quiz_url = pages['hair-quiz'].url %}
+{% if hero_quiz_url == blank %}
+  {% assign hero_quiz_url = section.settings.quiz_url %}
+{% endif %}
+{% if hero_quiz_url == blank %}
+  {% assign hero_quiz_url = routes.root_url | append: '/pages/hair-quiz' | replace: '//pages/', '/pages/' %}
+{% endif %}
 
 {% assign hero_clinicians_title = section.settings.clinicians_title %}
 {% if use_locale_copy or hero_clinicians_title == blank %}
@@ -110,7 +117,7 @@
     <div class="hero-ctas" aria-label="{{ 'sections.hero.aria.purchase_options' | t }}">
       <a class="primary-btn" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ hero_cta_text }}</a>
       {% if section.settings.show_quiz_button %}
-        <a class="outline-btn hero-quiz-btn" href="{{ routes.root_url | append: 'pages/hair-quiz' }}" aria-label="{{ 'sections.hero.aria.quiz_start' | t }}">
+        <a class="outline-btn hero-quiz-btn" href="{{ hero_quiz_url }}" aria-label="{{ 'sections.hero.aria.quiz_start' | t }}">
           {{ hero_quiz_text }} <span aria-hidden="true">→</span>
         </a>
       {% endif %}
