@@ -26,6 +26,11 @@
 
   <!-- ════════ INTRO SCREEN ════════ -->
   <div class="quiz-screen quiz-intro active" data-screen="intro">
+    {%- if doc_img != blank -%}
+      <img class="doctor-photo" src="{{ doc_img | image_url: width: 400 }}" alt="{{ doc_name }}">
+    {%- else -%}
+      <div class="doctor-photo" style="background:#e5e5e5;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#999;">👤</div>
+    {%- endif -%}
     <h1>
       {% if request.locale.iso_code == 'de' %}
         Hallo!<br>Ich bin {{ doc_name }}.
