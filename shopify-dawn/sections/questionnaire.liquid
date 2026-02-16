@@ -3,13 +3,6 @@
 {% assign doc_name = section.settings.doctor_name | default: "Dr. XX" %}
 {% assign doc_img = section.settings.doctor_image %}
 
-<!-- Hidden Shopify customer form for authenticity token -->
-<div style="display:none;">
-  {% form 'customer', id: 'shopifyCustomerForm' %}
-    <input type="hidden" name="customer[note]" id="customerNote" value="">
-  {% endform %}
-</div>
-
 <div class="quiz-wrapper" id="quizWrapper">
   <!-- Progress bar -->
   <div class="quiz-progress"><div class="quiz-progress-fill" id="quizProgress"></div></div>

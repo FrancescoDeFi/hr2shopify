@@ -228,45 +228,48 @@
 
   /* ── Submit to backend ── */
   function submitQuizData(data) {
-    var shopifyForm = document.getElementById("shopifyCustomerForm");
-    if (!shopifyForm) return;
+    /* 1) Send to Supabase */
+    if (window.supabase) {
+      var payload = {
+        email: data.email,
+        reason: data.reason,
+        onset_time: data.onset_time,
+        onset_type: data.onset_type,
+        pattern: data.pattern,
+        scalp_symptoms: data.scalp_symptoms,
+        breakage_vs_shedding: data.breakage_vs_shedding,
+        age: data.age ? parseInt(data.age) : null,
+        sex: data.sex,
+        pregnant: data.pregnant,
+        postpartum: data.postpartum,
+        cycles: data.cycles,
+        bleeding: data.bleeding,
+        diet: data.diet,
+        dieted: data.dieted,
+        sun: data.sun,
+        exclusions: data.exclusions,
+        iron_symptoms: data.iron_symptoms,
+        vitd_symptoms: data.vitd_symptoms,
+        b12_symptoms: data.b12_symptoms,
+        full_data: data
+      };
 
-    /* Fill in the hidden form fields */
-    var emailField = shopifyForm.querySelector('input[name="customer[email]"]');
-    if (!emailField) {
-      emailField = document.createElement("input");
-      emailField.type = "hidden";
-      emailField.name = "customer[email]";
-      shopifyForm.appendChild(emailField);
+      window.supabase.insert("questionnaire_submissions", payload)
+        .then(function (result) {
+          console.log("Questionnaire submitted to Supabase:", result);
+        })
+        .catch(function (error) {
+          console.error("Error submitting to Supabase:", error);
+          /* Fallback: store locally if Supabase fails */
+          try {
+            var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
+            stored.push({ timestamp: new Date().toISOString(), data: data });
+            localStorage.setItem("quiz_submissions", JSON.stringify(stored));
+          } catch (e) { /* silent */ }
+        });
     }
-    emailField.value = data.email;
 
-    var noteField = document.getElementById("customerNote");
-    if (noteField) {
-      var noteData = Object.assign({}, data, { source: "questionnaire" });
-      noteField.value = JSON.stringify(noteData);
-    }
-
-    /* Submit via fetch using the real Shopify form (includes authenticity_token) */
-    var formData = new FormData(shopifyForm);
-
-    fetch(shopifyForm.action, {
-      method: "POST",
-      body: formData
-    }).then(function (res) {
-      if (!res.ok) {
-        throw new Error("Shopify form submission failed: " + res.status);
-      }
-    }).catch(function () {
-      /* Fallback: store locally */
-      try {
-        var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
-        stored.push({ timestamp: new Date().toISOString(), data: data });
-        localStorage.setItem("quiz_submissions", JSON.stringify(stored));
-      } catch (e) { /* silent */ }
-    });
-
-    /* Also try Klaviyo if available */
+    /* 2) Klaviyo if available */
     if (window._learnq) {
       window._learnq.push(["identify", {
         "$email": data.email,

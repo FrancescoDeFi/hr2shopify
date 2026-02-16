@@ -33,6 +33,8 @@
 
   {{ content_for_header }}
 
+  {% render 'supabase-client' %}
+
   {%- if settings.google_tag_id != blank -%}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.google_tag_id }}"></script>
     <script>
