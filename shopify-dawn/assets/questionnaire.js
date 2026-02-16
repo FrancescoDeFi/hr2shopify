@@ -311,41 +311,89 @@
     return lines.join("\n");
   }
 
+  function slugifyTagPart(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 30);
+  }
+
+  function addUniqueTag(tags, tag) {
+    if (!tag) return;
+    if (tags.indexOf(tag) === -1) tags.push(tag);
+  }
+
+  function buildCustomerTags(data) {
+    var tags = ["hair_quiz_submission"];
+    var dateTag = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+    addUniqueTag(tags, "hq_date_" + dateTag);
+
+    Object.keys(data).forEach(function (key) {
+      if (key === "email" || data[key] === undefined || data[key] === null || data[key] === "") return;
+
+      var keyPart = slugifyTagPart(key);
+      var val = data[key];
+
+      if (Array.isArray(val)) {
+        val.forEach(function (entry) {
+          var part = slugifyTagPart(entry);
+          if (part) addUniqueTag(tags, "hq_" + keyPart + "_" + part);
+        });
+        return;
+      }
+
+      if (typeof val === "object") {
+        Object.keys(val).forEach(function (subKey) {
+          var subKeyPart = slugifyTagPart(subKey);
+          var subValPart = slugifyTagPart(val[subKey]);
+          if (subKeyPart && subValPart) {
+            addUniqueTag(tags, "hq_" + keyPart + "_" + subKeyPart + "_" + subValPart);
+          }
+        });
+        return;
+      }
+
+      var valuePart = slugifyTagPart(val);
+      if (valuePart) addUniqueTag(tags, "hq_" + keyPart + "_" + valuePart);
+    });
+
+    return tags.slice(0, 200).join(", ");
+  }
+
   /* ── Submit to backend ── */
   function submitQuizData(data) {
     /*
      * Two submissions:
-     * 1. Create customer (email + marketing opt-in)
-     * 2. Contact form with all quiz answers → appears in:
-     *    - Shopify Admin → Settings → Notifications (store email)
-     *    - Shopify Inbox
-     *    The "body" field contains all formatted answers.
+     * 1. Create/update Shopify customer with tags from quiz answers
+     *    (visible in Admin -> Customers).
+     * 2. Send full answer payload via contact form email.
      */
 
-    /* 1. Create customer */
+    /* 1. Create/update customer with tags for dashboard visibility */
     var custForm = new FormData();
     custForm.append("form_type", "customer");
     custForm.append("utf8", "\u2713");
-    custForm.append("customer[email]", data.email);
+    custForm.append("contact[email]", data.email);
+    custForm.append("contact[tags]", buildCustomerTags(data));
 
     fetch("/contact", {
       method: "POST",
-      body: custForm,
-      headers: { Accept: "application/json" }
+      body: custForm
     }).catch(function () {});
 
-    /* 2. Submit contact form with all answers */
+    /* 2. Submit full answers through contact form */
     var contactForm = new FormData();
     contactForm.append("form_type", "contact");
     contactForm.append("utf8", "\u2713");
+    contactForm.append("contact[name]", "Hair Quiz");
     contactForm.append("contact[email]", data.email);
     contactForm.append("contact[subject]", "Hair Quiz Submission - " + data.email);
     contactForm.append("contact[body]", formatAnswers(data));
 
     fetch("/contact", {
       method: "POST",
-      body: contactForm,
-      headers: { Accept: "application/json" }
+      body: contactForm
     }).catch(function () {
       /* Fallback: store locally so data is not lost */
       try {
