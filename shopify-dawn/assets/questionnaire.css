@@ -138,6 +138,7 @@ body.quiz-active footer {
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
+  position: relative;
 }
 .quiz-question .doctor-photo-sm {
   width: 80px;
@@ -149,9 +150,9 @@ body.quiz-active footer {
 
 /* ── Doctor corner photo (top-left, all question + review screens) ── */
 .doctor-photo-corner {
-  position: fixed;
-  top: 68px;
-  left: 20px;
+  position: absolute;
+  top: 4px;
+  left: -84px;
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -159,10 +160,7 @@ body.quiz-active footer {
   object-position: center top;
   border: 2px solid #f3f1e7;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  z-index: 98;
-  display: none;
-}
-.quiz-screen.active .doctor-photo-corner {
+  z-index: 2;
   display: block;
 }
 .quiz-intro .doctor-photo-corner {
@@ -464,6 +462,15 @@ body.quiz-active footer {
 
 
 /* ── Mobile Responsive ── */
+@media (max-width: 860px) {
+  .doctor-photo-corner {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 0 16px;
+  }
+}
+
 @media (max-width: 640px) {
   .quiz-screen {
     padding: 72px 16px 32px;
@@ -490,8 +497,7 @@ body.quiz-active footer {
   .doctor-photo-corner {
     width: 52px;
     height: 52px;
-    top: 64px;
-    left: 12px;
+    margin-bottom: 12px;
   }
   /* Adequate touch targets */
   .quiz-option {
