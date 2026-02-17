@@ -37,6 +37,9 @@ CREATE TABLE IF NOT EXISTS questionnaire_submissions (
   vitd_symptoms JSONB, -- {low_sun: 'yes'/'no'/'unsure', bone_aches: ..., infections: ..., winter_mood: ...}
   b12_symptoms JSONB, -- {tongue: 'yes'/'no'/'unsure', memory: ..., wound: ..., cold_intolerance: ...}
 
+  -- Hair photo (URL to Supabase Storage)
+  hair_photo_url TEXT,
+
   -- Full data backup (in case we need it)
   full_data JSONB
 );

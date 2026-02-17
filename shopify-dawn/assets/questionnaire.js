@@ -284,20 +284,17 @@
   hairPhotoInput.addEventListener("change", function () {
     var file = hairPhotoInput.files[0];
     if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      answers.hair_photo = e.target.result;
-      uploadPreview.src = e.target.result;
-      uploadPreview.style.display = "block";
-      uploadPlaceholder.style.display = "none";
-      uploadRemove.style.display = "flex";
-    };
-    reader.readAsDataURL(file);
+    answers.hair_photo_file = file;
+    var url = URL.createObjectURL(file);
+    uploadPreview.src = url;
+    uploadPreview.style.display = "block";
+    uploadPlaceholder.style.display = "none";
+    uploadRemove.style.display = "flex";
   });
 
   uploadRemove.addEventListener("click", function (e) {
     e.stopPropagation();
-    answers.hair_photo = null;
+    answers.hair_photo_file = null;
     hairPhotoInput.value = "";
     uploadPreview.style.display = "none";
     uploadPreview.src = "";
@@ -331,51 +328,76 @@
     backBtn.classList.remove("visible");
   });
 
+  /* ── Upload photo to Supabase Storage ── */
+  function uploadHairPhoto(file) {
+    var ext = file.name.split(".").pop() || "jpg";
+    var fileName = Date.now() + "_" + Math.random().toString(36).substring(2, 8) + "." + ext;
+
+    return fetch(window.SUPABASE_URL + "/storage/v1/object/hair-photos/" + fileName, {
+      method: "POST",
+      headers: {
+        "apikey": window.SUPABASE_KEY,
+        "Authorization": "Bearer " + window.SUPABASE_KEY,
+        "Content-Type": file.type
+      },
+      body: file
+    }).then(function (res) {
+      if (!res.ok) throw new Error("Storage upload failed: " + res.status);
+      return window.SUPABASE_URL + "/storage/v1/object/public/hair-photos/" + fileName;
+    });
+  }
+
   /* ── Submit to backend ── */
   function submitQuizData(data) {
-    /* 1) Send to Supabase */
-    if (window.supabase) {
-      var payload = {
-        email: data.email,
-        reason: data.reason,
-        onset_time: data.onset_time,
-        onset_type: data.onset_type,
-        pattern: data.pattern,
-        scalp_symptoms: data.scalp_symptoms,
-        breakage_vs_shedding: data.breakage_vs_shedding,
-        age: data.age ? parseInt(data.age) : null,
-        sex: data.sex,
-        pregnant: data.pregnant,
-        postpartum: data.postpartum,
-        cycles: data.cycles,
-        bleeding: data.bleeding,
-        diet: data.diet,
-        dieted: data.dieted,
-        sun: data.sun,
-        exclusions: data.exclusions,
-        iron_symptoms: data.iron_symptoms,
-        vitd_symptoms: data.vitd_symptoms,
-        b12_symptoms: data.b12_symptoms,
-        hair_photo: data.hair_photo || null,
-        full_data: data
-      };
+    if (!window.supabase) return;
 
-      window.supabase.insert("questionnaire_submissions", payload)
-        .then(function (result) {
-          console.log("Questionnaire submitted to Supabase:", result);
-        })
-        .catch(function (error) {
-          console.error("Error submitting to Supabase:", error);
-          /* Fallback: store locally if Supabase fails */
-          try {
-            var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
-            stored.push({ timestamp: new Date().toISOString(), data: data });
-            localStorage.setItem("quiz_submissions", JSON.stringify(stored));
-          } catch (e) { /* silent */ }
-        });
-    }
+    /* Upload photo first if present, then insert row */
+    var photoPromise = data.hair_photo_file
+      ? uploadHairPhoto(data.hair_photo_file)
+      : Promise.resolve(null);
 
-    /* 2) Klaviyo if available */
+    photoPromise
+      .then(function (photoUrl) {
+        var payload = {
+          email: data.email,
+          reason: data.reason,
+          onset_time: data.onset_time,
+          onset_type: data.onset_type,
+          pattern: data.pattern,
+          scalp_symptoms: data.scalp_symptoms,
+          breakage_vs_shedding: data.breakage_vs_shedding,
+          age: data.age ? parseInt(data.age) : null,
+          sex: data.sex,
+          pregnant: data.pregnant,
+          postpartum: data.postpartum,
+          cycles: data.cycles,
+          bleeding: data.bleeding,
+          diet: data.diet,
+          dieted: data.dieted,
+          sun: data.sun,
+          exclusions: data.exclusions,
+          iron_symptoms: data.iron_symptoms,
+          vitd_symptoms: data.vitd_symptoms,
+          b12_symptoms: data.b12_symptoms,
+          hair_photo_url: photoUrl,
+          full_data: data
+        };
+
+        return window.supabase.insert("questionnaire_submissions", payload);
+      })
+      .then(function (result) {
+        console.log("Questionnaire submitted to Supabase:", result);
+      })
+      .catch(function (error) {
+        console.error("Error submitting to Supabase:", error);
+        try {
+          var stored = JSON.parse(localStorage.getItem("quiz_submissions") || "[]");
+          stored.push({ timestamp: new Date().toISOString(), data: data });
+          localStorage.setItem("quiz_submissions", JSON.stringify(stored));
+        } catch (e) { /* silent */ }
+      });
+
+    /* Klaviyo if available */
     if (window._learnq) {
       window._learnq.push(["identify", {
         "$email": data.email,
