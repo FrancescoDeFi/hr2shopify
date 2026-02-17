@@ -72,6 +72,7 @@ body.quiz-active footer {
   padding: 80px 24px 40px;
   min-height: 100vh;
   animation: quizFadeIn 0.35s ease;
+  position: relative;
 }
 .quiz-screen.active {
   display: flex;
@@ -144,6 +145,28 @@ body.quiz-active footer {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
+}
+
+/* ── Doctor corner photo (top-left, all question + review screens) ── */
+.doctor-photo-corner {
+  position: fixed;
+  top: 68px;
+  left: 20px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid #f3f1e7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 98;
+  display: none;
+}
+.quiz-screen.active .doctor-photo-corner {
+  display: block;
+}
+.quiz-intro .doctor-photo-corner {
+  display: none !important;
 }
 .quiz-question h2 {
   font-family: "AG1 Serif", serif;
@@ -424,13 +447,6 @@ body.quiz-active footer {
   justify-content: center;
   text-align: center;
 }
-.quiz-review-screen .doctor-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 28px;
-}
 .quiz-review-screen h2 {
   font-family: "AG1 Serif", serif;
   font-size: 1.6rem;
@@ -470,6 +486,12 @@ body.quiz-active footer {
   .quiz-question .doctor-photo-sm {
     width: 64px;
     height: 64px;
+  }
+  .doctor-photo-corner {
+    width: 52px;
+    height: 52px;
+    top: 64px;
+    left: 12px;
   }
   /* Adequate touch targets */
   .quiz-option {

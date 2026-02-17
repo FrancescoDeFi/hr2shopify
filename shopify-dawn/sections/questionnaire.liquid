@@ -2,6 +2,7 @@
 
 {% assign doc_name = section.settings.doctor_name | default: "Dr. Patrick" %}
 {% assign doc_img = section.settings.doctor_image %}
+{% assign male_doc_img = 'doctor.jpg' | asset_url %}
 
 <div class="quiz-wrapper" id="quizWrapper">
   <!-- Progress bar -->
@@ -26,12 +27,10 @@
 
   <!-- ════════ INTRO SCREEN ════════ -->
   <div class="quiz-screen quiz-intro active" data-screen="intro">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo" src="{{ doc_img | image_url: width: 400 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h1>
       {% if request.locale.iso_code == 'de' %}
-        Hallo!<br>Ich bin {{ doc_name }},<br>Ärztin bei Hr².
+        Hallo!<br>Ich bin {{ doc_name }},<br>Arzt bei Hr².
       {% else %}
         Hello!<br>I'm {{ doc_name }},<br>physician at Hr².
       {% endif %}
@@ -51,9 +50,7 @@
 
   <!-- ════════ Q1 – What brings you here? ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q1">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Was führt Dich heute hierher?{% else %}What brings you here today?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
     <div class="quiz-options" data-type="single" data-key="reason">
@@ -74,9 +71,7 @@
 
   <!-- ════════ Q2 – When did hair loss start? ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q2">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Wann hat der Haarausfall begonnen?{% else %}When did the hair loss start?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
     <div class="quiz-options" data-type="single" data-key="onset_time">
@@ -89,9 +84,7 @@
 
   <!-- ════════ Q3 – How did it start? ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q3">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Wie hat es angefangen?{% else %}How did it start?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
     <div class="quiz-options" data-type="single" data-key="onset_type">
@@ -102,9 +95,7 @@
 
   <!-- ════════ Q4 – Main pattern ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q4">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Was ist das Hauptmuster?{% else %}What is the main pattern?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
     <div class="quiz-options" data-type="single" data-key="pattern">
@@ -118,9 +109,7 @@
 
   <!-- ════════ Q5 – Scalp symptoms ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q5">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Hast Du Kopfhaut-Symptome?{% else %}Do you have scalp symptoms?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle alle zutreffenden aus.{% else %}Select all that apply.{% endif %}</p>
     <div class="quiz-options" data-type="multi" data-key="scalp_symptoms" data-has-none="true">
@@ -140,9 +129,7 @@
 
   <!-- ════════ Q6 – Breakage vs shedding ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q6">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Haarbruch oder Haarausfall von der Wurzel?{% else %}Hair breakage or shedding from the root?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
     <div class="quiz-options" data-type="single" data-key="breakage_vs_shedding">
@@ -155,9 +142,7 @@
 
   <!-- ════════ Q7 – Personal basics ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q7">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Erzähl mir etwas über Dich{% else %}Tell me about yourself{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Grundlegende Informationen{% else %}Basic information{% endif %}</p>
 
@@ -221,9 +206,7 @@
 
   <!-- ════════ Q8 – Diet pattern ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q8">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Wie ernährst Du Dich?{% else %}What is your diet pattern?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
     <div class="quiz-options" data-type="single" data-key="diet">
@@ -236,9 +219,7 @@
 
   <!-- ════════ Q9 – Dieted recently? ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q9">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Hast Du in den letzten 6 Monaten eine Diät gemacht oder Kalorien eingeschränkt?{% else %}In the last 6 months, have you dieted or restricted calories?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
     <div class="quiz-options" data-type="single" data-key="dieted">
@@ -249,9 +230,7 @@
 
   <!-- ════════ Q10 – Sun exposure ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q10">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Wie viel Sonne bekommst Du?{% else %}How much sun exposure do you get?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle eine Antwort.{% else %}Choose one answer.{% endif %}</p>
     <div class="quiz-options" data-type="single" data-key="sun">
@@ -263,9 +242,7 @@
 
   <!-- ════════ Q11 – Dietary exclusions ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q11">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Hast Du diätbedingte Ausschlüsse?{% else %}Any of these dietary exclusions?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Wähle alle zutreffenden aus.{% else %}Select all that apply.{% endif %}</p>
     <div class="quiz-options" data-type="multi" data-key="exclusions" data-has-none="true">
@@ -283,9 +260,7 @@
 
   <!-- ════════ Q12 – Iron deficiency symptoms ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q12">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Trifft etwas davon auf Dich zu?{% else %}Any of these?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
     <div class="quiz-grid" data-key="iron_symptoms">
@@ -334,9 +309,7 @@
 
   <!-- ════════ Q13 – Vitamin D symptoms ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q13">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Trifft etwas davon auf Dich zu?{% else %}Any of these?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
     <div class="quiz-grid" data-key="vitd_symptoms">
@@ -379,9 +352,7 @@
 
   <!-- ════════ Q14 – B12 / other symptoms ════════ -->
   <div class="quiz-screen quiz-question" data-screen="q14">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo-sm" src="{{ doc_img | image_url: width: 200 }}" alt="{{ doc_name }}">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>{% if request.locale.iso_code == 'de' %}Und zum Schluss – trifft etwas davon zu?{% else %}And lastly – any of these?{% endif %}</h2>
     <p class="q-subtitle">{% if request.locale.iso_code == 'de' %}Für jedes Symptom: Ja, Nein oder Nicht sicher{% else %}For each symptom: Yes, No, or Not sure{% endif %}</p>
     <div class="quiz-grid" data-key="b12_symptoms">
@@ -449,9 +420,7 @@
 
   <!-- ════════ REVIEW SCREEN ════════ -->
   <div class="quiz-screen quiz-review-screen" data-screen="review">
-    {%- if doc_img != blank -%}
-      <img class="doctor-photo" src="{{ doc_img | image_url: width: 400 }}" alt="{{ doc_name }}" style="width:120px;height:120px;">
-    {%- endif -%}
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <h2>
       {% if request.locale.iso_code == 'de' %}
         {{ doc_name }} prüft Deine Angaben
