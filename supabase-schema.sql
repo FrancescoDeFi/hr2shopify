@@ -40,6 +40,9 @@ CREATE TABLE IF NOT EXISTS questionnaire_submissions (
   -- Hair photo (URL to Supabase Storage)
   hair_photo_url TEXT,
 
+  -- Access code for results page (set manually by doctor, sent via email)
+  access_code TEXT UNIQUE,
+
   -- Full data backup (in case we need it)
   full_data JSONB
 );
@@ -66,3 +69,13 @@ GRANT ALL ON questionnaire_submissions TO service_role;
 
 -- Grant insert access to anon role (for public form submissions)
 GRANT INSERT ON questionnaire_submissions TO anon;
+
+-- Grant select access to anon role (for results page code lookup)
+GRANT SELECT ON questionnaire_submissions TO anon;
+
+-- Create index on access_code for faster lookups
+CREATE INDEX IF NOT EXISTS idx_questionnaire_access_code ON questionnaire_submissions(access_code);
+
+-- Allow anon to read rows that have an access code set (for results page)
+CREATE POLICY "Allow anon select by access_code" ON questionnaire_submissions
+  FOR SELECT TO anon USING (access_code IS NOT NULL);
