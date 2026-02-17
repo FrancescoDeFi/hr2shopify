@@ -7,12 +7,12 @@
 
   /* ── Screen order (full flow) ── */
   var fullFlow = [
-    "intro","q1","q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14","email","review"
+    "intro","q1","q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14","upload","email","review"
   ];
 
   /* If user picks "no-loss" on Q1 → skip triage (Q2-Q6) and jump to Q7 */
   var skipTriageFlow = [
-    "intro","q1","q7","q8","q9","q10","q11","q12","q13","q14","email","review"
+    "intro","q1","q7","q8","q9","q10","q11","q12","q13","q14","upload","email","review"
   ];
 
   function getFlow() {
@@ -267,6 +267,47 @@
     });
   }
 
+  /* ── Photo upload ── */
+  var uploadArea = document.getElementById("uploadArea");
+  var hairPhotoInput = document.getElementById("hairPhotoInput");
+  var uploadPreview = document.getElementById("uploadPreview");
+  var uploadPlaceholder = document.getElementById("uploadPlaceholder");
+  var uploadRemove = document.getElementById("uploadRemove");
+  var uploadNextBtn = document.getElementById("uploadNext");
+  var uploadSkipBtn = document.getElementById("uploadSkip");
+
+  uploadArea.addEventListener("click", function (e) {
+    if (e.target.closest("#uploadRemove")) return;
+    hairPhotoInput.click();
+  });
+
+  hairPhotoInput.addEventListener("change", function () {
+    var file = hairPhotoInput.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      answers.hair_photo = e.target.result;
+      uploadPreview.src = e.target.result;
+      uploadPreview.style.display = "block";
+      uploadPlaceholder.style.display = "none";
+      uploadRemove.style.display = "flex";
+    };
+    reader.readAsDataURL(file);
+  });
+
+  uploadRemove.addEventListener("click", function (e) {
+    e.stopPropagation();
+    answers.hair_photo = null;
+    hairPhotoInput.value = "";
+    uploadPreview.style.display = "none";
+    uploadPreview.src = "";
+    uploadPlaceholder.style.display = "flex";
+    uploadRemove.style.display = "none";
+  });
+
+  uploadNextBtn.addEventListener("click", function () { goNext(); });
+  uploadSkipBtn.addEventListener("click", function () { goNext(); });
+
   /* ── Email submit ── */
   document.getElementById("quizSubmitEmail").addEventListener("click", function () {
     var emailInput = document.getElementById("qEmail");
@@ -315,6 +356,7 @@
         iron_symptoms: data.iron_symptoms,
         vitd_symptoms: data.vitd_symptoms,
         b12_symptoms: data.b12_symptoms,
+        hair_photo: data.hair_photo || null,
         full_data: data
       };
 

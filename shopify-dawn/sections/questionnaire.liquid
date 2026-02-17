@@ -393,8 +393,56 @@
     </button>
   </div>
 
+  <!-- ════════ PHOTO UPLOAD SCREEN ════════ -->
+  <div class="quiz-screen quiz-question quiz-upload-screen" data-screen="upload">
+    <img class="doctor-photo-corner" src="{{ male_doc_img }}" alt="{{ doc_name }}">
+    <h2>
+      {% if request.locale.iso_code == 'de' %}
+        Hast Du ein Foto Deiner Haare?
+      {% else %}
+        Do you have a photo of your hair?
+      {% endif %}
+    </h2>
+    <p class="q-subtitle">
+      {% if request.locale.iso_code == 'de' %}
+        Ein Foto hilft {{ doc_name }}, Deine Situation besser einzuschätzen. (Optional)
+      {% else %}
+        A photo helps {{ doc_name }} better assess your situation. (Optional)
+      {% endif %}
+    </p>
+
+    <div class="quiz-upload-area" id="uploadArea">
+      <input type="file" id="hairPhotoInput" accept="image/*" capture="environment" style="display:none;">
+      <div class="upload-placeholder" id="uploadPlaceholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <p>
+          {% if request.locale.iso_code == 'de' %}
+            Tippe, um ein Foto hochzuladen
+          {% else %}
+            Tap to upload a photo
+          {% endif %}
+        </p>
+      </div>
+      <img class="upload-preview" id="uploadPreview" style="display:none;" alt="Hair photo preview">
+      <button class="upload-remove-btn" id="uploadRemove" style="display:none;" aria-label="Remove photo">&times;</button>
+    </div>
+
+    <button class="quiz-next-btn" id="uploadNext">
+      {% if request.locale.iso_code == 'de' %}Weiter{% else %}Continue{% endif %}
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </button>
+    <button class="quiz-skip-btn" id="uploadSkip">
+      {% if request.locale.iso_code == 'de' %}Überspringen{% else %}Skip{% endif %}
+    </button>
+  </div>
+
   <!-- ════════ EMAIL SCREEN ════════ -->
   <div class="quiz-screen quiz-email-screen" data-screen="email">
+    <img class="doctor-photo-email" src="{{ male_doc_img }}" alt="{{ doc_name }}">
     <div class="quiz-email-card">
       <h2>
         {% if request.locale.iso_code == 'de' %}Vielen Dank!{% else %}Thank you!{% endif %}
