@@ -151,7 +151,7 @@ body.quiz-active footer {
 /* ── Doctor corner photo (top-left, all question + review screens) ── */
 .doctor-photo-corner {
   position: absolute;
-  top: 4px;
+  top: 24px;
   left: -84px;
   width: 64px;
   height: 64px;
