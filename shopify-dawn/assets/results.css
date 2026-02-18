@@ -421,7 +421,7 @@
   font-weight: 600;
 }
 .product-ingredients li::before {
-  content: "\\2713\\0020";
+  content: "\2713\0020";
   color: #3c0c1c;
   font-weight: 700;
 }
