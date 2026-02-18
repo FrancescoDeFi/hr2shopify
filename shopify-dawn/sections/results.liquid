@@ -5,6 +5,9 @@
 {% assign bottle_img = 'bottlenew2.png' | asset_url %}
 {% assign capsule_img = 'capsule3.png' | asset_url %}
 {% assign product_url = section.settings.product_url | default: "/products/hr2" %}
+{% if product_url == blank %}
+  {% assign product_url = routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' %}
+{% endif %}
 {% assign is_de = false %}
 {% if request.locale.iso_code == 'de' %}{% assign is_de = true %}{% endif %}
 
@@ -160,8 +163,7 @@
     {
       "type": "url",
       "id": "product_url",
-      "label": "Product URL",
-      "default": "/products/hr2"
+      "label": "Product URL"
     }
   ]
 }
