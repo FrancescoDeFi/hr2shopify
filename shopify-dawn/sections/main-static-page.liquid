@@ -1,17 +1,25 @@
 {%- assign locale_prefix = request.locale.iso_code | downcase | slice: 0, 2 -%}
-{%- assign is_english = locale_prefix == 'en' -%}
-{%- case page.handle -%}
+{%- assign request_path = request.path | downcase -%}
+{%- assign page_handle = page.handle | downcase -%}
+{%- assign is_english_path = false -%}
+{%- if request_path == '/en' or request_path == '/en/' or request_path contains '/en/' -%}
+  {%- assign is_english_path = true -%}
+{%- endif -%}
+{%- assign is_english = locale_prefix == 'en' or is_english_path -%}
+
+{%- if page_handle contains 'forschung' or page_handle contains 'research' -%}
+  {%- if is_english -%}
+    {%- render 'page-forschung-en' -%}
+  {%- else -%}
+    {%- render 'page-forschung' -%}
+  {%- endif -%}
+{%- else -%}
+{%- case page_handle -%}
 {%- when 'inhaltsstoffe' -%}
   {%- if is_english -%}
     {%- render 'page-inhaltsstoffe-en' -%}
   {%- else -%}
     {%- render 'page-inhaltsstoffe' -%}
-  {%- endif -%}
-{%- when 'forschung', 'research' -%}
-  {%- if is_english -%}
-    {%- render 'page-forschung-en' -%}
-  {%- else -%}
-    {%- render 'page-forschung' -%}
   {%- endif -%}
 {%- when 'hilfe' -%}
   {%- if is_english -%}
@@ -57,6 +65,7 @@
     </div>
   </section>
 {%- endcase -%}
+{%- endif -%}
 
 {% schema %}
 {
