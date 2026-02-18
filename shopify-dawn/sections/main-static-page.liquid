@@ -5,7 +5,10 @@
 {%- if request_path == '/en' or request_path == '/en/' or request_path contains '/en/' -%}
   {%- assign is_english_path = true -%}
 {%- endif -%}
-{%- assign is_english = locale_prefix == 'en' or is_english_path -%}
+{%- assign is_english = false -%}
+{%- if locale_prefix == 'en' or is_english_path -%}
+  {%- assign is_english = true -%}
+{%- endif -%}
 
 {%- if page_handle contains 'forschung' or page_handle contains 'research' -%}
   {%- if is_english -%}

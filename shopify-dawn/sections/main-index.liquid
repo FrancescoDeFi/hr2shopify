@@ -714,7 +714,8 @@
     <section class="faq">
       <div class="faq-left">
         <h2>{{ 'sections.faq.heading' | t }}</h2>
-        <p>{{ 'sections.faq.subheading_html' | t: help_url: "{{ pages['hilfe'].url | default: '/pages/hilfe' }}#hilfecenter" }}</p>
+        {%- assign faq_help_url = pages['hilfe'].url | default: '/pages/hilfe' | append: '#hilfecenter' -%}
+        <p>{{ 'sections.faq.subheading_html' | t: help_url: faq_help_url }}</p>
       </div>
       <div class="faq-right">
         <div class="faq-item open">
