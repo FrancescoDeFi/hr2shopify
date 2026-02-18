@@ -139,8 +139,8 @@
       type = "aga";
       typeLabel = t("Androgenetic Alopecia (Pattern Hair Loss)", "Androgenetische Alopezie (erblicher Haarausfall)");
       desc = t(
-        "Your pattern suggests androgenetic alopecia, the most common form of hair loss. It is driven by genetic sensitivity to DHT, a hormone that miniaturizes hair follicles over time.",
-        "Dein Muster deutet auf androgenetische Alopezie hin, die häufigste Form von Haarausfall. Sie wird durch genetische Empfindlichkeit gegenüber DHT verursacht, einem Hormon, das Haarfollikel mit der Zeit verkleinert."
+        "Your pattern suggests androgenetic alopecia, the most common form of hair loss. It is driven by genetic sensitivity to DHT, a hormone that miniaturizes hair follicles over time. If you treat it early enough, you can see the best results.",
+        "Dein Muster deutet auf androgenetische Alopezie hin, die häufigste Form von Haarausfall. Sie wird durch genetische Empfindlichkeit gegenüber DHT verursacht, einem Hormon, das Haarfollikel mit der Zeit verkleinert. Wenn Du sie frueh genug behandelst, kannst Du die besten Ergebnisse sehen."
       );
     } else if (onset === "sudden" && (onsetTime === "<3mo" || onsetTime === "3-6mo")) {
       type = "te-acute";
@@ -573,8 +573,8 @@
 
     // Core steps
     steps.push(t(
-      "<strong>Take your Hr² capsule daily</strong> — with a meal for best absorption. Consistency is key; most users see initial results within 8-12 weeks.",
-      "<strong>Nimm täglich Deine Hr² Kapsel</strong> — zu einer Mahlzeit für beste Absorption. Konsistenz ist der Schlüssel; die meisten Nutzer sehen erste Ergebnisse innerhalb von 8-12 Wochen."
+      "<strong>Take your Hr² Hair Growth Plus</strong> to supplement decisions and balance hair health in stressful periods and see initial results within 8 to 12 weeks.",
+      "<strong>Nimm Dein Hr² Hair Growth Plus</strong> um Defizite zu ergaenzen, die Haargesundheit in stressigen Phasen zu stabilisieren und erste Ergebnisse innerhalb von 8 bis 12 Wochen zu sehen."
     ));
 
     steps.push(t(

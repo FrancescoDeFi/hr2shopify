@@ -4203,6 +4203,7 @@ html {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px 32px;
+  margin-top: 12px;
   width: 100%;
 }
 
