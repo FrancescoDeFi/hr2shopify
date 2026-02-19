@@ -137,6 +137,14 @@
     }
   },
   "sections": {
+    "marquee": {
+      "item_1": "Wissenschaftlich geprüft",
+      "item_2": "Laktosefrei",
+      "item_3": "Entwickelt in der Schweiz",
+      "item_4": "Allergenfrei",
+      "item_5": "Ohne Arzneistoffe",
+      "item_6": "Vegan"
+    },
     "hero": {
       "heading": "Dein täglicher Haar-Boost",
       "subheading": "Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.",

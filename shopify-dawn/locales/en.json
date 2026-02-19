@@ -137,6 +137,14 @@
     }
   },
   "sections": {
+    "marquee": {
+      "item_1": "Scientifically tested",
+      "item_2": "Lactose-free",
+      "item_3": "Developed in Switzerland",
+      "item_4": "Allergen-free",
+      "item_5": "Drug-free",
+      "item_6": "Vegan"
+    },
     "hero": {
       "heading": "Your daily hair boost",
       "subheading": "Hr² is your all-in-one hair supplement - clinically tested for daily support of hair roots, scalp, and nutrient supply. Scientifically developed, trusted by a global community.",

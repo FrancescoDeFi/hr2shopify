@@ -7,7 +7,7 @@
 }
 
 body {
-  zoom: 0.8;
+  zoom: 1;
 }
 
 .skip-to-content-link {
@@ -2497,8 +2497,8 @@ html {
 .product-feature-marquee-group {
   display: flex;
   align-items: center;
-  gap: 58px;
-  padding: 18px 34px;
+  gap: 80px;
+  padding: 18px 40px;
   flex: 0 0 auto;
 }
 
