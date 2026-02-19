@@ -32,6 +32,10 @@
         "show_clinicians_badge": true
       }
     },
+    "trust_marquee": {
+      "type": "trust-marquee",
+      "settings": {}
+    },
     "comparison": {
       "type": "comparison-table",
       "blocks": {
@@ -144,6 +148,7 @@
   },
   "order": [
     "hero",
+    "trust_marquee",
     "comparison",
     "causes",
     "partners",
