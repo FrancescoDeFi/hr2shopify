@@ -122,7 +122,7 @@
     {% if section.settings.promo_image != blank %}
       <img src="{{ section.settings.promo_image | image_url: width: 600 }}" alt="{{ section.settings.promo_image.alt | default: 'Hr² Bundle' }}" loading="lazy" decoding="async">
     {% else %}
-      <img src="{{ 'bottlew.png' | asset_url }}" alt="Hr² Bundle" loading="lazy" decoding="async">
+      <img src="{{ 'buyimage.png' | asset_url }}" alt="Hr² Bundle" loading="lazy" decoding="async">
     {% endif %}
   </div>
 </section>
