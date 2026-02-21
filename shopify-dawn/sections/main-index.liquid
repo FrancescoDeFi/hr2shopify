@@ -713,6 +713,7 @@
         <h2>{{ 'sections.faq.heading' | t }}</h2>
         {%- assign faq_help_url = pages['hilfe'].url | default: '/pages/hilfe' | append: '#hilfecenter' -%}
         <p>{{ 'sections.faq.subheading_html' | t: help_url: faq_help_url }}</p>
+        <img class="faq-left-image" src="{{ 'faq2.png' | asset_url }}" alt="" loading="lazy" decoding="async">
       </div>
       <div class="faq-right">
         <div class="faq-item open">

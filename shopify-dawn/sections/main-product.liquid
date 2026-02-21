@@ -20,7 +20,7 @@
               <img src="{{ 'buyimage.png' | asset_url }}" alt="{{ 'product_page.image_alt_5' | t }}" loading="lazy" decoding="async">
             </div>
             <div class="pdp-hero-grid-item">
-              <img src="{{ 'clinictests.jpeg' | asset_url }}" alt="{{ 'product_page.image_alt_4' | t }}" loading="lazy" decoding="async">
+              <img src="{{ '15.png' | asset_url }}" alt="{{ 'product_page.image_alt_4' | t }}" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -550,7 +550,7 @@
           }
 
           if (descriptionEl && chip.dataset.description) {
-            descriptionEl.textContent = chip.dataset.description;
+            descriptionEl.innerHTML = chip.dataset.description;
           }
         });
       });

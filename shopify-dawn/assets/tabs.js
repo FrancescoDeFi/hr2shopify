@@ -122,7 +122,7 @@
 
       // Update description
       if (descriptionEl && chip.dataset.description) {
-        descriptionEl.textContent = chip.dataset.description;
+        descriptionEl.innerHTML = chip.dataset.description;
       }
     }
 
