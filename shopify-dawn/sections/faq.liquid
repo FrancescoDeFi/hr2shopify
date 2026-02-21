@@ -28,6 +28,7 @@
   <div class="faq-left">
     <h2>{{ faq_heading }}</h2>
     <p>{{ faq_subheading }} <a href="{{ section.settings.help_url | default: pages['hilfe'].url | default: '/pages/hilfe' }}#hilfecenter" class="faq-link">{{ faq_help_text }}</a> – {{ faq_help_suffix }}</p>
+    <img class="faq-left-image" src="{{ 'faq.png' | asset_url }}" alt="" loading="lazy" decoding="async">
   </div>
 
   <div class="faq-right">

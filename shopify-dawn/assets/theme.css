@@ -4992,6 +4992,10 @@ html {
   margin: 0 auto;
 }
 
+.faq-right {
+  padding-top: 200px;
+}
+
 .faq-left h2 {
   margin: 0 0 16px;
   font-family: "AG1 Serif", "Times New Roman", serif;
@@ -5006,6 +5010,15 @@ html {
   font-size: 16px;
   line-height: 1.65;
   color: rgba(12, 12, 12, 0.68);
+}
+
+.faq-left-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 32px;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
 .faq-link {
