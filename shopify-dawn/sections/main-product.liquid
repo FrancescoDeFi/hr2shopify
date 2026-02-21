@@ -271,7 +271,7 @@
     <!-- Clinically Tested Benefits -->
     <section class="pdp-proven" aria-labelledby="pdp-proven-title">
       <div class="pdp-proven-bg">
-        <img src="{{ 'clinictests.jpeg' | asset_url }}" alt="" loading="lazy" decoding="async">
+        <img src="{{ 'bg.png' | asset_url }}" alt="" loading="lazy" decoding="async">
       </div>
       <div class="pdp-proven-inner">
         <h2 id="pdp-proven-title">{{ 'product_page.proven_title' | t }}</h2>
@@ -339,11 +339,7 @@
           </div>
 
           <div class="pdp-timeline-media">
-            <img class="pdp-timeline-media-main" src="{{ 'forschung-testing.png' | asset_url }}" alt="{{ 'product_page.lab_alt' | t }}" loading="lazy" decoding="async">
-            <div class="pdp-timeline-media-grid">
-              <img src="{{ 'capsule.png' | asset_url }}" alt="{{ 'product_page.capsules_alt' | t }}" loading="lazy" decoding="async">
-              <img src="{{ 'testing2.png' | asset_url }}" alt="{{ 'product_page.lab_alt' | t }}" loading="lazy" decoding="async">
-            </div>
+            <img class="pdp-timeline-media-single" src="{{ '36.png' | asset_url }}" alt="{{ 'product_page.lab_alt' | t }}" loading="lazy" decoding="async">
           </div>
         </div>
 
@@ -470,7 +466,7 @@
             <div class="pdp-ingredients-more">{{ 'sections.ingredients.more' | t }}</div>
 
             <p class="pdp-ingredient-description" id="pdp-ingredient-description">
-              {{ 'sections.ingredients.items.anagain.description' | t }}
+              {{ 'sections.ingredients.items.anagain.description' | t | replace: '&lt;sup&gt;', '<sup>' | replace: '&lt;/sup&gt;', '</sup>' }}
             </p>
 
             <div class="pdp-ingredients-badges" role="list" aria-label="{{ 'product_page.quality_standards' | t }}">
@@ -525,6 +521,11 @@
       var descriptionEl = document.getElementById('pdp-ingredient-description');
       if (!chips.length) return;
 
+      function normalizeSupMarkup(value) {
+        if (!value) return '';
+        return value.replace(/&lt;(\/?sup)&gt;/gi, '<$1>');
+      }
+
       chips.forEach(function(chip) {
         chip.addEventListener('click', function() {
           chips.forEach(function(c) {
@@ -550,67 +551,66 @@
           }
 
           if (descriptionEl && chip.dataset.description) {
-            descriptionEl.innerHTML = chip.dataset.description;
+            descriptionEl.innerHTML = normalizeSupMarkup(chip.dataset.description);
           }
         });
       });
+
+      var initialChip = document.querySelector('.pdp-ingredient-chip.active') || chips[0];
+      if (descriptionEl && initialChip && initialChip.dataset.description) {
+        descriptionEl.innerHTML = normalizeSupMarkup(initialChip.dataset.description);
+      }
     })();
     </script>
 
     <!-- Comparison -->
     <section class="pdp-compare" aria-labelledby="pdp-compare-title">
       <div class="pdp-compare-inner">
-        <h2 id="pdp-compare-title">{{ 'product_page.compare_title' | t }}</h2>
-        <div class="pdp-compare-table-wrap">
-          <table class="pdp-compare-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>
-                  <div class="pdp-compare-header-col">
-                    <img class="pdp-compare-capsule" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
-                    <span class="pdp-compare-pill">Hr²</span>
-                  </div>
-                </th>
-                <th>
-                  <div class="pdp-compare-header-col">
-                    <svg class="pdp-compare-competitor-icon" width="36" height="36" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                      <rect x="14" y="8" width="20" height="32" rx="10" stroke="currentColor" stroke-width="1.6"/>
-                      <line x1="14" y1="24" x2="34" y2="24" stroke="currentColor" stroke-width="1.4"/>
-                    </svg>
-                    <span>{{ 'product_page.compare_others' | t }}</span>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{{ 'product_page.compare_row_1' | t }}</td>
-                <td>&#10003;</td>
-                <td>{{ 'product_page.compare_value_rare' | t }}</td>
-              </tr>
-              <tr>
-                <td>{{ 'product_page.compare_row_2' | t }}</td>
-                <td>&#10003;</td>
-                <td>{{ 'product_page.compare_value_few' | t }}</td>
-              </tr>
-              <tr>
-                <td>{{ 'product_page.compare_row_3' | t }}</td>
-                <td>&#10003;</td>
-                <td>{{ 'product_page.compare_value_rare' | t }}</td>
-              </tr>
-              <tr>
-                <td>{{ 'product_page.compare_row_4' | t }}</td>
-                <td>&#10003;</td>
-                <td>{{ 'product_page.compare_value_few' | t }}</td>
-              </tr>
-              <tr>
-                <td>{{ 'product_page.compare_row_5' | t }}</td>
-                <td>&#10003;</td>
-                <td>{{ 'product_page.compare_value_few' | t }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="pdp-compare-left">
+          <img class="pdp-compare-bottle" src="{{ 'bottlenew2.png' | asset_url }}" alt="Hr²" loading="lazy" decoding="async">
+          <a class="pdp-compare-cta" href="{{ routes.root_url | append: '/products/' | append: settings.primary_product_handle | replace: '//products/', '/products/' }}">{{ 'sections.comparison.buy_cta' | t }}</a>
+          <p class="pdp-compare-price">{{ 'sections.comparison.price_note' | t }}</p>
+        </div>
+        <div class="pdp-compare-right">
+          <h2 id="pdp-compare-title">{{ 'product_page.compare_title' | t }}</h2>
+          <div class="pdp-compare-table-wrap">
+            <table class="pdp-compare-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th><span class="pdp-compare-pill">Hr²</span></th>
+                  <th>{{ 'product_page.compare_others' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ 'product_page.compare_row_1' | t }}</td>
+                  <td><span class="pdp-compare-check">&#10003;</span></td>
+                  <td>{{ 'product_page.compare_value_rare' | t }}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'product_page.compare_row_2' | t }}</td>
+                  <td><span class="pdp-compare-check">&#10003;</span></td>
+                  <td>{{ 'product_page.compare_value_few' | t }}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'product_page.compare_row_3' | t }}</td>
+                  <td><span class="pdp-compare-check">&#10003;</span></td>
+                  <td>{{ 'product_page.compare_value_rare' | t }}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'product_page.compare_row_4' | t }}</td>
+                  <td><span class="pdp-compare-check">&#10003;</span></td>
+                  <td>{{ 'product_page.compare_value_few' | t }}</td>
+                </tr>
+                <tr>
+                  <td>{{ 'product_page.compare_row_5' | t }}</td>
+                  <td><span class="pdp-compare-check">&#10003;</span></td>
+                  <td>{{ 'product_page.compare_value_few' | t }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>

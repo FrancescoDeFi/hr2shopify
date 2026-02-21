@@ -96,6 +96,11 @@
     var textBottom = document.getElementById('pdp-text-bottom');
     var descriptionEl = document.getElementById('pdp-ingredient-description');
 
+    function normalizeSupMarkup(value) {
+      if (!value) return '';
+      return value.replace(/&lt;(\/?sup)&gt;/gi, '<$1>');
+    }
+
     function setActive(chip) {
       chips.forEach(function (btn) {
         var active = btn === chip;
@@ -122,7 +127,7 @@
 
       // Update description
       if (descriptionEl && chip.dataset.description) {
-        descriptionEl.innerHTML = chip.dataset.description;
+        descriptionEl.innerHTML = normalizeSupMarkup(chip.dataset.description);
       }
     }
 
@@ -155,6 +160,11 @@
         }
       });
     });
+
+    var initialChip = chips.find(function (c) { return c.classList.contains('active'); }) || chips[0];
+    if (initialChip) {
+      setActive(initialChip);
+    }
   }
 
   /**

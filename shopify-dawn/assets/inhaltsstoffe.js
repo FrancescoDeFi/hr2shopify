@@ -548,6 +548,41 @@
     return ingredientImages[item.id] || capsuleUrl;
   }
 
+  function normalizeAssetUrl(url) {
+    if (!url) return "";
+    return url
+      .replace(/ingredients%2F/ig, "")
+      .replace(/\/ingredients\//ig, "/");
+  }
+
+  function setImageSrcWithFallback(img, primaryUrl) {
+    if (!img) return;
+    var firstUrl = primaryUrl || capsuleUrl;
+    var secondUrl = normalizeAssetUrl(firstUrl);
+
+    img.dataset.fallbackPrimary = firstUrl;
+    img.dataset.fallbackSecondary = secondUrl;
+    img.dataset.fallbackStep = "0";
+    img.onerror = function () {
+      if (
+        this.dataset.fallbackStep === "0" &&
+        this.dataset.fallbackSecondary &&
+        this.dataset.fallbackSecondary !== this.dataset.fallbackPrimary
+      ) {
+        this.dataset.fallbackStep = "1";
+        this.src = this.dataset.fallbackSecondary;
+        return;
+      }
+      if (this.dataset.fallbackStep !== "2" && capsuleUrl && this.src !== capsuleUrl) {
+        this.dataset.fallbackStep = "2";
+        this.src = capsuleUrl;
+        return;
+      }
+      this.onerror = null;
+    };
+    img.src = firstUrl;
+  }
+
   function metaLine(item) {
     var parts = [];
     if (item.amount) parts.push(item.amount);
@@ -566,7 +601,7 @@
 
     /* Update drawer image to match the ingredient */
     if (drawerImage) {
-      drawerImage.src = getImageUrl(item);
+      setImageSrcWithFallback(drawerImage, getImageUrl(item));
     }
 
     if (item.amount || item.nrv) {
@@ -634,7 +669,7 @@
       card.innerHTML =
         '<div class="inh-pill-ring">' +
         '<span class="inh-pill-benefit">' + (item.benefit || '') + '</span>' +
-        '<img class="inh-pill-capsule" src="' + imgUrl + '" alt="" loading="lazy" decoding="async">' +
+        '<img class="inh-pill-capsule" src="' + capsuleUrl + '" alt="" loading="lazy" decoding="async">' +
         '</div>' +
         '<div class="inh-card-name">' + item.name + '</div>' +
         (metaStr ? '<div class="inh-card-meta">' + metaStr + '</div>' : '') +
@@ -642,6 +677,7 @@
 
       card.addEventListener("click", function () { openDrawer(item); });
       gallery.appendChild(card);
+      setImageSrcWithFallback(card.querySelector(".inh-pill-capsule"), imgUrl);
     });
   }
 
