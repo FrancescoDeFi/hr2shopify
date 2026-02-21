@@ -3,42 +3,29 @@
 
 <section class="pdp-hero" aria-labelledby="product-title">
       <div class="pdp-hero-inner">
-        <!-- Left: Product image carousel -->
-        <div class="pdp-hero-image">
-          <span class="pdp-hero-shipping">{{ 'product_page.shipping_threshold' | t }}</span>
-          <div class="pdp-hero-carousel">
-            <div class="pdp-hero-carousel-track">
-              <div class="pdp-hero-carousel-slide active">
-                <img src="{{ 'bottlenew2.png' | asset_url }}" alt="{{ 'product_page.image_alt_1' | t }}" loading="eager" decoding="async">
-              </div>
-              <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'capsule3.png' | asset_url }}" alt="{{ 'product_page.image_alt_2' | t }}" loading="lazy" decoding="async">
-              </div>
-              <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'heroimage.png' | asset_url }}" alt="{{ 'product_page.image_alt_3' | t }}" loading="lazy" decoding="async">
-              </div>
-              <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'testing.png' | asset_url }}" alt="{{ 'product_page.image_alt_4' | t }}" loading="lazy" decoding="async">
-              </div>
-              <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'buyimage.png' | asset_url }}" alt="{{ 'product_page.image_alt_5' | t }}" loading="lazy" decoding="async">
-              </div>
-              <div class="pdp-hero-carousel-slide">
-                <img src="{{ 'capsule.png' | asset_url }}" alt="{{ 'product_page.image_alt_6' | t }}" loading="lazy" decoding="async">
-              </div>
+        <!-- Left: Product images (scrollable) -->
+        <div class="pdp-hero-images">
+          <div class="pdp-hero-image-main">
+            <span class="pdp-hero-shipping">{{ 'product_page.shipping_threshold' | t }}</span>
+            <img src="{{ 'bottlenew2.png' | asset_url }}" alt="{{ 'product_page.image_alt_1' | t }}" loading="eager" decoding="async">
+          </div>
+          <div class="pdp-hero-image-grid">
+            <div class="pdp-hero-grid-item">
+              <img src="{{ 'capsule3.png' | asset_url }}" alt="{{ 'product_page.image_alt_2' | t }}" loading="lazy" decoding="async">
             </div>
-            <div class="pdp-hero-carousel-dots">
-              <button class="pdp-carousel-dot active" aria-label="{{ 'product_page.image_dot' | t: number: 1 }}" data-index="0"></button>
-              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 2 }}" data-index="1"></button>
-              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 3 }}" data-index="2"></button>
-              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 4 }}" data-index="3"></button>
-              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 5 }}" data-index="4"></button>
-              <button class="pdp-carousel-dot" aria-label="{{ 'product_page.image_dot' | t: number: 6 }}" data-index="5"></button>
+            <div class="pdp-hero-grid-item">
+              <img src="{{ 'heroimage.png' | asset_url }}" alt="{{ 'product_page.image_alt_3' | t }}" loading="lazy" decoding="async">
+            </div>
+            <div class="pdp-hero-grid-item">
+              <img src="{{ 'buyimage.png' | asset_url }}" alt="{{ 'product_page.image_alt_5' | t }}" loading="lazy" decoding="async">
+            </div>
+            <div class="pdp-hero-grid-item">
+              <img src="{{ 'clinictests.jpeg' | asset_url }}" alt="{{ 'product_page.image_alt_4' | t }}" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
 
-        <!-- Right: Product info -->
+        <!-- Right: Product info (sticky) -->
         <div class="pdp-hero-info">
           <h1 class="pdp-hero-title" id="product-title">{{ product.title }}</h1>
           <p class="pdp-hero-subtitle">{{ 'product_page.subtitle' | t }}</p>
@@ -281,14 +268,34 @@
       </div>
     </section>
 
-    <!-- Bio-Optimized Banner -->
-    <section class="pdp-bio" aria-label="{{ 'product_page.bio_aria' | t }}">
-      <div class="pdp-bio-inner">
-        <div class="pdp-bio-copy">
-          <h2>{{ 'product_page.bio_title' | t }}</h2>
-        </div>
-        <div class="pdp-bio-text">
-          <p>{{ 'product_page.bio_text' | t }}</p>
+    <!-- Clinically Tested Benefits -->
+    <section class="pdp-proven" aria-labelledby="pdp-proven-title">
+      <div class="pdp-proven-bg">
+        <img src="{{ 'clinictests.jpeg' | asset_url }}" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="pdp-proven-inner">
+        <h2 id="pdp-proven-title">{{ 'product_page.proven_title' | t }}</h2>
+        <div class="pdp-proven-cards">
+          <div class="pdp-proven-card">
+            <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><path d="M14 24l7 7 13-13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.8"/></svg>
+            <span class="pdp-proven-card-title">{{ 'product_page.proven_card_1' | t }}</span>
+            <span class="pdp-proven-card-desc">{{ 'product_page.proven_desc_1' | t }}</span>
+          </div>
+          <div class="pdp-proven-card">
+            <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><path d="M24 8c-8 0-14 6-14 14s14 20 14 20 14-12 14-20-6-14-14-14Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M19 22l4 4 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="pdp-proven-card-title">{{ 'product_page.proven_card_2' | t }}</span>
+            <span class="pdp-proven-card-desc">{{ 'product_page.proven_desc_2' | t }}</span>
+          </div>
+          <div class="pdp-proven-card">
+            <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.8"/><path d="M16 24h16M24 16v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 13l22 22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span class="pdp-proven-card-title">{{ 'product_page.proven_card_3' | t }}</span>
+            <span class="pdp-proven-card-desc">{{ 'product_page.proven_desc_3' | t }}</span>
+          </div>
+          <div class="pdp-proven-card">
+            <svg width="28" height="28" viewBox="0 0 48 48" fill="none"><path d="M24 8c-8 0-14 6-14 14s14 20 14 20 14-12 14-20-6-14-14-14Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M24 18v8M24 30h0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <span class="pdp-proven-card-title">{{ 'product_page.proven_card_4' | t }}</span>
+            <span class="pdp-proven-card-desc">{{ 'product_page.proven_desc_4' | t }}</span>
+          </div>
         </div>
       </div>
     </section>
@@ -299,7 +306,6 @@
         <header class="pdp-timeline-header">
           <h2 id="pdp-timeline-title">{{ 'product_page.timeline_title' | t }}</h2>
           <p>{{ 'product_page.timeline_intro' | t }}</p>
-          <a class="pdp-timeline-link" href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'product_page.timeline_link' | t }} →</a>
         </header>
 
         <div class="pdp-timeline-body">
@@ -307,63 +313,36 @@
             <div class="pdp-timeline-step">
               <div class="pdp-timeline-dot"></div>
               <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">{{ 'product_page.step_1_badge' | t }}</span>
-                <strong>{{ 'product_page.step_1_title' | t }}</strong>
-                <ul>
-                  <li>{{ 'product_page.step_1_line_1' | t }}</li>
-                  <li>{{ 'product_page.step_1_line_2' | t }}</li>
-                  <li>{{ 'product_page.step_1_line_3' | t }}</li>
-                </ul>
+                <span class="pdp-timeline-badge">{{ 'product_page.tl_month1_badge' | t }}</span>
+                <strong class="pdp-timeline-month">{{ 'product_page.tl_month1_title' | t }}</strong>
+                <p class="pdp-timeline-desc">{{ 'product_page.tl_month1_desc' | t }}</p>
               </div>
             </div>
 
             <div class="pdp-timeline-step">
               <div class="pdp-timeline-dot"></div>
               <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">{{ 'product_page.step_2_badge' | t }}</span>
-                <strong>{{ 'product_page.step_2_title' | t }}</strong>
-                <ul>
-                  <li>{{ 'product_page.step_2_line_1' | t }}</li>
-                  <li>{{ 'product_page.step_2_line_2' | t }}</li>
-                  <li>{{ 'product_page.step_2_line_3' | t }}</li>
-                </ul>
+                <span class="pdp-timeline-badge">{{ 'product_page.tl_month3_badge' | t }}</span>
+                <strong class="pdp-timeline-month">{{ 'product_page.tl_month3_title' | t }}</strong>
+                <p class="pdp-timeline-desc">{{ 'product_page.tl_month3_desc' | t }}</p>
               </div>
             </div>
 
             <div class="pdp-timeline-step">
-              <div class="pdp-timeline-dot"></div>
+              <div class="pdp-timeline-dot active"></div>
               <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">{{ 'product_page.step_3_badge' | t }}</span>
-                <strong>{{ 'product_page.step_3_title' | t }}</strong>
-                <ul>
-                  <li>{{ 'product_page.step_3_line_1' | t }}</li>
-                  <li>{{ 'product_page.step_3_line_2' | t }}</li>
-                  <li>{{ 'product_page.step_3_line_3' | t }}</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="pdp-timeline-step">
-              <div class="pdp-timeline-dot"></div>
-              <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">{{ 'product_page.step_4_badge' | t }}</span>
-                <strong>{{ 'product_page.step_4_title' | t }}</strong>
-                <ul>
-                  <li>{{ 'product_page.step_4_line_1' | t }}</li>
-                  <li>{{ 'product_page.step_4_line_2' | t }}</li>
-                  <li>{{ 'product_page.step_4_line_3' | t }}</li>
-                </ul>
+                <span class="pdp-timeline-badge">{{ 'product_page.tl_month6_badge' | t }}</span>
+                <strong class="pdp-timeline-month">{{ 'product_page.tl_month6_title' | t }}</strong>
+                <p class="pdp-timeline-desc">{{ 'product_page.tl_month6_desc' | t }}</p>
               </div>
             </div>
           </div>
 
           <div class="pdp-timeline-media">
-            <video autoplay loop muted playsinline preload="metadata" poster="{{ 'haarwurzel.png' | asset_url }}">
-              <source src="{{ 'causes-hairprom1.mp4' | asset_url }}" type="video/mp4">
-            </video>
+            <img class="pdp-timeline-media-main" src="{{ 'forschung-testing.png' | asset_url }}" alt="{{ 'product_page.lab_alt' | t }}" loading="lazy" decoding="async">
             <div class="pdp-timeline-media-grid">
-              <img src="{{ 'testing.png' | asset_url }}" alt="{{ 'product_page.lab_alt' | t }}" loading="lazy" decoding="async">
-              <img src="{{ 'capsule3.png' | asset_url }}" alt="{{ 'product_page.capsules_alt' | t }}" loading="lazy" decoding="async">
+              <img src="{{ 'capsule.png' | asset_url }}" alt="{{ 'product_page.capsules_alt' | t }}" loading="lazy" decoding="async">
+              <img src="{{ 'testing2.png' | asset_url }}" alt="{{ 'product_page.lab_alt' | t }}" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -372,7 +351,10 @@
           <img class="pdp-timeline-howto-img" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
           <div class="pdp-timeline-howto-copy">
             <strong>{{ 'product_page.how_to_title' | t }}</strong>
-            <p>{{ 'product_page.how_to_text' | t }}</p>
+            <ul>
+              <li>{{ 'product_page.how_to_line1' | t }}</li>
+              <li>{{ 'product_page.how_to_line2' | t }}</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -388,26 +370,108 @@
 
         <div class="pdp-ingredients-layout">
           <div class="pdp-ingredients-visual">
-            <img src="{{ 'capsule3.png' | asset_url }}" alt="{{ 'product_page.capsule_alt' | t }}" loading="lazy" decoding="async">
+            <div class="pdp-ingredients-circle" id="pdp-ingredients-circle">
+              <svg class="pdp-ingredients-curved-text" viewBox="0 0 400 400" aria-hidden="true">
+                <defs>
+                  <path id="pdp-curve-top" d="M 30,200 A 170,170 0 0,1 370,200" fill="none"/>
+                  <path id="pdp-curve-bottom" d="M 370,200 A 170,170 0 0,1 30,200" fill="none"/>
+                </defs>
+                <text>
+                  <textPath id="pdp-text-top" href="#pdp-curve-top" startOffset="50%" text-anchor="middle">
+                    {{ 'sections.ingredients.items.anagain.curve_top' | t }}
+                  </textPath>
+                </text>
+                <text>
+                  <textPath id="pdp-text-bottom" href="#pdp-curve-bottom" startOffset="50%" text-anchor="middle">
+                    {{ 'sections.ingredients.items.anagain.curve_bottom' | t }}
+                  </textPath>
+                </text>
+              </svg>
+              <img class="pdp-ingredients-capsule" id="pdp-ingredients-capsule-img" src="{{ 'Anagai.jpeg' | asset_url }}" alt="" loading="lazy" decoding="async">
+            </div>
           </div>
 
-          <div class="pdp-ingredients-list">
-            <div class="pdp-ingredients-row">
-              <span class="pdp-ingredients-cat">{{ 'product_page.ingredient_cat_1' | t }}</span>
-              <span class="pdp-ingredients-detail">{{ 'product_page.ingredient_detail_1' | t }} <span class="pdp-ingredients-plus">+</span></span>
+          <div class="pdp-ingredients-right">
+            <div class="pdp-ingredients-chips" role="tablist" aria-label="{{ 'sections.ingredients.aria.tabs' | t }}">
+              <button class="pdp-ingredient-chip active" type="button" role="tab" aria-selected="true"
+                      data-ingredient="anagain"
+                      data-description="{{ 'sections.ingredients.items.anagain.description' | t | escape }}"
+                      data-curve-top="{{ 'sections.ingredients.items.anagain.curve_top' | t | escape }}"
+                      data-curve-bottom="{{ 'sections.ingredients.items.anagain.curve_bottom' | t | escape }}"
+                      data-image="{{ 'Anagai.jpeg' | asset_url }}">
+                <span class="pdp-chip-dot" aria-hidden="true"></span>
+                {{ 'sections.ingredients.items.anagain.name' | t }}
+              </button>
+              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
+                      data-ingredient="sawpalmetto"
+                      data-description="{{ 'sections.ingredients.items.sawpalmetto.description' | t | escape }}"
+                      data-curve-top="{{ 'sections.ingredients.items.sawpalmetto.curve_top' | t | escape }}"
+                      data-curve-bottom="{{ 'sections.ingredients.items.sawpalmetto.curve_bottom' | t | escape }}"
+                      data-image="{{ 'Saegepalmenextrak.jpeg' | asset_url }}">
+                <span class="pdp-chip-dot" aria-hidden="true"></span>
+                {{ 'sections.ingredients.items.sawpalmetto.name' | t }}
+              </button>
+              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
+                      data-ingredient="pomegranate"
+                      data-description="{{ 'sections.ingredients.items.pomegranate.description' | t | escape }}"
+                      data-curve-top="{{ 'sections.ingredients.items.pomegranate.curve_top' | t | escape }}"
+                      data-curve-bottom="{{ 'sections.ingredients.items.pomegranate.curve_bottom' | t | escape }}"
+                      data-image="{{ 'Granatapfe.jpeg' | asset_url }}">
+                <span class="pdp-chip-dot" aria-hidden="true"></span>
+                {{ 'sections.ingredients.items.pomegranate.name' | t }}
+              </button>
+              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
+                      data-ingredient="ashwagandha"
+                      data-description="{{ 'sections.ingredients.items.ashwagandha.description' | t | escape }}"
+                      data-curve-top="{{ 'sections.ingredients.items.ashwagandha.curve_top' | t | escape }}"
+                      data-curve-bottom="{{ 'sections.ingredients.items.ashwagandha.curve_bottom' | t | escape }}"
+                      data-image="{{ 'Ashwagand.jpeg' | asset_url }}">
+                <span class="pdp-chip-dot" aria-hidden="true"></span>
+                {{ 'sections.ingredients.items.ashwagandha.name' | t }}
+              </button>
+              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
+                      data-ingredient="lcysteine"
+                      data-description="{{ 'sections.ingredients.items.lcysteine.description' | t | escape }}"
+                      data-curve-top="{{ 'sections.ingredients.items.lcysteine.curve_top' | t | escape }}"
+                      data-curve-bottom="{{ 'sections.ingredients.items.lcysteine.curve_bottom' | t | escape }}"
+                      data-image="{{ 'L-cystein.jpeg' | asset_url }}">
+                <span class="pdp-chip-dot" aria-hidden="true"></span>
+                {{ 'sections.ingredients.items.lcysteine.name' | t }}
+              </button>
+              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
+                      data-ingredient="llysine"
+                      data-description="{{ 'sections.ingredients.items.llysine.description' | t | escape }}"
+                      data-curve-top="{{ 'sections.ingredients.items.llysine.curve_top' | t | escape }}"
+                      data-curve-bottom="{{ 'sections.ingredients.items.llysine.curve_bottom' | t | escape }}"
+                      data-image="{{ 'L-lysin.jpeg' | asset_url }}">
+                <span class="pdp-chip-dot" aria-hidden="true"></span>
+                {{ 'sections.ingredients.items.llysine.name' | t }}
+              </button>
+              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
+                      data-ingredient="zinc"
+                      data-description="{{ 'sections.ingredients.items.zinc.description' | t | escape }}"
+                      data-curve-top="{{ 'sections.ingredients.items.zinc.curve_top' | t | escape }}"
+                      data-curve-bottom="{{ 'sections.ingredients.items.zinc.curve_bottom' | t | escape }}"
+                      data-image="{{ 'zin.jpeg' | asset_url }}">
+                <span class="pdp-chip-dot" aria-hidden="true"></span>
+                {{ 'sections.ingredients.items.zinc.name' | t }}
+              </button>
+              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
+                      data-ingredient="biotin"
+                      data-description="{{ 'sections.ingredients.items.biotin.description' | t | escape }}"
+                      data-curve-top="{{ 'sections.ingredients.items.biotin.curve_top' | t | escape }}"
+                      data-curve-bottom="{{ 'sections.ingredients.items.biotin.curve_bottom' | t | escape }}"
+                      data-image="{{ 'bioti.jpeg' | asset_url }}">
+                <span class="pdp-chip-dot" aria-hidden="true"></span>
+                {{ 'sections.ingredients.items.biotin.name' | t }}
+              </button>
             </div>
-            <div class="pdp-ingredients-row">
-              <span class="pdp-ingredients-cat">{{ 'product_page.ingredient_cat_2' | t }}</span>
-              <span class="pdp-ingredients-detail">{{ 'product_page.ingredient_detail_2' | t }} <span class="pdp-ingredients-plus">+</span></span>
-            </div>
-            <div class="pdp-ingredients-row">
-              <span class="pdp-ingredients-cat">{{ 'product_page.ingredient_cat_3' | t }}</span>
-              <span class="pdp-ingredients-detail">{{ 'product_page.ingredient_detail_3' | t }} <span class="pdp-ingredients-plus">+</span></span>
-            </div>
-            <div class="pdp-ingredients-row">
-              <span class="pdp-ingredients-cat">{{ 'product_page.ingredient_cat_4' | t }}</span>
-              <span class="pdp-ingredients-detail">{{ 'product_page.ingredient_detail_4' | t }} <span class="pdp-ingredients-plus">+</span></span>
-            </div>
+
+            <div class="pdp-ingredients-more">{{ 'sections.ingredients.more' | t }}</div>
+
+            <p class="pdp-ingredient-description" id="pdp-ingredient-description">
+              {{ 'sections.ingredients.items.anagain.description' | t }}
+            </p>
 
             <div class="pdp-ingredients-badges" role="list" aria-label="{{ 'product_page.quality_standards' | t }}">
               <div class="pdp-ingredients-badge" role="listitem">
@@ -452,6 +516,47 @@
       </div>
     </section>
 
+    <script>
+    (function() {
+      var chips = document.querySelectorAll('.pdp-ingredient-chip');
+      var capsuleImg = document.getElementById('pdp-ingredients-capsule-img');
+      var textTop = document.getElementById('pdp-text-top');
+      var textBottom = document.getElementById('pdp-text-bottom');
+      var descriptionEl = document.getElementById('pdp-ingredient-description');
+      if (!chips.length) return;
+
+      chips.forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          chips.forEach(function(c) {
+            c.classList.remove('active');
+            c.setAttribute('aria-selected', 'false');
+          });
+          chip.classList.add('active');
+          chip.setAttribute('aria-selected', 'true');
+
+          if (capsuleImg && chip.dataset.image) {
+            capsuleImg.style.opacity = '0';
+            setTimeout(function() {
+              capsuleImg.src = chip.dataset.image;
+              capsuleImg.style.opacity = '1';
+            }, 180);
+          }
+
+          if (textTop && chip.dataset.curveTop) {
+            textTop.textContent = chip.dataset.curveTop;
+          }
+          if (textBottom && chip.dataset.curveBottom) {
+            textBottom.textContent = chip.dataset.curveBottom;
+          }
+
+          if (descriptionEl && chip.dataset.description) {
+            descriptionEl.textContent = chip.dataset.description;
+          }
+        });
+      });
+    })();
+    </script>
+
     <!-- Comparison -->
     <section class="pdp-compare" aria-labelledby="pdp-compare-title">
       <div class="pdp-compare-inner">
@@ -461,34 +566,47 @@
             <thead>
               <tr>
                 <th></th>
-                <th><span class="pdp-compare-pill">Hr²</span></th>
-                <th>{{ 'product_page.compare_others' | t }}</th>
+                <th>
+                  <div class="pdp-compare-header-col">
+                    <img class="pdp-compare-capsule" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
+                    <span class="pdp-compare-pill">Hr²</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="pdp-compare-header-col">
+                    <svg class="pdp-compare-competitor-icon" width="36" height="36" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                      <rect x="14" y="8" width="20" height="32" rx="10" stroke="currentColor" stroke-width="1.6"/>
+                      <line x1="14" y1="24" x2="34" y2="24" stroke="currentColor" stroke-width="1.4"/>
+                    </svg>
+                    <span>{{ 'product_page.compare_others' | t }}</span>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>{{ 'product_page.compare_row_1' | t }}</td>
-                <td><span class="pdp-compare-dot"></span></td>
+                <td>&#10003;</td>
                 <td>{{ 'product_page.compare_value_rare' | t }}</td>
               </tr>
               <tr>
                 <td>{{ 'product_page.compare_row_2' | t }}</td>
-                <td><span class="pdp-compare-dot"></span></td>
+                <td>&#10003;</td>
                 <td>{{ 'product_page.compare_value_few' | t }}</td>
               </tr>
               <tr>
                 <td>{{ 'product_page.compare_row_3' | t }}</td>
-                <td><span class="pdp-compare-dot"></span></td>
+                <td>&#10003;</td>
                 <td>{{ 'product_page.compare_value_rare' | t }}</td>
               </tr>
               <tr>
                 <td>{{ 'product_page.compare_row_4' | t }}</td>
-                <td><span class="pdp-compare-dot"></span></td>
+                <td>&#10003;</td>
                 <td>{{ 'product_page.compare_value_few' | t }}</td>
               </tr>
               <tr>
                 <td>{{ 'product_page.compare_row_5' | t }}</td>
-                <td><span class="pdp-compare-dot"></span></td>
+                <td>&#10003;</td>
                 <td>{{ 'product_page.compare_value_few' | t }}</td>
               </tr>
             </tbody>
@@ -500,6 +618,10 @@
     <!-- FAQ -->
     <section class="pdp-faq" aria-labelledby="pdp-faq-title">
       <div class="pdp-faq-inner">
+        <div class="pdp-faq-image">
+          <img src="{{ 'faq.png' | asset_url }}" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="pdp-faq-content">
         <h2 id="pdp-faq-title">{{ 'product_page.faq_title' | t }}</h2>
 
         <div class="pdp-faq-list">
@@ -557,6 +679,7 @@
               {{ 'product_page.faq_a6_prefix' | t }} <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'theme.header.ingredients' | t }}</a> {{ 'product_page.faq_a6_middle' | t }} <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'theme.header.research' | t }}</a>.
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

@@ -84,6 +84,80 @@
   }
 
   /**
+   * Initialize PDP ingredients explorer chips
+   */
+  function initPdpIngredients() {
+    var section = document.querySelector('.pdp-ingredients');
+    if (!section) return;
+
+    var chips = Array.from(section.querySelectorAll('.pdp-ingredient-chip'));
+    var capsuleImg = document.getElementById('pdp-ingredients-capsule-img');
+    var textTop = document.getElementById('pdp-text-top');
+    var textBottom = document.getElementById('pdp-text-bottom');
+    var descriptionEl = document.getElementById('pdp-ingredient-description');
+
+    function setActive(chip) {
+      chips.forEach(function (btn) {
+        var active = btn === chip;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      // Swap capsule image
+      if (capsuleImg && chip.dataset.image) {
+        capsuleImg.style.opacity = '0';
+        setTimeout(function () {
+          capsuleImg.src = chip.dataset.image;
+          capsuleImg.style.opacity = '1';
+        }, 180);
+      }
+
+      // Update curved SVG text
+      if (textTop && chip.dataset.curveTop) {
+        textTop.textContent = chip.dataset.curveTop;
+      }
+      if (textBottom && chip.dataset.curveBottom) {
+        textBottom.textContent = chip.dataset.curveBottom;
+      }
+
+      // Update description
+      if (descriptionEl && chip.dataset.description) {
+        descriptionEl.textContent = chip.dataset.description;
+      }
+    }
+
+    chips.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setActive(btn);
+      });
+    });
+
+    // Keyboard navigation for accessibility
+    chips.forEach(function (btn, index) {
+      btn.addEventListener('keydown', function (e) {
+        var newIndex = index;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          newIndex = (index + 1) % chips.length;
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          newIndex = (index - 1 + chips.length) % chips.length;
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          newIndex = 0;
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          newIndex = chips.length - 1;
+        }
+        if (newIndex !== index) {
+          chips[newIndex].focus();
+          setActive(chips[newIndex]);
+        }
+      });
+    });
+  }
+
+  /**
    * Generic tab initializer
    * @param {string} containerSelector - Container selector
    * @param {string} tabSelector - Tab button selector
@@ -142,6 +216,7 @@
   // Initialize when DOM is ready
   function init() {
     initIngredientsExplorer();
+    initPdpIngredients();
   }
 
   if (document.readyState === 'loading') {
