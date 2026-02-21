@@ -4,89 +4,87 @@
   {% assign use_locale_copy = true %}
 {% endunless %}
 
-{% assign community_heading = section.settings.heading %}
-{% if use_locale_copy or community_heading == blank %}
-  {% assign community_heading = 'sections.community.heading' | t %}
-{% endif %}
+{% assign testimonials = section.blocks | where: 'type', 'testimonial' %}
 
-{% assign community_subheading = section.settings.subheading %}
-{% if use_locale_copy or community_subheading == blank %}
-  {% assign community_subheading = 'sections.community.subheading' | t %}
-{% endif %}
+<section class="testi" aria-label="Testimonials">
+  <div class="testi-inner">
 
-<section class="community">
-  <div class="community-header">
-    <div>
-      <h2>{{ community_heading }}</h2>
-      <p>{{ community_subheading }}</p>
-    </div>
-    {% if section.settings.show_controls %}
-      <div class="experts-controls">
-        <button class="icon-btn dark" aria-label="{{ 'general.accessibility.previous' | t }}">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 6l-6 6 6 6"></path>
-          </svg>
-        </button>
-        <button class="icon-btn dark" aria-label="{{ 'general.accessibility.next' | t }}">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 6l6 6-6 6"></path>
-          </svg>
-        </button>
-      </div>
-    {% endif %}
-  </div>
-
-  <div class="community-grid">
     {% for block in section.blocks %}
       {% if block.type == 'testimonial' %}
-        {% assign testimonial_subtitle = block.settings.subtitle %}
         {% assign testimonial_quote = block.settings.quote %}
+        {% assign testimonial_subtitle = block.settings.subtitle %}
         {% if use_locale_copy %}
           {% case block.settings.name %}
             {% when 'Aaron' %}
-              {% assign testimonial_subtitle = 'sections.community.testimonials.aaron.subtitle' | t %}
               {% assign testimonial_quote = 'sections.community.testimonials.aaron.quote' | t %}
+              {% assign testimonial_subtitle = 'sections.community.testimonials.aaron.subtitle' | t %}
             {% when 'Lukas' %}
-              {% assign testimonial_subtitle = 'sections.community.testimonials.lukas.subtitle' | t %}
               {% assign testimonial_quote = 'sections.community.testimonials.lukas.quote' | t %}
+              {% assign testimonial_subtitle = 'sections.community.testimonials.lukas.subtitle' | t %}
             {% when 'Patrick' %}
-              {% assign testimonial_subtitle = 'sections.community.testimonials.patrick.subtitle' | t %}
               {% assign testimonial_quote = 'sections.community.testimonials.patrick.quote' | t %}
+              {% assign testimonial_subtitle = 'sections.community.testimonials.patrick.subtitle' | t %}
           {% endcase %}
-        {% else %}
-          {% if testimonial_subtitle == blank %}
-            {% case block.settings.name %}
-              {% when 'Aaron' %}
-                {% assign testimonial_subtitle = 'sections.community.testimonials.aaron.subtitle' | t %}
-              {% when 'Lukas' %}
-                {% assign testimonial_subtitle = 'sections.community.testimonials.lukas.subtitle' | t %}
-              {% when 'Patrick' %}
-                {% assign testimonial_subtitle = 'sections.community.testimonials.patrick.subtitle' | t %}
-            {% endcase %}
-          {% endif %}
-          {% if testimonial_quote == blank %}
-            {% case block.settings.name %}
-              {% when 'Aaron' %}
-                {% assign testimonial_quote = 'sections.community.testimonials.aaron.quote' | t %}
-              {% when 'Lukas' %}
-                {% assign testimonial_quote = 'sections.community.testimonials.lukas.quote' | t %}
-              {% when 'Patrick' %}
-                {% assign testimonial_quote = 'sections.community.testimonials.patrick.quote' | t %}
-            {% endcase %}
-          {% endif %}
         {% endif %}
-        <article class="expert-card" {{ block.shopify_attributes }}>
-          {% if block.settings.image != blank %}
-            <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.name }}" loading="lazy" decoding="async">
-          {% endif %}
-          <h3>{{ block.settings.name }}</h3>
-          <p class="subtitle">{{ testimonial_subtitle }}</p>
-          <p class="quote">{{ testimonial_quote }}</p>
-        </article>
+
+        {% assign img_src = '' %}
+        {% case block.settings.name %}
+          {% when 'Aaron' %}  {% assign img_src = 'aaron2.png' | asset_url %}
+          {% when 'Lukas' %}  {% assign img_src = 'lukas2.jpeg' | asset_url %}
+          {% when 'Patrick' %}{% assign img_src = 'Patrick.jpeg' | asset_url %}
+        {% endcase %}
+        {% if block.settings.image != blank %}
+          {% assign img_src = block.settings.image | image_url: width: 600 %}
+        {% endif %}
+
+        <div class="testi-slide{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="testi-product">
+            {% assign product_img = section.settings.product_image %}
+            {% if product_img != blank %}
+              <img src="{{ product_img | image_url: width: 600 }}" alt="Hr²" loading="lazy" decoding="async">
+            {% else %}
+              <img src="{{ 'buyimage.png' | asset_url }}" alt="Hr²" loading="lazy" decoding="async">
+            {% endif %}
+          </div>
+
+          <div class="testi-content">
+            <p class="testi-name">{{ block.settings.name }} {{ 'testimonials.says' | t | default: 'says:' }}</p>
+            <blockquote class="testi-quote">"{{ testimonial_quote }}"</blockquote>
+            <p class="testi-meta">{{ testimonial_subtitle }}</p>
+          </div>
+        </div>
       {% endif %}
     {% endfor %}
+
+    <button class="testi-arrow testi-prev" aria-label="{{ 'general.accessibility.previous' | t }}">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <button class="testi-arrow testi-next" aria-label="{{ 'general.accessibility.next' | t }}">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+
   </div>
 </section>
+
+<script>
+(function() {
+  var section = document.querySelector('.testi');
+  if (!section) return;
+  var slides = Array.from(section.querySelectorAll('.testi-slide'));
+  var prev = section.querySelector('.testi-prev');
+  var next = section.querySelector('.testi-next');
+  var current = 0;
+
+  function show(i) {
+    slides[current].classList.remove('active');
+    current = (i + slides.length) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  if (prev) prev.addEventListener('click', function() { show(current - 1); });
+  if (next) next.addEventListener('click', function() { show(current + 1); });
+})();
+</script>
 
 {% schema %}
 {
@@ -95,22 +93,9 @@
   "class": "section-testimonials",
   "settings": [
     {
-      "type": "text",
-      "id": "heading",
-      "label": "Überschrift",
-      "default": "Testimonials"
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Unterüberschrift",
-      "default": "Erfahre von unserer Community, wie Hr² ihren Alltag verändert hat."
-    },
-    {
-      "type": "checkbox",
-      "id": "show_controls",
-      "label": "Navigation anzeigen",
-      "default": true
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Produktbild (links)"
     }
   ],
   "blocks": [
@@ -121,7 +106,7 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Foto"
+          "label": "Foto (optional)"
         },
         {
           "type": "text",
@@ -139,7 +124,7 @@
           "type": "textarea",
           "id": "quote",
           "label": "Zitat",
-          "default": "Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt."
+          "default": "Ich wollte keine schnellen Versprechen, die wissenschaftlich nichts bringen. Hr² ist für mich eine langfristige Lösung mit gezielten, haarwuchsfördernden Inhaltsstoffen. Nach ein paar Monaten fühlen sich meine Haare kräftiger an und ich habe wieder Vertrauen, aktiv etwas gegen den Haarausfall zu tun."
         }
       ]
     }
@@ -153,7 +138,7 @@
           "settings": {
             "name": "Aaron",
             "subtitle": "Hr² MITGLIED SEIT 2025",
-            "quote": "Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt. Hr² fühlt sich eher wie eine langfristige Entscheidung an, die mir mit Inhaltsstoffen, welche speziell den Haarwuchs fördern, hilft. Nach ein paar Monaten fühlen sich meine Haare widerstandsfähiger an und ich habe wieder Vertrauen, dass ich dem Haarausfall aktiv entgegenwirke."
+            "quote": "Ich wollte keine schnellen Versprechen, die wissenschaftlich nichts bringen. Hr² ist für mich eine langfristige Lösung mit gezielten, haarwuchsfördernden Inhaltsstoffen. Nach ein paar Monaten fühlen sich meine Haare kräftiger an und ich habe wieder Vertrauen, aktiv etwas gegen den Haarausfall zu tun."
           }
         },
         {
@@ -161,7 +146,7 @@
           "settings": {
             "name": "Lukas",
             "subtitle": "Hr² MITGLIED SEIT 2025",
-            "quote": "In stressigen Phasen habe ich immer zuerst an meinen Haaren gemerkt, dass etwas nicht passt. Hr² ist für mich wie ein kleines tägliches Reset. Ich fühle mich versorgt und muss mir darüber keine Gedanken mehr machen. Mittlerweile ist es Teil meiner Morgenroutine und ich habe endlich das Gefühl, etwas Sinnvolles für mich zu tun, statt nur zu hoffen, dass es besser wird."
+            "quote": "In stressigen Phasen habe ich immer zuerst an meinen Haaren gemerkt, dass etwas nicht passt. Hr² ist für mich wie ein kleines tägliches Reset. Ich fühle mich versorgt und muss mir darüber keine Gedanken mehr machen."
           }
         },
         {
@@ -169,7 +154,7 @@
           "settings": {
             "name": "Patrick",
             "subtitle": "Hr² MITGLIED SEIT 2025",
-            "quote": "Ich arbeite und trainiere viel und hart. Die damit verbundene Anstrengung und der Stress haben aber auch ihre Schattenseiten. Irgendwann habe ich gemerkt, dass ich einen wichtigen Aspekt komplett vernachlässigt habe: meine Haare. Seit ich Hr² nehme, habe ich dieses unangenehme Gefühl nach dem Duschen, auf den Boden zu schauen und meine abgeflogenen Haare zählen zu wollen, endlich überwunden."
+            "quote": "Ich arbeite und trainiere viel und hart. Irgendwann habe ich gemerkt, dass ich einen wichtigen Aspekt komplett vernachlässigt habe: meine Haare. Seit ich Hr² nehme, habe ich dieses unangenehme Gefühl endlich überwunden."
           }
         }
       ]

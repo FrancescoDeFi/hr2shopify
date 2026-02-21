@@ -87,11 +87,10 @@
       </div>
 
       <figure class="causes-visual" aria-label="{{ 'sections.causes.aria.visual' | t }}">
-        {% if section.settings.poster_image != blank %}
-          <img src="{{ section.settings.poster_image | image_url: width: 1400 }}" alt="{{ causes_heading | strip_html | escape }}" loading="lazy" decoding="async">
-        {% else %}
-          <img src="{{ 'tausendgruende.png' | asset_url }}" alt="{{ causes_heading | strip_html | escape }}" loading="lazy" decoding="async">
-        {% endif %}
+        <div class="causes-images">
+          <img src="{{ 'reasons1.png' | asset_url }}" alt="{{ causes_heading | strip_html | escape }}" loading="lazy" decoding="async">
+          <img src="{{ 'reasons2.png' | asset_url }}" alt="{{ causes_heading | strip_html | escape }}" loading="lazy" decoding="async">
+        </div>
         <figcaption class="causes-caption">
           {{ causes_caption }}
         </figcaption>
@@ -117,11 +116,6 @@
       "id": "subheading",
       "label": "Unterüberschrift",
       "default": "Haare werden aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde."
-    },
-    {
-      "type": "image_picker",
-      "id": "poster_image",
-      "label": "Visual Bild (optional)"
     },
     {
       "type": "textarea",

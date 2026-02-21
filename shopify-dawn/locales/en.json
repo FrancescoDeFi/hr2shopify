@@ -403,6 +403,9 @@
       }
     }
   },
+  "testimonials": {
+    "says": "says:"
+  },
   "footer": {
     "contact_title": "Want to learn more?",
     "contact_email": "info@gethr2.com",

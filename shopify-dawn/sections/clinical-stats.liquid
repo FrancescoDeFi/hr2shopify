@@ -69,7 +69,7 @@
       {% if section.settings.image != blank %}
         <img class="clinical-image" src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ 'sections.clinical.image_alt' | t | default: 'Hr² product' }}" loading="lazy" decoding="async">
       {% else %}
-        <img class="clinical-image" src="{{ 'clinictest.png' | asset_url }}" alt="{{ 'sections.clinical.image_alt' | t | default: 'Hr² product' }}" loading="lazy" decoding="async">
+        <img class="clinical-image" src="{{ 'faq.png' | asset_url }}" alt="{{ 'sections.clinical.image_alt' | t | default: 'Hr² product' }}" loading="lazy" decoding="async">
       {% endif %}
     </div>
   </div>

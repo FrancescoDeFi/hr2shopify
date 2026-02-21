@@ -358,7 +358,7 @@
       "testimonials": {
         "aaron": {
           "subtitle": "Hr² MITGLIED SEIT 2025",
-          "quote": "Ich wollte nichts, was schnelle Versprechen macht und am Ende trotzdem, wissenschaftlich betrachtet, eigentlich gar nichts bringt. Hr² fühlt sich eher wie eine langfristige Entscheidung an, die mir mit Inhaltsstoffen, welche speziell den Haarwuchs fördern, hilft. Nach ein paar Monaten fühlen sich meine Haare widerstandsfähiger an und ich habe wieder Vertrauen, dass ich dem Haarausfall aktiv entgegenwirke."
+          "quote": "Ich wollte keine schnellen Versprechen, die wissenschaftlich nichts bringen. Hr² ist für mich eine langfristige Lösung mit gezielten, haarwuchsfördernden Inhaltsstoffen. Nach ein paar Monaten fühlen sich meine Haare kräftiger an und ich habe wieder Vertrauen, aktiv etwas gegen den Haarausfall zu tun."
         },
         "lukas": {
           "subtitle": "Hr² MITGLIED SEIT 2025",
@@ -402,6 +402,9 @@
         }
       }
     }
+  },
+  "testimonials": {
+    "says": "sagt:"
   },
   "footer": {
     "contact_title": "Interesse, mehr zu erfahren?",

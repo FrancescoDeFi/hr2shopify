@@ -4879,6 +4879,21 @@ html {
   grid-template-rows: 1fr auto;
 }
 
+.causes-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  flex: 1 1 auto;
+  min-height: 420px;
+}
+
+.causes-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .causes-visual img,
 .causes-visual video {
   width: 100%;
@@ -4896,34 +4911,131 @@ html {
   background: #ffffff;
 }
 
-.community {
-  padding: 90px 72px 120px;
+/* ─── Testimonials (split slider) ─── */
+.testi {
   background: #ffffff;
+  padding: 80px 0;
+  overflow: hidden;
 }
 
-.community-header {
-  max-width: 1200px;
-  margin: 0 auto 36px;
+.testi-inner {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.testi-slide {
+  display: none;
+  grid-template-columns: 1fr 1.6fr;
+  align-items: center;
+  gap: 64px;
+  min-height: 400px;
+}
+
+.testi-slide.active {
+  display: grid;
+}
+
+.testi-product {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: center;
 }
 
-.community-header h2 {
-  margin: 0 0 12px;
-  font-size: clamp(56px, 5.2vw, 72px);
-  font-weight: 600;
+.testi-product img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.testi-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.testi-name {
+  margin: 0;
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #3c0c1c;
+  letter-spacing: 0.02em;
+}
+
+.testi-quote {
+  margin: 0;
+  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-size: clamp(24px, 2.8vw, 38px);
+  font-weight: 400;
+  line-height: 1.25;
   letter-spacing: -0.01em;
+  color: #0c0c0c;
 }
 
-.community-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
+.testi-meta {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(12, 12, 12, 0.45);
 }
+
+.testi-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(12, 12, 12, 0.15);
+  background: #ffffff;
+  color: #0c0c0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 180ms, background 180ms;
+  z-index: 2;
+}
+
+.testi-arrow:hover {
+  border-color: #3c0c1c;
+  background: #3c0c1c;
+  color: #ffffff;
+}
+
+.testi-prev {
+  left: 0;
+}
+
+.testi-next {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .testi-inner {
+    padding: 0 56px;
+  }
+
+  .testi-slide {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .testi-product {
+    display: none;
+  }
+
+  .testi-quote {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+}
+
 
 .videos {
   padding: 90px 72px 120px;
@@ -5609,6 +5721,7 @@ html {
     line-height: 1.5;
   }
 
+  .causes-images,
   .causes-visual img,
   .causes-visual video {
     min-height: 320px;
@@ -8665,7 +8778,7 @@ body.mobile-nav-open {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 56px;
+  width: 112px;
   height: auto;
   opacity: 0.9;
 }
