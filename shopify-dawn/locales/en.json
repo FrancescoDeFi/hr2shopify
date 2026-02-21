@@ -171,7 +171,7 @@
       "hr2": "Hr²",
       "others": "Others",
       "buy_cta": "Buy Hr²",
-      "price_note": "from €32 per month",
+      "price_note": "from €36.75 per month",
       "aria": {
         "section": "Product comparison",
         "presentation": "Hr² presentation",
@@ -303,24 +303,24 @@
       "guarantee": "Free shipping. Pause or cancel anytime.",
       "tagline": "First time. For a limited time only.",
       "description": "Hr² is your daily supplement for hair health, developed with a focus on selected ingredients, quality assurance, and a simple routine.",
-      "promo_heading": "Get your Hr² now for €29",
+      "promo_heading": "Get your Hr² now for €41.65",
       "aria": {
         "delivery_options": "Delivery options"
       },
       "plans": {
         "monthly": {
           "name": "Monthly delivery",
-          "badge": "Save 10%",
+          "badge": "Save 15%",
           "description": "1-month supply"
         },
         "three_month": {
           "name": "3-month delivery",
-          "badge": "Save 15%",
+          "badge": "Save 20%",
           "description": "3-month supply"
         },
         "six_month": {
           "name": "6-month delivery",
-          "badge": "Save 20%",
+          "badge": "Save 25%",
           "description": "6-month supply"
         }
       }

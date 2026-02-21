@@ -32,36 +32,77 @@
     </article>
 
     <article class="comparison-panel comparison-panel-others" aria-label="{{ 'sections.comparison.aria.table' | t }}">
-      <h3 class="comparison-table-title">{{ comparison_title }}</h3>
-      <ul class="comparison-table-list" role="list">
-        <li class="comparison-table-row comparison-table-head">
-          <span class="comparison-table-feature">{{ 'sections.comparison.feature' | t }}</span>
-          <span class="comparison-table-col">{{ 'sections.comparison.hr2' | t }}</span>
-          <span class="comparison-table-col">{{ 'sections.comparison.others' | t }}</span>
-        </li>
-        {% for block in section.blocks %}
-          {% if block.type == 'feature' %}
-            {% assign feature_name = block.settings.feature_name %}
-            {% if use_locale_copy %}
-              {% case feature_name %}
-                {% when 'Klinisch belegt' %}
-                  {% assign feature_name = 'sections.comparison.features.clinically_proven' | t %}
-                {% when 'Bio-optimiert' %}
-                  {% assign feature_name = 'sections.comparison.features.bio_optimized' | t %}
-                {% when 'Ohne Arzneistoffe' %}
-                  {% assign feature_name = 'sections.comparison.features.without_drugs' | t %}
-                {% when 'Libido-freundlich' %}
-                  {% assign feature_name = 'sections.comparison.features.libido_friendly' | t %}
-              {% endcase %}
+      <div class="ct-grid">
+        <div class="ct-col ct-col-features">
+          <div class="ct-header ct-header-empty"></div>
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              {% assign feature_name = block.settings.feature_name %}
+              {% if use_locale_copy %}
+                {% case feature_name %}
+                  {% when 'Klinisch geprüfte Inhaltsstoffe' %}
+                    {% assign feature_name = 'sections.comparison.features.clinically_proven' | t %}
+                  {% when 'Bio-optimiert' %}
+                    {% assign feature_name = 'sections.comparison.features.bio_optimized' | t %}
+                  {% when 'Ohne Arzneistoffe' %}
+                    {% assign feature_name = 'sections.comparison.features.without_drugs' | t %}
+                  {% when 'Libido-freundlich' %}
+                    {% assign feature_name = 'sections.comparison.features.libido_friendly' | t %}
+                {% endcase %}
+              {% endif %}
+              <div class="ct-cell ct-feature" {{ block.shopify_attributes }}>{{ feature_name }}</div>
             {% endif %}
-            <li class="comparison-table-row" {{ block.shopify_attributes }}>
-              <span class="comparison-table-feature">{{ feature_name }}</span>
-              <span class="comparison-table-value">{{ block.settings.hr2_value }}</span>
-              <span class="comparison-table-value {% if block.settings.others_value == 'X' %}comparison-table-value-x{% endif %}">{{ block.settings.others_value }}</span>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+          {% endfor %}
+        </div>
+
+        <div class="ct-col ct-col-hr2">
+          <div class="ct-header">
+            <img class="ct-header-img" src="{{ 'capsule3.png' | asset_url }}" alt="Hr² Kapsel" loading="lazy" decoding="async">
+            <span class="ct-header-label">Hr²</span>
+          </div>
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              <div class="ct-cell ct-icon" {{ block.shopify_attributes }}>
+                {% if block.settings.hr2_value == '✓' %}
+                  <svg class="ct-check" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="{{ 'sections.comparison.aria.yes' | t | default: 'Ja' }}">
+                    <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.4"/>
+                    <path d="M9 14.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% else %}
+                  <span class="ct-value-text">{{ block.settings.hr2_value }}</span>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="ct-col ct-col-others">
+          <div class="ct-header">
+            <svg class="ct-header-pill" width="60" height="36" viewBox="0 0 60 36" aria-hidden="true">
+              <ellipse cx="22" cy="18" rx="16" ry="14" fill="#d0d0d0"/>
+              <ellipse cx="38" cy="18" rx="16" ry="14" fill="#b0c8e0"/>
+            </svg>
+            <span class="ct-header-label">{{ 'sections.comparison.others' | t }}</span>
+          </div>
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              <div class="ct-cell ct-icon" {{ block.shopify_attributes }}>
+                {% if block.settings.others_value == 'X' %}
+                  <svg class="ct-x" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="{{ 'sections.comparison.aria.no' | t | default: 'Nein' }}">
+                    <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.4"/>
+                    <path d="M10 10l8 8M18 10l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                {% else %}
+                  <svg class="ct-x" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="{{ 'sections.comparison.aria.no' | t | default: 'Nein' }}">
+                    <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.4"/>
+                    <path d="M10 10l8 8M18 10l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
     </article>
   </div>
 </section>
@@ -87,7 +128,7 @@
       "type": "text",
       "id": "price_note",
       "label": "Preisnotiz",
-      "default": "ab 32 € pro Monat"
+      "default": "ab 36,75 € pro Monat"
     },
     {
       "type": "text",
@@ -105,7 +146,7 @@
           "type": "text",
           "id": "feature_name",
           "label": "Merkmal Name",
-          "default": "Klinisch belegt"
+          "default": "Klinisch geprüfte Inhaltsstoffe"
         },
         {
           "type": "text",
@@ -129,7 +170,7 @@
         {
           "type": "feature",
           "settings": {
-            "feature_name": "Klinisch belegt",
+            "feature_name": "Klinisch geprüfte Inhaltsstoffe",
             "hr2_value": "✓",
             "others_value": "~"
           }

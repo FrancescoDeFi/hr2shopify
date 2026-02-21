@@ -147,13 +147,13 @@
     },
     "hero": {
       "heading": "Dein täglicher Haar-Boost",
-      "subheading": "Hr² ist dein All-in-One-Haar-Supplement – klinisch geprüft für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.",
+      "subheading": "Hr² ist dein All-in-One-Haar-Supplement – Klinisch geprüfte Inhaltsstoffe für die tägliche Unterstützung von Haarwurzeln, Kopfhaut und Nährstoffversorgung. Wissenschaftlich entwickelt, vertraut von einer weltweiten Community.",
       "cta_buy": "Jetzt kaufen",
       "cta_quiz": "Mach dein Quiz für einen personalisierten Plan",
       "clinicians_title": "Von Ärzten empfohlen",
       "clinicians_body": "Wissenschaftlich fundiert. Entwickelt von den führenden medizinischen Expert:innen.",
       "benefits": {
-        "clinical": "KLINISCH<br>GEPRÜFTE FORMEL",
+        "clinical": "KLINISCH<br>GEPRÜFTE INHALTSSTOFFE",
         "drug_free": "100% OHNE<br>ARZNEISTOFFE",
         "results": "ERGEBNISSE IN 3–6<br>MONATEN"
       },
@@ -171,22 +171,22 @@
       "hr2": "Hr²",
       "others": "Andere",
       "buy_cta": "Hr² kaufen",
-      "price_note": "ab 32 € pro Monat",
+      "price_note": "ab 36,75 € pro Monat",
       "aria": {
         "section": "Produktvergleich",
         "presentation": "Hr² Präsentation",
         "table": "Produktvergleichstabelle"
       },
       "features": {
-        "clinically_proven": "Klinisch belegt",
+        "clinically_proven": "Klinisch geprüfte Inhaltsstoffe",
         "bio_optimized": "Bio-optimiert",
         "without_drugs": "Ohne Arzneistoffe",
         "libido_friendly": "Libido-freundlich"
       }
     },
     "causes": {
-      "heading": "DEIN HAARAUSFALL MUSS NICHT DEM ZUFALL ÜBERLASSEN WERDEN.",
-      "subheading": "Männerhaar wird aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde.",
+      "heading": "HAARAUSFALL HAT 1000 GRÜNDE",
+      "subheading": "Haare werden aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde.",
       "caption": "Der Körper braucht Nährstoffe zur Versorgung und zur Unterstützung eines gesunden Haarwachstumszyklus. Diese Nährstoffe können z. B. durch eine unausgewogene Ernährung reduziert werden – das kann Haarstärke und allgemeine Gesundheit beeinflussen.",
       "aria": {
         "tablist": "Ursachen",
@@ -303,24 +303,24 @@
       "guarantee": "Kostenloser Versand. Jederzeit pausieren oder kündigen.",
       "tagline": "Das erste Mal. Nur für kurze Zeit.",
       "description": "Hr² ist dein tägliches Supplement für die Haargesundheit – entwickelt mit einem Fokus auf ausgewählte Inhaltsstoffe, Qualitätssicherung und eine einfache Routine.",
-      "promo_heading": "Dein Hr² jetzt für 29€",
+      "promo_heading": "Dein Hr² jetzt für €41,65",
       "aria": {
         "delivery_options": "Lieferoptionen"
       },
       "plans": {
         "monthly": {
           "name": "Monatliche Lieferung",
-          "badge": "Spare 10%",
+          "badge": "Spare 15%",
           "description": "1-Monats-Vorrat"
         },
         "three_month": {
           "name": "3-Monats-Lieferung",
-          "badge": "Spare 15%",
+          "badge": "Spare 20%",
           "description": "3-Monats-Vorrat"
         },
         "six_month": {
           "name": "6-Monats-Lieferung",
-          "badge": "Spare 20%",
+          "badge": "Spare 25%",
           "description": "6-Monats-Vorrat"
         }
       }
@@ -353,7 +353,7 @@
       }
     },
     "community": {
-      "heading": "Klinisch geprüft, von echten Menschen gelebt",
+      "heading": "Testimonials",
       "subheading": "Erfahre von unserer Community, wie Hr² ihren Alltag verändert hat.",
       "testimonials": {
         "aaron": {
@@ -456,7 +456,7 @@
     "image_alt_6": "Hr² Kapseln",
     "image_dot": "Produktbild {{ number }}",
     "subtitle": "Deine tägliche, klinisch fundierte Routine für die Haargesundheit.",
-    "tag_1": "Klinisch belegt",
+    "tag_1": "Klinisch geprüfte Inhaltsstoffe",
     "tag_2": "Bio-optimiert",
     "tag_3": "Ohne Arzneistoffe",
     "tag_4": "Libido-freundlich",

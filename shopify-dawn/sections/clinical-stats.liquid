@@ -9,10 +9,6 @@
   {% assign clinical_heading = 'sections.clinical.heading' | t %}
 {% endif %}
 
-{% assign clinical_cta_text = section.settings.cta_text %}
-{% if use_locale_copy or clinical_cta_text == blank %}
-  {% assign clinical_cta_text = 'sections.clinical.cta' | t %}
-{% endif %}
 
 {% assign clinical_footer = section.settings.footer_text %}
 {% if use_locale_copy or clinical_footer == blank %}
@@ -23,15 +19,9 @@
   <div class="clinical-inner">
     <div class="clinical-left">
       <h2 class="clinical-title" id="clinical-title">{{ clinical_heading }}</h2>
-      <a class="clinical-cta" href="{{ section.settings.cta_url | default: pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">
-        <span class="cta-icon" aria-hidden="true">→</span>
-        {{ clinical_cta_text }}
-      </a>
       <p class="clinical-foot">{{ clinical_footer }}</p>
-    </div>
 
-    <div class="clinical-right" aria-label="{{ 'sections.clinical.aria.stats' | t }}">
-      <div class="clinical-stats">
+      <div class="clinical-stats" aria-label="{{ 'sections.clinical.aria.stats' | t }}">
         {% for block in section.blocks %}
           {% if block.type == 'stat' %}
             {% assign stat_text = block.settings.text %}
@@ -74,6 +64,14 @@
         {% endif %}
       </div>
     </div>
+
+    <div class="clinical-right">
+      {% if section.settings.image != blank %}
+        <img class="clinical-image" src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ 'sections.clinical.image_alt' | t | default: 'Hr² product' }}" loading="lazy" decoding="async">
+      {% else %}
+        <img class="clinical-image" src="{{ 'clinictest.png' | asset_url }}" alt="{{ 'sections.clinical.image_alt' | t | default: 'Hr² product' }}" loading="lazy" decoding="async">
+      {% endif %}
+    </div>
   </div>
 </section>
 
@@ -90,21 +88,15 @@
       "default": "Klinische Tests sind kein Extra – sie sind unser Standard."
     },
     {
-      "type": "url",
-      "id": "cta_url",
-      "label": "CTA Link"
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Text",
-      "default": "Unsere Inhaltsstoffe entdecken"
-    },
-    {
       "type": "textarea",
       "id": "footer_text",
       "label": "Fußzeilen-Text",
       "default": "Innovationen für Haargesundheit, denen du vertrauen kannst – dank branchenführender Haarmessung."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bild (rechte Seite)"
     },
     {
       "type": "checkbox",

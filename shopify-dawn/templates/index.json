@@ -7,7 +7,7 @@
           "type": "benefit",
           "settings": {
             "icon": "clinical",
-            "text": "KLINISCH\nGEPRÜFTE FORMEL"
+            "text": "KLINISCH\nGEPRÜFTE INHALTSSTOFFE"
           }
         },
         "benefit_2": {
@@ -32,14 +32,10 @@
         "show_clinicians_badge": true
       }
     },
-    "trust_marquee": {
-      "type": "trust-marquee",
-      "settings": {}
-    },
     "comparison": {
       "type": "comparison-table",
       "blocks": {
-        "feature_1": { "type": "feature", "settings": { "feature_name": "Klinisch belegt", "hr2_value": "✓", "others_value": "~" } },
+        "feature_1": { "type": "feature", "settings": { "feature_name": "Klinisch geprüfte Inhaltsstoffe", "hr2_value": "✓", "others_value": "~" } },
         "feature_2": { "type": "feature", "settings": { "feature_name": "Bio-optimiert", "hr2_value": "✓", "others_value": "X" } },
         "feature_3": { "type": "feature", "settings": { "feature_name": "Ohne Arzneistoffe", "hr2_value": "✓", "others_value": "~" } },
         "feature_4": { "type": "feature", "settings": { "feature_name": "Libido-freundlich", "hr2_value": "✓", "others_value": "~" } }
@@ -48,6 +44,7 @@
     },
     "causes": {
       "type": "causes-accordion",
+      "settings": { "heading": "HAARAUSFALL HAT 1000 GRÜNDE" },
       "blocks": {
         "cause_1": { "type": "cause", "settings": { "cause_id": "stress", "title": "STRESS", "description": "Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen.", "default_open": false } },
         "cause_2": { "type": "cause", "settings": { "cause_id": "hormones", "title": "HORMONE", "description": "Hormonsignale können die Empfindlichkeit der Follikel beeinflussen und so langfristig zur Ausdünnung beitragen.", "default_open": false } },
@@ -97,9 +94,9 @@
     "offer": {
       "type": "offer-pricing",
       "blocks": {
-        "plan_1": { "type": "plan", "settings": { "value": "monthly", "name": "Monatliche Lieferung", "badge": "Spare 10%", "price_new": "35€", "price_old": "39€", "description": "1-Monats-Vorrat" } },
-        "plan_2": { "type": "plan", "settings": { "value": "3month", "name": "3-Monats-Lieferung", "badge": "Spare 15%", "price_new": "99€", "price_old": "117€", "description": "3-Monats-Vorrat" } },
-        "plan_3": { "type": "plan", "settings": { "value": "6month", "name": "6-Monats-Lieferung", "badge": "Spare 20%", "price_new": "187€", "price_old": "234€", "description": "6-Monats-Vorrat" } }
+        "plan_1": { "type": "plan", "settings": { "value": "monthly", "name": "Monatliche Lieferung", "badge": "Spare 15%", "price_new": "€41,65", "price_old": "€49,00", "description": "1-Monats-Vorrat" } },
+        "plan_2": { "type": "plan", "settings": { "value": "3month", "name": "3-Monats-Lieferung", "badge": "Spare 20%", "price_new": "€39,20", "price_old": "€49,00", "description": "3-Monats-Vorrat" } },
+        "plan_3": { "type": "plan", "settings": { "value": "6month", "name": "6-Monats-Lieferung", "badge": "Spare 25%", "price_new": "€36,75", "price_old": "€49,00", "description": "6-Monats-Vorrat" } }
       },
       "block_order": ["plan_1", "plan_2", "plan_3"]
     },
@@ -148,10 +145,9 @@
   },
   "order": [
     "hero",
-    "trust_marquee",
+    "partners",
     "comparison",
     "causes",
-    "partners",
     "ingredients",
     "clinical",
     "offer",

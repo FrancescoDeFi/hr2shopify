@@ -283,11 +283,13 @@ html {
 .hero {
   display: grid;
   grid-template-columns: 50% 50%;
-  min-height: calc(100vh - 76px);
+  min-height: calc(100svh - 76px);
+  height: auto;
+  overflow: visible;
 }
 
 .hero-text {
-  padding: 90px 80px 120px 70px;
+  padding: 20px 80px 20px 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -295,17 +297,17 @@ html {
 
 .hero-text h1 {
   font-family: "AG1 Serif", "Times New Roman", serif;
-  font-size: 64px;
+  font-size: clamp(40px, 4vw, 54px);
   line-height: 1.05;
-  margin: 0 0 28px;
+  margin: 0 0 14px;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .hero-text .lead {
-  font-size: 17px;
-  line-height: 1.6;
-  margin: 0 0 18px;
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.5;
+  margin: 0 0 8px;
   max-width: 620px;
 }
 
@@ -323,8 +325,8 @@ html {
 .hero-benefits {
   display: flex;
   align-items: center;
-  gap: 22px;
-  margin: 26px 0 34px;
+  gap: 18px;
+  margin: 12px 0 18px;
   flex-wrap: nowrap;
   justify-content: space-between;
 }
@@ -333,7 +335,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 14px;
+  gap: 10px;
 }
 
 .hero-quiz-btn {
@@ -349,12 +351,12 @@ html {
 }
 
 .hero-clinicians-proof {
-  margin-top: 48px;
+  margin-top: 20px;
   width: min(100%, 760px);
   border: 1px solid rgba(16, 32, 38, 0.14);
   border-radius: 14px;
   background: #fcfaf5;
-  padding: 16px 18px 14px;
+  padding: 14px 18px 12px;
 }
 
 .hero-clinicians-title {
@@ -2460,12 +2462,20 @@ html {
   opacity: 0.7;
 }
 
-.pdp-partner-logo[aria-label="TU (TUM)"] img {
+.pdp-partner-logo[aria-label="Stanford"] img {
   transform: scale(1.4);
 }
 
+.pdp-partner-logo[aria-label="TU (TUM)"] img {
+  transform: scale(9.9225);
+}
+
 .pdp-partner-logo[aria-label="TU Vienna"] img {
-  transform: scale(0.72);
+  transform: scale(1.362);
+}
+
+.pdp-partner-logo[aria-label="TU Wien"] img {
+  transform: scale(1.362);
 }
 
 .pdp-partner-logo[aria-label="LMU München"] img {
@@ -2473,7 +2483,9 @@ html {
 }
 
 .pdp-partner-logo[aria-label="PMU"] img {
-  transform: scale(0.92);
+  transform: scale(1.288);
+  opacity: 0.9;
+  filter: grayscale(1) contrast(1.25);
 }
 
 .product-feature-marquee {
@@ -3729,9 +3741,18 @@ html {
   min-height: 720px;
   background: linear-gradient(to right, #3c0c1c 0 50%, #f3f1e7 50% 100%);
 }
+@media (min-width: 990px) {
+  .section-offer .offer {
+    min-height: max(720px, calc(100svh - 76px));
+  }
+
+  .section-offer .offer-left {
+    justify-content: center;
+  }
+}
 
 .offer-left {
-  padding: 40px 44px 44px;
+  padding: 40px 80px 44px;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -3912,6 +3933,11 @@ html {
   color: #ffffff;
 }
 
+.offer-guarantee-note {
+  margin: 12px 0 0;
+  text-align: center;
+}
+
 .offer-guarantee-row {
   margin: 8px 0 0;
   display: flex;
@@ -3936,13 +3962,13 @@ html {
 .offer-plan {
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
-  padding: 20px 24px 20px 52px;
+  padding: 14px 20px 14px 44px;
   position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   background: transparent;
   color: #ffffff;
   transition: border-color 160ms ease, background 160ms ease;
@@ -3964,6 +3990,7 @@ html {
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
+  margin: 0;
   accent-color: #ffffff;
   cursor: pointer;
 }
@@ -3978,18 +4005,18 @@ html {
 .offer-plan-name {
   font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
-  font-size: clamp(16px, 1.4vw, 22px);
+  font-size: clamp(13px, 1.1vw, 16px);
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #ffffff;
 }
 
 .offer-plan-badge {
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -4004,7 +4031,7 @@ html {
 }
 
 .offer-plan-price-old {
-  font-size: 16px;
+  font-size: 13px;
   text-decoration: line-through;
   color: rgba(255, 255, 255, 0.40);
   font-weight: 600;
@@ -4013,7 +4040,7 @@ html {
 .offer-plan-price-new {
   font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
-  font-size: clamp(24px, 2vw, 34px);
+  font-size: clamp(18px, 1.6vw, 24px);
   letter-spacing: -0.02em;
   line-height: 1;
   color: #ffffff;
@@ -4136,9 +4163,19 @@ html {
   object-fit: contain;
 }
 
-.quality {
+.section-quality {
   background: #f5f4ee;
+}
+
+.quality {
+  max-width: 1180px;
+  margin: 0 auto;
   padding: 96px 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "left cards";
+  gap: 56px;
+  align-items: start;
 }
 
 .quality-inner {
@@ -4334,7 +4371,8 @@ html {
 .comparison-panel-others {
   background: #ffffff;
   border-left: 1px solid rgba(12, 12, 12, 0.14);
-  padding: 42px 30px 34px;
+  padding: 0;
+  display: flex;
 }
 
 .comparison-bottle {
@@ -4375,73 +4413,112 @@ html {
   white-space: nowrap;
 }
 
-.comparison-table-title {
-  margin: 0;
-  font-family: "Inter", "AG1 Sans", system-ui, sans-serif;
-  font-size: clamp(36px, 2.8vw, 48px);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: #111111;
-  line-height: 1;
+/* Column-based comparison table */
+.ct-grid {
+  display: flex;
+  width: 100%;
 }
 
-.comparison-table-list {
-  margin: 22px 0 0;
-  padding: 0;
-  list-style: none;
+.ct-col {
+  display: flex;
+  flex-direction: column;
 }
 
-.comparison-table-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 108px 116px;
+.ct-col-features {
+  flex: 1 1 auto;
+  padding-left: 30px;
+}
+
+.ct-col-hr2 {
+  flex: 0 0 clamp(120px, 14vw, 170px);
+  background: #3c0c1c;
+  border-radius: 0;
+}
+
+.ct-col-others {
+  flex: 0 0 clamp(120px, 14vw, 170px);
+}
+
+.ct-header {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  column-gap: 12px;
-  min-height: 62px;
-  border-bottom: 1px solid rgba(12, 12, 12, 0.16);
+  justify-content: flex-end;
+  padding: 28px 12px 16px;
+  min-height: 140px;
 }
 
-.comparison-table-head {
-  min-height: 46px;
-  border-top: 1px solid rgba(12, 12, 12, 0.16);
+.ct-header-empty {
+  min-height: 140px;
 }
 
-.comparison-table-feature {
+.ct-header-img {
+  width: 64px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.ct-header-pill {
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.ct-header-label {
   font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
-  font-size: clamp(16px, 1.3vw, 20px);
-  font-weight: 700;
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 800;
   color: #111111;
   letter-spacing: -0.01em;
-}
-
-.comparison-table-head .comparison-table-feature {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(12, 12, 12, 0.54);
-}
-
-.comparison-table-col {
-  text-align: center;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(12, 12, 12, 0.54);
-}
-
-.comparison-table-value {
-  text-align: center;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
-  font-size: clamp(22px, 1.8vw, 30px);
-  font-weight: 800;
-  color: #111111;
   line-height: 1;
 }
 
-.comparison-table-value-x {
-  font-size: clamp(16px, 1.3vw, 20px);
+.ct-cell {
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  border-bottom: 1px solid rgba(12, 12, 12, 0.12);
+}
+
+.ct-feature {
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: clamp(15px, 1.3vw, 19px);
+  font-weight: 600;
+  color: #111111;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  padding-right: 16px;
+}
+
+.ct-icon {
+  justify-content: center;
+}
+
+.ct-col-hr2 .ct-header-label {
+  color: #ffffff;
+}
+
+.ct-col-hr2 .ct-cell {
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.ct-check {
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+}
+
+.ct-x {
+  color: rgba(12, 12, 12, 0.35);
+  width: 28px;
+  height: 28px;
+}
+
+.ct-value-text {
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111111;
 }
 
 .clinical-standard {
@@ -4469,29 +4546,6 @@ html {
   color: #0c0c0c;
 }
 
-.clinical-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: rgba(12, 12, 12, 0.78);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-bottom: 54px;
-}
-
-.clinical-cta .cta-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
-  display: inline-grid;
-  place-items: center;
-  background: rgba(255, 221, 108, 0.95);
-  color: #102026;
-  font-size: 14px;
-  line-height: 1;
-}
 
 .clinical-foot {
   margin: 0;
@@ -4502,7 +4556,10 @@ html {
 
 .clinical-right {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 14px;
 }
 
 .clinical-stats {
@@ -4512,7 +4569,24 @@ html {
   border-radius: 10px;
   overflow: hidden;
   background: #3c0c1c;
-  margin-top: 128px;
+  margin-top: 0;
+}
+
+.clinical-left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.clinical-left .clinical-stats {
+  margin-top: 18px;
+}
+
+.clinical-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
 }
 
 .clinical-stat {
@@ -4677,7 +4751,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 16px;
+  padding: 20px 20px;
   background: #ffffff;
   border: none;
   cursor: pointer;
@@ -4690,21 +4764,24 @@ html {
 }
 
 .cause-label {
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  font-size: 14px;
-  color: rgba(12, 12, 12, 0.86);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  font-size: clamp(22px, 1.6vw, 30px);
+  line-height: 1.08;
+  color: rgba(12, 12, 12, 0.94);
 }
 
 .cause-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
   display: inline-grid;
   place-items: center;
-  font-weight: 700;
-  background: rgba(12, 12, 12, 0.04);
-  color: rgba(12, 12, 12, 0.72);
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1;
+  background: rgba(12, 12, 12, 0.05);
+  color: rgba(12, 12, 12, 0.8);
 }
 
 .cause-btn.active .cause-icon {
@@ -4714,11 +4791,12 @@ html {
 
 .cause-body {
   display: none;
-  padding: 0 16px 18px;
-  font-size: 13px;
-  line-height: 1.55;
-  color: rgba(12, 12, 12, 0.62);
-  background: rgba(12, 12, 12, 0.02);
+  padding: 4px 20px 22px;
+  font-size: clamp(16px, 1.1vw, 20px);
+  line-height: 1.5;
+  font-weight: 600;
+  color: rgba(12, 12, 12, 0.74);
+  background: rgba(12, 12, 12, 0.03);
 }
 
 .cause-body.open {
@@ -4764,6 +4842,13 @@ html {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+}
+
+.community-header h2 {
+  margin: 0 0 12px;
+  font-size: clamp(56px, 5.2vw, 72px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .community-grid {
@@ -4921,7 +5006,9 @@ html {
 .partners {
   background: #ffffff;
   color: #121212;
-  padding: 40px 70px;
+  padding: 24px 70px;
+  border-top: 1px solid rgba(18, 18, 18, 0.12);
+  border-bottom: 1px solid rgba(18, 18, 18, 0.12);
 }
 
 .partners-inner {
@@ -4948,9 +5035,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Equal-sized logo "slots" so all partner marks appear uniform */
-  width: clamp(150px, 18vw, 190px);
-  height: 72px;
+  width: clamp(105px, 12.6vw, 133px);
+  height: 50px;
   flex: 0 0 auto;
   overflow: visible;
   --partner-logo-scale: 1;
@@ -4961,7 +5047,7 @@ html {
   height: 100%;
   object-fit: contain;
   filter: grayscale(1) contrast(1.05);
-  opacity: 0.9;
+  opacity: 0.65;
   display: block;
   transform: scale(var(--partner-logo-scale));
   transform-origin: center;
@@ -4969,19 +5055,26 @@ html {
 
 .partner-img.is-png {
   filter: grayscale(1) contrast(1.05);
+  opacity: 0.65;
 }
 
 .partner-img.on-dark {
   filter: grayscale(1) contrast(1.05);
-  opacity: 0.9;
+  opacity: 0.65;
 }
 
-/* Visual normalization: compensate for varying built-in whitespace per asset */
-.partner-logo[aria-label="Stanford"] { --partner-logo-scale: 1; }
-.partner-logo[aria-label="TU (TUM)"] { --partner-logo-scale: 1.58; }
-.partner-logo[aria-label="TU Vienna"] { --partner-logo-scale: 0.72; }
-.partner-logo[aria-label="LMU München"] { --partner-logo-scale: 0.82; }
-.partner-logo[aria-label="PMU"] { --partner-logo-scale: 0.96; }
+/* Per-logo scale adjustments */
+.partner-logo[aria-label="Stanford"] { --partner-logo-scale: 1.4; }
+.partner-logo[aria-label="TU (TUM)"] { --partner-logo-scale: 7.0875; }
+.partner-logo[aria-label="TU Vienna"] { --partner-logo-scale: 0.644; }
+.partner-logo[aria-label="TU Wien"] { --partner-logo-scale: 0.644; }
+.partner-logo[aria-label="LMU München"] { --partner-logo-scale: 0.75; }
+.partner-logo[aria-label="PMU"] { --partner-logo-scale: 1.4; }
+
+.partner-logo[aria-label="PMU"] .partner-img {
+  opacity: 0.82;
+  filter: grayscale(1) contrast(1.35);
+}
 
 .footer {
   background: #ffffff;
@@ -5203,7 +5296,10 @@ html {
 
   .hero {
     grid-template-columns: 1fr;
+    height: auto;
+    max-height: none;
     min-height: calc(100vh - 72px);
+    overflow: visible;
   }
 
   .hero-text {
@@ -5293,7 +5389,7 @@ html {
   .comparison-panel-others {
     border-left: 0;
     border-top: 1px solid rgba(12, 12, 12, 0.14);
-    padding: 34px 24px 30px;
+    padding: 0;
   }
 
   .comparison-bottle {
@@ -5310,25 +5406,34 @@ html {
     font-size: 12px;
   }
 
-  .comparison-table-title {
-    font-size: clamp(32px, 6vw, 42px);
+  .ct-col-features {
+    padding-left: 20px;
   }
 
-  .comparison-table-row {
-    grid-template-columns: minmax(0, 1fr) 92px 96px;
-    min-height: 56px;
+  .ct-col-hr2,
+  .ct-col-others {
+    flex: 0 0 100px;
   }
 
-  .comparison-table-feature {
-    font-size: clamp(15px, 2.4vw, 19px);
+  .ct-header {
+    min-height: 120px;
+    padding: 20px 8px 12px;
   }
 
-  .comparison-table-value {
-    font-size: clamp(20px, 3vw, 26px);
+  .ct-header-img {
+    width: 48px;
   }
 
-  .comparison-table-value-x {
-    font-size: clamp(15px, 2.2vw, 18px);
+  .ct-header-label {
+    font-size: 16px;
+  }
+
+  .ct-cell {
+    min-height: 60px;
+  }
+
+  .ct-feature {
+    font-size: 15px;
   }
 
   .footer-contact {
@@ -5384,6 +5489,28 @@ html {
 
   .causes-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cause-btn {
+    padding: 18px 18px;
+  }
+
+  .cause-label {
+    font-size: clamp(20px, 4.8vw, 26px);
+    line-height: 1.1;
+  }
+
+  .cause-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+    border-radius: 8px;
+  }
+
+  .cause-body {
+    padding: 4px 18px 20px;
+    font-size: clamp(15px, 3.4vw, 19px);
+    line-height: 1.5;
   }
 
   .causes-visual img,
@@ -5538,9 +5665,6 @@ html {
 
   .quality {
     padding: 96px 28px;
-  }
-
-  .quality-inner {
     grid-template-columns: 1fr;
     grid-template-areas:
       "left"
@@ -5575,11 +5699,6 @@ html {
   .clinical-title {
     font-size: 40px;
   }
-
-  .clinical-cta {
-    margin-bottom: 26px;
-  }
-
   .clinical-stats {
     margin-top: 24px;
   }
@@ -5703,7 +5822,7 @@ html {
   }
 
   .community-header h2 {
-    font-size: clamp(26px, 7.5vw, 34px);
+    font-size: clamp(34px, 9.5vw, 46px);
   }
 
   .offer-right h3 {
@@ -5919,7 +6038,7 @@ html {
   }
 
   .comparison-panel-others {
-    padding: 30px 16px 24px;
+    padding: 0;
   }
 
   .comparison-bottle {
@@ -5936,35 +6055,40 @@ html {
     font-size: 11px;
   }
 
-  .comparison-table-title {
-    font-size: 28px;
+  .ct-col-features {
+    padding-left: 14px;
   }
 
-  .comparison-table-row {
-    grid-template-columns: minmax(0, 1fr) 72px 80px;
-    min-height: 50px;
-    column-gap: 10px;
+  .ct-col-hr2,
+  .ct-col-others {
+    flex: 0 0 80px;
   }
 
-  .comparison-table-head {
-    min-height: 40px;
+  .ct-header {
+    min-height: 100px;
+    padding: 16px 6px 10px;
   }
 
-  .comparison-table-head .comparison-table-feature,
-  .comparison-table-col {
-    font-size: 11px;
+  .ct-header-img {
+    width: 40px;
   }
 
-  .comparison-table-feature {
+  .ct-header-label {
     font-size: 14px;
   }
 
-  .comparison-table-value {
-    font-size: 18px;
+  .ct-cell {
+    min-height: 52px;
   }
 
-  .comparison-table-value-x {
+  .ct-feature {
     font-size: 13px;
+  }
+
+  .ct-check,
+  .ct-x {
+    width: 22px;
+    height: 22px;
   }
 
   .faq-left h2 {
