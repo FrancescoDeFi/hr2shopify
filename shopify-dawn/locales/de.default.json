@@ -138,11 +138,11 @@
   },
   "sections": {
     "marquee": {
-      "item_1": "Wissenschaftlich geprüft",
-      "item_2": "Laktosefrei",
-      "item_3": "Entwickelt in der Schweiz",
-      "item_4": "Allergenfrei",
-      "item_5": "Ohne Arzneistoffe",
+      "item_1": "Inhaltsstoffe wissenschaftlich geprüft",
+      "item_2": "In Deutschland entwickelt",
+      "item_3": "Von Ärzten und Wissenschaftlern empfohlen",
+      "item_4": "Vegan",
+      "item_5": "Inhaltsstoffe wissenschaftlich geprüft",
       "item_6": "Vegan"
     },
     "hero": {
@@ -178,7 +178,7 @@
         "table": "Produktvergleichstabelle"
       },
       "features": {
-        "clinically_proven": "Klinisch geprüfte Inhaltsstoffe",
+        "clinically_proven": "Klinisch belegte Inhaltsstoffe",
         "bio_optimized": "Bio-optimiert",
         "without_drugs": "Ohne Arzneistoffe",
         "libido_friendly": "Libido-freundlich"
@@ -186,7 +186,7 @@
     },
     "causes": {
       "heading": "HAARAUSFALL HAT 1000 GRÜNDE",
-      "subheading": "Haare werden aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde.",
+      "subheading": "Harre werden aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde.",
       "caption": "Der Körper braucht Nährstoffe zur Versorgung und zur Unterstützung eines gesunden Haarwachstumszyklus. Diese Nährstoffe können z. B. durch eine unausgewogene Ernährung reduziert werden – das kann Haarstärke und allgemeine Gesundheit beeinflussen.",
       "aria": {
         "tablist": "Ursachen",

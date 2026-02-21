@@ -46,41 +46,49 @@
                   {% assign ingredient_description_key = 'sections.ingredients.items.anagain.description' %}
                   {% assign ingredient_curve_top_key = 'sections.ingredients.items.anagain.curve_top' %}
                   {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.anagain.curve_bottom' %}
+                  {% assign ingredient_image = 'Anagain.png' | asset_url %}
                 {% when 'sawpalmetto' %}
                   {% assign ingredient_name_key = 'sections.ingredients.items.sawpalmetto.name' %}
                   {% assign ingredient_description_key = 'sections.ingredients.items.sawpalmetto.description' %}
                   {% assign ingredient_curve_top_key = 'sections.ingredients.items.sawpalmetto.curve_top' %}
                   {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.sawpalmetto.curve_bottom' %}
+                  {% assign ingredient_image = 'Saegepalmenextrakt.png' | asset_url %}
                 {% when 'pomegranate' %}
                   {% assign ingredient_name_key = 'sections.ingredients.items.pomegranate.name' %}
                   {% assign ingredient_description_key = 'sections.ingredients.items.pomegranate.description' %}
                   {% assign ingredient_curve_top_key = 'sections.ingredients.items.pomegranate.curve_top' %}
                   {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.pomegranate.curve_bottom' %}
+                  {% assign ingredient_image = 'Granatapfel.png' | asset_url %}
                 {% when 'ashwagandha' %}
                   {% assign ingredient_name_key = 'sections.ingredients.items.ashwagandha.name' %}
                   {% assign ingredient_description_key = 'sections.ingredients.items.ashwagandha.description' %}
                   {% assign ingredient_curve_top_key = 'sections.ingredients.items.ashwagandha.curve_top' %}
                   {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.ashwagandha.curve_bottom' %}
+                  {% assign ingredient_image = 'Ashwaganda.png' | asset_url %}
                 {% when 'lcysteine' %}
                   {% assign ingredient_name_key = 'sections.ingredients.items.lcysteine.name' %}
                   {% assign ingredient_description_key = 'sections.ingredients.items.lcysteine.description' %}
                   {% assign ingredient_curve_top_key = 'sections.ingredients.items.lcysteine.curve_top' %}
                   {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.lcysteine.curve_bottom' %}
+                  {% assign ingredient_image = 'L-cysteine.png' | asset_url %}
                 {% when 'llysine' %}
                   {% assign ingredient_name_key = 'sections.ingredients.items.llysine.name' %}
                   {% assign ingredient_description_key = 'sections.ingredients.items.llysine.description' %}
                   {% assign ingredient_curve_top_key = 'sections.ingredients.items.llysine.curve_top' %}
                   {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.llysine.curve_bottom' %}
+                  {% assign ingredient_image = 'L-lysine.png' | asset_url %}
                 {% when 'zinc' %}
                   {% assign ingredient_name_key = 'sections.ingredients.items.zinc.name' %}
                   {% assign ingredient_description_key = 'sections.ingredients.items.zinc.description' %}
                   {% assign ingredient_curve_top_key = 'sections.ingredients.items.zinc.curve_top' %}
                   {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.zinc.curve_bottom' %}
+                  {% assign ingredient_image = 'zink.png' | asset_url %}
                 {% when 'biotin' %}
                   {% assign ingredient_name_key = 'sections.ingredients.items.biotin.name' %}
                   {% assign ingredient_description_key = 'sections.ingredients.items.biotin.description' %}
                   {% assign ingredient_curve_top_key = 'sections.ingredients.items.biotin.curve_top' %}
                   {% assign ingredient_curve_bottom_key = 'sections.ingredients.items.biotin.curve_bottom' %}
+                  {% assign ingredient_image = 'biotin.png' | asset_url %}
               {% endcase %}
               {% if use_locale_copy and ingredient_name_key != blank %}
                 {% assign ingredient_name = ingredient_name_key | t %}
@@ -105,6 +113,7 @@
                 {% assign first_description = ingredient_description %}
                 {% assign first_curve_top = ingredient_curve_top %}
                 {% assign first_curve_bottom = ingredient_curve_bottom %}
+                {% assign first_image = ingredient_image %}
               {% endif %}
               <button class="ingredient-chip{% if is_first %} active{% endif %}"
                       type="button"
@@ -114,6 +123,7 @@
                       data-description="{{ ingredient_description }}"
                       data-curve-top="{{ ingredient_curve_top | default: '' | escape }}"
                       data-curve-bottom="{{ ingredient_curve_bottom | default: '' | escape }}"
+                      data-image="{{ ingredient_image }}"
                       {{ block.shopify_attributes }}>
                 <span class="chip-dot" aria-hidden="true"></span>
                 {{ ingredient_name }}
@@ -148,9 +158,11 @@
             </text>
           </svg>
           {% if section.settings.capsule_image != blank %}
-            <img class="ingredients-capsule" src="{{ section.settings.capsule_image | image_url: width: 400 }}" alt="" loading="lazy" decoding="async">
+            <img class="ingredients-capsule" id="ingredients-capsule-img" src="{{ section.settings.capsule_image | image_url: width: 400 }}" alt="" loading="lazy" decoding="async">
+          {% elsif first_image != blank %}
+            <img class="ingredients-capsule" id="ingredients-capsule-img" src="{{ first_image }}" alt="" loading="lazy" decoding="async">
           {% else %}
-            <img class="ingredients-capsule" src="{{ 'capsule.svg' | asset_url }}" alt="" loading="lazy" decoding="async">
+            <img class="ingredients-capsule" id="ingredients-capsule-img" src="{{ 'capsule.svg' | asset_url }}" alt="" loading="lazy" decoding="async">
           {% endif %}
         </div>
       </div>

@@ -138,11 +138,11 @@
   },
   "sections": {
     "marquee": {
-      "item_1": "Scientifically tested",
-      "item_2": "Lactose-free",
-      "item_3": "Developed in Switzerland",
-      "item_4": "Allergen-free",
-      "item_5": "Drug-free",
+      "item_1": "Scientifically validated ingredients",
+      "item_2": "Developed in Germany",
+      "item_3": "Recommended by doctors and scientists",
+      "item_4": "Vegan",
+      "item_5": "Scientifically validated ingredients",
       "item_6": "Vegan"
     },
     "hero": {
@@ -178,7 +178,7 @@
         "table": "Product comparison table"
       },
       "features": {
-        "clinically_proven": "Clinically proven",
+        "clinically_proven": "Clinically substantiated ingredients",
         "bio_optimized": "Bio-optimized",
         "without_drugs": "Without drugs",
         "libido_friendly": "Libido-friendly"

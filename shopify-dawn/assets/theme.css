@@ -412,7 +412,7 @@ html {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-.hero-clinicians-avatars img + img {
+.hero-clinicians-avatars img+img {
   margin-left: -9px;
 }
 
@@ -730,17 +730,21 @@ html {
   .hr2-supplement-callout {
     padding: 28px 28px 34px;
   }
+
   .hr2-supplement-layout {
     grid-template-columns: 1fr;
   }
+
   .hr2-supplement-card {
     max-width: 520px;
     margin: 0 auto;
   }
+
   .hr2-supplement-panel {
     grid-template-columns: 1fr;
     align-items: start;
   }
+
   .hr2-supplement-chips {
     justify-content: flex-start;
   }
@@ -750,12 +754,15 @@ html {
   .hr2-supplement-header h2 {
     font-size: 32px;
   }
+
   .hr2-supplement-panel {
     padding: 14px 14px;
   }
+
   .hr2-supplement-panel-copy h3 {
     font-size: 24px;
   }
+
   .hr2-chip {
     font-size: 12px;
     padding: 7px 10px;
@@ -920,10 +927,12 @@ html {
 }
 
 .ingredients-capsule {
-  width: 120px;
-  height: auto;
+  width: 150px;
+  max-height: 200px;
+  object-fit: contain;
   position: relative;
   z-index: 1;
+  transition: opacity 200ms ease;
 }
 
 /* Ingredients page (grid + slide-in drawer) */
@@ -1329,7 +1338,7 @@ html {
   font-size: 14px;
 }
 
-.ingredient-fact-row + .ingredient-fact-row {
+.ingredient-fact-row+.ingredient-fact-row {
   border-top: 1px solid rgba(16, 32, 38, 0.10);
 }
 
@@ -1381,6 +1390,7 @@ html {
   .ingredients-gallery-wrap {
     margin-top: 34px;
   }
+
   .ingredients-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1390,23 +1400,29 @@ html {
   .ingredients-page {
     padding: 64px 20px 90px;
   }
+
   .ingredients-page-title {
     /* Match index hero headline sizing on mobile */
     font-size: 34px;
   }
+
   .ingredients-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px 14px;
   }
+
   .ingredient-thumb {
     width: 132px;
   }
+
   .ingredient-name {
     font-size: 18px;
   }
+
   .ingredient-drawer-media {
     height: 340px;
   }
+
   .ingredient-drawer-title {
     font-size: 34px;
   }
@@ -2113,10 +2129,12 @@ html {
     grid-template-columns: 1fr;
     min-height: auto;
   }
+
   .pdp-hero-image {
     padding: 48px 28px;
     min-height: 420px;
   }
+
   .pdp-hero-info {
     padding: 40px 28px 56px;
   }
@@ -2127,51 +2145,66 @@ html {
     padding: 36px 20px 60px;
     min-height: 360px;
   }
+
   .pdp-hero-carousel {
     max-width: 260px;
   }
+
   .pdp-carousel-dot {
     width: 10px;
     height: 10px;
   }
+
   .pdp-hero-info {
     padding: 32px 20px 48px;
   }
+
   .pdp-hero-title {
     font-size: 46px;
   }
+
   .pdp-hero-tag {
     font-size: 11px;
     padding: 6px 10px;
   }
+
   .pdp-hero-option {
     padding: 10px 12px 10px 38px;
   }
+
   .pdp-hero-option-left {
     flex-wrap: wrap;
     gap: 6px;
   }
+
   .pdp-hero-option-name {
     font-size: 13px;
   }
+
   .pdp-hero-option-new {
     font-size: 18px;
   }
+
   .pdp-hero-option-old {
     font-size: 13px;
   }
+
   .pdp-hero-desc {
     font-size: 14px;
   }
+
   .pdp-hero-benefits li {
     font-size: 14px;
   }
+
   .pdp-hero-subtitle {
     font-size: 17px;
   }
+
   .pdp-hero-trust {
     gap: 4px 12px;
   }
+
   .pdp-hero-trust span {
     font-size: 12px;
   }
@@ -2402,7 +2435,7 @@ html {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
-.product-clinicians-avatars img + img {
+.product-clinicians-avatars img+img {
   margin-left: -10px;
 }
 
@@ -2531,8 +2564,13 @@ html {
 }
 
 @keyframes productFeatureMarquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2808,7 +2846,7 @@ html {
   color: rgba(16, 32, 38, 0.86);
 }
 
-.order-trust-perk + .order-trust-perk {
+.order-trust-perk+.order-trust-perk {
   border-left: 1px solid rgba(16, 32, 38, 0.1);
 }
 
@@ -2887,10 +2925,12 @@ html {
   .product-page--hr2 {
     padding: 58px 20px 90px;
   }
+
   .product-layout {
     grid-template-columns: 1fr;
     gap: 34px;
   }
+
   .product-order {
     position: static;
     border-radius: 0;
@@ -2899,12 +2939,15 @@ html {
     padding: 0;
     background: transparent;
   }
+
   .order-title {
     font-size: 44px;
   }
+
   .pdp-partner-logo {
     height: 36px;
   }
+
   .pdp-partner-logo img {
     max-width: 100px;
   }
@@ -2914,32 +2957,41 @@ html {
   .product-media-grid {
     grid-template-columns: 1fr;
   }
+
   .pdp-partners-logos {
     gap: 14px;
   }
+
   .pdp-partner-logo {
     height: 30px;
   }
+
   .product-feature-marquee-group {
     gap: 36px;
     padding: 14px 20px;
   }
+
   .product-feature-marquee-item {
     font-size: 15px;
   }
+
   .product-feature-marquee-bar {
     height: 22px;
   }
+
   .product-hero-media {
     min-height: 320px;
   }
+
   .order-title {
     font-size: 36px;
   }
+
   .order-option {
     grid-template-columns: 1fr;
     padding-right: 18px;
   }
+
   .order-price {
     text-align: left;
     display: flex;
@@ -2948,40 +3000,49 @@ html {
     min-width: 0;
     margin-top: 12px;
   }
+
   .order-price-old {
     margin-top: 0;
   }
+
   .order-trust-perks {
     grid-template-columns: 1fr;
     border: 1px solid rgba(16, 32, 38, 0.1);
     border-radius: 10px;
     overflow: hidden;
   }
+
   .order-trust-perk {
     justify-content: flex-start;
     padding: 11px 12px;
     font-size: 13px;
   }
-  .order-trust-perk + .order-trust-perk {
+
+  .order-trust-perk+.order-trust-perk {
     border-left: 0;
     border-top: 1px solid rgba(16, 32, 38, 0.1);
   }
+
   .order-lab-card {
     grid-template-columns: 1fr;
     gap: 8px;
   }
+
   .order-lab-copy {
     border-left: 0;
     border-top: 1px solid rgba(16, 32, 38, 0.14);
     padding-left: 0;
     padding-top: 10px;
   }
+
   .order-lab-top {
     font-size: 15px;
   }
+
   .order-lab-badge {
     font-size: 13px;
   }
+
   .order-lab-bottom {
     font-size: 15px;
   }
@@ -3075,7 +3136,7 @@ html {
   font-size: 12px;
 }
 
-.product-results-notes li + li {
+.product-results-notes li+li {
   margin-top: 4px;
 }
 
@@ -3470,6 +3531,7 @@ html {
 }
 
 @media (max-width: 1020px) {
+
   .product-results,
   .product-expert,
   .product-why,
@@ -3521,6 +3583,7 @@ html {
 }
 
 @media (max-width: 720px) {
+
   .product-results,
   .product-expert,
   .product-why,
@@ -3741,6 +3804,7 @@ html {
   min-height: 720px;
   background: linear-gradient(to right, #3c0c1c 0 50%, #f3f1e7 50% 100%);
 }
+
 @media (min-width: 990px) {
   .section-offer .offer {
     min-height: max(720px, calc(100svh - 76px));
@@ -4059,7 +4123,7 @@ html {
   gap: 0;
 }
 
-.offer-accordion-item + .offer-accordion-item {
+.offer-accordion-item+.offer-accordion-item {
   border-top: 1px solid rgba(255, 255, 255, 0.22);
 }
 
@@ -4084,7 +4148,7 @@ html {
   border-radius: 6px;
 }
 
-.offer-accordion-trigger > span:first-child {
+.offer-accordion-trigger>span:first-child {
   font-size: clamp(22px, 1.5vw, 30px);
   line-height: 1.15;
   font-weight: 500;
@@ -4742,7 +4806,7 @@ html {
   background: #ffffff;
 }
 
-.cause-item + .cause-item {
+.cause-item+.cause-item {
   border-top: 1px solid rgba(12, 12, 12, 0.08);
 }
 
@@ -4978,7 +5042,7 @@ html {
   gap: 16px;
 }
 
-.faq-question > span:first-child {
+.faq-question>span:first-child {
   min-width: 0;
   overflow-wrap: anywhere;
 }
@@ -5064,12 +5128,29 @@ html {
 }
 
 /* Per-logo scale adjustments */
-.partner-logo[aria-label="Stanford"] { --partner-logo-scale: 1.4; }
-.partner-logo[aria-label="TU (TUM)"] { --partner-logo-scale: 7.0875; }
-.partner-logo[aria-label="TU Vienna"] { --partner-logo-scale: 0.644; }
-.partner-logo[aria-label="TU Wien"] { --partner-logo-scale: 0.644; }
-.partner-logo[aria-label="LMU München"] { --partner-logo-scale: 0.75; }
-.partner-logo[aria-label="PMU"] { --partner-logo-scale: 1.4; }
+.partner-logo[aria-label="Stanford"] {
+  --partner-logo-scale: 1.4;
+}
+
+.partner-logo[aria-label="TU (TUM)"] {
+  --partner-logo-scale: 7.0875;
+}
+
+.partner-logo[aria-label="TU Vienna"] {
+  --partner-logo-scale: 0.644;
+}
+
+.partner-logo[aria-label="TU Wien"] {
+  --partner-logo-scale: 0.644;
+}
+
+.partner-logo[aria-label="LMU München"] {
+  --partner-logo-scale: 0.75;
+}
+
+.partner-logo[aria-label="PMU"] {
+  --partner-logo-scale: 1.4;
+}
 
 .partner-logo[aria-label="PMU"] .partner-img {
   opacity: 0.82;
@@ -5643,7 +5724,7 @@ html {
     font-size: 12px;
   }
 
-  .offer-accordion-trigger > span:first-child {
+  .offer-accordion-trigger>span:first-child {
     font-size: 18px;
   }
 
@@ -5699,6 +5780,7 @@ html {
   .clinical-title {
     font-size: 40px;
   }
+
   .clinical-stats {
     margin-top: 24px;
   }
@@ -5958,7 +6040,7 @@ html {
     padding: 9px 0 8px;
   }
 
-  .offer-accordion-trigger > span:first-child {
+  .offer-accordion-trigger>span:first-child {
     font-size: 16px;
   }
 
@@ -7028,18 +7110,23 @@ html {
   .forschung-hero-grid {
     grid-template-columns: 1fr;
   }
+
   .forschung-section-head {
     grid-template-columns: 1fr;
   }
+
   .forschung-num {
     font-size: 42px;
   }
+
   .forschung-two {
     grid-template-columns: 1fr;
   }
+
   .forschung-media-img {
     height: 420px;
   }
+
   .forschung-cards {
     grid-template-columns: 1fr 1fr;
   }
@@ -7494,6 +7581,7 @@ html {
 
 /* PDP sections – responsive */
 @media (max-width: 1024px) {
+
   .pdp-timeline,
   .pdp-ingredients,
   .pdp-compare,
@@ -7677,7 +7765,7 @@ html {
   text-align: left;
 }
 
-.pdp-faq-question > span:first-child {
+.pdp-faq-question>span:first-child {
   min-width: 0;
   overflow-wrap: anywhere;
 }
@@ -7772,7 +7860,7 @@ html {
 }
 
 /* Prevent sticky bar from overlapping footer */
-.pdp-sticky-bar ~ .footer,
+.pdp-sticky-bar~.footer,
 body:has(.pdp-sticky-bar) footer.footer {
   padding-bottom: 80px;
 }
@@ -8714,19 +8802,24 @@ body.mobile-nav-open {
 }
 
 .inh-pill-capsule {
-  width: 36px;
-  height: auto;
+  width: 60px;
+  max-height: 80px;
+  object-fit: contain;
   opacity: 0.85;
 }
 
 .ingredient-drawer-media {
   background: #ffffff;
   height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ingredient-drawer-media-icon {
-  width: 80px;
-  height: auto;
+  max-width: 120px;
+  max-height: 160px;
+  object-fit: contain;
 }
 
 .inh-card-name {
@@ -8830,20 +8923,25 @@ body.mobile-nav-open {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+
   .inh-hero-copy {
     max-width: 760px;
     margin: 0 auto;
     text-align: center;
   }
+
   .inh-hero-sub {
     margin: 0 auto 40px;
   }
+
   .inh-stats {
     justify-content: center;
   }
+
   .inh-stat {
     text-align: center;
   }
+
   .inh-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -8853,48 +8951,62 @@ body.mobile-nav-open {
   .inh-hero {
     padding: 64px 24px 48px;
   }
+
   .inh-hero-title {
     font-size: clamp(28px, 7vw, 40px);
   }
+
   .inh-hero-ring {
     width: 200px;
     height: 200px;
   }
+
   .inh-hero-capsule {
     width: 42px;
   }
+
   .inh-stats {
     gap: 28px;
   }
+
   .inh-stat-number {
     font-size: 32px;
   }
+
   .inh-filters {
     padding: 0 24px;
   }
+
   .inh-gallery-section {
     padding: 36px 24px 64px;
   }
+
   .inh-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px 16px;
   }
+
   .inh-pill-ring {
     width: 130px;
     height: 130px;
   }
+
   .inh-pill-capsule {
     width: 30px;
   }
+
   .inh-pill-benefit {
     font-size: 8px;
   }
+
   .inh-card-name {
     font-size: 16px;
   }
+
   .inh-nutrition {
     padding: 0 24px 80px;
   }
+
   .inh-nutrition .nutrition-grid {
     grid-template-columns: 1fr;
   }
@@ -8905,21 +9017,262 @@ body.mobile-nav-open {
     flex-direction: column;
     gap: 20px;
   }
+
   .inh-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px 12px;
   }
+
   .inh-pill-ring {
     width: 110px;
     height: 110px;
   }
+
   .inh-pill-capsule {
     width: 26px;
   }
+
   .inh-pill-benefit {
     font-size: 7px;
   }
+
   .inh-card-name {
     font-size: 15px;
+  }
+}
+
+/* Restored legacy comparison, partners, and banner spacing from commit 676e863 */
+.comparison-panel-others {
+  display: block;
+  background: #ffffff;
+  border-left: 1px solid rgba(12, 12, 12, 0.14);
+  padding: 42px 30px 34px;
+}
+
+.comparison-table-title {
+  margin: 0;
+  font-family: "Inter", "AG1 Sans", system-ui, sans-serif;
+  font-size: clamp(36px, 2.8vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #111111;
+  line-height: 1;
+}
+
+.comparison-table-list {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.comparison-table-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 108px 116px;
+  align-items: center;
+  column-gap: 12px;
+  min-height: 62px;
+  border-bottom: 1px solid rgba(12, 12, 12, 0.16);
+}
+
+.comparison-table-head {
+  min-height: 46px;
+  border-top: 1px solid rgba(12, 12, 12, 0.16);
+}
+
+.comparison-table-feature {
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: clamp(16px, 1.3vw, 20px);
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: -0.01em;
+}
+
+.comparison-table-head .comparison-table-feature {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(12, 12, 12, 0.54);
+}
+
+.comparison-table-col {
+  text-align: center;
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(12, 12, 12, 0.54);
+}
+
+.comparison-table-value {
+  text-align: center;
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: clamp(22px, 1.8vw, 30px);
+  font-weight: 800;
+  color: #111111;
+  line-height: 1;
+}
+
+.comparison-table-value-x {
+  font-size: clamp(16px, 1.3vw, 20px);
+}
+
+.partners {
+  background: #ffffff;
+  color: #121212;
+  padding: 40px 70px;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.partners-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.partners-kicker {
+  margin: 0 0 26px;
+  font-size: 18px;
+  line-height: 1.4;
+  color: rgba(18, 18, 18, 0.7);
+}
+
+.partners-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  flex-wrap: wrap;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(150px, 18vw, 190px);
+  height: 72px;
+  flex: 0 0 auto;
+  overflow: visible;
+  --partner-logo-scale: 1;
+}
+
+.partner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.9;
+  display: block;
+  transform: scale(var(--partner-logo-scale));
+  transform-origin: center;
+}
+
+.partner-img.is-png {
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.9;
+}
+
+.partner-img.on-dark {
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.9;
+}
+
+.partner-logo[aria-label="Stanford"] {
+  --partner-logo-scale: 1;
+}
+
+.partner-logo[aria-label="TU (TUM)"] {
+  --partner-logo-scale: 1.58;
+}
+
+.partner-logo[aria-label="TU Vienna"] {
+  --partner-logo-scale: 0.72;
+}
+
+.partner-logo[aria-label="LMU München"] {
+  --partner-logo-scale: 0.82;
+}
+
+.partner-logo[aria-label="PMU"] {
+  --partner-logo-scale: 0.96;
+}
+
+@media (max-width: 1024px) {
+  .comparison-panel-others {
+    border-left: 0;
+    border-top: 1px solid rgba(12, 12, 12, 0.14);
+    padding: 34px 24px 30px;
+  }
+
+  .comparison-table-title {
+    font-size: clamp(32px, 6vw, 42px);
+  }
+
+  .comparison-table-row {
+    grid-template-columns: minmax(0, 1fr) 92px 96px;
+    min-height: 56px;
+  }
+
+  .comparison-table-feature {
+    font-size: clamp(15px, 2.4vw, 19px);
+  }
+
+  .comparison-table-value {
+    font-size: clamp(20px, 3vw, 26px);
+  }
+
+  .comparison-table-value-x {
+    font-size: clamp(15px, 2.2vw, 18px);
+  }
+
+  .partners {
+    padding-top: 56px;
+  }
+
+  .statement-banner {
+    padding: 24px 28px;
+  }
+
+  .statement-banner p {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 768px) {
+  .comparison-panel-others {
+    padding: 30px 16px 24px;
+  }
+
+  .comparison-table-title {
+    font-size: 28px;
+  }
+
+  .comparison-table-row {
+    grid-template-columns: minmax(0, 1fr) 72px 80px;
+    min-height: 50px;
+    column-gap: 10px;
+  }
+
+  .comparison-table-head {
+    min-height: 40px;
+  }
+
+  .comparison-table-head .comparison-table-feature,
+  .comparison-table-col {
+    font-size: 11px;
+  }
+
+  .comparison-table-feature {
+    font-size: 14px;
+  }
+
+  .comparison-table-value {
+    font-size: 18px;
+  }
+
+  .comparison-table-value-x {
+    font-size: 13px;
   }
 }

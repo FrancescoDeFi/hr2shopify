@@ -32,10 +32,14 @@
         "show_clinicians_badge": true
       }
     },
+    "trust_marquee": {
+      "type": "trust-marquee",
+      "settings": {}
+    },
     "comparison": {
       "type": "comparison-table",
       "blocks": {
-        "feature_1": { "type": "feature", "settings": { "feature_name": "Klinisch geprüfte Inhaltsstoffe", "hr2_value": "✓", "others_value": "~" } },
+        "feature_1": { "type": "feature", "settings": { "feature_name": "Klinisch belegte Inhaltsstoffe", "hr2_value": "✓", "others_value": "~" } },
         "feature_2": { "type": "feature", "settings": { "feature_name": "Bio-optimiert", "hr2_value": "✓", "others_value": "X" } },
         "feature_3": { "type": "feature", "settings": { "feature_name": "Ohne Arzneistoffe", "hr2_value": "✓", "others_value": "~" } },
         "feature_4": { "type": "feature", "settings": { "feature_name": "Libido-freundlich", "hr2_value": "✓", "others_value": "~" } }
@@ -61,7 +65,7 @@
         "partner_2": { "type": "partner", "settings": { "name": "TUM", "asset_filename": "6144ac488b51c665750238.png", "on_dark": true } },
         "partner_3": { "type": "partner", "settings": { "name": "TU Wien", "asset_filename": "TU-Logo-Austria_CMYK.png", "is_png": true } },
         "partner_4": { "type": "partner", "settings": { "name": "LMU München", "asset_filename": "LMU_Muenchen_Logo.svg" } },
-        "partner_5": { "type": "partner", "settings": { "name": "PMU", "asset_filename": "Paracelsus-Medical-University-Logo-Vertical-EN.svg" } }
+        "partner_5": { "type": "partner", "settings": { "name": "PMU", "asset_filename": "pmu.svg" } }
       },
       "block_order": ["partner_1", "partner_2", "partner_3", "partner_4", "partner_5"]
     },
@@ -145,9 +149,10 @@
   },
   "order": [
     "hero",
-    "partners",
+    "trust_marquee",
     "comparison",
     "causes",
+    "partners",
     "ingredients",
     "clinical",
     "offer",

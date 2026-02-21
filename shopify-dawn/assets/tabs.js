@@ -3,7 +3,7 @@
  * Handles ingredients explorer and other tabbed interfaces
  */
 
-(function() {
+(function () {
   'use strict';
 
   /**
@@ -20,10 +20,11 @@
 
     var description = section.querySelector('#ingredient-description');
     var chips = Array.from(section.querySelectorAll('.ingredient-chip'));
+    var capsuleImg = section.querySelector('#ingredients-capsule-img');
 
     // Try to get copy from data attributes or use defaults
     function getCopy(key) {
-      var chip = chips.find(function(c) { return c.dataset.ingredient === key; });
+      var chip = chips.find(function (c) { return c.dataset.ingredient === key; });
       if (chip && chip.dataset.description) {
         return chip.dataset.description;
       }
@@ -31,10 +32,15 @@
     }
 
     function setActive(key) {
-      chips.forEach(function(btn) {
+      chips.forEach(function (btn) {
         var active = btn.dataset.ingredient === key;
         btn.classList.toggle('active', active);
         btn.setAttribute('aria-selected', active ? 'true' : 'false');
+
+        // Swap the capsule image to the ingredient's image
+        if (active && capsuleImg && btn.dataset.image) {
+          capsuleImg.src = btn.dataset.image;
+        }
       });
       if (description) {
         var copy = getCopy(key);
@@ -42,15 +48,15 @@
       }
     }
 
-    chips.forEach(function(btn) {
-      btn.addEventListener('click', function() {
+    chips.forEach(function (btn) {
+      btn.addEventListener('click', function () {
         setActive(btn.dataset.ingredient);
       });
     });
 
     // Keyboard navigation for accessibility
-    chips.forEach(function(btn, index) {
-      btn.addEventListener('keydown', function(e) {
+    chips.forEach(function (btn, index) {
+      btn.addEventListener('keydown', function (e) {
         var newIndex = index;
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
           e.preventDefault();
@@ -73,7 +79,7 @@
     });
 
     // Set initial active state
-    var initialChip = chips.find(function(c) { return c.classList.contains('active'); }) || chips[0];
+    var initialChip = chips.find(function (c) { return c.classList.contains('active'); }) || chips[0];
     if (initialChip) setActive(initialChip.dataset.ingredient);
   }
 
@@ -93,26 +99,26 @@
     function activateTab(tab) {
       var targetId = tab.getAttribute('aria-controls') || tab.dataset.target;
 
-      tabs.forEach(function(t) {
+      tabs.forEach(function (t) {
         var isActive = t === tab;
         t.classList.toggle('active', isActive);
         t.setAttribute('aria-selected', isActive ? 'true' : 'false');
         t.setAttribute('tabindex', isActive ? '0' : '-1');
       });
 
-      panels.forEach(function(panel) {
+      panels.forEach(function (panel) {
         var isActive = panel.id === targetId || panel.dataset.tab === tab.dataset.tab;
         panel.classList.toggle('active', isActive);
         panel.hidden = !isActive;
       });
     }
 
-    tabs.forEach(function(tab, index) {
-      tab.addEventListener('click', function() {
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
         activateTab(tab);
       });
 
-      tab.addEventListener('keydown', function(e) {
+      tab.addEventListener('keydown', function (e) {
         var newIndex = index;
         if (e.key === 'ArrowRight') {
           e.preventDefault();
@@ -129,7 +135,7 @@
     });
 
     // Activate first tab by default
-    var initialTab = tabs.find(function(t) { return t.classList.contains('active'); }) || tabs[0];
+    var initialTab = tabs.find(function (t) { return t.classList.contains('active'); }) || tabs[0];
     if (initialTab) activateTab(initialTab);
   }
 

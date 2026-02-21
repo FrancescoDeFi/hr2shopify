@@ -87,14 +87,10 @@
       </div>
 
       <figure class="causes-visual" aria-label="{{ 'sections.causes.aria.visual' | t }}">
-        {% if section.settings.video_url != blank %}
-          <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" poster="{{ section.settings.poster_image | image_url: width: 600 | default: 'causes-haarwurzel.png' | asset_url }}">
-            <source src="{{ section.settings.video_url }}" type="video/mp4">
-          </video>
+        {% if section.settings.poster_image != blank %}
+          <img src="{{ section.settings.poster_image | image_url: width: 1400 }}" alt="{{ causes_heading | strip_html | escape }}" loading="lazy" decoding="async">
         {% else %}
-          <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" poster="{{ 'causes-haarwurzel.png' | asset_url }}">
-            <source src="{{ 'causes-hairprom.mp4' | asset_url }}" type="video/mp4">
-          </video>
+          <img src="{{ 'tausendgruende.png' | asset_url }}" alt="{{ causes_heading | strip_html | escape }}" loading="lazy" decoding="async">
         {% endif %}
         <figcaption class="causes-caption">
           {{ causes_caption }}
@@ -114,23 +110,18 @@
       "type": "text",
       "id": "heading",
       "label": "Überschrift",
-      "default": "DEIN HAARAUSFALL MUSS NICHT DEM ZUFALL ÜBERLASSEN WERDEN."
+      "default": "HAARAUSFALL HAT 1000 GRÜNDE"
     },
     {
       "type": "textarea",
       "id": "subheading",
       "label": "Unterüberschrift",
-      "default": "Männerhaar wird aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde."
-    },
-    {
-      "type": "url",
-      "id": "video_url",
-      "label": "Video URL (optional)"
+      "default": "Harre werden aus mehr als einem Grund dünner. Und genau verschiedene Ursachen anzugehen, ist das, wofür Hr² entwickelt wurde."
     },
     {
       "type": "image_picker",
       "id": "poster_image",
-      "label": "Video Poster Bild"
+      "label": "Visual Bild (optional)"
     },
     {
       "type": "textarea",

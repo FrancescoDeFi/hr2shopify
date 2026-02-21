@@ -75,7 +75,7 @@
         "type": "text",
         "id": "onetime_price",
         "label": "Einmaliger Kaufpreis",
-        "default": "39€"
+        "default": "€49,00"
       },
       {
         "type": "text",

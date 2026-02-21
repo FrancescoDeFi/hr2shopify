@@ -530,6 +530,7 @@
   var factsEl = document.getElementById("ingredient-drawer-facts");
   var containsEl = document.getElementById("ingredient-drawer-contains");
   var kickerEl = document.getElementById("ingredient-drawer-kicker");
+  var drawerImage = document.getElementById("ingredient-drawer-image");
 
   if (!gallery) return;
 
@@ -540,6 +541,12 @@
   var capsuleUrl = "capsule.svg";
   var existingCapsule = document.querySelector(".ingredient-drawer-media-icon");
   if (existingCapsule && existingCapsule.src) capsuleUrl = existingCapsule.src;
+
+  /* Per-ingredient images (set from Liquid), fallback to capsule */
+  var ingredientImages = window.__INGREDIENT_IMAGES__ || {};
+  function getImageUrl(item) {
+    return ingredientImages[item.id] || capsuleUrl;
+  }
 
   function metaLine(item) {
     var parts = [];
@@ -556,6 +563,11 @@
     var meta = metaLine(item);
     if (meta) subParts.push(meta);
     subtitleEl.textContent = subParts.join(" \u00b7 ");
+
+    /* Update drawer image to match the ingredient */
+    if (drawerImage) {
+      drawerImage.src = getImageUrl(item);
+    }
 
     if (item.amount || item.nrv) {
       factsEl.hidden = false;
@@ -577,7 +589,7 @@
 
     if (Array.isArray(item.contains) && item.contains.length) {
       containsEl.hidden = false;
-      containsEl.innerHTML = item.contains.map(function(c) {
+      containsEl.innerHTML = item.contains.map(function (c) {
         var cMeta = [c.amount, c.nrv ? "NRV " + c.nrv : null].filter(Boolean).join(" \u00b7 ");
         return '<li><span class="ingredient-contains-name">' + c.name + '</span><span class="ingredient-contains-meta">' + (cMeta || "\u2013") + '</span></li>';
       }).join("");
@@ -604,7 +616,7 @@
 
   function renderGallery() {
     gallery.innerHTML = "";
-    INGREDIENTS.forEach(function(item) {
+    INGREDIENTS.forEach(function (item) {
       var card = document.createElement("button");
       card.type = "button";
       card.className = "inh-card";
@@ -618,30 +630,31 @@
       var metaStr = metaLine(item);
       var categoryDisplay = CATEGORY_LABELS[item.category] || item.category;
 
+      var imgUrl = getImageUrl(item);
       card.innerHTML =
         '<div class="inh-pill-ring">' +
-          '<span class="inh-pill-benefit">' + (item.benefit || '') + '</span>' +
-          '<img class="inh-pill-capsule" src="' + capsuleUrl + '" alt="" loading="lazy" decoding="async">' +
+        '<span class="inh-pill-benefit">' + (item.benefit || '') + '</span>' +
+        '<img class="inh-pill-capsule" src="' + imgUrl + '" alt="" loading="lazy" decoding="async">' +
         '</div>' +
         '<div class="inh-card-name">' + item.name + '</div>' +
         (metaStr ? '<div class="inh-card-meta">' + metaStr + '</div>' : '') +
         '<div class="inh-card-category">' + categoryDisplay + '</div>';
 
-      card.addEventListener("click", function() { openDrawer(item); });
+      card.addEventListener("click", function () { openDrawer(item); });
       gallery.appendChild(card);
     });
   }
 
   /* ─── Filters ─── */
   var filterBtns = document.querySelectorAll(".inh-filter-btn");
-  filterBtns.forEach(function(btn) {
-    btn.addEventListener("click", function() {
-      filterBtns.forEach(function(b) { b.classList.remove("active"); });
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      filterBtns.forEach(function (b) { b.classList.remove("active"); });
       btn.classList.add("active");
       activeFilter = btn.dataset.filter;
 
       var cards = gallery.querySelectorAll(".inh-card");
-      cards.forEach(function(card) {
+      cards.forEach(function (card) {
         if (activeFilter === "all" || card.dataset.category === activeFilter) {
           card.hidden = false;
         } else {
@@ -655,7 +668,7 @@
   if (hasDrawer) {
     backdrop.addEventListener("click", closeDrawerFn);
     closeBtn.addEventListener("click", closeDrawerFn);
-    window.addEventListener("keydown", function(e) {
+    window.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && drawer.classList.contains("open")) closeDrawerFn();
     });
   }
@@ -673,7 +686,7 @@
         btn.setAttribute("aria-expanded", expanded ? "true" : "false");
         btn.innerHTML = expanded ? UI.showLess : UI.showMore;
       }
-      btn.addEventListener("click", function() {
+      btn.addEventListener("click", function () {
         var expanded = btn.getAttribute("aria-expanded") === "true";
         setExpanded(!expanded);
       });

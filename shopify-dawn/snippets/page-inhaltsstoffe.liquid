@@ -276,7 +276,7 @@
   </div>
 
   <div class="ingredient-drawer-media" aria-hidden="true">
-    <img class="ingredient-drawer-media-icon" src="{{ 'capsule.svg' | asset_url }}" alt="" loading="lazy" decoding="async">
+    <img class="ingredient-drawer-media-icon" id="ingredient-drawer-image" src="{{ 'capsule.svg' | asset_url }}" alt="" loading="lazy" decoding="async">
   </div>
 
   <div class="ingredient-drawer-body">
@@ -288,5 +288,16 @@
   </div>
 </aside>
 
-<script>window.__LOCALE__ = "{{ request.locale.iso_code }}";</script>
+<script>
+  window.__LOCALE__ = "{{ request.locale.iso_code }}";
+  window.__INGREDIENT_IMAGES__ = {
+    anagain: "{{ 'Anagain.png' | asset_url }}",
+    sawpalmetto: "{{ 'Saegepalmenextrakt.png' | asset_url }}",
+    pomegranate: "{{ 'Granatapfel.png' | asset_url }}",
+    ashwagandha_extract: "{{ 'Ashwaganda.png' | asset_url }}",
+    lcysteine: "{{ 'L-cysteine.png' | asset_url }}",
+    llysine_hcl: "{{ 'L-lysine.png' | asset_url }}",
+    biotin: "{{ 'biotin.png' | asset_url }}"
+  };
+</script>
 <script src="{{ 'inhaltsstoffe.js' | asset_url }}" defer></script>
