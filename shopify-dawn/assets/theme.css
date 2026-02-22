@@ -2180,6 +2180,26 @@ html {
   .pdp-hero-trust span {
     font-size: 12px;
   }
+
+  .pdp-hero-partners {
+    margin-top: 22px;
+    padding-top: 16px;
+  }
+
+  .pdp-hero-partners-logos {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .pdp-hero-partners-logos img {
+    flex: 0 1 calc(33.333% - 14px);
+    max-width: 92px;
+    height: 24px;
+    width: 100%;
+    min-width: 0;
+    transform: none !important;
+  }
 }
 
 /* Legacy product page – keep for theme scoping */
