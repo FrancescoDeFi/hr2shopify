@@ -7,12 +7,12 @@
 
   /* ── Screen order (full flow) ── */
   var fullFlow = [
-    "intro","q1","q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14","upload","email","review"
+    "intro", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "upload", "email", "review"
   ];
 
   /* If user picks "no-loss" on Q1 → skip triage (Q2-Q6) and jump to Q7 */
   var skipTriageFlow = [
-    "intro","q1","q7","q8","q9","q10","q11","q12","q13","q14","upload","email","review"
+    "intro", "q1", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "upload", "email", "review"
   ];
 
   function getFlow() {
@@ -136,7 +136,7 @@
       if (screen && screen.getAttribute("data-screen") === "q7") return;
 
       /* Auto-advance after short delay for single-choice top-level questions */
-      setTimeout(goNext, 350);
+      setTimeout(goNext, 150);
 
     } else if (type === "multi") {
       var isExclusive = option.getAttribute("data-exclusive") === "true";
