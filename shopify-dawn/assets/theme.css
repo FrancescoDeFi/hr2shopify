@@ -6626,6 +6626,10 @@ html {
   outline-color: rgba(60, 12, 28, 0.35);
 }
 
+.theme-forschung-red .forschung-results-panel {
+  background: #3c0c1c;
+}
+
 .theme-forschung-red .forschung-figure-svg {
   color: rgba(60, 12, 28, 0.80);
 }
