@@ -1,5 +1,23 @@
 {%- assign selected_variant = product.selected_or_first_available_variant -%}
 {%- assign allocations = selected_variant.selling_plan_allocations -%}
+{%- assign notify_cta_text = 'Notify me when back in stock' -%}
+{%- assign notify_modal_title = 'Get notified when available' -%}
+{%- assign notify_modal_subtitle = 'Enter your email and we will let you know as soon as Hr² is back in stock.' -%}
+{%- assign notify_email_placeholder = 'Your email address' -%}
+{%- assign notify_submit_text = 'Notify me' -%}
+{%- assign notify_success_text = 'Thanks. You are on the list and we will notify you.' -%}
+{%- assign notify_close_label = 'Close' -%}
+{%- assign sold_out_text = 'Sold out' -%}
+{%- if request.locale.iso_code == 'de' -%}
+  {%- assign notify_cta_text = '„Benachrichtige mich, sobald wir wieder verfügbar sind“' -%}
+  {%- assign notify_modal_title = 'Benachrichtigung bei Verfügbarkeit' -%}
+  {%- assign notify_modal_subtitle = 'Trage deine E-Mail-Adresse ein und wir benachrichtigen dich, sobald Hr² wieder verfügbar ist.' -%}
+  {%- assign notify_email_placeholder = 'Deine E-Mail-Adresse' -%}
+  {%- assign notify_submit_text = 'Benachrichtige mich' -%}
+  {%- assign notify_success_text = 'Danke. Du bist auf der Liste und wir melden uns, sobald Hr² wieder verfügbar ist.' -%}
+  {%- assign notify_close_label = 'Schließen' -%}
+  {%- assign sold_out_text = 'Ausverkauft' -%}
+{%- endif -%}
 
 <section class="pdp-hero" aria-labelledby="product-title">
       <div class="pdp-hero-inner">
@@ -7,7 +25,7 @@
         <div class="pdp-hero-images-wrap">
           <div class="pdp-hero-images" data-pdp-hero-carousel>
             <div class="pdp-hero-image-main">
-              <span class="pdp-hero-shipping">{{ 'product_page.shipping_threshold' | t }}</span>
+              <span class="pdp-hero-shipping">{{ sold_out_text }}</span>
               <img src="{{ 'bottlenew2.png' | asset_url }}" alt="{{ 'product_page.image_alt_1' | t }}" loading="eager" decoding="async">
             </div>
             <div class="pdp-hero-image-grid">
@@ -248,14 +266,37 @@
               {%- endif -%}
             </div>
 
-            <button class="pdp-hero-cta" id="order-cta" type="submit" name="add">{{ 'products.product.add_to_cart' | t }}</button>
+            <button class="pdp-hero-cta pdp-hero-cta--notify" id="order-cta" type="button" data-pdp-notify-open aria-controls="pdp-notify-modal" aria-expanded="false">{{ notify_cta_text }}</button>
 
             <div class="pdp-hero-trust">
-              <span>✓ {{ 'products.product.free_shipping' | t }}</span>
+              <span>✓ {{ sold_out_text }}</span>
               <span>✓ {{ 'products.product.cancel_anytime' | t }}</span>
               <span>✓ {{ 'products.product.money_back' | t }}</span>
             </div>
           {%- endform -%}
+
+          <div class="pdp-notify-modal" id="pdp-notify-modal" hidden data-pdp-notify-modal>
+            <div class="pdp-notify-modal__backdrop" data-pdp-notify-close></div>
+            <div class="pdp-notify-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="pdp-notify-title">
+              <button class="pdp-notify-modal__close" type="button" data-pdp-notify-close aria-label="{{ notify_close_label }}">×</button>
+              <h3 class="pdp-notify-modal__title" id="pdp-notify-title">{{ notify_modal_title }}</h3>
+              <p class="pdp-notify-modal__subtitle">{{ notify_modal_subtitle }}</p>
+
+              {%- form 'customer', id: 'PdpNotifyForm', class: 'pdp-notify-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter,back-in-stock">
+                <input type="hidden" name="contact[accepts_marketing]" value="true">
+                <label class="visually-hidden" for="PdpNotifyEmail">{{ notify_email_placeholder }}</label>
+                <input class="pdp-notify-form__input" id="PdpNotifyEmail" type="email" name="contact[email]" placeholder="{{ notify_email_placeholder }}" required>
+                <button class="pdp-notify-form__submit" type="submit">{{ notify_submit_text }}</button>
+                {%- if form.posted_successfully? -%}
+                  <p class="pdp-notify-feedback is-success">{{ notify_success_text }}</p>
+                {%- endif -%}
+                {%- if form.errors -%}
+                  <div class="pdp-notify-feedback is-error">{{ form.errors | default_errors }}</div>
+                {%- endif -%}
+              {%- endform -%}
+            </div>
+          </div>
 
           <div class="pdp-hero-partners">
             <p class="pdp-hero-partners-kicker">{{ 'sections.partners.kicker' | t }}</p>
@@ -692,7 +733,7 @@
     <!-- Delivery Banner -->
     <section class="pdp-delivery" aria-label="{{ 'product_page.delivery' | t }}">
       <div class="pdp-delivery-inner">
-        <p>{{ 'product_page.delivery_text' | t }}</p>
+        <p>{{ sold_out_text }}</p>
       </div>
     </section>
 

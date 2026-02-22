@@ -85,6 +85,62 @@
   }
 
   /**
+   * PDP Notify Modal
+   * Opens a newsletter sign-up modal for out-of-stock product state
+   */
+  function initPdpNotifyModal() {
+    var openTrigger = document.querySelector('[data-pdp-notify-open]');
+    var modal = document.querySelector('[data-pdp-notify-modal]');
+    if (!openTrigger || !modal) return;
+
+    var closeTriggers = Array.from(modal.querySelectorAll('[data-pdp-notify-close]'));
+    var emailInput = modal.querySelector('.pdp-notify-form__input');
+    var feedback = modal.querySelector('.pdp-notify-feedback');
+    var lastFocused = null;
+
+    function openModal() {
+      lastFocused = document.activeElement;
+      modal.hidden = false;
+      document.body.classList.add('pdp-notify-open');
+      openTrigger.setAttribute('aria-expanded', 'true');
+      if (emailInput) {
+        window.setTimeout(function() {
+          emailInput.focus();
+        }, 0);
+      }
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.classList.remove('pdp-notify-open');
+      openTrigger.setAttribute('aria-expanded', 'false');
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    openTrigger.addEventListener('click', function() {
+      openModal();
+    });
+
+    closeTriggers.forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        closeModal();
+      });
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && !modal.hidden) {
+        closeModal();
+      }
+    });
+
+    if (feedback) {
+      openModal();
+    }
+  }
+
+  /**
    * Mobile Navigation Toggle
    * Handles hamburger menu for mobile devices
    */
@@ -295,6 +351,7 @@
     // Initialize all components
     initOfferPlanSelector();
     initPDPHeroOptions();
+    initPdpNotifyModal();
     initMobileNav();
     initStickyNavbar();
     cleanupQualityCards();
