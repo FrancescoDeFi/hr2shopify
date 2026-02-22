@@ -1868,12 +1868,13 @@ html {
 
 .pdp-hero-title {
   margin: 0;
+  padding-top: 20px;
   font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(48px, 5vw, 68px);
   line-height: 0.95;
   font-weight: 400;
   letter-spacing: -0.02em;
-  color: #3c0c1c;
+  color: #0c0c0c;
 }
 
 .pdp-hero-subtitle {
