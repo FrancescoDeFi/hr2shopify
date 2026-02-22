@@ -1796,11 +1796,37 @@ html {
   align-items: start;
 }
 
+.pdp-hero-images-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Left: scrollable images */
 .pdp-hero-images {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.pdp-hero-carousel-dots {
+  display: none;
+}
+
+.pdp-hero-carousel-dot {
+  appearance: none;
+  border: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(12, 12, 12, 0.24);
+  padding: 0;
+  margin: 0;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.pdp-hero-carousel-dot.is-active {
+  background: #3c0c1c;
+  transform: scale(1.18);
 }
 
 .pdp-hero-image-main {
@@ -2115,6 +2141,10 @@ html {
 }
 
 @media (max-width: 720px) {
+  .pdp-hero-images-wrap {
+    gap: 10px;
+  }
+
   .pdp-hero-images {
     display: flex;
     flex-direction: row;
@@ -2128,6 +2158,13 @@ html {
 
   .pdp-hero-images::-webkit-scrollbar {
     display: none;
+  }
+
+  .pdp-hero-carousel-dots.is-ready {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 
   .pdp-hero-image-grid {

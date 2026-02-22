@@ -4,25 +4,28 @@
 <section class="pdp-hero" aria-labelledby="product-title">
       <div class="pdp-hero-inner">
         <!-- Left: Product images (scrollable) -->
-        <div class="pdp-hero-images">
-          <div class="pdp-hero-image-main">
-            <span class="pdp-hero-shipping">{{ 'product_page.shipping_threshold' | t }}</span>
-            <img src="{{ 'bottlenew2.png' | asset_url }}" alt="{{ 'product_page.image_alt_1' | t }}" loading="eager" decoding="async">
+        <div class="pdp-hero-images-wrap">
+          <div class="pdp-hero-images" data-pdp-hero-carousel>
+            <div class="pdp-hero-image-main">
+              <span class="pdp-hero-shipping">{{ 'product_page.shipping_threshold' | t }}</span>
+              <img src="{{ 'bottlenew2.png' | asset_url }}" alt="{{ 'product_page.image_alt_1' | t }}" loading="eager" decoding="async">
+            </div>
+            <div class="pdp-hero-image-grid">
+              <div class="pdp-hero-grid-item">
+                <img src="{{ '15.png' | asset_url }}" alt="{{ 'product_page.image_alt_2' | t }}" loading="lazy" decoding="async">
+              </div>
+              <div class="pdp-hero-grid-item">
+                <img src="{{ '46.png' | asset_url }}" alt="{{ 'product_page.image_alt_3' | t }}" loading="lazy" decoding="async">
+              </div>
+              <div class="pdp-hero-grid-item">
+                <img src="{{ 'buyimage.png' | asset_url }}" alt="{{ 'product_page.image_alt_5' | t }}" loading="lazy" decoding="async">
+              </div>
+              <div class="pdp-hero-grid-item">
+                <img src="{{ '334x.png' | asset_url }}" alt="{{ 'product_page.image_alt_4' | t }}" loading="lazy" decoding="async">
+              </div>
+            </div>
           </div>
-          <div class="pdp-hero-image-grid">
-            <div class="pdp-hero-grid-item">
-              <img src="{{ '15.png' | asset_url }}" alt="{{ 'product_page.image_alt_2' | t }}" loading="lazy" decoding="async">
-            </div>
-            <div class="pdp-hero-grid-item">
-              <img src="{{ '46.png' | asset_url }}" alt="{{ 'product_page.image_alt_3' | t }}" loading="lazy" decoding="async">
-            </div>
-            <div class="pdp-hero-grid-item">
-              <img src="{{ 'buyimage.png' | asset_url }}" alt="{{ 'product_page.image_alt_5' | t }}" loading="lazy" decoding="async">
-            </div>
-            <div class="pdp-hero-grid-item">
-              <img src="{{ '334x.png' | asset_url }}" alt="{{ 'product_page.image_alt_4' | t }}" loading="lazy" decoding="async">
-            </div>
-          </div>
+          <div class="pdp-hero-carousel-dots" aria-hidden="true"></div>
         </div>
 
         <!-- Right: Product info (sticky) -->
