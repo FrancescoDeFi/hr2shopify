@@ -15,35 +15,29 @@
 
   <!-- ════════ CODE ENTRY SCREEN ════════ -->
   <div class="results-screen results-code-entry active" id="codeEntry">
-    <img class="doctor-photo" src="{{ doc_img }}" alt="{{ doc_name }}">
-    <h1>
-      {% if is_de %}
-        Dein persönlicher Haar-Gesundheitsbericht
-      {% else %}
-        Your Personal Hair Health Report
-      {% endif %}
-    </h1>
-    <p class="results-subtitle">
-      {% if is_de %}
-        Gib den Code ein, den Du von {{ doc_name }} erhalten hast, um Deine personalisierten Ergebnisse zu sehen.
-      {% else %}
-        Enter the code you received from {{ doc_name }} to view your personalized results.
-      {% endif %}
-    </p>
-    <div class="code-input-group">
-      <input class="code-input" type="text" id="accessCodeInput" placeholder="{% if is_de %}Dein Code{% else %}Enter your code{% endif %}" maxlength="20" autocomplete="off" spellcheck="false">
-      <p class="code-error" id="codeError" style="display:none;"></p>
+    <div class="results-entry-inner">
+      <img class="doctor-photo" src="{{ doc_img }}" alt="{{ doc_name }}">
+      <h1>
+        {% if is_de %}Dein persönlicher<br>Haar-Gesundheitsbericht{% else %}Your Personal<br>Hair Health Report{% endif %}
+      </h1>
+      <p class="results-subtitle">
+        {% if is_de %}Gib den Code ein, den Du von {{ doc_name }} erhalten hast.{% else %}Enter the code you received from {{ doc_name }}.{% endif %}
+      </p>
+      <div class="code-input-group">
+        <input class="code-input" type="text" id="accessCodeInput" placeholder="{% if is_de %}Dein Code{% else %}Your code{% endif %}" maxlength="20" autocomplete="off" spellcheck="false">
+        <p class="code-error" id="codeError" style="display:none;"></p>
+      </div>
+      <button class="results-btn" id="codeSubmitBtn">
+        {% if is_de %}Ergebnisse anzeigen{% else %}View My Results{% endif %}
+        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </button>
     </div>
-    <button class="results-btn" id="codeSubmitBtn">
-      {% if is_de %}Ergebnisse anzeigen{% else %}View My Results{% endif %}
-      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-    </button>
   </div>
 
   <!-- ════════ LOADING SCREEN ════════ -->
   <div class="results-screen results-loading" id="loadingScreen">
     <div class="loading-spinner"></div>
-    <p>{% if is_de %}Dein Bericht wird vorbereitet...{% else %}Preparing your personalized report...{% endif %}</p>
+    <p>{% if is_de %}Dein Bericht wird vorbereitet...{% else %}Preparing your report...{% endif %}</p>
   </div>
 
   <!-- ════════ RESULTS DASHBOARD ════════ -->
@@ -52,95 +46,96 @@
     <!-- Header -->
     <div class="results-header">
       <img class="doctor-photo-sm" src="{{ doc_img }}" alt="{{ doc_name }}">
-      <h1>{% if is_de %}Dein persönlicher Haar-Gesundheitsbericht{% else %}Your Personal Hair Health Report{% endif %}</h1>
-      <p class="results-subtitle">
-        {% if is_de %}Erstellt von {{ doc_name }}, Arzt bei Hr²{% else %}Prepared by {{ doc_name }}, physician at Hr²{% endif %}
-      </p>
+      <p class="results-header-kicker">{% if is_de %}Erstellt von {{ doc_name }}{% else %}Prepared by {{ doc_name }}{% endif %}</p>
+      <h1>{% if is_de %}Dein Haar-Gesundheitsbericht{% else %}Your Hair Health Report{% endif %}</h1>
     </div>
 
-    <!-- Summary Card -->
-    <div class="results-card" id="summaryCard">
-      <div class="card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3c0c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      </div>
-      <h2>{% if is_de %}Zusammenfassung{% else %}Summary{% endif %}</h2>
-      <div id="summaryContent"></div>
-    </div>
+    <!-- Timeline wrapper -->
+    <div class="results-timeline">
+      <div class="results-timeline-line"></div>
 
-    <!-- Micronutrient Analysis -->
-    <div class="results-card" id="nutrientCard">
-      <div class="card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3c0c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-      </div>
-      <h2>{% if is_de %}Mikronährstoff-Analyse{% else %}Micronutrient Analysis{% endif %}</h2>
-      <p class="card-desc">{% if is_de %}Basierend auf Deinen Symptomen und Deinem Lebensstil{% else %}Based on your symptoms and lifestyle{% endif %}</p>
-      <div id="nutrientBars"></div>
-    </div>
-
-    <!-- Diet & Lifestyle -->
-    <div class="results-card" id="dietCard">
-      <div class="card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3c0c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      </div>
-      <h2>{% if is_de %}Ernährung & Lebensstil{% else %}Diet & Lifestyle{% endif %}</h2>
-      <div id="dietContent"></div>
-    </div>
-
-    <!-- Hormonal Factors (female only, hidden by default) -->
-    <div class="results-card" id="hormonalCard" style="display:none;">
-      <div class="card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3c0c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
-      </div>
-      <h2>{% if is_de %}Hormonelle Faktoren{% else %}Hormonal Factors{% endif %}</h2>
-      <div id="hormonalContent"></div>
-    </div>
-
-    <!-- Scalp Health -->
-    <div class="results-card" id="scalpCard">
-      <div class="card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3c0c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/><path d="M12 2c-2.8 0-5.33 1.13-7.17 2.97"/></svg>
-      </div>
-      <h2>{% if is_de %}Kopfhaut-Gesundheit{% else %}Scalp Health{% endif %}</h2>
-      <div id="scalpContent"></div>
-    </div>
-
-    <!-- Personalized Routine -->
-    <div class="results-card results-routine-card" id="routineCard">
-      <div class="card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3c0c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <h2>{% if is_de %}Deine persönliche Haar-Routine{% else %}Your Personalized Hair Routine{% endif %}</h2>
-      <div id="routineContent"></div>
-    </div>
-
-    <!-- Product Recommendation -->
-    <div class="results-card results-product-card" id="productCard">
-      <div class="product-layout">
-        <div class="product-text">
-          <span class="product-badge">{% if is_de %}Empfohlen für Dich{% else %}Recommended for You{% endif %}</span>
-          <h2>Hr² All-in-One Hair Supplement</h2>
-          <p class="product-reason" id="productReason"></p>
-          <ul class="product-ingredients" id="productIngredients"></ul>
-          <a href="{{ product_url }}" class="results-btn results-cta-btn">
-            {% if is_de %}Jetzt starten{% else %}Start Your Hair Journey{% endif %}
-            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="product-image">
-          <img src="{{ bottle_img }}" alt="Hr² Supplement">
+      <!-- Summary -->
+      <div class="results-timeline-section">
+        <div class="results-timeline-dot"></div>
+        <div class="results-timeline-content">
+          <h3 class="results-section-heading">{% if is_de %}Verdachtsdiagnose{% else %}Suspected Diagnosis{% endif %}</h3>
+          <div class="results-card results-card--summary" id="summaryCard">
+            <div id="summaryContent"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Next Steps -->
-    <div class="results-card" id="nextStepsCard">
-      <div class="card-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3c0c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <!-- Causes -->
+      <div class="results-timeline-section">
+        <div class="results-timeline-dot"></div>
+        <div class="results-timeline-content">
+          <h3 class="results-section-heading">{% if is_de %}Was könnten die Ursachen sein?{% else %}What could be causing this?{% endif %}</h3>
+
+          <div class="results-card" id="nutrientCard">
+            <h2>{% if is_de %}Mikronährstoff-Analyse*{% else %}Micronutrient Analysis*{% endif %}</h2>
+            <div id="nutrientBars"></div>
+            <p class="results-card-footnote">{% if is_de %}*basierend auf deinen Antworten{% else %}*based on your answers{% endif %}</p>
+          </div>
+
+          <!-- Individual insight cards rendered by JS -->
+          <div id="insightsContent"></div>
+
+          <div class="results-card" id="hormonalCard" style="display:none;">
+            <h2>{% if is_de %}Hormonelle Faktoren{% else %}Hormonal Factors{% endif %}</h2>
+            <div id="hormonalContent"></div>
+          </div>
+        </div>
       </div>
-      <h2>{% if is_de %}Nächste Schritte{% else %}Next Steps{% endif %}</h2>
-      <div id="nextStepsContent"></div>
-    </div>
 
+      <!-- Action -->
+      <div class="results-timeline-section">
+        <div class="results-timeline-dot"></div>
+        <div class="results-timeline-content">
+          <h3 class="results-section-heading">{% if is_de %}Was kannst du dagegen machen?{% else %}What can you do about it?{% endif %}</h3>
+
+          <div class="results-card results-card--routine" id="routineCard">
+            <div id="routineContent"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation -->
+      <div class="results-timeline-section">
+        <div class="results-timeline-dot"></div>
+        <div class="results-timeline-content">
+          <h3 class="results-section-heading">{% if is_de %}Was empfehlen wir dir?{% else %}What do we recommend?{% endif %}</h3>
+
+          <div class="results-card results-card--product" id="productCard">
+            <div class="product-layout">
+              <div class="product-image">
+                <img src="{{ bottle_img }}" alt="Hr²">
+              </div>
+              <div class="product-text">
+                <h2 class="product-title">Hr² HAIRGROWTH+</h2>
+                <p class="product-reason" id="productReason"></p>
+                <ul class="product-ingredients" id="productIngredients"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /results-timeline -->
+
+  </div>
+
+  <!-- ════════ STICKY CHECKOUT BAR ════════ -->
+  <div class="results-sticky-bar" id="resultsStickyBar" style="display:none;">
+    <div class="results-sticky-inner">
+      <div class="results-sticky-price">
+        <span class="results-sticky-daily">1.23€/{% if is_de %}Tag{% else %}Day{% endif %}</span>
+        <span class="results-sticky-total">36,75€ | {% if is_de %}Gesamt{% else %}Total{% endif %}</span>
+      </div>
+      <a href="{{ product_url }}" class="results-sticky-cta" id="resultsStickyBtn">
+        <span>{% if is_de %}WEITER{% else %}CONTINUE{% endif %}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 

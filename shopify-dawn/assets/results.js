@@ -12,6 +12,7 @@
   var codeInput = document.getElementById("accessCodeInput");
   var codeError = document.getElementById("codeError");
   var submitBtn = document.getElementById("codeSubmitBtn");
+  var stickyBar = document.getElementById("resultsStickyBar");
 
   function showScreen(el) {
     [codeEntry, loadingScreen, dashboard].forEach(function (s) {
@@ -59,8 +60,8 @@
           showScreen(codeEntry);
           showError(
             DE
-              ? "Ungültiger Code. Bitte überprüfe Deinen Code und versuche es erneut."
-              : "Invalid code. Please check your code and try again."
+              ? "Ungültiger Code. Bitte überprüfe Deinen Code."
+              : "Invalid code. Please check and try again."
           );
           return;
         }
@@ -83,13 +84,16 @@
   function renderDashboard(d) {
     renderSummary(d);
     renderNutrients(d);
-    renderDiet(d);
+    renderInsights(d);
     renderHormonal(d);
-    renderScalp(d);
     renderRoutine(d);
     renderProduct(d);
-    renderNextSteps(d);
     showScreen(dashboard);
+
+    // Show sticky bar
+    if (stickyBar) {
+      stickyBar.style.display = "block";
+    }
   }
 
   /* ── Helpers ── */
@@ -126,52 +130,47 @@
     var onset = d.onset_type || "";
     var onsetTime = d.onset_time || "";
 
-    var type, typeLabel, desc;
+    var typeLabel, desc;
 
     if (reason === "no-loss") {
-      type = "prevention";
       typeLabel = t("Hair Optimization & Prevention", "Haar-Optimierung & Prävention");
       desc = t(
-        "Your answers indicate you are currently not experiencing significant hair loss. This report focuses on optimizing your hair health and preventing future issues.",
-        "Deine Antworten zeigen, dass Du derzeit keinen signifikanten Haarausfall erlebst. Dieser Bericht konzentriert sich auf die Optimierung Deiner Haargesundheit und Prävention."
+        "No significant hair loss detected. This report focuses on optimizing your hair health and preventing future issues.",
+        "Kein signifikanter Haarausfall erkannt. Dieser Bericht konzentriert sich auf Optimierung und Prävention."
       );
     } else if (pattern === "widening" || pattern === "receding") {
-      type = "aga";
-      typeLabel = t("Androgenetic Alopecia (Pattern Hair Loss)", "Androgenetische Alopezie (erblicher Haarausfall)");
+      typeLabel = t("Androgenetic Alopecia", "Androgenetische Alopezie");
       desc = t(
-        "Your pattern suggests androgenetic alopecia, the most common form of hair loss. It is driven by genetic sensitivity to DHT, a hormone that miniaturizes hair follicles over time. If you treat it early enough, you can see the best results.",
-        "Dein Muster deutet auf androgenetische Alopezie hin, die häufigste Form von Haarausfall. Sie wird durch genetische Empfindlichkeit gegenüber DHT verursacht, einem Hormon, das Haarfollikel mit der Zeit verkleinert. Wenn Du sie frueh genug behandelst, kannst Du die besten Ergebnisse sehen."
+        "Your pattern suggests androgenetic alopecia — the most common form, driven by genetic DHT sensitivity. Early treatment yields the best results.",
+        "Dein Muster deutet auf androgenetische Alopezie hin — die häufigste Form, verursacht durch genetische DHT-Empfindlichkeit. Frühe Behandlung bringt die besten Ergebnisse."
       );
     } else if (onset === "sudden" && (onsetTime === "<3mo" || onsetTime === "3-6mo")) {
-      type = "te-acute";
       typeLabel = t("Acute Telogen Effluvium", "Akutes Telogen-Effluvium");
       desc = t(
-        "Your answers suggest acute telogen effluvium — a sudden, diffuse shedding typically triggered by a stressor 2-4 months prior. Common triggers include dietary changes, stress, illness, or hormonal shifts.",
-        "Deine Antworten deuten auf ein akutes Telogen-Effluvium hin — ein plötzlicher, diffuser Haarausfall, der typischerweise durch einen Stressor 2-4 Monate zuvor ausgelöst wird."
+        "Sudden, diffuse shedding typically triggered by a stressor 2–4 months prior — such as diet changes, stress, illness, or hormonal shifts.",
+        "Plötzlicher, diffuser Haarausfall, typischerweise ausgelöst durch einen Stressor 2–4 Monate zuvor — wie Ernährungsänderungen, Stress oder hormonelle Veränderungen."
       );
     } else if (pattern === "patchy") {
-      type = "patchy";
       typeLabel = t("Patchy Hair Loss", "Fleckiger Haarausfall");
       desc = t(
-        "Patchy hair loss may indicate alopecia areata, an autoimmune condition. We recommend seeing a dermatologist for a clinical evaluation alongside the nutritional support in this report.",
-        "Fleckiger Haarausfall kann auf Alopecia areata hinweisen, eine Autoimmunerkrankung. Wir empfehlen eine dermatologische Untersuchung neben der Nährstoffunterstützung in diesem Bericht."
+        "May indicate alopecia areata (autoimmune). We recommend a dermatologist evaluation alongside nutritional support.",
+        "Kann auf Alopecia areata hinweisen (Autoimmun). Wir empfehlen eine dermatologische Untersuchung neben der Nährstoffunterstützung."
       );
     } else {
-      type = "te-chronic";
       typeLabel = t("Chronic Diffuse Shedding", "Chronisch diffuser Haarausfall");
       desc = t(
-        "Your answers indicate ongoing diffuse shedding. This can result from multiple overlapping factors including nutrient deficiencies, hormonal changes, and lifestyle stressors.",
-        "Deine Antworten deuten auf anhaltenden diffusen Haarausfall hin. Dies kann durch mehrere überlappende Faktoren verursacht werden, darunter Nährstoffmängel, hormonelle Veränderungen und Lebensstilfaktoren."
+        "Ongoing diffuse shedding, often caused by overlapping factors: nutrient deficiencies, hormonal changes, and lifestyle stressors.",
+        "Anhaltender diffuser Haarausfall, oft verursacht durch überlappende Faktoren: Nährstoffmängel, hormonelle Veränderungen und Lebensstilfaktoren."
       );
     }
 
     var onsetLabel = "";
     if (reason !== "no-loss") {
       var onsetMap = {
-        "<3mo": t("Less than 3 months", "Weniger als 3 Monate"),
+        "<3mo": t("< 3 months", "< 3 Monate"),
         "3-6mo": t("3–6 months", "3–6 Monate"),
         "6-12mo": t("6–12 months", "6–12 Monate"),
-        ">12mo": t("Over 12 months", "Über 12 Monate")
+        ">12mo": t("> 12 months", "> 12 Monate")
       };
       onsetLabel = onsetMap[onsetTime] || "";
     }
@@ -250,53 +249,26 @@
       {
         name: t("Iron (Ferritin)", "Eisen (Ferritin)"),
         score: scoreIron(d),
-        test: t("Recommended test: Serum Ferritin", "Empfohlener Test: Serum-Ferritin"),
-        lowText: t(
-          "Your symptom profile shows low risk for iron deficiency. Maintaining adequate iron intake through diet supports healthy hair growth.",
-          "Dein Symptomprofil zeigt ein niedriges Risiko für Eisenmangel. Eine ausreichende Eisenzufuhr über die Ernährung unterstützt gesundes Haarwachstum."
-        ),
-        modText: t(
-          "Several indicators suggest possible iron depletion. Low ferritin is one of the most common causes of diffuse hair shedding, even when hemoglobin is normal. A blood test can confirm your levels.",
-          "Mehrere Indikatoren deuten auf eine mögliche Eisenverarmung hin. Niedriges Ferritin ist eine der häufigsten Ursachen für diffusen Haarausfall, selbst wenn der Hämoglobinwert normal ist."
-        ),
-        highText: t(
-          "Multiple symptoms point to significant iron deficiency risk. This is a leading reversible cause of hair loss. We strongly recommend checking your ferritin levels — optimal for hair growth is above 70 ng/mL.",
-          "Mehrere Symptome deuten auf ein erhebliches Eisenmangel-Risiko hin. Dies ist eine der häufigsten reversiblen Ursachen für Haarausfall. Wir empfehlen dringend, Deine Ferritinwerte zu überprüfen — optimal für Haarwachstum ist über 70 ng/mL."
-        )
+        test: t("Test: Serum Ferritin", "Test: Serum-Ferritin"),
+        lowText: t("Low risk. Maintain adequate iron intake through diet.", "Niedriges Risiko. Halte eine ausreichende Eisenzufuhr über die Ernährung aufrecht."),
+        modText: t("Possible iron depletion. Low ferritin causes diffuse shedding even with normal hemoglobin. A blood test can confirm.", "Mögliche Eisenverarmung. Niedriges Ferritin verursacht diffusen Haarausfall selbst bei normalem Hb. Ein Bluttest kann Klarheit geben."),
+        highText: t("Significant iron deficiency risk — a leading reversible cause of hair loss. Check ferritin levels (optimal > 70 ng/mL).", "Erhebliches Eisenmangel-Risiko — eine der häufigsten reversiblen Ursachen. Ferritin prüfen (optimal > 70 ng/mL).")
       },
       {
         name: t("Vitamin D", "Vitamin D"),
         score: scoreVitD(d),
-        test: t("Recommended test: 25-OH Vitamin D", "Empfohlener Test: 25-OH Vitamin D"),
-        lowText: t(
-          "Your vitamin D risk appears low based on sun exposure and symptoms. Continue maintaining adequate levels through sunlight and diet.",
-          "Dein Vitamin-D-Risiko erscheint niedrig basierend auf Sonnenexposition und Symptomen. Halte Deine Werte durch Sonnenlicht und Ernährung aufrecht."
-        ),
-        modText: t(
-          "Moderate risk indicators for vitamin D insufficiency. Vitamin D receptors are present in hair follicles and deficiency has been linked to telogen effluvium and alopecia areata.",
-          "Moderate Risikoindikatoren für Vitamin-D-Insuffizienz. Vitamin-D-Rezeptoren befinden sich in den Haarfollikeln, und ein Mangel wurde mit Telogen-Effluvium und Alopecia areata in Verbindung gebracht."
-        ),
-        highText: t(
-          "High risk for vitamin D deficiency based on your profile. Low vitamin D levels are strongly associated with hair loss and poor hair cycling. Testing is highly recommended.",
-          "Hohes Risiko für Vitamin-D-Mangel basierend auf Deinem Profil. Niedrige Vitamin-D-Werte sind stark mit Haarausfall und gestörtem Haarzyklus verbunden. Ein Test wird dringend empfohlen."
-        )
+        test: t("Test: 25-OH Vitamin D", "Test: 25-OH Vitamin D"),
+        lowText: t("Low risk based on sun exposure and symptoms.", "Niedriges Risiko basierend auf Sonnenexposition und Symptomen."),
+        modText: t("Moderate risk. Vitamin D receptors in follicles are linked to telogen effluvium and alopecia areata.", "Moderates Risiko. Vitamin-D-Rezeptoren in Follikeln sind mit Telogen-Effluvium und Alopecia areata verbunden."),
+        highText: t("High risk for deficiency. Low vitamin D is strongly linked to hair loss and poor cycling. Testing recommended.", "Hohes Risiko. Niedrige Vitamin-D-Werte sind stark mit Haarausfall verbunden. Test empfohlen.")
       },
       {
-        name: t("B12 & Thyroid Markers", "B12 & Schilddrüsen-Marker"),
+        name: t("B12 & Thyroid", "B12 & Schilddrüse"),
         score: scoreB12(d),
-        test: t("Recommended tests: Vitamin B12, TSH, Free T4", "Empfohlene Tests: Vitamin B12, TSH, freies T4"),
-        lowText: t(
-          "Low risk for B12 or thyroid-related deficiency based on your symptoms. These are still worth checking in a routine blood panel.",
-          "Niedriges Risiko für B12- oder schilddrüsenbedingte Mängel basierend auf Deinen Symptomen. Diese sollten dennoch in einer Routineblutuntersuchung überprüft werden."
-        ),
-        modText: t(
-          "Some symptoms suggest possible B12 deficiency or thyroid involvement. Cold intolerance and memory issues can indicate thyroid dysfunction, which is a common cause of hair loss.",
-          "Einige Symptome deuten auf möglichen B12-Mangel oder Schilddrüsenbeteiligung hin. Kälteempfindlichkeit und Gedächtnisprobleme können auf eine Schilddrüsenfunktionsstörung hinweisen."
-        ),
-        highText: t(
-          "Several symptoms raise concern for B12 deficiency or thyroid issues. Both conditions can directly cause hair loss and are easily treatable once identified. We recommend blood work promptly.",
-          "Mehrere Symptome deuten auf B12-Mangel oder Schilddrüsenprobleme hin. Beide Zustände können direkt Haarausfall verursachen und sind leicht behandelbar, sobald sie identifiziert sind."
-        )
+        test: t("Tests: B12, TSH, Free T4", "Tests: B12, TSH, freies T4"),
+        lowText: t("Low risk. Still worth checking in routine blood work.", "Niedriges Risiko. Dennoch eine Kontrolle im Routinelabor wert."),
+        modText: t("Possible B12 deficiency or thyroid involvement. Cold intolerance and memory issues may indicate thyroid dysfunction.", "Möglicher B12-Mangel oder Schilddrüsenbeteiligung. Kälteempfindlichkeit und Gedächtnisprobleme können auf Schilddrüsenprobleme hinweisen."),
+        highText: t("Concerning for B12 deficiency or thyroid issues. Both are easily treatable once identified. Blood work recommended.", "B12-Mangel oder Schilddrüsenprobleme wahrscheinlich. Beide sind leicht behandelbar. Blutbild empfohlen.")
       }
     ];
 
@@ -320,106 +292,97 @@
   }
 
   /* ────────────────────────────────────────
-     C. DIET & LIFESTYLE
+     C. KEY INSIGHTS (Diet + Scalp combined)
      ──────────────────────────────────────── */
-  function renderDiet(d) {
+  function renderInsights(d) {
     var items = [];
     var diet = d.diet || "";
     var excl = safeArr(d.exclusions);
+    var symptoms = safeArr(d.scalp_symptoms);
+    var breakage = d.breakage_vs_shedding || "";
 
+    // Diet
     if (diet === "vegan") {
       items.push({
-        icon: "warn",
-        text: t(
-          "A vegan diet can make it harder to get sufficient iron, zinc, B12, and complete proteins — all critical for hair. Supplementation and careful meal planning are important.",
-          "Eine vegane Ernährung kann es schwieriger machen, ausreichend Eisen, Zink, B12 und vollständige Proteine zu bekommen — alle entscheidend für das Haar. Supplementierung und sorgfältige Mahlzeitenplanung sind wichtig."
-        )
+        title: t("Vegan Diet", "Vegane Ernährung"),
+        text: t("A vegan diet increases the risk for low iron, zinc, B12, and protein — all essential for healthy hair. Targeted supplementation and careful meal planning are recommended.", "Eine vegane Ernährung erhöht das Risiko für niedrige Eisen-, Zink-, B12- und Proteinwerte — alle essentiell für gesundes Haar. Gezielte Supplementierung und sorgfältige Mahlzeitenplanung werden empfohlen."),
+        type: "warn"
       });
     } else if (diet === "vegetarian") {
       items.push({
-        icon: "warn",
-        text: t(
-          "Vegetarian diets may be lower in heme iron and zinc. Combining iron-rich plant foods with vitamin C improves absorption significantly.",
-          "Vegetarische Ernährung kann arm an Häm-Eisen und Zink sein. Die Kombination von eisenreichen pflanzlichen Lebensmitteln mit Vitamin C verbessert die Absorption erheblich."
-        )
-      });
-    } else if (diet === "pescatarian") {
-      items.push({
-        icon: "ok",
-        text: t(
-          "Your pescatarian diet provides omega-3 fatty acids from fish, which support scalp health and hair shine. Ensure adequate iron intake from leafy greens and legumes.",
-          "Deine pescatarische Ernährung liefert Omega-3-Fettsäuren aus Fisch, die die Kopfhautgesundheit und den Haarglanz unterstützen. Achte auf ausreichende Eisenzufuhr aus Blattgemüse und Hülsenfrüchten."
-        )
+        title: t("Vegetarian Diet", "Vegetarische Ernährung"),
+        text: t("Vegetarian diets can be lower in heme iron and zinc. Combining iron-rich plant foods with vitamin C significantly improves absorption.", "Vegetarische Ernährung kann arm an Häm-Eisen und Zink sein. Die Kombination von eisenreichen Lebensmitteln mit Vitamin C verbessert die Aufnahme deutlich."),
+        type: "warn"
       });
     }
 
     if (d.dieted === "yes") {
       items.push({
-        icon: "warn",
-        text: t(
-          "Recent calorie restriction is one of the most common triggers for telogen effluvium. Crash diets can shift up to 30% of hair into the shedding phase within 2-4 months. Adequate protein (at least 1.2g/kg body weight) is essential for recovery.",
-          "Kürzliche Kalorienrestriktion ist einer der häufigsten Auslöser für Telogen-Effluvium. Crash-Diäten können innerhalb von 2-4 Monaten bis zu 30% der Haare in die Ausfallphase verschieben. Ausreichend Protein (mindestens 1,2g/kg Körpergewicht) ist für die Erholung essentiell."
-        )
+        title: t("Calorie Restriction", "Kalorienrestriktion"),
+        text: t("Recent dieting is one of the most common triggers for telogen effluvium. Hair shedding often begins 2–4 months after calorie restriction. Adequate protein intake (≥ 1.2 g/kg body weight) is essential for recovery.", "Kürzliche Diäten gehören zu den häufigsten Auslösern für Telogen-Effluvium. Haarausfall beginnt oft 2–4 Monate nach Kalorienrestriktion. Ausreichend Protein (≥ 1,2 g/kg Körpergewicht) ist für die Erholung essentiell."),
+        type: "warn"
       });
     }
 
     if (d.sun === "rarely") {
       items.push({
-        icon: "warn",
-        text: t(
-          "Limited sun exposure increases risk of vitamin D deficiency, which is linked to poor hair follicle cycling. Consider vitamin D supplementation, especially during winter months.",
-          "Begrenzte Sonnenexposition erhöht das Risiko eines Vitamin-D-Mangels, der mit einem gestörten Haarfollikelzyklus verbunden ist. Erwäge eine Vitamin-D-Supplementierung, besonders in den Wintermonaten."
-        )
-      });
-    } else if (d.sun === "most-days") {
-      items.push({
-        icon: "ok",
-        text: t(
-          "Regular sun exposure helps maintain healthy vitamin D levels, supporting hair follicle function.",
-          "Regelmäßige Sonnenexposition hilft, gesunde Vitamin-D-Spiegel aufrechtzuerhalten und die Haarfollikelfunktion zu unterstützen."
-        )
+        title: t("Low Sun Exposure", "Geringe Sonnenexposition"),
+        text: t("Limited sun exposure increases the risk of vitamin D deficiency. Vitamin D receptors are present in hair follicles, and low levels are associated with disrupted follicle cycling.", "Geringe Sonnenexposition erhöht das Risiko für Vitamin-D-Mangel. Vitamin-D-Rezeptoren befinden sich in den Haarfollikeln, niedrige Werte werden mit gestörtem Follikelzyklus in Verbindung gebracht."),
+        type: "warn"
       });
     }
 
-    if (excl.indexOf("gluten-free") > -1) {
+    // Scalp
+    if (symptoms.indexOf("itch") > -1 || symptoms.indexOf("dandruff") > -1) {
       items.push({
-        icon: "info",
-        text: t(
-          "A gluten-free diet may reduce intake of fortified grains that provide iron and B vitamins. Ensure you get these nutrients from other sources.",
-          "Eine glutenfreie Ernährung kann die Aufnahme von angereicherten Getreideprodukten reduzieren, die Eisen und B-Vitamine liefern. Stelle sicher, dass Du diese Nährstoffe aus anderen Quellen bekommst."
-        )
+        title: t("Scalp: Itching & Dandruff", "Kopfhaut: Juckreiz & Schuppen"),
+        text: t("These symptoms may indicate seborrheic dermatitis or a disrupted scalp microbiome. A gentle anti-dandruff shampoo with zinc pyrithione, used 2–3 times per week, can help.", "Diese Symptome können auf seborrhoische Dermatitis oder ein gestörtes Kopfhaut-Mikrobiom hinweisen. Ein sanftes Anti-Schuppen-Shampoo mit Zinkpyrithion, 2–3x pro Woche, kann helfen."),
+        type: "warn"
       });
     }
-    if (excl.indexOf("dairy-free") > -1) {
+    if (symptoms.indexOf("burning") > -1 || symptoms.indexOf("pain") > -1) {
       items.push({
-        icon: "info",
-        text: t(
-          "Avoiding dairy removes a key source of calcium and vitamin D. Consider fortified alternatives and supplementation.",
-          "Der Verzicht auf Milchprodukte entfernt eine wichtige Quelle für Kalzium und Vitamin D. Erwäge angereicherte Alternativen und Supplementierung."
-        )
+        title: t("Scalp Sensitivity", "Kopfhaut-Empfindlichkeit"),
+        text: t("Burning or pain in the scalp (trichodynia) is often associated with active hair shedding and scalp inflammation. This typically improves as the underlying cause is addressed.", "Brennen oder Schmerzen in der Kopfhaut (Trichondynie) sind oft mit aktivem Haarausfall und Kopfhautentzündung verbunden. Dies bessert sich typischerweise, wenn die Ursache behandelt wird."),
+        type: "warn"
       });
     }
-    if (excl.indexOf("low-fat") > -1) {
+
+    if (breakage === "breakage" || breakage === "both") {
       items.push({
-        icon: "info",
-        text: t(
-          "Very low-fat diets can impair absorption of fat-soluble vitamins (A, D, E, K) essential for hair health. Including healthy fats like avocado, nuts, and olive oil is important.",
-          "Sehr fettarme Diäten können die Aufnahme fettlöslicher Vitamine (A, D, E, K) beeinträchtigen, die für die Haargesundheit essentiell sind. Gesunde Fette wie Avocado, Nüsse und Olivenöl sind wichtig."
-        )
+        title: t("Hair Breakage", "Haarbruch"),
+        text: t("Breakage indicates damage to the hair shaft, often from heat styling, chemical treatments, or insufficient protein. Reducing heat use and increasing protein intake can help.", "Haarbruch deutet auf eine Schädigung des Haarschafts hin, oft durch Hitzestyling, chemische Behandlungen oder Proteinmangel. Weniger Hitze und mehr Protein können helfen."),
+        type: "info"
+      });
+    } else if (breakage === "shedding") {
+      items.push({
+        title: t("Root Shedding", "Haarausfall an der Wurzel"),
+        text: t("Hair loss from the root points to a follicle-level issue rather than shaft damage. This is typically nutritional, hormonal, or stress-related.", "Haarausfall von der Wurzel deutet auf ein Problem auf Follikel-Ebene hin. Dies ist meist ernährungs-, hormon- oder stressbedingt."),
+        type: "info"
       });
     }
 
     if (items.length === 0) {
       items.push({
-        icon: "ok",
-        text: t(
-          "Your diet and lifestyle factors appear favorable for hair health. Continue maintaining a balanced diet rich in protein, iron, and vitamins.",
-          "Deine Ernährungs- und Lebensstilfaktoren erscheinen günstig für die Haargesundheit. Halte eine ausgewogene Ernährung mit viel Protein, Eisen und Vitaminen aufrecht."
-        )
+        title: t("Healthy Baseline", "Gesunde Ausgangslage"),
+        text: t("Your diet and scalp health appear favorable for hair growth. Continue maintaining a balanced diet rich in protein, iron, and vitamins.", "Deine Ernährung und Kopfhautgesundheit erscheinen günstig für das Haarwachstum. Halte eine ausgewogene Ernährung mit Protein, Eisen und Vitaminen aufrecht."),
+        type: "ok"
       });
     }
 
-    document.getElementById("dietContent").innerHTML = renderInsightList(items);
+    document.getElementById("insightsContent").innerHTML = renderInsightCards(items);
+  }
+
+  function renderInsightCards(items) {
+    var html = "";
+    items.forEach(function (item) {
+      html +=
+        '<div class="results-card results-insight-card results-insight--' + item.type + '">' +
+        '<h2>' + item.title + '</h2>' +
+        '<p class="insight-card-text">' + item.text + '</p>' +
+        '</div>';
+    });
+    return html;
   }
 
   function renderInsightList(items) {
@@ -448,43 +411,16 @@
     var items = [];
 
     if (d.postpartum === "yes") {
-      items.push({
-        icon: "info",
-        text: t(
-          "Postpartum hair loss is very common and occurs due to the rapid drop in estrogen after delivery. Most women see full recovery within 6-12 months. Nutritional support can help speed this process.",
-          "Postpartaler Haarausfall ist sehr häufig und tritt aufgrund des schnellen Östrogenabfalls nach der Entbindung auf. Die meisten Frauen sehen eine vollständige Erholung innerhalb von 6-12 Monaten. Nährstoffunterstützung kann diesen Prozess beschleunigen."
-        )
-      });
+      items.push({ icon: "info", text: t("Postpartum hair loss is common — full recovery usually within 6–12 months. Nutritional support helps.", "Postpartaler Haarausfall ist häufig — Erholung in 6–12 Monaten. Nährstoffunterstützung hilft.") });
     }
-
     if (d.pregnant === "yes") {
-      items.push({
-        icon: "info",
-        text: t(
-          "During pregnancy, increased nutrient demands — especially iron and folate — can affect hair. Prenatal supplements and iron-rich foods are particularly important.",
-          "Während der Schwangerschaft kann der erhöhte Nährstoffbedarf — besonders Eisen und Folsäure — das Haar beeinflussen. Pränatale Nahrungsergänzungsmittel und eisenreiche Lebensmittel sind besonders wichtig."
-        )
-      });
+      items.push({ icon: "info", text: t("Pregnancy increases iron and folate demands. Prenatal supplements are important.", "Schwangerschaft erhöht Eisen- und Folatbedarf. Pränatale Supplemente sind wichtig.") });
     }
-
     if (d.cycles === "irregular") {
-      items.push({
-        icon: "warn",
-        text: t(
-          "Irregular menstrual cycles may indicate hormonal imbalances (e.g., PCOS or thyroid issues) that can contribute to hair loss. Consider discussing with your healthcare provider.",
-          "Unregelmäßige Menstruationszyklen können auf hormonelle Ungleichgewichte (z.B. PCOS oder Schilddrüsenprobleme) hinweisen, die zu Haarausfall beitragen können. Besprich dies mit Deinem Arzt."
-        )
-      });
+      items.push({ icon: "warn", text: t("Irregular cycles may indicate hormonal imbalances (e.g., PCOS or thyroid) contributing to hair loss.", "Unregelmäßige Zyklen können auf hormonelle Imbalancen hinweisen, die Haarausfall begünstigen.") });
     }
-
     if (d.bleeding === "heavy" || d.bleeding === "very-heavy") {
-      items.push({
-        icon: "warn",
-        text: t(
-          "Heavy menstrual bleeding significantly increases iron loss. Women with heavy periods should monitor ferritin levels closely and may benefit from iron supplementation.",
-          "Starke Menstruationsblutung erhöht den Eisenverlust erheblich. Frauen mit starken Perioden sollten ihre Ferritinwerte genau überwachen und können von einer Eisensupplementierung profitieren."
-        )
-      });
+      items.push({ icon: "warn", text: t("Heavy periods increase iron loss significantly. Monitor ferritin levels closely.", "Starke Perioden erhöhen den Eisenverlust erheblich. Ferritin genau überwachen.") });
     }
 
     if (items.length > 0) {
@@ -494,155 +430,68 @@
   }
 
   /* ────────────────────────────────────────
-     E. SCALP HEALTH
-     ──────────────────────────────────────── */
-  function renderScalp(d) {
-    var items = [];
-    var symptoms = safeArr(d.scalp_symptoms);
-    var breakage = d.breakage_vs_shedding || "";
-
-    if (symptoms.indexOf("none") > -1 || symptoms.length === 0) {
-      items.push({
-        icon: "ok",
-        text: t(
-          "No significant scalp symptoms reported. A healthy scalp is a good foundation for hair regrowth.",
-          "Keine signifikanten Kopfhautsymptome gemeldet. Eine gesunde Kopfhaut ist eine gute Grundlage für das Nachwachsen der Haare."
-        )
-      });
-    } else {
-      if (symptoms.indexOf("itch") > -1 || symptoms.indexOf("dandruff") > -1) {
-        items.push({
-          icon: "warn",
-          text: t(
-            "Itching and dandruff may indicate seborrheic dermatitis or a disrupted scalp microbiome. Consider a gentle anti-dandruff shampoo with zinc pyrithione or ketoconazole, used 2-3 times per week.",
-            "Juckreiz und Schuppen können auf seborrhoische Dermatitis oder ein gestörtes Kopfhaut-Mikrobiom hinweisen. Erwäge ein sanftes Anti-Schuppen-Shampoo mit Zinkpyrithion oder Ketoconazol, 2-3 mal pro Woche."
-          )
-        });
-      }
-      if (symptoms.indexOf("burning") > -1 || symptoms.indexOf("pain") > -1) {
-        items.push({
-          icon: "warn",
-          text: t(
-            "Burning or pain in the scalp (trichodynia) is often associated with active hair shedding and scalp inflammation. This typically improves as the underlying cause is addressed.",
-            "Brennen oder Schmerzen in der Kopfhaut (Trichondynie) sind oft mit aktivem Haarausfall und Kopfhautentzündung verbunden. Dies verbessert sich typischerweise, wenn die zugrunde liegende Ursache behandelt wird."
-          )
-        });
-      }
-      if (symptoms.indexOf("redness") > -1 || symptoms.indexOf("pimples") > -1) {
-        items.push({
-          icon: "warn",
-          text: t(
-            "Redness or pimples on the scalp may indicate folliculitis or inflammation. Keep the scalp clean and avoid harsh products. If persistent, a dermatologist evaluation is recommended.",
-            "Rötungen oder Pickel auf der Kopfhaut können auf Follikulitis oder Entzündung hinweisen. Halte die Kopfhaut sauber und vermeide aggressive Produkte. Bei Fortbestehen wird eine dermatologische Untersuchung empfohlen."
-          )
-        });
-      }
-    }
-
-    if (breakage === "breakage" || breakage === "both") {
-      items.push({
-        icon: "info",
-        text: t(
-          "Hair breakage indicates damage to the hair shaft, often from heat styling, chemical treatments, or protein deficiency. Reducing heat use and ensuring adequate protein intake can help.",
-          "Haarbruch deutet auf eine Schädigung des Haarschafts hin, oft durch Hitzestyling, chemische Behandlungen oder Proteinmangel. Reduziere Hitze und stelle ausreichende Proteinzufuhr sicher."
-        )
-      });
-    }
-    if (breakage === "shedding") {
-      items.push({
-        icon: "info",
-        text: t(
-          "You're experiencing shedding from the root, which points to a follicle-level issue rather than shaft damage. This is typically nutritional, hormonal, or stress-related.",
-          "Du erlebst Haarausfall von der Wurzel, was auf ein Problem auf Follikel-Ebene hinweist, nicht auf Haarschaftschäden. Dies ist typischerweise ernährungs-, hormon- oder stressbedingt."
-        )
-      });
-    }
-
-    document.getElementById("scalpContent").innerHTML = renderInsightList(items);
-  }
-
-  /* ────────────────────────────────────────
-     F. PERSONALIZED ROUTINE
+     E. PERSONALIZED ROUTINE
      ──────────────────────────────────────── */
   function renderRoutine(d) {
     var steps = [];
     var ironRisk = riskLevel(scoreIron(d));
-    var pattern = d.pattern || "";
-    var breakage = d.breakage_vs_shedding || "";
     var symptoms = safeArr(d.scalp_symptoms);
+    var breakage = d.breakage_vs_shedding || "";
 
-    // Core steps
-    steps.push(t(
-      "<strong>Take your Hr² Hair Growth Plus</strong> to supplement decisions and balance hair health in stressful periods and see initial results within 8 to 12 weeks.",
-      "<strong>Nimm Dein Hr² Hair Growth Plus</strong> um Defizite zu ergaenzen, die Haargesundheit in stressigen Phasen zu stabilisieren und erste Ergebnisse innerhalb von 8 bis 12 Wochen zu sehen."
-    ));
+    steps.push({
+      title: t("Take Hr² daily", "Nimm Hr² täglich"),
+      desc: t("Consistent supplementation for 8–12 weeks for initial results.", "Konsistente Einnahme für 8–12 Wochen für erste Ergebnisse.")
+    });
 
-    steps.push(t(
-      "<strong>Daily scalp massage (3-5 minutes)</strong> — use fingertips in circular motions. This increases blood flow to follicles and has been shown to increase hair thickness over time.",
-      "<strong>Tägliche Kopfhautmassage (3-5 Minuten)</strong> — benutze die Fingerspitzen in kreisenden Bewegungen. Dies erhöht die Durchblutung der Follikel und kann die Haardicke über die Zeit erhöhen."
-    ));
+    steps.push({
+      title: t("Scalp massage (3–5 min/day)", "Kopfhautmassage (3–5 Min/Tag)"),
+      desc: t("Circular fingertip motions increase blood flow to follicles.", "Kreisende Fingerspitzenbewegungen fördern die Durchblutung.")
+    });
 
-    steps.push(t(
-      "<strong>Wash with lukewarm water</strong> — hot water strips natural oils and can increase shedding. Use a gentle, sulfate-free shampoo.",
-      "<strong>Wasche mit lauwarmem Wasser</strong> — heißes Wasser entfernt natürliche Öle und kann den Haarausfall verstärken. Verwende ein sanftes, sulfatfreies Shampoo."
-    ));
-
-    // Conditional steps
     if (ironRisk !== "low") {
-      steps.push(t(
-        "<strong>Include iron-rich foods daily</strong> — red meat, spinach, lentils, or fortified cereals. Pair with vitamin C (citrus, bell pepper) to boost absorption by up to 300%.",
-        "<strong>Iss täglich eisenreiche Lebensmittel</strong> — rotes Fleisch, Spinat, Linsen oder angereicherte Cerealien. Kombiniere mit Vitamin C (Zitrusfrüchte, Paprika) um die Absorption um bis zu 300% zu steigern."
-      ));
+      steps.push({
+        title: t("Iron-rich foods daily", "Täglich eisenreiche Lebensmittel"),
+        desc: t("Pair with vitamin C to boost absorption up to 300%.", "Mit Vitamin C kombinieren für bis zu 300% mehr Absorption.")
+      });
     }
 
     if (symptoms.indexOf("dandruff") > -1 || symptoms.indexOf("itch") > -1) {
-      steps.push(t(
-        "<strong>Use an anti-dandruff shampoo 2-3x/week</strong> — look for zinc pyrithione or ketoconazole. Alternate with your regular gentle shampoo on other days.",
-        "<strong>Verwende 2-3x/Woche ein Anti-Schuppen-Shampoo</strong> — achte auf Zinkpyrithion oder Ketoconazol. Wechsle an anderen Tagen mit Deinem normalen sanften Shampoo."
-      ));
+      steps.push({
+        title: t("Anti-dandruff shampoo 2–3x/week", "Anti-Schuppen-Shampoo 2–3x/Woche"),
+        desc: t("Zinc pyrithione or ketoconazole.", "Zinkpyrithion oder Ketoconazol.")
+      });
     }
 
     if (breakage === "breakage" || breakage === "both") {
-      steps.push(t(
-        "<strong>Minimize heat styling</strong> — if you must, always use a heat protectant. Air-dry when possible and avoid tight hairstyles that pull on the roots.",
-        "<strong>Minimiere Hitzestyling</strong> — wenn nötig, verwende immer einen Hitzeschutz. Lufttrockne wenn möglich und vermeide enge Frisuren, die an den Wurzeln ziehen."
-      ));
+      steps.push({
+        title: t("Minimize heat styling", "Hitzestyling minimieren"),
+        desc: t("Use heat protectant, air-dry when possible.", "Hitzeschutz verwenden, lufttrocknen wenn möglich.")
+      });
     }
 
-    if (d.sun === "rarely") {
-      steps.push(t(
-        "<strong>Get 10-15 minutes of daily sun exposure</strong> — or supplement with vitamin D3. This supports follicle cycling and immune function.",
-        "<strong>Bekomme 10-15 Minuten tägliche Sonnenexposition</strong> — oder supplementiere mit Vitamin D3. Dies unterstützt den Follikelzyklus und die Immunfunktion."
-      ));
-    }
-
-    if (d.dieted === "yes") {
-      steps.push(t(
-        "<strong>Prioritize protein intake</strong> — aim for at least 1.2g per kg body weight daily. Hair is made of keratin (a protein), and inadequate intake directly impairs growth.",
-        "<strong>Priorisiere Proteinzufuhr</strong> — ziele auf mindestens 1,2g pro kg Körpergewicht täglich. Haar besteht aus Keratin (einem Protein), und unzureichende Zufuhr beeinträchtigt das Wachstum direkt."
-      ));
-    }
-
-    steps.push(t(
-      "<strong>Track your progress</strong> — take a photo of your hair parting every 4 weeks under the same lighting. Small improvements are often hard to notice day-to-day.",
-      "<strong>Verfolge Deinen Fortschritt</strong> — mache alle 4 Wochen ein Foto Deines Haarscheitels bei gleicher Beleuchtung. Kleine Verbesserungen sind im Alltag oft schwer zu erkennen."
-    ));
+    steps.push({
+      title: t("Track progress", "Fortschritt verfolgen"),
+      desc: t("Photo your hair parting every 4 weeks under same lighting.", "Alle 4 Wochen Foto des Scheitels bei gleicher Beleuchtung.")
+    });
 
     var html = '<ol class="routine-list">';
-    steps.forEach(function (text, i) {
+    steps.forEach(function (step, i) {
       html +=
         '<li class="routine-step">' +
-        '<span class="routine-num">' + (i + 1) + "</span>" +
-        "<span>" + text + "</span>" +
-        "</li>";
+        '<div class="routine-step-header">' +
+        '<span class="routine-num">' + (i + 1) + '</span>' +
+        '<span class="routine-step-title">' + step.title + '</span>' +
+        '</div>' +
+        '<p class="routine-step-desc">' + step.desc + '</p>' +
+        '</li>';
     });
-    html += "</ol>";
+    html += '</ol>';
 
     document.getElementById("routineContent").innerHTML = html;
   }
 
   /* ────────────────────────────────────────
-     G. PRODUCT RECOMMENDATION
+     F. PRODUCT RECOMMENDATION
      ──────────────────────────────────────── */
   function renderProduct(d) {
     var ironRisk = riskLevel(scoreIron(d));
@@ -650,73 +499,55 @@
     var breakage = d.breakage_vs_shedding || "";
     var reason = d.reason || "";
 
-    // Build reason text
-    var reasons = [];
+    // Build a specific, personalized reason paragraph
+    var reasonParts = [];
+
     if (pattern === "widening" || pattern === "receding") {
-      reasons.push(t("DHT-blocking support for pattern hair loss", "DHT-blockierende Unterstützung bei erblichem Haarausfall"));
+      reasonParts.push(t(
+        "Your hair loss pattern indicates androgenetic sensitivity. Hr² contains Saw Palmetto, a natural DHT blocker that helps protect your follicles from further miniaturization.",
+        "Dein Haarausfallmuster deutet auf androgenetische Empfindlichkeit hin. Hr² enthält Sägepalmenextrakt, einen natürlichen DHT-Blocker, der Deine Follikel vor weiterer Miniaturisierung schützt."
+      ));
     }
-    if (d.dieted === "yes") {
-      reasons.push(t("stress and nutrient recovery after dieting", "Stress- und Nährstofferholung nach Diät"));
-    }
+
     if (ironRisk !== "low") {
-      reasons.push(t("enhanced iron absorption", "verbesserte Eisenabsorption"));
+      reasonParts.push(t(
+        "Your profile suggests possible iron depletion — one of the most common reversible causes of hair loss. Hr² includes L-Lysine which enhances iron absorption by up to 300%.",
+        "Dein Profil deutet auf mögliche Eisenverarmung hin — eine der häufigsten reversiblen Ursachen für Haarausfall. Hr² enthält L-Lysin, das die Eisenabsorption um bis zu 300% steigert."
+      ));
     }
+
+    if (d.dieted === "yes") {
+      reasonParts.push(t(
+        "After calorie restriction, your body needs targeted nutrients to restart normal hair cycling. Ashwagandha and biotin in Hr² support stress recovery and keratin production.",
+        "Nach Kalorienrestriktion braucht Dein Körper gezielte Nährstoffe, um den normalen Haarzyklus wieder anzukurbeln. Ashwagandha und Biotin in Hr² unterstützen die Stresserholung und Keratinproduktion."
+      ));
+    }
+
     if (breakage === "breakage" || breakage === "both") {
-      reasons.push(t("keratin strengthening for breakage", "Keratinstärkung bei Haarbruch"));
+      reasonParts.push(t(
+        "Hair breakage points to weakened keratin structure. L-Cysteine in Hr² is a direct building block for hair keratin and strengthens the hair shaft from within.",
+        "Haarbruch deutet auf eine geschwächte Keratinstruktur hin. L-Cystein in Hr² ist ein direkter Baustein für Haar-Keratin und stärkt den Haarschaft von innen."
+      ));
     }
-    if (reasons.length === 0) {
-      reasons.push(t("comprehensive hair follicle support", "umfassende Haarfollikelunterstützung"));
+
+    if (reasonParts.length === 0) {
+      reasonParts.push(t(
+        "Based on your profile, Hr² provides comprehensive follicle support with 24 targeted ingredients — including AnaGain™ for growth signaling, biotin for keratin production, and a full vitamin complex for healthy hair cycling.",
+        "Basierend auf Deinem Profil bietet Hr² umfassende Follikelunterstützung mit 24 gezielten Inhaltsstoffen — darunter AnaGain™ für Wachstumssignale, Biotin für Keratinproduktion und einen vollständigen Vitaminkomplex für gesunden Haarzyklus."
+      ));
     }
 
-    var reasonText = t(
-      "Based on your profile, Hr² targets: " + reasons.join(", ") + ".",
-      "Basierend auf Deinem Profil zielt Hr² auf: " + reasons.join(", ") + "."
-    );
+    document.getElementById("productReason").innerHTML = reasonParts.join(" ");
 
-    document.getElementById("productReason").textContent = reasonText;
-
-    // Ingredients with highlighting logic
     var ingredients = [
-      {
-        name: "AnaGain™",
-        desc: t("stimulates hair growth signaling pathways", "stimuliert Haarwachstums-Signalwege"),
-        highlight: true
-      },
-      {
-        name: "Biotin",
-        desc: t("supports keratin production", "unterstützt Keratinproduktion"),
-        highlight: true
-      },
-      {
-        name: "Saw Palmetto",
-        desc: t("natural DHT inhibitor", "natürlicher DHT-Hemmer"),
-        highlight: pattern === "widening" || pattern === "receding"
-      },
-      {
-        name: "Ashwagandha",
-        desc: t("adaptogen for stress-related shedding", "Adaptogen bei stressbedingtem Haarausfall"),
-        highlight: d.dieted === "yes" || reason === "losing"
-      },
-      {
-        name: "L-Cysteine",
-        desc: t("building block for hair keratin", "Baustein für Haar-Keratin"),
-        highlight: breakage === "breakage" || breakage === "both"
-      },
-      {
-        name: "L-Lysine",
-        desc: t("enhances iron & zinc absorption", "verbessert Eisen- & Zinkabsorption"),
-        highlight: ironRisk !== "low"
-      },
-      {
-        name: t("Zinc & Selenium", "Zink & Selen"),
-        desc: t("essential trace minerals for follicle health", "essentielle Spurenelemente für Follikelgesundheit"),
-        highlight: d.diet === "vegan" || d.diet === "vegetarian"
-      },
-      {
-        name: t("Vitamin Complex (D3, B12, Folate)", "Vitaminkomplex (D3, B12, Folat)"),
-        desc: t("supports hair cycling and cell division", "unterstützt Haarzyklus und Zellteilung"),
-        highlight: riskLevel(scoreVitD(d)) !== "low" || riskLevel(scoreB12(d)) !== "low"
-      }
+      { name: "AnaGain™", desc: t("hair growth signaling", "Haarwachstums-Signalwege"), highlight: true },
+      { name: "Biotin", desc: t("keratin production", "Keratinproduktion"), highlight: true },
+      { name: "Saw Palmetto", desc: t("natural DHT inhibitor", "natürlicher DHT-Hemmer"), highlight: pattern === "widening" || pattern === "receding" },
+      { name: "Ashwagandha", desc: t("stress adaptogen", "Stress-Adaptogen"), highlight: d.dieted === "yes" || reason === "losing" },
+      { name: "L-Cysteine", desc: t("hair keratin builder", "Haar-Keratin-Baustein"), highlight: breakage === "breakage" || breakage === "both" },
+      { name: "L-Lysine", desc: t("iron & zinc absorption", "Eisen- & Zinkabsorption"), highlight: ironRisk !== "low" },
+      { name: t("Zinc & Selenium", "Zink & Selen"), desc: t("trace minerals", "Spurenelemente"), highlight: d.diet === "vegan" || d.diet === "vegetarian" },
+      { name: t("D3, B12, Folate", "D3, B12, Folat"), desc: t("hair cycling support", "Haarzyklus-Unterstützung"), highlight: riskLevel(scoreVitD(d)) !== "low" || riskLevel(scoreB12(d)) !== "low" }
     ];
 
     var html = "";
@@ -728,69 +559,5 @@
     });
 
     document.getElementById("productIngredients").innerHTML = html;
-  }
-
-  /* ────────────────────────────────────────
-     H. NEXT STEPS
-     ──────────────────────────────────────── */
-  function renderNextSteps(d) {
-    var items = [];
-    var ironRisk = riskLevel(scoreIron(d));
-    var vitdRisk = riskLevel(scoreVitD(d));
-    var b12Risk = riskLevel(scoreB12(d));
-
-    // Blood tests
-    var tests = [];
-    if (ironRisk !== "low") tests.push(t("Serum Ferritin", "Serum-Ferritin"));
-    if (vitdRisk !== "low") tests.push(t("25-OH Vitamin D", "25-OH Vitamin D"));
-    if (b12Risk !== "low") tests.push(t("Vitamin B12, TSH, Free T4", "Vitamin B12, TSH, freies T4"));
-
-    if (tests.length > 0) {
-      items.push({
-        icon: "info",
-        text: t(
-          "Schedule a blood test for: " + tests.join(", ") + ". Share the results with your healthcare provider.",
-          "Plane einen Bluttest für: " + tests.join(", ") + ". Teile die Ergebnisse mit Deinem Arzt."
-        )
-      });
-    }
-
-    if (d.pattern === "patchy") {
-      items.push({
-        icon: "warn",
-        text: t(
-          "Book an appointment with a dermatologist for clinical evaluation of patchy hair loss.",
-          "Vereinbare einen Termin bei einem Dermatologen zur klinischen Untersuchung des fleckigen Haarausfalls."
-        )
-      });
-    }
-
-    items.push({
-      icon: "info",
-      text: t(
-        "Start your Hr² routine today and stay consistent for at least 12 weeks. Hair growth cycles take time, so patience is key.",
-        "Starte Deine Hr² Routine heute und bleibe mindestens 12 Wochen konsistent. Haarwachstumszyklen brauchen Zeit, also sei geduldig."
-      )
-    });
-
-    items.push({
-      icon: "ok",
-      text: t(
-        "Take a baseline photo of your hair today, then repeat every 4 weeks to track your progress objectively.",
-        "Mache heute ein Baseline-Foto Deiner Haare, dann wiederhole alle 4 Wochen, um Deinen Fortschritt objektiv zu verfolgen."
-      )
-    });
-
-    if (d.sex === "female" && (d.cycles === "irregular" || d.postpartum === "yes")) {
-      items.push({
-        icon: "info",
-        text: t(
-          "Discuss your hormonal health with your provider — hormonal factors may be contributing to your hair loss and can be addressed alongside nutritional support.",
-          "Besprich Deine hormonelle Gesundheit mit Deinem Arzt — hormonelle Faktoren könnten zu Deinem Haarausfall beitragen und können neben der Nährstoffunterstützung behandelt werden."
-        )
-      });
-    }
-
-    document.getElementById("nextStepsContent").innerHTML = renderInsightList(items);
   }
 })();
