@@ -2115,16 +2115,42 @@ html {
 }
 
 @media (max-width: 720px) {
+  .pdp-hero-images {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .pdp-hero-images::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pdp-hero-image-grid {
+    display: contents;
+  }
+
   .pdp-hero-image-main {
+    flex: 0 0 100%;
+    min-width: 100%;
     padding: 32px 20px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .pdp-hero-image-main img {
     max-width: 240px;
   }
 
-  .pdp-hero-image-grid {
-    gap: 2px;
+  .pdp-hero-grid-item {
+    flex: 0 0 100%;
+    min-width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .pdp-hero-info {
