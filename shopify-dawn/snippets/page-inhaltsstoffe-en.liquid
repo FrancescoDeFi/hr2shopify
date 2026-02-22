@@ -43,6 +43,26 @@
   </div>
 </section>
 
+<!-- Category Filters -->
+<section class="inh-filters" aria-label="Category filters">
+  <div class="inh-filters-inner">
+    <button class="inh-filter-btn active" type="button" data-filter="all">All</button>
+    <button class="inh-filter-btn" type="button" data-filter="Naturstoffe">Botanicals</button>
+    <button class="inh-filter-btn" type="button" data-filter="Vitamine">Vitamins</button>
+    <button class="inh-filter-btn" type="button" data-filter="Mineralstoffe">Minerals</button>
+    <button class="inh-filter-btn" type="button" data-filter="Aminosäuren">Amino acids</button>
+    <button class="inh-filter-btn" type="button" data-filter="Sonstige Stoffe">Other substances</button>
+  </div>
+</section>
+
+<!-- Ingredient Gallery -->
+<section class="inh-gallery-section" aria-label="Ingredient list">
+  <div class="inh-gallery-inner">
+    <div class="inh-gallery" id="inh-gallery"></div>
+  </div>
+</section>
+
+<!-- Nutrition Facts -->
 <section class="inh-nutrition" aria-label="Nutrients and ingredients">
   <div class="nutrition-inner">
     <div class="nutrition-grid">
@@ -118,3 +138,55 @@
     </div>
   </div>
 </section>
+
+<!-- Drawer -->
+<div class="ingredient-backdrop" id="ingredient-backdrop" hidden></div>
+<aside class="ingredient-drawer" id="ingredient-drawer" aria-hidden="true" aria-label="Ingredient detail view">
+  <div class="ingredient-drawer-header">
+    <div class="ingredient-drawer-kicker" id="ingredient-drawer-kicker">BOTANICALS</div>
+    <button class="ingredient-drawer-close" type="button" id="ingredient-drawer-close" aria-label="Close">×</button>
+  </div>
+
+  <div class="ingredient-drawer-media" aria-hidden="true">
+    <img class="ingredient-drawer-media-icon" id="ingredient-drawer-image" src="{{ 'capsule.svg' | asset_url }}" alt="" loading="lazy" decoding="async">
+  </div>
+
+  <div class="ingredient-drawer-body">
+    <h2 class="ingredient-drawer-title" id="ingredient-drawer-title">Ingredient</h2>
+    <div class="ingredient-drawer-subtitle" id="ingredient-drawer-subtitle"></div>
+    <div class="ingredient-drawer-facts" id="ingredient-drawer-facts" hidden></div>
+    <p class="ingredient-drawer-description" id="ingredient-drawer-description"></p>
+    <ul class="ingredient-drawer-contains" id="ingredient-drawer-contains" hidden></ul>
+  </div>
+</aside>
+
+<script>
+  window.__LOCALE__ = "en";
+  window.__INGREDIENT_IMAGES__ = {
+    anagain:             "{{ 'Anagain-2.png' | asset_url }}",
+    sawpalmetto:         "{{ 'Saegepalmenextrakt.png' | asset_url }}",
+    pomegranate:         "{{ 'Granatapfelextrakt.png' | asset_url }}",
+    ashwagandha_extract: "{{ 'Ashwagandhaextrakt.png' | asset_url }}",
+    vitamin_c:           "{{ 'Vitamin-C.png' | asset_url }}",
+    vitamin_e:           "{{ 'Vitamin-E.png' | asset_url }}",
+    riboflavin:          "{{ 'Riboflavin.png' | asset_url }}",
+    niacin:              "{{ 'Niacin.png' | asset_url }}",
+    pantothenic_acid:    "{{ 'Pantothensaeure.png' | asset_url }}",
+    vitamin_b6:          "{{ 'Vitamin-B6.png' | asset_url }}",
+    folic_acid:          "{{ 'Folsaeure.png' | asset_url }}",
+    vitamin_a:           "{{ 'Vitamin-A.png' | asset_url }}",
+    beta_carotene:       "{{ 'Beta-Carotin.png' | asset_url }}",
+    vitamin_d:           "{{ 'Vitamin-D.png' | asset_url }}",
+    lcysteine:           "{{ 'L-Cysteine-2.png' | asset_url }}",
+    llysine_hcl:         "{{ 'L-Lysin-HCL.png' | asset_url }}",
+    zinc:                "{{ 'Zink-2.png' | asset_url }}",
+    boron:               "{{ 'Bor.png' | asset_url }}",
+    manganese:           "{{ 'Gemini_Generated_Image_5gi3xj5gi3xj5gi3.png' | asset_url }}",
+    copper:              "{{ 'Kupfer.png' | asset_url }}",
+    iodine:              "{{ 'Jod.png' | asset_url }}",
+    selenium:            "{{ 'Selen.png' | asset_url }}",
+    biotin:              "{{ 'Biotin-2.png' | asset_url }}",
+    sprouted_pea_seed:   "{{ 'Gekeimte-Erbsensamen.png' | asset_url }}"
+  };
+</script>
+<script src="{{ 'inhaltsstoffe.js' | asset_url }}" defer></script>

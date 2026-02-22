@@ -309,48 +309,50 @@
         </header>
 
         <div class="pdp-timeline-body">
-          <div class="pdp-timeline-track">
-            <div class="pdp-timeline-step">
-              <div class="pdp-timeline-dot"></div>
-              <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">{{ 'product_page.tl_month1_badge' | t }}</span>
-                <strong class="pdp-timeline-month">{{ 'product_page.tl_month1_title' | t }}</strong>
-                <p class="pdp-timeline-desc">{{ 'product_page.tl_month1_desc' | t }}</p>
+          <div class="pdp-timeline-left">
+            <div class="pdp-timeline-track">
+              <div class="pdp-timeline-step">
+                <div class="pdp-timeline-dot"></div>
+                <div class="pdp-timeline-content">
+                  <span class="pdp-timeline-badge">{{ 'product_page.tl_month1_badge' | t }}</span>
+                  <strong class="pdp-timeline-month">{{ 'product_page.tl_month1_title' | t }}</strong>
+                  <p class="pdp-timeline-desc">{{ 'product_page.tl_month1_desc' | t }}</p>
+                </div>
+              </div>
+
+              <div class="pdp-timeline-step">
+                <div class="pdp-timeline-dot"></div>
+                <div class="pdp-timeline-content">
+                  <span class="pdp-timeline-badge">{{ 'product_page.tl_month3_badge' | t }}</span>
+                  <strong class="pdp-timeline-month">{{ 'product_page.tl_month3_title' | t }}</strong>
+                  <p class="pdp-timeline-desc">{{ 'product_page.tl_month3_desc' | t }}</p>
+                </div>
+              </div>
+
+              <div class="pdp-timeline-step">
+                <div class="pdp-timeline-dot active"></div>
+                <div class="pdp-timeline-content">
+                  <span class="pdp-timeline-badge">{{ 'product_page.tl_month6_badge' | t }}</span>
+                  <strong class="pdp-timeline-month">{{ 'product_page.tl_month6_title' | t }}</strong>
+                  <p class="pdp-timeline-desc">{{ 'product_page.tl_month6_desc' | t }}</p>
+                </div>
               </div>
             </div>
 
-            <div class="pdp-timeline-step">
-              <div class="pdp-timeline-dot"></div>
-              <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">{{ 'product_page.tl_month3_badge' | t }}</span>
-                <strong class="pdp-timeline-month">{{ 'product_page.tl_month3_title' | t }}</strong>
-                <p class="pdp-timeline-desc">{{ 'product_page.tl_month3_desc' | t }}</p>
-              </div>
-            </div>
-
-            <div class="pdp-timeline-step">
-              <div class="pdp-timeline-dot active"></div>
-              <div class="pdp-timeline-content">
-                <span class="pdp-timeline-badge">{{ 'product_page.tl_month6_badge' | t }}</span>
-                <strong class="pdp-timeline-month">{{ 'product_page.tl_month6_title' | t }}</strong>
-                <p class="pdp-timeline-desc">{{ 'product_page.tl_month6_desc' | t }}</p>
+            <div class="pdp-timeline-howto">
+              <img class="pdp-timeline-howto-img" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
+              <div class="pdp-timeline-howto-copy">
+                <strong>{{ 'product_page.how_to_title' | t }}</strong>
+                <ul>
+                  <li>{{ 'product_page.how_to_line1' | t }}</li>
+                  <li>{{ 'product_page.how_to_line2' | t }}</li>
+                </ul>
               </div>
             </div>
           </div>
 
           <div class="pdp-timeline-media">
             <img class="pdp-timeline-media-single" src="{{ '36.png' | asset_url }}" alt="{{ 'product_page.lab_alt' | t }}" loading="lazy" decoding="async">
-          </div>
-        </div>
-
-        <div class="pdp-timeline-howto">
-          <img class="pdp-timeline-howto-img" src="{{ 'capsule3.png' | asset_url }}" alt="" loading="lazy" decoding="async">
-          <div class="pdp-timeline-howto-copy">
-            <strong>{{ 'product_page.how_to_title' | t }}</strong>
-            <ul>
-              <li>{{ 'product_page.how_to_line1' | t }}</li>
-              <li>{{ 'product_page.how_to_line2' | t }}</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -374,22 +376,22 @@
                 </defs>
                 <text>
                   <textPath id="pdp-text-top" href="#pdp-curve-top" startOffset="50%" text-anchor="middle">
-                    {{ 'sections.ingredients.items.anagain.curve_top' | t }}
+                    {{ 'sections.ingredients.items.pomegranate.curve_top' | t }}
                   </textPath>
                 </text>
                 <text>
                   <textPath id="pdp-text-bottom" href="#pdp-curve-bottom" startOffset="50%" text-anchor="middle">
-                    {{ 'sections.ingredients.items.anagain.curve_bottom' | t }}
+                    {{ 'sections.ingredients.items.pomegranate.curve_bottom' | t }}
                   </textPath>
                 </text>
               </svg>
-              <img class="pdp-ingredients-capsule" id="pdp-ingredients-capsule-img" src="{{ 'Anagai.jpeg' | asset_url }}" alt="" loading="lazy" decoding="async">
+              <img class="pdp-ingredients-capsule" id="pdp-ingredients-capsule-img" src="{{ 'Granatapfe.jpeg' | asset_url }}" alt="" loading="lazy" decoding="async">
             </div>
           </div>
 
           <div class="pdp-ingredients-right">
             <div class="pdp-ingredients-chips" role="tablist" aria-label="{{ 'sections.ingredients.aria.tabs' | t }}">
-              <button class="pdp-ingredient-chip active" type="button" role="tab" aria-selected="true"
+              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
                       data-ingredient="anagain"
                       data-description="{{ 'sections.ingredients.items.anagain.description' | t | escape }}"
                       data-curve-top="{{ 'sections.ingredients.items.anagain.curve_top' | t | escape }}"
@@ -407,7 +409,7 @@
                 <span class="pdp-chip-dot" aria-hidden="true"></span>
                 {{ 'sections.ingredients.items.sawpalmetto.name' | t }}
               </button>
-              <button class="pdp-ingredient-chip" type="button" role="tab" aria-selected="false"
+              <button class="pdp-ingredient-chip active" type="button" role="tab" aria-selected="true"
                       data-ingredient="pomegranate"
                       data-description="{{ 'sections.ingredients.items.pomegranate.description' | t | escape }}"
                       data-curve-top="{{ 'sections.ingredients.items.pomegranate.curve_top' | t | escape }}"
@@ -466,7 +468,7 @@
             <div class="pdp-ingredients-more">{{ 'sections.ingredients.more' | t }}</div>
 
             <p class="pdp-ingredient-description" id="pdp-ingredient-description">
-              {{ 'sections.ingredients.items.anagain.description' | t | replace: '&lt;sup&gt;', '<sup>' | replace: '&lt;/sup&gt;', '</sup>' }}
+              {{ 'sections.ingredients.items.pomegranate.description' | t | replace: '&lt;sup&gt;', '<sup>' | replace: '&lt;/sup&gt;', '</sup>' }}
             </p>
 
             <div class="pdp-ingredients-badges" role="list" aria-label="{{ 'product_page.quality_standards' | t }}">
