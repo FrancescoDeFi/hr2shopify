@@ -282,10 +282,12 @@ html {
 
 .hero {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   min-height: calc(100svh - 76px);
   height: auto;
-  overflow: visible;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 
 .hero-text {
@@ -455,20 +457,21 @@ html {
   color: rgba(12, 12, 12, 0.65);
 }
 
-.hero-image {
-  background: #3c0c1c;
+.hero-video {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 40px 80px;
+  overflow: hidden;
+  background: #3c0c1c;
+  min-height: 100%;
 }
 
-.hero-image img {
+.hero-video video {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 540px;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  transform: scale(1.25);
 }
 
 .ribbon {
@@ -5727,8 +5730,8 @@ body.pdp-notify-open {
     flex: 0 0 auto;
   }
 
-  .hero-image {
-    padding: 40px 24px 60px;
+  .hero-video {
+    aspect-ratio: 3 / 4;
   }
 
   .hero-clinicians-proof {
@@ -6130,8 +6133,8 @@ body.pdp-notify-open {
 }
 
 @media (max-width: 720px) {
-  .hero-image {
-    display: none;
+  .hero-video {
+    aspect-ratio: 4 / 5;
   }
 
   .clinical-inner {
@@ -8377,6 +8380,12 @@ body.pdp-notify-open {
   border-top: 1px solid rgba(12, 12, 12, 0.10);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
   padding: 12px 28px;
+  transform: translateY(100%);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pdp-sticky-bar.is-visible {
+  transform: translateY(0);
 }
 
 .pdp-sticky-bar-inner {
@@ -8413,6 +8422,7 @@ body.pdp-notify-open {
   justify-content: center;
   padding: 12px 44px;
   border-radius: 999px;
+  border: none;
   background: #3c0c1c;
   color: #ffffff;
   font-weight: 800;
@@ -8420,6 +8430,7 @@ body.pdp-notify-open {
   text-decoration: none;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  cursor: pointer;
   transition: transform 140ms ease, filter 140ms ease;
 }
 
@@ -8482,6 +8493,17 @@ body:has(.pdp-sticky-bar) footer.footer {
   .pdp-sticky-bar-cta {
     padding: 10px 28px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdp-sticky-bar-product span {
+    display: none;
+  }
+
+  .pdp-sticky-bar-cta {
+    padding: 10px 20px;
+    font-size: 13px;
   }
 }
 

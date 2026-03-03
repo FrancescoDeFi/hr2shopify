@@ -737,6 +737,17 @@
       </div>
     </section>
 
+    <!-- Sticky Bottom Bar -->
+    <div class="pdp-sticky-bar" id="pdp-sticky-bar" data-pdp-sticky-bar>
+      <div class="pdp-sticky-bar-inner">
+        <div class="pdp-sticky-bar-product">
+          <img src="{{ 'bottlenew2.png' | asset_url }}" alt="Hr²" loading="lazy">
+          <span>{{ product.title }}</span>
+        </div>
+        <button class="pdp-sticky-bar-cta" type="button" data-pdp-sticky-cta>{{ notify_cta_text }}</button>
+      </div>
+    </div>
+
 {% schema %}
 {
   "name": "Product main"

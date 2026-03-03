@@ -150,12 +150,10 @@
     {% endif %}
   </div>
 
-  <div class="hero-image">
-    {% if section.settings.hero_image != blank %}
-      <img src="{{ section.settings.hero_image | image_url: width: 800 }}" alt="{{ hero_image_alt }}" loading="eager">
-    {% else %}
-      <img src="{{ 'heroimage.png' | asset_url }}" alt="{{ hero_image_alt }}" loading="eager">
-    {% endif %}
+  <div class="hero-video">
+    <video autoplay loop muted playsinline preload="auto">
+      <source src="{{ 'herovideo.webm' | asset_url }}" type="video/webm">
+    </video>
   </div>
 </section>
 

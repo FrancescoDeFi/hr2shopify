@@ -336,6 +336,54 @@
   }
 
   /**
+   * PDP Sticky Bottom Bar
+   * Shows a fixed buy/notify bar when the user scrolls past the main CTA
+   */
+  function initPdpStickyBar() {
+    var stickyBar = document.querySelector('[data-pdp-sticky-bar]');
+    var heroCta = document.getElementById('order-cta');
+    if (!stickyBar || !heroCta) return;
+
+    var isVisible = false;
+    var ticking = false;
+
+    function update() {
+      var ctaRect = heroCta.getBoundingClientRect();
+      var shouldShow = ctaRect.bottom < 0;
+
+      if (shouldShow !== isVisible) {
+        isVisible = shouldShow;
+        if (shouldShow) {
+          stickyBar.classList.add('is-visible');
+        } else {
+          stickyBar.classList.remove('is-visible');
+        }
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    update();
+
+    // CTA click: open notify modal (sold-out) or submit the product form
+    var stickyCta = stickyBar.querySelector('[data-pdp-sticky-cta]');
+    if (stickyCta) {
+      stickyCta.addEventListener('click', function() {
+        var notifyOpen = document.querySelector('[data-pdp-notify-open]');
+        if (notifyOpen) {
+          notifyOpen.click();
+        }
+      });
+    }
+  }
+
+  /**
    * Initialize all theme functionality
    */
   function init() {
@@ -358,6 +406,7 @@
     initSmoothScroll();
     initLazyLoad();
     initLanguageSwitcher();
+    initPdpStickyBar();
   }
 
   // Run init when DOM is ready
