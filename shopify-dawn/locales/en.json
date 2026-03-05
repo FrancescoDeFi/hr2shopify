@@ -69,6 +69,7 @@
       "details": "Account details",
       "default_address": "Default address",
       "manage_addresses": "Manage addresses",
+      "manage_subscription": "Manage subscription",
       "orders": "Orders",
       "no_orders": "You haven't placed any orders yet.",
       "logout": "Log out"
@@ -433,7 +434,8 @@
       "faq": "Help Center (FAQ)",
       "contact": "Contact",
       "shipping": "Shipping & Delivery",
-      "returns": "Returns"
+      "returns": "Returns",
+      "manage_subscription": "Manage subscription"
     }
   },
   "header": {

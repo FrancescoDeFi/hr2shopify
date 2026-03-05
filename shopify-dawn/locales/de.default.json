@@ -69,6 +69,7 @@
       "details": "Kontoinformationen",
       "default_address": "Standardadresse",
       "manage_addresses": "Adressen verwalten",
+      "manage_subscription": "Abo verwalten",
       "orders": "Bestellungen",
       "no_orders": "Du hast noch keine Bestellungen aufgegeben.",
       "logout": "Abmelden"
@@ -433,7 +434,8 @@
       "faq": "Hilfecenter (FAQ)",
       "contact": "Kontakt",
       "shipping": "Versand & Lieferung",
-      "returns": "Rückgabe"
+      "returns": "Rückgabe",
+      "manage_subscription": "Abo verwalten"
     }
   },
   "header": {
