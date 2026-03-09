@@ -1893,6 +1893,40 @@ html {
   overflow-y: hidden;
 }
 
+.pdp-hero-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.pdp-trustpilot-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+
+.pdp-trustpilot-logo {
+  flex-shrink: 0;
+}
+
+.pdp-trustpilot-rating {
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0c0c0c;
+}
+
+.pdp-trustpilot-name {
+  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(12, 12, 12, 0.55);
+}
+
 .pdp-hero-title {
   margin: 0;
   padding-top: 0;
@@ -8402,16 +8436,30 @@ body.pdp-notify-open {
 }
 
 .pdp-sticky-bar-product img {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
-.pdp-sticky-bar-product span {
-  font-size: 15px;
-  font-weight: 600;
+.pdp-sticky-bar-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.pdp-sticky-bar-name {
+  font-size: 18px;
+  font-weight: 800;
   color: #0c0c0c;
+  letter-spacing: -0.01em;
+}
+
+.pdp-sticky-bar-sub {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(12, 12, 12, 0.5);
+  letter-spacing: 0.06em;
 }
 
 .pdp-sticky-bar-cta {
@@ -8484,8 +8532,17 @@ body:has(.pdp-sticky-bar) footer.footer {
     padding: 10px 16px;
   }
 
-  .pdp-sticky-bar-product span {
-    font-size: 13px;
+  .pdp-sticky-bar-product img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .pdp-sticky-bar-name {
+    font-size: 15px;
+  }
+
+  .pdp-sticky-bar-sub {
+    font-size: 11px;
   }
 
   .pdp-sticky-bar-cta {
@@ -8495,7 +8552,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 }
 
 @media (max-width: 480px) {
-  .pdp-sticky-bar-product span {
+  .pdp-sticky-bar-text {
     display: none;
   }
 
