@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
+{%- assign request_path = request.path | downcase -%}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -32,6 +33,14 @@
   {{ 'theme.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
+
+  {%- if request_path == '/qr' or request_path == '/qr/' -%}
+    <meta name="robots" content="noindex">
+    <meta http-equiv="refresh" content="0;url={{ routes.root_url }}">
+    <script>
+      window.location.replace({{ routes.root_url | json }});
+    </script>
+  {%- endif -%}
 
   {% render 'supabase-client' %}
 
