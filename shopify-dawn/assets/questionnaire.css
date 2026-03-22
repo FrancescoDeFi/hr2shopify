@@ -3,7 +3,7 @@
   position: relative;
   min-height: 100vh;
   background: #fff;
-  font-family: "AG1 Sans", sans-serif;
+  font-family: "Aster Sans", sans-serif;
   overflow: hidden;
 }
 
@@ -109,7 +109,7 @@ body.quiz-active footer {
 }
 
 .quiz-intro h1 {
-  font-family: "AG1 Serif", serif;
+  font-family: "Aster Serif", serif;
   font-size: 2rem;
   font-weight: 700;
   color: #0c0c0c;
@@ -138,7 +138,7 @@ body.quiz-active footer {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
-  font-family: "AG1 Sans", sans-serif;
+  font-family: "Aster Sans", sans-serif;
   width: 100%;
   max-width: 380px;
   justify-content: center;
@@ -186,7 +186,7 @@ body.quiz-active footer {
 }
 
 .quiz-question h2 {
-  font-family: "AG1 Serif", serif;
+  font-family: "Aster Serif", serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: #0c0c0c;
@@ -300,7 +300,7 @@ body.quiz-active footer {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, opacity 0.2s;
-  font-family: "AG1 Sans", sans-serif;
+  font-family: "Aster Sans", sans-serif;
   margin-top: 28px;
   width: 100%;
   max-width: 380px;
@@ -410,7 +410,7 @@ body.quiz-active footer {
   border: 1.5px solid #e0e0e0;
   border-radius: 8px;
   font-size: 1rem;
-  font-family: "AG1 Sans", sans-serif;
+  font-family: "Aster Sans", sans-serif;
   color: #0c0c0c;
   transition: border-color 0.2s;
   box-sizing: border-box;
@@ -523,7 +523,7 @@ body.quiz-active footer {
   padding: 8px 16px;
   margin-top: 8px;
   text-decoration: underline;
-  font-family: "AG1 Sans", sans-serif;
+  font-family: "Aster Sans", sans-serif;
 }
 
 .quiz-skip-btn:hover {
@@ -556,7 +556,7 @@ body.quiz-active footer {
 }
 
 .quiz-email-card h2 {
-  font-family: "AG1 Serif", serif;
+  font-family: "Aster Serif", serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: #0c0c0c;
@@ -586,7 +586,7 @@ body.quiz-active footer {
 }
 
 .quiz-review-screen h2 {
-  font-family: "AG1 Serif", serif;
+  font-family: "Aster Serif", serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: #0c0c0c;

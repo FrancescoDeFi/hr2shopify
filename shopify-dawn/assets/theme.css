@@ -49,7 +49,7 @@ body {
 
 body {
   margin: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, -apple-system, sans-serif;
   color: var(--text);
   background: #ffffff;
   font-size: 17px;
@@ -80,7 +80,7 @@ html {
 }
 
 .logo-text {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 64px;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -297,7 +297,7 @@ html {
 }
 
 .hero-text h1 {
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(40px, 4vw, 54px);
   line-height: 1.05;
   margin: 0 0 14px;
@@ -364,7 +364,7 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(20px, 1.6vw, 28px);
   line-height: 1;
   letter-spacing: -0.01em;
@@ -384,7 +384,7 @@ html {
 }
 
 .hero-clinicians-med {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(14px, 1.1vw, 18px);
   line-height: 1;
   color: rgba(16, 32, 38, 0.82);
@@ -516,7 +516,7 @@ html {
 
 .statement-banner p {
   margin: 0;
-  font-family: "AG1 Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Aster Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 1.3;
@@ -540,7 +540,7 @@ html {
 
 .hr2-supplement-header h2 {
   margin: 0 0 10px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   letter-spacing: -0.02em;
   font-size: 40px;
@@ -625,7 +625,7 @@ html {
 }
 
 .hr2-supplement-name {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   letter-spacing: -0.02em;
   font-size: 22px;
@@ -670,7 +670,7 @@ html {
 
 .hr2-supplement-panel-copy h3 {
   margin: 0 0 8px;
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: 28px;
   line-height: 1.08;
   font-weight: 400;
@@ -786,7 +786,7 @@ html {
 .ingredients-title {
   margin: 0 0 44px;
   text-align: center;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 0.02em;
@@ -920,7 +920,7 @@ html {
 }
 
 .ingredients-curved-text text {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 19px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -972,7 +972,7 @@ html {
 
 .nutrition-heading {
   margin: 0 0 18px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   font-size: 44px;
   letter-spacing: -0.02em;
@@ -1124,7 +1124,7 @@ html {
 .ingredients-page-title {
   margin: 0 0 18px;
   /* Match index hero headline styling */
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(34px, 4.5vw, 52px);
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -1182,7 +1182,7 @@ html {
   position: absolute;
   top: -10px;
   left: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: rgba(16, 32, 38, 0.8);
@@ -1196,7 +1196,7 @@ html {
 
 .ingredient-name {
   margin-top: 14px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 22px;
   line-height: 1.15;
   font-weight: 600;
@@ -1256,7 +1256,7 @@ html {
 }
 
 .ingredient-drawer-kicker {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 14px;
   letter-spacing: 0.12em;
   font-weight: 700;
@@ -1309,7 +1309,7 @@ html {
 
 .ingredient-drawer-title {
   margin: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 40px;
   line-height: 1.06;
   letter-spacing: -0.02em;
@@ -1561,7 +1561,7 @@ html {
 
 .product-title {
   margin: 0 0 10px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 44px;
   line-height: 1.04;
   letter-spacing: -0.02em;
@@ -1925,14 +1925,14 @@ html {
 }
 
 .pdp-trustpilot-rating {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: #0c0c0c;
 }
 
 .pdp-trustpilot-name {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 13px;
   font-weight: 500;
   color: rgba(12, 12, 12, 0.55);
@@ -1941,7 +1941,7 @@ html {
 .pdp-hero-title {
   margin: 0;
   padding-top: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(48px, 5vw, 68px);
   line-height: 0.95;
   font-weight: 400;
@@ -1951,7 +1951,7 @@ html {
 
 .pdp-hero-subtitle {
   margin: 8px 0 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(18px, 1.6vw, 24px);
   font-weight: 400;
   color: rgba(12, 12, 12, 0.62);
@@ -2199,7 +2199,7 @@ body.pdp-notify-open {
 
 .pdp-notify-modal__title {
   margin: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(25px, 3.6vw, 32px);
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -2224,7 +2224,7 @@ body.pdp-notify-open {
   border-radius: 10px;
   padding: 13px 14px;
   font-size: 15px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
 }
 
 .pdp-notify-form__input:focus {
@@ -2238,7 +2238,7 @@ body.pdp-notify-open {
   background: #3c0c1c;
   color: #ffffff;
   padding: 13px 18px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.01em;
@@ -2655,7 +2655,7 @@ body.pdp-notify-open {
 
 .product-clinicians-title h3 {
   margin: 0;
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: 44px;
   line-height: 1;
   letter-spacing: -0.01em;
@@ -2887,7 +2887,7 @@ body.pdp-notify-open {
 
 .order-title {
   margin: 10px 0 8px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 50px;
   line-height: 0.95;
   letter-spacing: -0.05em;
@@ -3322,7 +3322,7 @@ body.pdp-notify-open {
 
 .product-results-copy h2 {
   margin: 0 0 16px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(34px, 4vw, 52px);
   line-height: 1.04;
   letter-spacing: -0.03em;
@@ -3880,7 +3880,7 @@ body.pdp-notify-open {
 }
 
 .routine-header h2 {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 48px;
   font-weight: 600;
   margin: 0 0 20px;
@@ -4070,12 +4070,12 @@ body.pdp-notify-open {
   flex-direction: column;
   gap: 14px;
   background: #3c0c1c;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
 }
 
 .offer-product-title {
   margin: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(40px, 4vw, 56px);
   line-height: 1;
   font-weight: 900;
@@ -4093,7 +4093,7 @@ body.pdp-notify-open {
   border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 999px;
   padding: 6px 12px 7px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 20px;
   line-height: 1;
   font-weight: 500;
@@ -4107,7 +4107,7 @@ body.pdp-notify-open {
 
 .offer-product-top h2 {
   margin: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(34px, 3.3vw, 46px);
   line-height: 0.98;
   font-weight: 500;
@@ -4128,7 +4128,7 @@ body.pdp-notify-open {
 }
 
 .offer-rank-number {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(42px, 3.1vw, 54px);
   line-height: 0.88;
   font-weight: 600;
@@ -4187,7 +4187,7 @@ body.pdp-notify-open {
 
 .offer-product-price {
   margin: -4px 0 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(48px, 3.3vw, 62px);
   line-height: 0.95;
   font-weight: 400;
@@ -4212,7 +4212,7 @@ body.pdp-notify-open {
   background: #ffffff;
   color: #3c0c1c;
   text-decoration: none;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(17px, 1.5vw, 22px);
   font-weight: 800;
   letter-spacing: 0.01em;
@@ -4315,7 +4315,7 @@ body.pdp-notify-open {
 }
 
 .offer-plan-name {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   font-size: clamp(13px, 1.1vw, 16px);
   letter-spacing: 0.02em;
@@ -4350,7 +4350,7 @@ body.pdp-notify-open {
 }
 
 .offer-plan-price-new {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   font-size: clamp(18px, 1.6vw, 24px);
   letter-spacing: -0.02em;
@@ -4385,7 +4385,7 @@ body.pdp-notify-open {
   border: 0;
   background: transparent;
   color: #ffffff;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   text-align: left;
   cursor: pointer;
 }
@@ -4453,7 +4453,7 @@ body.pdp-notify-open {
 
 .offer-right h3 {
   margin: 0;
-  font-family: "AG1 Serif", serif;
+  font-family: "Aster Serif", serif;
   font-size: 44px;
   font-weight: 400;
 }
@@ -4611,7 +4611,7 @@ body.pdp-notify-open {
 
 .testing-title {
   margin: 0 0 18px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 58px;
   line-height: 1.04;
   letter-spacing: -0.02em;
@@ -4708,7 +4708,7 @@ body.pdp-notify-open {
   background: #ffffff;
   color: #0b0b0b;
   text-decoration: none;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(22px, 1.8vw, 28px);
   letter-spacing: -0.01em;
@@ -4720,7 +4720,7 @@ body.pdp-notify-open {
 .comparison-note {
   margin: 10px 0 0;
   color: #ffffff;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(12px, 1vw, 16px);
   font-weight: 700;
   letter-spacing: -0.005em;
@@ -4779,7 +4779,7 @@ body.pdp-notify-open {
 }
 
 .ct-header-label {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(18px, 1.6vw, 24px);
   font-weight: 800;
   color: #111111;
@@ -4795,7 +4795,7 @@ body.pdp-notify-open {
 }
 
 .ct-feature {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(15px, 1.3vw, 19px);
   font-weight: 600;
   color: #111111;
@@ -4829,7 +4829,7 @@ body.pdp-notify-open {
 }
 
 .ct-value-text {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 22px;
   font-weight: 800;
   color: #111111;
@@ -4852,7 +4852,7 @@ body.pdp-notify-open {
 
 .clinical-title {
   margin: 0 0 18px;
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: 56px;
   line-height: 1.05;
   font-weight: 500;
@@ -4937,7 +4937,7 @@ body.pdp-notify-open {
 }
 
 .stat-value {
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: 62px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -5027,7 +5027,7 @@ body.pdp-notify-open {
 
 .causes-header h2 {
   margin: 0 0 14px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 0.01em;
@@ -5069,7 +5069,7 @@ body.pdp-notify-open {
   background: #ffffff;
   border: none;
   cursor: pointer;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
 }
 
 .cause-btn:focus-visible {
@@ -5207,7 +5207,7 @@ body.pdp-notify-open {
 
 .testi-name {
   margin: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #3c0c1c;
@@ -5216,7 +5216,7 @@ body.pdp-notify-open {
 
 .testi-quote {
   margin: 0;
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(24px, 2.8vw, 38px);
   font-weight: 400;
   line-height: 1.25;
@@ -5360,7 +5360,7 @@ body.pdp-notify-open {
 
 .faq-left h2 {
   margin: 0 0 16px;
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(32px, 3.2vw, 44px);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -5403,7 +5403,7 @@ body.pdp-notify-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.35;
@@ -5546,7 +5546,7 @@ body.pdp-notify-open {
 
 .footer-col h5 {
   margin: 0 0 12px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   text-transform: none;
   font-size: 16px;
   letter-spacing: 0.01em;
@@ -6595,7 +6595,7 @@ body.pdp-notify-open {
 }
 
 .legal-title {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   letter-spacing: -0.02em;
   font-size: clamp(34px, 4.2vw, 54px);
@@ -6618,7 +6618,7 @@ body.pdp-notify-open {
 }
 
 .legal-card h2 {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   letter-spacing: -0.01em;
   font-size: 22px;
@@ -6945,7 +6945,7 @@ body.pdp-notify-open {
 }
 
 .forschung-hero-lead {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(22px, 2.5vw, 32px);
   line-height: 1.4;
   letter-spacing: -0.01em;
@@ -6958,7 +6958,7 @@ body.pdp-notify-open {
 }
 
 .forschung-hero-kicker {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   color: #1f3f26;
   margin: 0 0 10px;
@@ -7006,7 +7006,7 @@ body.pdp-notify-open {
 
 .forschung-results-title {
   margin: 0;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(36px, 3.4vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -7048,7 +7048,7 @@ body.pdp-notify-open {
 }
 
 .forschung-results-right-title {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 650;
   color: rgba(12, 12, 12, 0.92);
   letter-spacing: -0.01em;
@@ -7066,7 +7066,7 @@ body.pdp-notify-open {
 }
 
 .forschung-figure-label {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   letter-spacing: 0.06em;
   font-size: 14px;
@@ -7122,7 +7122,7 @@ body.pdp-notify-open {
 }
 
 .forschung-results-panel-kicker {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 900;
   letter-spacing: 0.12em;
   font-size: 11px;
@@ -7226,7 +7226,7 @@ body.pdp-notify-open {
 }
 
 .forschung-num {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 54px;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -7235,7 +7235,7 @@ body.pdp-notify-open {
 
 .forschung-title {
   /* Match index hero headline sizing */
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-weight: 400;
   font-size: clamp(34px, 4vw, 52px);
   line-height: 1.05;
@@ -7318,7 +7318,7 @@ body.pdp-notify-open {
 .forschung-block h3,
 .forschung-one h3,
 .forschung-testing h3 {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 34px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -7561,7 +7561,7 @@ body.pdp-notify-open {
 }
 
 .pdp-timeline-header h2 {
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(34px, 3.8vw, 54px);
   line-height: 1.08;
   font-weight: 400;
@@ -7653,7 +7653,7 @@ body.pdp-notify-open {
   border-radius: 999px;
   background: #3c0c1c;
   color: #ffffff;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -7664,7 +7664,7 @@ body.pdp-notify-open {
 
 .pdp-timeline-month {
   display: block;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(18px, 1.6vw, 22px);
   font-weight: 800;
   color: #0c0c0c;
@@ -7755,7 +7755,7 @@ body.pdp-notify-open {
 }
 
 .pdp-ingredients-top h2 {
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(30px, 3.2vw, 48px);
   line-height: 1.08;
   font-weight: 400;
@@ -7797,7 +7797,7 @@ body.pdp-notify-open {
 }
 
 .pdp-ingredients-curved-text text {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 19px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -7834,7 +7834,7 @@ body.pdp-notify-open {
   border-radius: 8px;
   padding: 14px 16px;
   text-align: left;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -7966,7 +7966,7 @@ body.pdp-notify-open {
   background: #ffffff;
   color: #0b0b0b;
   text-decoration: none;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(18px, 1.6vw, 24px);
   letter-spacing: -0.01em;
@@ -7984,7 +7984,7 @@ body.pdp-notify-open {
 .pdp-compare-price {
   margin: 12px 0 0;
   color: #ffffff;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(13px, 1vw, 16px);
   font-weight: 700;
   letter-spacing: -0.005em;
@@ -8001,7 +8001,7 @@ body.pdp-notify-open {
 }
 
 .pdp-compare-right h2 {
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(26px, 2.8vw, 38px);
   line-height: 1.08;
   font-weight: 400;
@@ -8085,7 +8085,7 @@ body.pdp-notify-open {
 
 .pdp-delivery p {
   margin: 0;
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(22px, 2.4vw, 34px);
   font-weight: 400;
   color: #3c0c1c;
@@ -8259,7 +8259,7 @@ body.pdp-notify-open {
 }
 
 .pdp-proven-inner h2 {
-  font-family: 'AG1 Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Aster Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: clamp(28px, 3vw, 42px);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -8293,7 +8293,7 @@ body.pdp-notify-open {
 }
 
 .pdp-proven-card-title {
-  font-family: 'AG1 Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Aster Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 600;
   line-height: 1.3;
@@ -8301,7 +8301,7 @@ body.pdp-notify-open {
 }
 
 .pdp-proven-card-desc {
-  font-family: 'AG1 Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Aster Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: 1.55;
@@ -8342,7 +8342,7 @@ body.pdp-notify-open {
 }
 
 .pdp-faq-inner h2 {
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(30px, 3.2vw, 46px);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -8373,7 +8373,7 @@ body.pdp-notify-open {
   background: transparent;
   border: 0;
   cursor: pointer;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #0c0c0c;
@@ -8593,7 +8593,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 }
 
 .customer-page-title {
-  font-family: "AG1 Serif", Georgia, serif;
+  font-family: "Aster Serif", Georgia, serif;
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 32px;
@@ -8620,7 +8620,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 
 .account-details h2,
 .account-orders h2 {
-  font-family: "AG1 Serif", Georgia, serif;
+  font-family: "Aster Serif", Georgia, serif;
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 16px;
@@ -8817,7 +8817,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 }
 
 .cart-page-title {
-  font-family: "AG1 Serif", Georgia, serif;
+  font-family: "Aster Serif", Georgia, serif;
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 32px;
@@ -8935,7 +8935,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 }
 
 .cart-empty h2 {
-  font-family: "AG1 Serif", Georgia, serif;
+  font-family: "Aster Serif", Georgia, serif;
   font-size: 24px;
   margin-bottom: 16px;
 }
@@ -9156,7 +9156,7 @@ body.mobile-nav-open {
 }
 
 .page-404 h1 {
-  font-family: "AG1 Serif", Georgia, serif;
+  font-family: "Aster Serif", Georgia, serif;
   font-size: 48px;
   margin-bottom: 16px;
 }
@@ -9175,7 +9175,7 @@ body.mobile-nav-open {
 }
 
 .search-page h1 {
-  font-family: "AG1 Serif", Georgia, serif;
+  font-family: "Aster Serif", Georgia, serif;
   font-size: 32px;
   margin-bottom: 24px;
 }
@@ -9253,7 +9253,7 @@ body.mobile-nav-open {
 
 .inh-hero-title {
   margin: 0 0 20px;
-  font-family: "AG1 Serif", "Times New Roman", serif;
+  font-family: "Aster Serif", "Times New Roman", serif;
   font-size: clamp(34px, 4.5vw, 56px);
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -9290,7 +9290,7 @@ body.mobile-nav-open {
 
 .inh-hero-ring-text {
   fill: #3c0c1c;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 13.5px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -9326,7 +9326,7 @@ body.mobile-nav-open {
 
 .inh-stat-number {
   display: block;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 40px;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -9366,7 +9366,7 @@ body.mobile-nav-open {
   background: #ffffff;
   padding: 9px 20px;
   border-radius: 999px;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: rgba(12, 12, 12, 0.75);
@@ -9449,7 +9449,7 @@ body.mobile-nav-open {
   top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -9481,7 +9481,7 @@ body.mobile-nav-open {
 }
 
 .inh-card-name {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -9709,7 +9709,7 @@ body.mobile-nav-open {
 
 .comparison-table-title {
   margin: 0;
-  font-family: "Inter", "AG1 Sans", system-ui, sans-serif;
+  font-family: "Inter", "Aster Sans", system-ui, sans-serif;
   font-size: clamp(36px, 2.8vw, 48px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -9738,7 +9738,7 @@ body.mobile-nav-open {
 }
 
 .comparison-table-feature {
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(16px, 1.3vw, 20px);
   font-weight: 700;
   color: #111111;
@@ -9755,7 +9755,7 @@ body.mobile-nav-open {
 
 .comparison-table-col {
   text-align: center;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -9765,7 +9765,7 @@ body.mobile-nav-open {
 
 .comparison-table-value {
   text-align: center;
-  font-family: "AG1 Sans", "Inter", system-ui, sans-serif;
+  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
   font-size: clamp(22px, 1.8vw, 30px);
   font-weight: 800;
   color: #111111;
