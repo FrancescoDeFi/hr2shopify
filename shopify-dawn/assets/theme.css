@@ -49,7 +49,7 @@ body {
 
 body {
   margin: 0;
-  font-family: "Aster Sans", "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Inter", "Inter", system-ui, -apple-system, sans-serif;
   color: var(--text);
   background: #ffffff;
   font-size: 17px;
@@ -80,9 +80,9 @@ html {
 }
 
 .logo-text {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 64px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: -0.04em;
   color: #111111;
   line-height: 1;
@@ -150,7 +150,7 @@ html {
   background: #ffffff;
   color: #121212;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1;
   text-transform: uppercase;
@@ -297,7 +297,7 @@ html {
 }
 
 .hero-text h1 {
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(40px, 4vw, 54px);
   line-height: 1.05;
   margin: 0 0 14px;
@@ -364,7 +364,7 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(20px, 1.6vw, 28px);
   line-height: 1;
   letter-spacing: -0.01em;
@@ -384,7 +384,7 @@ html {
 }
 
 .hero-clinicians-med {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(14px, 1.1vw, 18px);
   line-height: 1;
   color: rgba(16, 32, 38, 0.82);
@@ -432,7 +432,7 @@ html {
   text-decoration: underline;
   text-underline-offset: 4px;
   font-size: clamp(16px, 1.25vw, 22px);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .hero-benefit {
@@ -452,7 +452,7 @@ html {
   font-size: 12px;
   line-height: 1.2;
   letter-spacing: 0.08em;
-  font-weight: 700;
+  font-weight: 400;
   color: rgba(12, 12, 12, 0.65);
 }
 
@@ -483,7 +483,7 @@ html {
   padding: 12px 30px;
   font-size: 15px;
   letter-spacing: 0.14em;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .statement-banner {
@@ -516,7 +516,7 @@ html {
 
 .statement-banner p {
   margin: 0;
-  font-family: "Aster Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 1.3;
@@ -540,8 +540,8 @@ html {
 
 .hr2-supplement-header h2 {
   margin: 0 0 10px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   letter-spacing: -0.02em;
   font-size: 40px;
 }
@@ -577,7 +577,7 @@ html {
   padding: 7px 9px;
   border-radius: 999px;
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border: 1px solid rgba(12, 12, 12, 0.10);
@@ -625,8 +625,8 @@ html {
 }
 
 .hr2-supplement-name {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   letter-spacing: -0.02em;
   font-size: 22px;
 }
@@ -639,12 +639,12 @@ html {
 }
 
 .hr2-supplement-price-now {
-  font-weight: 900;
+  font-weight: 400;
   color: rgba(12, 12, 12, 0.92);
 }
 
 .hr2-supplement-price-sub {
-  font-weight: 700;
+  font-weight: 400;
   font-size: 14px;
 }
 
@@ -670,7 +670,7 @@ html {
 
 .hr2-supplement-panel-copy h3 {
   margin: 0 0 8px;
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: 28px;
   line-height: 1.08;
   font-weight: 400;
@@ -691,7 +691,7 @@ html {
   gap: 8px;
   color: #3c0c1c;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 
@@ -786,9 +786,9 @@ html {
 .ingredients-title {
   margin: 0 0 44px;
   text-align: center;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.02em;
   font-size: 54px;
   line-height: 1.06;
@@ -920,9 +920,9 @@ html {
 }
 
 .ingredients-curved-text text {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 19px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.06em;
   fill: #0c0c0c;
   text-transform: uppercase;
@@ -972,8 +972,8 @@ html {
 
 .nutrition-heading {
   margin: 0 0 18px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   font-size: 44px;
   letter-spacing: -0.02em;
   color: #102026;
@@ -1027,7 +1027,7 @@ html {
   border: 0;
   background: transparent;
   color: rgba(16, 32, 38, 0.92);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 16px;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -1049,7 +1049,7 @@ html {
 .nutrition-table thead th {
   text-align: left;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 400;
   padding: 14px 8px 12px;
   border-bottom: 1px solid rgba(16, 32, 38, 0.22);
   color: rgba(16, 32, 38, 0.88);
@@ -1124,7 +1124,7 @@ html {
 .ingredients-page-title {
   margin: 0 0 18px;
   /* Match index hero headline styling */
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(34px, 4.5vw, 52px);
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -1182,7 +1182,7 @@ html {
   position: absolute;
   top: -10px;
   left: 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: rgba(16, 32, 38, 0.8);
@@ -1196,7 +1196,7 @@ html {
 
 .ingredient-name {
   margin-top: 14px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 22px;
   line-height: 1.15;
   font-weight: 600;
@@ -1256,10 +1256,10 @@ html {
 }
 
 .ingredient-drawer-kicker {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 14px;
   letter-spacing: 0.12em;
-  font-weight: 700;
+  font-weight: 400;
   color: rgba(16, 32, 38, 0.62);
 }
 
@@ -1309,11 +1309,11 @@ html {
 
 .ingredient-drawer-title {
   margin: 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 40px;
   line-height: 1.06;
   letter-spacing: -0.02em;
-  font-weight: 700;
+  font-weight: 400;
   color: #102026;
 }
 
@@ -1351,7 +1351,7 @@ html {
 
 .ingredient-fact-value {
   color: rgba(16, 32, 38, 0.88);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .ingredient-drawer-description {
@@ -1561,11 +1561,11 @@ html {
 
 .product-title {
   margin: 0 0 10px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 44px;
   line-height: 1.04;
   letter-spacing: -0.02em;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .product-sub {
@@ -1591,7 +1591,7 @@ html {
   border: 0;
   background: transparent;
   padding: 14px 14px;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 14px;
   cursor: pointer;
   color: rgba(16, 32, 38, 0.72);
@@ -1666,13 +1666,13 @@ html {
 
 .plan-name {
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .plan-badge {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 4px 8px;
@@ -1715,12 +1715,12 @@ html {
 .plan-old {
   color: rgba(16, 32, 38, 0.45);
   text-decoration: line-through;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .plan-new {
   color: #102026;
-  font-weight: 900;
+  font-weight: 400;
   font-size: 22px;
 }
 
@@ -1737,7 +1737,7 @@ html {
   align-items: center;
   gap: 12px;
   color: rgba(16, 32, 38, 0.50);
-  font-weight: 800;
+  font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1760,7 +1760,7 @@ html {
   cursor: pointer;
   background: #0d3b3a;
   color: #ffffff;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 16px;
   letter-spacing: 0.01em;
   transition: transform 140ms ease, filter 140ms ease;
@@ -1925,14 +1925,14 @@ html {
 }
 
 .pdp-trustpilot-rating {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0c0c0c;
 }
 
 .pdp-trustpilot-name {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 13px;
   font-weight: 500;
   color: rgba(12, 12, 12, 0.55);
@@ -1941,7 +1941,7 @@ html {
 .pdp-hero-title {
   margin: 0;
   padding-top: 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(48px, 5vw, 68px);
   line-height: 0.95;
   font-weight: 400;
@@ -1951,7 +1951,7 @@ html {
 
 .pdp-hero-subtitle {
   margin: 8px 0 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(18px, 1.6vw, 24px);
   font-weight: 400;
   color: rgba(12, 12, 12, 0.62);
@@ -1972,7 +1972,7 @@ html {
   background: #3c0c1c;
   color: #ffffff;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -2063,7 +2063,7 @@ html {
 }
 
 .pdp-hero-option-name {
-  font-weight: 800;
+  font-weight: 400;
   font-size: 15px;
   color: #0c0c0c;
   text-transform: uppercase;
@@ -2072,7 +2072,7 @@ html {
 
 .pdp-hero-option-save {
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.06em;
   padding: 4px 8px;
   border-radius: 6px;
@@ -2096,7 +2096,7 @@ html {
 
 .pdp-hero-option-new {
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 400;
   color: #0c0c0c;
   letter-spacing: -0.02em;
 }
@@ -2109,7 +2109,7 @@ html {
   cursor: pointer;
   background: #3c0c1c;
   color: #ffffff;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 16px;
   letter-spacing: 0.01em;
   transition: transform 140ms ease, filter 140ms ease;
@@ -2199,7 +2199,7 @@ body.pdp-notify-open {
 
 .pdp-notify-modal__title {
   margin: 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(25px, 3.6vw, 32px);
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -2224,7 +2224,7 @@ body.pdp-notify-open {
   border-radius: 10px;
   padding: 13px 14px;
   font-size: 15px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
 }
 
 .pdp-notify-form__input:focus {
@@ -2238,9 +2238,9 @@ body.pdp-notify-open {
   background: #3c0c1c;
   color: #ffffff;
   padding: 13px 18px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.01em;
   cursor: pointer;
 }
@@ -2495,7 +2495,7 @@ body.pdp-notify-open {
 .product-sale-pill {
   background: var(--hr2-red);
   color: #ffffff;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 13px;
@@ -2539,7 +2539,7 @@ body.pdp-notify-open {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
   padding: 9px 9px;
   text-align: center;
-  font-weight: 900;
+  font-weight: 400;
   color: rgba(16, 32, 38, 0.88);
 }
 
@@ -2568,14 +2568,14 @@ body.pdp-notify-open {
 }
 
 .product-proof-title {
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: -0.01em;
   font-size: 16px;
 }
 
 .product-proof-sub {
   margin-top: 8px;
-  font-weight: 900;
+  font-weight: 400;
   font-size: 11px;
   letter-spacing: 0.16em;
   color: rgba(16, 32, 38, 0.62);
@@ -2619,7 +2619,7 @@ body.pdp-notify-open {
 
 .product-media-kicker {
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.16em;
   color: var(--hr2-red);
 }
@@ -2655,7 +2655,7 @@ body.pdp-notify-open {
 
 .product-clinicians-title h3 {
   margin: 0;
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: 44px;
   line-height: 1;
   letter-spacing: -0.01em;
@@ -2853,7 +2853,7 @@ body.pdp-notify-open {
 .order-rating-text {
   font-size: 14px;
   color: rgba(16, 32, 38, 0.72);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .order-limited {
@@ -2879,7 +2879,7 @@ body.pdp-notify-open {
   border-radius: 10px;
   border: 1px solid rgba(16, 32, 38, 0.14);
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(16, 32, 38, 0.76);
@@ -2887,17 +2887,17 @@ body.pdp-notify-open {
 
 .order-title {
   margin: 10px 0 8px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 50px;
   line-height: 0.95;
   letter-spacing: -0.05em;
-  font-weight: 900;
+  font-weight: 400;
 }
 
 .order-subtitle {
   margin: 0 0 14px;
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(16, 32, 38, 0.62);
@@ -2915,7 +2915,7 @@ body.pdp-notify-open {
   display: inline-block;
   margin-top: 14px;
   color: var(--hr2-red);
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: underline;
@@ -2968,7 +2968,7 @@ body.pdp-notify-open {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  font-weight: 900;
+  font-weight: 400;
   font-size: 16px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
@@ -2976,7 +2976,7 @@ body.pdp-notify-open {
 
 .order-save {
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.08em;
   padding: 5px 9px;
   border-radius: 8px;
@@ -3004,7 +3004,7 @@ body.pdp-notify-open {
 }
 
 .order-price-new {
-  font-weight: 900;
+  font-weight: 400;
   font-size: 22px;
   color: rgba(16, 32, 38, 0.92);
 }
@@ -3026,7 +3026,7 @@ body.pdp-notify-open {
   cursor: pointer;
   background: var(--hr2-red);
   color: #ffffff;
-  font-weight: 900;
+  font-weight: 400;
   font-size: 14px;
   letter-spacing: 0.01em;
   transition: transform 140ms ease, filter 140ms ease;
@@ -3158,7 +3158,7 @@ body.pdp-notify-open {
 }
 
 .order-lab-bottom span {
-  font-weight: 900;
+  font-weight: 400;
 }
 
 .order-footnote {
@@ -3314,7 +3314,7 @@ body.pdp-notify-open {
 .product-results-kicker {
   margin: 0 0 10px;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(16, 32, 38, 0.56);
@@ -3322,7 +3322,7 @@ body.pdp-notify-open {
 
 .product-results-copy h2 {
   margin: 0 0 16px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(34px, 4vw, 52px);
   line-height: 1.04;
   letter-spacing: -0.03em;
@@ -3364,7 +3364,7 @@ body.pdp-notify-open {
 .product-results-value {
   font-size: clamp(34px, 3.5vw, 52px);
   line-height: 0.9;
-  font-weight: 900;
+  font-weight: 400;
   color: #3c0c1c;
   letter-spacing: -0.03em;
 }
@@ -3428,7 +3428,7 @@ body.pdp-notify-open {
 .product-expert-kicker {
   margin: 0 0 8px;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.78);
@@ -3625,7 +3625,7 @@ body.pdp-notify-open {
 
 .product-reviews-number {
   font-size: 42px;
-  font-weight: 900;
+  font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.02em;
 }
@@ -3658,7 +3658,7 @@ body.pdp-notify-open {
   align-items: center;
   gap: 10px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 400;
   color: rgba(16, 32, 38, 0.78);
 }
 
@@ -3880,7 +3880,7 @@ body.pdp-notify-open {
 }
 
 .routine-header h2 {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 48px;
   font-weight: 600;
   margin: 0 0 20px;
@@ -3951,7 +3951,7 @@ body.pdp-notify-open {
 .card-content h3 {
   margin: 0 0 10px;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .card-content p {
@@ -4028,7 +4028,7 @@ body.pdp-notify-open {
 .expert-card h3 {
   margin: 20px 18px 8px;
   font-size: 23px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .expert-card .subtitle {
@@ -4070,15 +4070,15 @@ body.pdp-notify-open {
   flex-direction: column;
   gap: 14px;
   background: #3c0c1c;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
 }
 
 .offer-product-title {
   margin: 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(40px, 4vw, 56px);
   line-height: 1;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: -0.03em;
 }
 
@@ -4093,7 +4093,7 @@ body.pdp-notify-open {
   border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 999px;
   padding: 6px 12px 7px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 20px;
   line-height: 1;
   font-weight: 500;
@@ -4107,7 +4107,7 @@ body.pdp-notify-open {
 
 .offer-product-top h2 {
   margin: 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(34px, 3.3vw, 46px);
   line-height: 0.98;
   font-weight: 500;
@@ -4128,7 +4128,7 @@ body.pdp-notify-open {
 }
 
 .offer-rank-number {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(42px, 3.1vw, 54px);
   line-height: 0.88;
   font-weight: 600;
@@ -4181,13 +4181,13 @@ body.pdp-notify-open {
   color: #1e3f1d;
   padding: 8px 14px;
   font-size: clamp(12px, 0.95vw, 14px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1;
 }
 
 .offer-product-price {
   margin: -4px 0 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(48px, 3.3vw, 62px);
   line-height: 0.95;
   font-weight: 400;
@@ -4212,9 +4212,9 @@ body.pdp-notify-open {
   background: #ffffff;
   color: #3c0c1c;
   text-decoration: none;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(17px, 1.5vw, 22px);
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.01em;
   transition: opacity 160ms ease;
 }
@@ -4315,8 +4315,8 @@ body.pdp-notify-open {
 }
 
 .offer-plan-name {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   font-size: clamp(13px, 1.1vw, 16px);
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -4329,7 +4329,7 @@ body.pdp-notify-open {
   background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   line-height: 1;
@@ -4350,8 +4350,8 @@ body.pdp-notify-open {
 }
 
 .offer-plan-price-new {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   font-size: clamp(18px, 1.6vw, 24px);
   letter-spacing: -0.02em;
   line-height: 1;
@@ -4385,7 +4385,7 @@ body.pdp-notify-open {
   border: 0;
   background: transparent;
   color: #ffffff;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   text-align: left;
   cursor: pointer;
 }
@@ -4453,7 +4453,7 @@ body.pdp-notify-open {
 
 .offer-right h3 {
   margin: 0;
-  font-family: "Aster Serif", serif;
+  font-family: "Playfair Display", serif;
   font-size: 44px;
   font-weight: 400;
 }
@@ -4464,7 +4464,7 @@ body.pdp-notify-open {
   padding: 10px 18px;
   font-size: 15px;
   letter-spacing: 0.14em;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
 }
 
@@ -4539,7 +4539,7 @@ body.pdp-notify-open {
 .quality-check {
   flex: 0 0 auto;
   margin-top: 1px;
-  font-weight: 700;
+  font-weight: 400;
   color: #2c4a32;
 }
 
@@ -4611,7 +4611,7 @@ body.pdp-notify-open {
 
 .testing-title {
   margin: 0 0 18px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 58px;
   line-height: 1.04;
   letter-spacing: -0.02em;
@@ -4708,8 +4708,8 @@ body.pdp-notify-open {
   background: #ffffff;
   color: #0b0b0b;
   text-decoration: none;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 700;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   font-size: clamp(22px, 1.8vw, 28px);
   letter-spacing: -0.01em;
   line-height: 1;
@@ -4720,9 +4720,9 @@ body.pdp-notify-open {
 .comparison-note {
   margin: 10px 0 0;
   color: #ffffff;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(12px, 1vw, 16px);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.005em;
   white-space: nowrap;
 }
@@ -4779,9 +4779,9 @@ body.pdp-notify-open {
 }
 
 .ct-header-label {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(18px, 1.6vw, 24px);
-  font-weight: 800;
+  font-weight: 400;
   color: #111111;
   letter-spacing: -0.01em;
   line-height: 1;
@@ -4795,7 +4795,7 @@ body.pdp-notify-open {
 }
 
 .ct-feature {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(15px, 1.3vw, 19px);
   font-weight: 600;
   color: #111111;
@@ -4829,9 +4829,9 @@ body.pdp-notify-open {
 }
 
 .ct-value-text {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 400;
   color: #111111;
 }
 
@@ -4852,7 +4852,7 @@ body.pdp-notify-open {
 
 .clinical-title {
   margin: 0 0 18px;
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: 56px;
   line-height: 1.05;
   font-weight: 500;
@@ -4937,7 +4937,7 @@ body.pdp-notify-open {
 }
 
 .stat-value {
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: 62px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -5027,9 +5027,9 @@ body.pdp-notify-open {
 
 .causes-header h2 {
   margin: 0 0 14px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.01em;
   font-size: clamp(28px, 2.8vw, 36px);
   line-height: 1.08;
@@ -5069,7 +5069,7 @@ body.pdp-notify-open {
   background: #ffffff;
   border: none;
   cursor: pointer;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
 }
 
 .cause-btn:focus-visible {
@@ -5078,7 +5078,7 @@ body.pdp-notify-open {
 }
 
 .cause-label {
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.02em;
   font-size: clamp(18px, 1.4vw, 22px);
   line-height: 1.08;
@@ -5091,7 +5091,7 @@ body.pdp-notify-open {
   border-radius: 8px;
   display: inline-grid;
   place-items: center;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 24px;
   line-height: 1;
   background: rgba(12, 12, 12, 0.05);
@@ -5207,16 +5207,16 @@ body.pdp-notify-open {
 
 .testi-name {
   margin: 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: #3c0c1c;
   letter-spacing: 0.02em;
 }
 
 .testi-quote {
   margin: 0;
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(24px, 2.8vw, 38px);
   font-weight: 400;
   line-height: 1.25;
@@ -5360,7 +5360,7 @@ body.pdp-notify-open {
 
 .faq-left h2 {
   margin: 0 0 16px;
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(32px, 3.2vw, 44px);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -5385,7 +5385,7 @@ body.pdp-notify-open {
 
 .faq-link {
   color: #3c0c1c;
-  font-weight: 700;
+  font-weight: 400;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -5403,7 +5403,7 @@ body.pdp-notify-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.35;
@@ -5546,7 +5546,7 @@ body.pdp-notify-open {
 
 .footer-col h5 {
   margin: 0 0 12px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   text-transform: none;
   font-size: 16px;
   letter-spacing: 0.01em;
@@ -5638,7 +5638,7 @@ body.pdp-notify-open {
   gap: 10px;
   justify-content: flex-start;
   color: rgba(27, 56, 38, 0.82);
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.02em;
   font-size: 12px;
   text-transform: uppercase;
@@ -5751,15 +5751,50 @@ body.pdp-notify-open {
   }
 
   .hero {
-    grid-template-columns: 1fr;
+    display: block;
+    position: relative;
+    min-height: 100svh;
     height: auto;
-    max-height: none;
-    min-height: calc(100vh - 72px);
-    overflow: visible;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    aspect-ratio: auto;
+  }
+
+  .hero-video::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.55) 40%,
+      rgba(0, 0, 0, 0.15) 70%,
+      transparent 100%
+    );
+    z-index: 1;
   }
 
   .hero-text {
-    padding: 60px 28px 40px;
+    position: relative;
+    z-index: 2;
+    min-height: 100svh;
+    padding: 80px 28px 40px;
+    justify-content: flex-end;
+  }
+
+  .hero-text h1 {
+    color: #ffffff;
+  }
+
+  .hero-text .lead {
+    color: rgba(255, 255, 255, 0.82);
   }
 
   .hero-benefits {
@@ -5773,30 +5808,56 @@ body.pdp-notify-open {
     flex: 0 0 auto;
   }
 
-  .hero-video {
-    aspect-ratio: 3 / 4;
+  .hero-benefit-icon {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .hero-benefit-icon circle[fill="#000000"],
+  .hero-benefit-icon circle[fill="#000"],
+  .hero-benefit-icon [fill="#000000"] {
+    fill: #ffffff;
+  }
+
+  .hero-benefit-text {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .hero .primary-btn {
+    background: #ffffff;
+    color: #3c0c1c;
   }
 
   .hero-clinicians-proof {
-    margin-top: 40px;
+    margin-top: 24px;
     width: min(100%, 840px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
   }
 
   .hero-clinicians-title {
     font-size: clamp(18px, 2.8vw, 24px);
+    color: #ffffff;
+  }
+
+  .hero-clinicians-med {
+    color: rgba(255, 255, 255, 0.82);
   }
 
   .hero-clinicians-laurel {
     width: 14px;
     height: 18px;
+    color: rgba(255, 255, 255, 0.72);
   }
 
   .hero-clinicians-body p {
     font-size: clamp(12px, 1.9vw, 14px);
+    color: rgba(255, 255, 255, 0.78);
   }
 
   .hero-clinicians-link {
     font-size: clamp(15px, 2.4vw, 20px);
+    color: #ffffff;
   }
 
   .routine,
@@ -6176,8 +6237,8 @@ body.pdp-notify-open {
 }
 
 @media (max-width: 720px) {
-  .hero-video {
-    aspect-ratio: 4 / 5;
+  .hero-text {
+    padding: 80px 20px 32px;
   }
 
   .clinical-inner {
@@ -6595,8 +6656,8 @@ body.pdp-notify-open {
 }
 
 .legal-title {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   letter-spacing: -0.02em;
   font-size: clamp(34px, 4.2vw, 54px);
   line-height: 1.04;
@@ -6618,8 +6679,8 @@ body.pdp-notify-open {
 }
 
 .legal-card h2 {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   letter-spacing: -0.01em;
   font-size: 22px;
   margin: 20px 0 10px;
@@ -6945,7 +7006,7 @@ body.pdp-notify-open {
 }
 
 .forschung-hero-lead {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(22px, 2.5vw, 32px);
   line-height: 1.4;
   letter-spacing: -0.01em;
@@ -6958,8 +7019,8 @@ body.pdp-notify-open {
 }
 
 .forschung-hero-kicker {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   color: #1f3f26;
   margin: 0 0 10px;
 }
@@ -7006,7 +7067,7 @@ body.pdp-notify-open {
 
 .forschung-results-title {
   margin: 0;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(36px, 3.4vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -7031,7 +7092,7 @@ body.pdp-notify-open {
   background: transparent;
   color: rgba(31, 63, 38, 0.92);
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.02em;
   font-size: 14px;
 }
@@ -7044,11 +7105,11 @@ body.pdp-notify-open {
 .forschung-results-cta-plus {
   font-size: 20px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 400;
 }
 
 .forschung-results-right-title {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-weight: 650;
   color: rgba(12, 12, 12, 0.92);
   letter-spacing: -0.01em;
@@ -7066,8 +7127,8 @@ body.pdp-notify-open {
 }
 
 .forschung-figure-label {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   letter-spacing: 0.06em;
   font-size: 14px;
   color: rgba(12, 12, 12, 0.88);
@@ -7116,14 +7177,14 @@ body.pdp-notify-open {
   place-items: center;
   background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.92);
-  font-weight: 900;
+  font-weight: 400;
   font-size: 18px;
   margin-top: 2px;
 }
 
 .forschung-results-panel-kicker {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   letter-spacing: 0.12em;
   font-size: 11px;
   opacity: 0.75;
@@ -7173,7 +7234,7 @@ body.pdp-notify-open {
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 400;
   text-align: left;
   color: rgba(12, 12, 12, 0.72);
   background: rgba(12, 12, 12, 0.05);
@@ -7209,7 +7270,7 @@ body.pdp-notify-open {
 
 .peerreview-stub {
   width: 62%;
-  font-weight: 900 !important;
+  font-weight: 400 !important;
   letter-spacing: 0.02em;
   text-transform: none;
   color: rgba(31, 63, 38, 0.92) !important;
@@ -7226,7 +7287,7 @@ body.pdp-notify-open {
 }
 
 .forschung-num {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 54px;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -7235,7 +7296,7 @@ body.pdp-notify-open {
 
 .forschung-title {
   /* Match index hero headline sizing */
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-weight: 400;
   font-size: clamp(34px, 4vw, 52px);
   line-height: 1.05;
@@ -7318,7 +7379,7 @@ body.pdp-notify-open {
 .forschung-block h3,
 .forschung-one h3,
 .forschung-testing h3 {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 34px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -7363,7 +7424,7 @@ body.pdp-notify-open {
 }
 
 .forschung-testing-feature-title {
-  font-weight: 900;
+  font-weight: 400;
   font-size: 22px;
   line-height: 1.15;
   letter-spacing: -0.01em;
@@ -7387,7 +7448,7 @@ body.pdp-notify-open {
   color: #1f3f26;
   padding: 10px 0;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .forschung-plus-icon {
@@ -7412,11 +7473,11 @@ body.pdp-notify-open {
   padding: 16px 0;
   border-bottom: 1px solid rgba(31, 63, 38, 0.14);
   color: rgba(31, 63, 38, 0.9);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .forschung-testing-plus {
-  font-weight: 900;
+  font-weight: 400;
   color: rgba(31, 63, 38, 0.65);
 }
 
@@ -7436,7 +7497,7 @@ body.pdp-notify-open {
   background: #1f3f26;
   color: #ffffff;
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .forschung-cta.secondary {
@@ -7478,7 +7539,7 @@ body.pdp-notify-open {
 
 .forschung-card-name {
   padding: 14px 14px 4px;
-  font-weight: 900;
+  font-weight: 400;
   color: rgba(12, 12, 12, 0.92);
 }
 
@@ -7561,7 +7622,7 @@ body.pdp-notify-open {
 }
 
 .pdp-timeline-header h2 {
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(34px, 3.8vw, 54px);
   line-height: 1.08;
   font-weight: 400;
@@ -7580,7 +7641,7 @@ body.pdp-notify-open {
 
 .pdp-timeline-link {
   color: #3c0c1c;
-  font-weight: 700;
+  font-weight: 400;
   text-decoration: underline;
   text-underline-offset: 4px;
   font-size: 15px;
@@ -7653,9 +7714,9 @@ body.pdp-notify-open {
   border-radius: 999px;
   background: #3c0c1c;
   color: #ffffff;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   width: fit-content;
@@ -7664,9 +7725,9 @@ body.pdp-notify-open {
 
 .pdp-timeline-month {
   display: block;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(18px, 1.6vw, 22px);
-  font-weight: 800;
+  font-weight: 400;
   color: #0c0c0c;
   letter-spacing: -0.01em;
   margin-bottom: 4px;
@@ -7716,7 +7777,7 @@ body.pdp-notify-open {
 
 .pdp-timeline-howto-copy strong {
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 400;
   color: #0c0c0c;
 }
 
@@ -7755,7 +7816,7 @@ body.pdp-notify-open {
 }
 
 .pdp-ingredients-top h2 {
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(30px, 3.2vw, 48px);
   line-height: 1.08;
   font-weight: 400;
@@ -7797,9 +7858,9 @@ body.pdp-notify-open {
 }
 
 .pdp-ingredients-curved-text text {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 19px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.06em;
   fill: #0c0c0c;
   text-transform: uppercase;
@@ -7834,7 +7895,7 @@ body.pdp-notify-open {
   border-radius: 8px;
   padding: 14px 16px;
   text-align: left;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -7966,8 +8027,8 @@ body.pdp-notify-open {
   background: #ffffff;
   color: #0b0b0b;
   text-decoration: none;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
-  font-weight: 700;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
+  font-weight: 400;
   font-size: clamp(18px, 1.6vw, 24px);
   letter-spacing: -0.01em;
   line-height: 1;
@@ -7984,9 +8045,9 @@ body.pdp-notify-open {
 .pdp-compare-price {
   margin: 12px 0 0;
   color: #ffffff;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(13px, 1vw, 16px);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.005em;
 }
 
@@ -8001,7 +8062,7 @@ body.pdp-notify-open {
 }
 
 .pdp-compare-right h2 {
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(26px, 2.8vw, 38px);
   line-height: 1.08;
   font-weight: 400;
@@ -8023,7 +8084,7 @@ body.pdp-notify-open {
 .pdp-compare-table thead th {
   padding: 14px 18px;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 400;
   color: rgba(12, 12, 12, 0.55);
   text-align: center;
   border-bottom: 1px solid rgba(12, 12, 12, 0.12);
@@ -8040,13 +8101,13 @@ body.pdp-notify-open {
   border: 1.5px solid #3c0c1c;
   color: #3c0c1c;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 400;
   letter-spacing: 0.04em;
 }
 
 .pdp-compare-check {
   color: #3c0c1c;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 18px;
 }
 
@@ -8085,7 +8146,7 @@ body.pdp-notify-open {
 
 .pdp-delivery p {
   margin: 0;
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(22px, 2.4vw, 34px);
   font-weight: 400;
   color: #3c0c1c;
@@ -8259,7 +8320,7 @@ body.pdp-notify-open {
 }
 
 .pdp-proven-inner h2 {
-  font-family: 'Aster Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: clamp(28px, 3vw, 42px);
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -8293,7 +8354,7 @@ body.pdp-notify-open {
 }
 
 .pdp-proven-card-title {
-  font-family: 'Aster Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 600;
   line-height: 1.3;
@@ -8301,7 +8362,7 @@ body.pdp-notify-open {
 }
 
 .pdp-proven-card-desc {
-  font-family: 'Aster Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: 1.55;
@@ -8342,7 +8403,7 @@ body.pdp-notify-open {
 }
 
 .pdp-faq-inner h2 {
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(30px, 3.2vw, 46px);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -8373,9 +8434,9 @@ body.pdp-notify-open {
   background: transparent;
   border: 0;
   cursor: pointer;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   color: #0c0c0c;
   text-align: left;
 }
@@ -8461,14 +8522,14 @@ body.pdp-notify-open {
 
 .pdp-sticky-bar-name {
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 400;
   color: #0c0c0c;
   letter-spacing: -0.01em;
 }
 
 .pdp-sticky-bar-sub {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
   color: rgba(12, 12, 12, 0.5);
   letter-spacing: 0.06em;
 }
@@ -8482,7 +8543,7 @@ body.pdp-notify-open {
   border: none;
   background: #3c0c1c;
   color: #ffffff;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 15px;
   text-decoration: none;
   letter-spacing: 0.01em;
@@ -8593,7 +8654,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 }
 
 .customer-page-title {
-  font-family: "Aster Serif", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 32px;
@@ -8620,7 +8681,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 
 .account-details h2,
 .account-orders h2 {
-  font-family: "Aster Serif", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 16px;
@@ -8817,7 +8878,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 }
 
 .cart-page-title {
-  font-family: "Aster Serif", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 32px;
   font-weight: 500;
   margin-bottom: 32px;
@@ -8935,7 +8996,7 @@ body:has(.pdp-sticky-bar) footer.footer {
 }
 
 .cart-empty h2 {
-  font-family: "Aster Serif", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 24px;
   margin-bottom: 16px;
 }
@@ -9156,7 +9217,7 @@ body.mobile-nav-open {
 }
 
 .page-404 h1 {
-  font-family: "Aster Serif", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 48px;
   margin-bottom: 16px;
 }
@@ -9175,7 +9236,7 @@ body.mobile-nav-open {
 }
 
 .search-page h1 {
-  font-family: "Aster Serif", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 32px;
   margin-bottom: 24px;
 }
@@ -9253,7 +9314,7 @@ body.mobile-nav-open {
 
 .inh-hero-title {
   margin: 0 0 20px;
-  font-family: "Aster Serif", "Times New Roman", serif;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(34px, 4.5vw, 56px);
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -9290,9 +9351,9 @@ body.mobile-nav-open {
 
 .inh-hero-ring-text {
   fill: #3c0c1c;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 13.5px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -9326,9 +9387,9 @@ body.mobile-nav-open {
 
 .inh-stat-number {
   display: block;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 40px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: -0.02em;
   color: #3c0c1c;
   line-height: 1.1;
@@ -9366,7 +9427,7 @@ body.mobile-nav-open {
   background: #ffffff;
   padding: 9px 20px;
   border-radius: 999px;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: rgba(12, 12, 12, 0.75);
@@ -9449,9 +9510,9 @@ body.mobile-nav-open {
   top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 9px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #3c0c1c;
@@ -9481,9 +9542,9 @@ body.mobile-nav-open {
 }
 
 .inh-card-name {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.01em;
   color: #0c0c0c;
   line-height: 1.2;
@@ -9503,7 +9564,7 @@ body.mobile-nav-open {
   padding: 3px 10px;
   border-radius: 999px;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: rgba(60, 12, 28, 0.08);
@@ -9709,7 +9770,7 @@ body.mobile-nav-open {
 
 .comparison-table-title {
   margin: 0;
-  font-family: "Inter", "Aster Sans", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(36px, 2.8vw, 48px);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -9738,16 +9799,16 @@ body.mobile-nav-open {
 }
 
 .comparison-table-feature {
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(16px, 1.3vw, 20px);
-  font-weight: 700;
+  font-weight: 400;
   color: #111111;
   letter-spacing: -0.01em;
 }
 
 .comparison-table-head .comparison-table-feature {
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(12, 12, 12, 0.54);
@@ -9755,9 +9816,9 @@ body.mobile-nav-open {
 
 .comparison-table-col {
   text-align: center;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(12, 12, 12, 0.54);
@@ -9765,9 +9826,9 @@ body.mobile-nav-open {
 
 .comparison-table-value {
   text-align: center;
-  font-family: "Aster Sans", "Inter", system-ui, sans-serif;
+  font-family: "Inter", "Inter", system-ui, sans-serif;
   font-size: clamp(22px, 1.8vw, 30px);
-  font-weight: 800;
+  font-weight: 400;
   color: #111111;
   line-height: 1;
 }
