@@ -93,6 +93,11 @@
     var modal = document.querySelector('[data-pdp-notify-modal]');
     if (!openTrigger || !modal) return;
 
+    // Keep the notify modal outside sticky/section stacking contexts.
+    if (modal.parentNode !== document.body) {
+      document.body.appendChild(modal);
+    }
+
     var closeTriggers = Array.from(modal.querySelectorAll('[data-pdp-notify-close]'));
     var emailInput = modal.querySelector('.pdp-notify-form__input');
     var feedback = modal.querySelector('.pdp-notify-feedback');
