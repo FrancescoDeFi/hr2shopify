@@ -52,6 +52,10 @@
                   {% assign feature_name = 'sections.comparison.features.without_drugs' | t %}
                 {% when 'Libido-freundlich' %}
                   {% assign feature_name = 'sections.comparison.features.libido_friendly' | t %}
+                {% when 'Für den weiblichen Körper passend dosiert' %}
+                  {% assign feature_name = 'sections.comparison.features.female_dosed' | t %}
+                {% when 'Entwickelt von Expertinnen für Frauengesundheit' %}
+                  {% assign feature_name = 'sections.comparison.features.female_experts' | t %}
               {% endcase %}
             {% endif %}
             <li class="comparison-table-row" {{ block.shopify_attributes }}>
@@ -156,6 +160,22 @@
             "feature_name": "Libido-freundlich",
             "hr2_value": "✓",
             "others_value": "~"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Für den weiblichen Körper passend dosiert",
+            "hr2_value": "✓",
+            "others_value": "X"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Entwickelt von Expertinnen für Frauengesundheit",
+            "hr2_value": "✓",
+            "others_value": "X"
           }
         }
       ]

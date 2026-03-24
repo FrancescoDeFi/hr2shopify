@@ -51,14 +51,6 @@
             "others_value": "~"
           }
         },
-        "feature_2": {
-          "type": "feature",
-          "settings": {
-            "feature_name": "Bio-optimiert",
-            "hr2_value": "✓",
-            "others_value": "X"
-          }
-        },
         "feature_3": {
           "type": "feature",
           "settings": {
@@ -74,13 +66,30 @@
             "hr2_value": "✓",
             "others_value": "~"
           }
+        },
+        "feature_6": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Für den weiblichen Körper passend dosiert",
+            "hr2_value": "✓",
+            "others_value": "X"
+          }
+        },
+        "feature_7": {
+          "type": "feature",
+          "settings": {
+            "feature_name": "Entwickelt von Expertinnen für Frauengesundheit",
+            "hr2_value": "✓",
+            "others_value": "X"
+          }
         }
       },
       "block_order": [
         "feature_1",
-        "feature_2",
         "feature_3",
-        "feature_4"
+        "feature_4",
+        "feature_6",
+        "feature_7"
       ]
     },
     "causes": {
@@ -102,8 +111,8 @@
           "type": "cause",
           "settings": {
             "cause_id": "hormones",
-            "title": "HORMONE",
-            "description": "Hormonsignale können die Empfindlichkeit der Follikel beeinflussen und so langfristig zur Ausdünnung beitragen.",
+            "title": "Hormonschwankungen",
+            "description": "Hormonschwankungen können den Haarfollikel direkt beeinflussen. Veränderungen im Androgen-, Schilddrüsen- oder Cortisolhaushalt können die Wachstumsphase verkürzen und bei empfindlichen Follikeln Ausdünnung begünstigen.",
             "default_open": false
           }
         },
@@ -120,8 +129,8 @@
           "type": "cause",
           "settings": {
             "cause_id": "nutrition",
-            "title": "ERNÄHRUNG",
-            "description": "Nährstofflücken, die durch Ernährung oder ein unausgeglichenes Darmmikrobiom entstehen können.",
+            "title": "Mikronährstoffmangel",
+            "description": "Ein Mangel an Mikronährstoffen wie Eisen, Zink, Vitamin D oder B-Vitaminen kann Zellteilung, Keratinsynthese und Energieversorgung des Follikels beeinträchtigen. Dadurch kann der Haarzyklus früher in die Ruhephase übergehen und diffuse Ausdünnung begünstigen.",
             "default_open": true
           }
         },
@@ -136,10 +145,10 @@
         }
       },
       "block_order": [
-        "cause_1",
         "cause_2",
-        "cause_3",
         "cause_4",
+        "cause_1",
+        "cause_3",
         "cause_5"
       ]
     },

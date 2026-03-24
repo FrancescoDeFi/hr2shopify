@@ -182,7 +182,9 @@
         "clinically_proven": "Klinisch belegte Inhaltsstoffe",
         "bio_optimized": "Bio-optimiert",
         "without_drugs": "Ohne Arzneistoffe",
-        "libido_friendly": "Libido-freundlich"
+        "libido_friendly": "Libido-freundlich",
+        "female_dosed": "Für den weiblichen Körper passend dosiert",
+        "female_experts": "Entwickelt von Expertinnen für Frauengesundheit"
       }
     },
     "causes": {
@@ -199,16 +201,16 @@
           "description": "Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen."
         },
         "hormones": {
-          "title": "HORMONE",
-          "description": "Hormonsignale können die Empfindlichkeit der Follikel beeinflussen und so langfristig zur Ausdünnung beitragen."
+          "title": "Hormonschwankungen",
+          "description": "Hormonschwankungen können den Haarfollikel direkt beeinflussen. Veränderungen im Androgen-, Schilddrüsen- oder Cortisolhaushalt können die Wachstumsphase verkürzen und bei empfindlichen Follikeln Ausdünnung begünstigen."
         },
         "dht": {
           "title": "DHT",
           "description": "Schlaf, Aktivität und Gewohnheiten beeinflussen Regeneration und das Umfeld, das Haare brauchen, um zu wachsen."
         },
         "nutrition": {
-          "title": "ERNÄHRUNG",
-          "description": "Nährstofflücken, die durch Ernährung oder ein unausgeglichenes Darmmikrobiom entstehen können."
+          "title": "Mikronährstoffmangel",
+          "description": "Ein Mangel an Mikronährstoffen wie Eisen, Zink, Vitamin D oder B-Vitaminen kann Zellteilung, Keratinsynthese und Energieversorgung des Follikels beeinträchtigen. Dadurch kann der Haarzyklus früher in die Ruhephase übergehen und diffuse Ausdünnung begünstigen."
         },
         "aging": {
           "title": "ALTERUNG",
