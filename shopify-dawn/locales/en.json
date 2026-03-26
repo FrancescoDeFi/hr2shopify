@@ -219,7 +219,7 @@
       }
     },
     "partners": {
-      "kicker": "Formulated by scientists from these institutions",
+      "kicker": "Formulated by scientists from these institutions<sup>1</sup>",
       "aria": {
         "logos": "Partner institutions",
         "logo_alt": "Logo of {{ name }}"
@@ -432,6 +432,7 @@
     "payments_accepted": "Accepted payment methods",
     "payments_fallback": "Payment available through common providers.",
     "made_in_europe": "Made with care in Europe.",
+    "institutions_note_html": "<sup>1</sup> The logos are for demonstration purposes only. As a company, we are not directly affiliated with these institutions.",
     "help_links": {
       "faq": "Help Center (FAQ)",
       "contact": "Contact",
