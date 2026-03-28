@@ -520,7 +520,7 @@
           "type": "question",
           "settings": {
             "question": "Was ist Hr²?",
-            "answer": "<p>Hr² ist ein täglicher Nährstoff-Boost mit über 70 hochwertigen Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenstoffe und Bakterienkulturen. Entwickelt von Expert:innen, wissenschaftlich fundiert und weltweit von High Performern empfohlen.</p>"
+            "answer": "<p>Hr² ist ein täglicher Nährstoff-Boost mit über 30 hochwertigen Inhaltsstoffen – darunter Vitamine, Mineralstoffe, Pflanzenstoffe und Bakterienkulturen. Entwickelt von Expert:innen, wissenschaftlich fundiert und weltweit von High Performern empfohlen.</p>"
           }
         },
         "q_2": {
@@ -557,6 +557,34 @@
             "question": "Gibt es ein Risiko, dass Hr² meine Libido senkt?",
             "answer": "<p>Hr² enthält keine Arzneistoffe und ist nicht darauf ausgerichtet, in den Hormonhaushalt einzugreifen.</p>"
           }
+        },
+        "q_7": {
+          "type": "question",
+          "settings": {
+            "question": "Wann kann ich mit ersten Ergebnissen rechnen?",
+            "answer": "<p><strong>1 bis 3 Monate</strong></p><p>Stärken Sie Ihr Haar von innen heraus. Achten Sie auf glänzenderes Haar mit weniger Haarausfall und Haarbruch.</p><p><strong>3 bis 6 Monate</strong></p><p>Möglicherweise bemerken Sie eine Verbesserung von Fülle und Volumen.</p><p><strong>6+ Monate</strong></p><p>Erleben Sie sichtbare Veränderungen wie schneller wachsendes Haar, das dicker und kräftiger ist und für eine bessere Deckung der Kopfhaut sorgt.</p>"
+          }
+        },
+        "q_8": {
+          "type": "question",
+          "settings": {
+            "question": "Was beeinflusst das Haarwachstum bei Frauen?",
+            "answer": "<p>Bei Frauen ist Stress eine der wichtigsten Ursachen für schlechtes Haarwachstum. Auch Hormone spielen eine bedeutende Rolle, da sie im Laufe des Lebens schwanken, insbesondere während und nach der Geburt, wenn Östrogen und Progesteron sinken und Cortisol um über 200 % ansteigt. Haarfollikel werden außerdem durch Stoffwechselveränderungen, Nährstoffmängel und den Lebensstil beeinträchtigt, einschließlich Ihrer Umgebung, der Produkte, die Sie verwenden, und der Nahrung, die Sie zu sich nehmen.</p>"
+          }
+        },
+        "q_9": {
+          "type": "question",
+          "settings": {
+            "question": "Wachsen Haare auch an anderen Stellen meines Körpers?",
+            "answer": "<p>Nein. Gesichts- und Körperhaare werden durch andere Faktoren ausgelöst als die Haare auf unserem Kopf. Sägepalmenextrakt hilft dabei, DHT zu bekämpfen, was das Wachstum von Gesichtshaaren sogar verhindern kann.</p>"
+          }
+        },
+        "q_10": {
+          "type": "question",
+          "settings": {
+            "question": "Wie beeinflusst die Menopause das Haarwachstum?",
+            "answer": "<p>Mit Beginn der Menopause sinken Östrogen und Progesteron rasch. Auch Testosteron nimmt ab, jedoch deutlich langsamer. Das daraus resultierende relative Überwiegen von Testosteron trägt zu insgesamt dünner werdendem Haar, einem breiteren Scheitel, einem zurückweichenden Haaransatz und sogar zu unerwünschtem Gesichtshaarwachstum bei. Zudem zeigt sich, dass in den Wechseljahren die Stresshormone von Frauen ansteigen, die antioxidativen Reserven abnehmen und sich Stoffwechsel sowie Nährstoffbedarf verändern. Hr² zielt ebenfalls auf diese Ursachen ab.</p>"
+          }
         }
       },
       "block_order": [
@@ -565,14 +593,49 @@
         "q_3",
         "q_4",
         "q_5",
-        "q_6"
+        "q_6",
+        "q_7",
+        "q_8",
+        "q_9",
+        "q_10"
       ]
+    },
+    "hairloss_edu": {
+      "type": "hair-loss-education",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "image_asset": "case1.png",
+            "title": "Der Haarwachstumszyklus",
+            "text": "Etwa 90 % deiner Haare befinden sich in der aktiven Wachstumsphase (Anagenphase) für 3–6 Jahre. Danach folgt eine Übergangsphase (Katagenphase) von 1–2 Wochen, bevor die Haare in die Ruhephase (Telogenphase) von 2–4 Monaten eintreten."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "image_asset": "case2.png",
+            "title": "Haarausfall ist normal",
+            "text": "Jeder verliert Haare – tatsächlich fallen täglich bis zu 100 Haare aus. Aber wenn man mehr Haare in der Bürste oder auf dem Kissen bemerkt als sonst, dann suchen die meisten nach einer Behandlung gegen Haarausfall."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "image_asset": "capsule.png",
+            "title": "Arten der Behandlung",
+            "text": "Je nach Gesundheitsgeschichte und Art des Haarausfalls können bestimmte Behandlungen besser geeignet sein als andere. Unsere klinisch geprüften Inhaltsstoffe bieten einen wissenschaftlich fundierten Ansatz, der speziell auf die Bedürfnisse von Frauen abgestimmt ist."
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3"]
     }
   },
   "order": [
     "hero",
     "trust_marquee",
     "comparison",
+    "hairloss_edu",
     "causes",
     "partners",
     "ingredients",

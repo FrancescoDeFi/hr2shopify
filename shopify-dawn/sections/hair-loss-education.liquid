@@ -1,0 +1,151 @@
+<section class="hairloss-edu">
+  <!-- Stat block -->
+  <div class="hairloss-edu-stat">
+    <div class="hairloss-edu-stat-image">
+      <img src="{{ section.settings.stat_image | default: 'hair50.png' | asset_url }}" alt="{{ section.settings.stat_alt | default: 'Haarpflege' }}" loading="lazy" decoding="async">
+    </div>
+    <div class="hairloss-edu-stat-copy">
+      <h2 class="hairloss-edu-stat-number">{{ section.settings.stat_number | default: '50%' }}</h2>
+      <p class="hairloss-edu-stat-text">{{ section.settings.stat_text | default: 'Über 50 % der Frauen sind im Laufe ihres Lebens von Haarausfall betroffen.*' }}</p>
+      <cite class="hairloss-edu-stat-source">{{ section.settings.stat_source | default: '*Fabbrocini, 2018' }}</cite>
+    </div>
+  </div>
+
+  <!-- Intro copy -->
+  <div class="hairloss-edu-intro">
+    <h2 class="hairloss-edu-heading">{{ section.settings.heading | default: "Ja, das ist die Mehrheit – du bist also nicht allein." }}</h2>
+    <p class="hairloss-edu-subheading">{{ section.settings.subheading | default: "Lass uns das Stigma mit Wissenschaft angehen und mehr über Haarausfall erfahren." }}</p>
+  </div>
+
+  <!-- Cards -->
+  <div class="hairloss-edu-cards">
+    {% for block in section.blocks %}
+      {% if block.type == 'card' %}
+        <div class="hairloss-edu-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <div class="hairloss-edu-card-img">
+              <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}" loading="lazy" decoding="async">
+            </div>
+          {% elsif block.settings.image_asset != blank %}
+            <div class="hairloss-edu-card-img">
+              <img src="{{ block.settings.image_asset | asset_url }}" alt="{{ block.settings.title }}" loading="lazy" decoding="async">
+            </div>
+          {% endif %}
+          <h3 class="hairloss-edu-card-title">{{ block.settings.title }}</h3>
+          <p class="hairloss-edu-card-text">{{ block.settings.text }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hair Loss Education",
+  "tag": "section",
+  "class": "section-hairloss-edu",
+  "settings": [
+    {
+      "type": "text",
+      "id": "stat_number",
+      "label": "Statistik Zahl",
+      "default": "50%"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_text",
+      "label": "Statistik Text",
+      "default": "Über 50 % der Frauen sind im Laufe ihres Lebens von Haarausfall betroffen.*"
+    },
+    {
+      "type": "text",
+      "id": "stat_source",
+      "label": "Quelle",
+      "default": "*Fabbrocini, 2018"
+    },
+    {
+      "type": "text",
+      "id": "stat_image",
+      "label": "Statistik Bild (Asset-Name)",
+      "default": "hair50.png"
+    },
+    {
+      "type": "text",
+      "id": "stat_alt",
+      "label": "Bild Alt-Text",
+      "default": "Haarpflege"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift",
+      "default": "Ja, das ist die Mehrheit – du bist also nicht allein."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Unterüberschrift",
+      "default": "Lass uns das Stigma mit Wissenschaft angehen und mehr über Haarausfall erfahren."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Karte",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Bild (Asset-Name)",
+          "info": "Falls kein Bild oben gewählt, z.B. case1.png"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Der Haarwachstumszyklus"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Etwa 90 % deiner Haare befinden sich in der aktiven Wachstumsphase (Anagenphase) für 3–6 Jahre."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hair Loss Education",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Der Haarwachstumszyklus",
+            "text": "Etwa 90 % deiner Haare befinden sich in der aktiven Wachstumsphase (Anagenphase) für 3–6 Jahre. Danach folgt eine Übergangsphase (Katagenphase) von 1–2 Wochen, bevor die Haare in die Ruhephase (Telogenphase) von 2–4 Monaten eintreten."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Haarausfall ist normal",
+            "text": "Jeder verliert Haare – tatsächlich fallen täglich bis zu 100 Haare aus. Aber wenn man mehr Haare in der Bürste oder auf dem Kissen bemerkt als sonst, dann suchen die meisten nach einer Behandlung gegen Haarausfall."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Arten der Behandlung",
+            "text": "Je nach Gesundheitsgeschichte und Art des Haarausfalls können bestimmte Behandlungen besser geeignet sein als andere. Unsere klinisch geprüften Inhaltsstoffe bieten einen wissenschaftlich fundierten Ansatz, der speziell auf die Bedürfnisse von Frauen abgestimmt ist."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
