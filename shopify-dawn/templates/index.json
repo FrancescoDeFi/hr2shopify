@@ -479,40 +479,6 @@
         "badge_12"
       ]
     },
-    "testimonials": {
-      "type": "testimonials",
-      "blocks": {
-        "test_1": {
-          "type": "testimonial",
-          "settings": {
-            "name": "Aaron",
-            "subtitle": "Hr² MITGLIED SEIT 2025",
-            "quote": "Ich wollte keine schnellen Versprechen, die wissenschaftlich nichts bringen. Hr² ist für mich eine langfristige Lösung mit gezielten, haarwuchsfördernden Inhaltsstoffen. Nach ein paar Monaten fühlen sich meine Haare kräftiger an und ich habe wieder Vertrauen, aktiv etwas gegen den Haarausfall zu tun."
-          }
-        },
-        "test_2": {
-          "type": "testimonial",
-          "settings": {
-            "name": "Lukas",
-            "subtitle": "Hr² MITGLIED SEIT 2025",
-            "quote": "In stressigen Phasen habe ich immer zuerst an meinen Haaren gemerkt, dass etwas nicht passt. Hr² ist für mich wie ein kleines tägliches Reset. Ich fühle mich versorgt und muss mir darüber keine Gedanken mehr machen."
-          }
-        },
-        "test_3": {
-          "type": "testimonial",
-          "settings": {
-            "name": "Patrick",
-            "subtitle": "Hr² MITGLIED SEIT 2025",
-            "quote": "Ich arbeite und trainiere viel und hart. Die damit verbundene Anstrengung und der Stress haben aber auch ihre Schattenseiten. Irgendwann habe ich gemerkt, dass ich einen wichtigen Aspekt komplett vernachlässigt habe: meine Haare. Seit ich Hr² nehme, habe ich dieses unangenehme Gefühl überwunden."
-          }
-        }
-      },
-      "block_order": [
-        "test_1",
-        "test_2",
-        "test_3"
-      ]
-    },
     "faq": {
       "type": "faq",
       "blocks": {
