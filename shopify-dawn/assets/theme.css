@@ -5032,7 +5032,7 @@ body.pdp-notify-open {
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.01em;
-  font-size: clamp(28px, 2.8vw, 36px);
+  font-size: clamp(36px, 2.8vw, 48px);
   line-height: 1.08;
 }
 
@@ -5522,17 +5522,34 @@ body.pdp-notify-open {
 }
 
 .faq {
-  padding: 90px 72px 120px;
+  padding: 90px 0 120px;
   display: grid;
-  grid-template-columns: 38% 62%;
-  gap: 56px;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
   background: #ffffff;
-  max-width: 1400px;
+  max-width: 1180px;
   margin: 0 auto;
+  align-items: start;
+}
+
+.faq-left {
+  display: flex;
+  align-items: flex-start;
+  padding-right: 28px;
 }
 
 .faq-right {
-  padding-top: 200px;
+  padding-top: 0;
+  padding-left: 28px;
+}
+
+.faq-heading {
+  margin: 0 0 22px;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(32px, 3.2vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
 }
 
 .faq-left h2 {
@@ -5555,7 +5572,7 @@ body.pdp-notify-open {
   display: block;
   width: 100%;
   max-width: 100%;
-  margin-top: 32px;
+  margin-top: 0;
   border-radius: 12px;
   object-fit: cover;
 }
@@ -6178,7 +6195,7 @@ body.pdp-notify-open {
   }
 
   .causes-header h2 {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .causes-grid {
@@ -6787,12 +6804,14 @@ body.pdp-notify-open {
     height: 22px;
   }
 
-  .faq-left h2 {
+  .faq-heading {
     font-size: 28px;
   }
 
-  .faq-left p {
-    font-size: 15px;
+  .faq-left,
+  .faq-right {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .faq-question {

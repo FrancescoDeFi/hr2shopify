@@ -197,7 +197,7 @@
       },
       "items": {
         "stress": {
-          "title": "STRESS",
+          "title": "Stress",
           "description": "Chronischer Stress kann gesunde Haarzyklen stören und das Ausfallmuster beeinflussen."
         },
         "hormones": {
@@ -205,7 +205,7 @@
           "description": "Hormonschwankungen können den Haarfollikel direkt beeinflussen. Veränderungen im Androgen-, Schilddrüsen- oder Cortisolhaushalt können die Wachstumsphase verkürzen und bei empfindlichen Follikeln Ausdünnung begünstigen."
         },
         "dht": {
-          "title": "DHT",
+          "title": "Dht",
           "description": "Schlaf, Aktivität und Gewohnheiten beeinflussen Regeneration und das Umfeld, das Haare brauchen, um zu wachsen."
         },
         "nutrition": {
@@ -213,7 +213,7 @@
           "description": "Ein Mangel an Mikronährstoffen wie Eisen, Zink, Vitamin D oder B-Vitaminen kann Zellteilung, Keratinsynthese und Energieversorgung des Follikels beeinträchtigen. Dadurch kann der Haarzyklus früher in die Ruhephase übergehen und diffuse Ausdünnung begünstigen."
         },
         "aging": {
-          "title": "ALTERUNG",
+          "title": "Alterung",
           "description": "Mit zunehmendem Alter können Wachstumsphasen kürzer werden – Haardichte lässt sich dann schwerer erhalten."
         }
       }
