@@ -631,41 +631,46 @@
           <p class="pdp-compare-price">{{ 'sections.comparison.price_note' | t }}</p>
         </div>
         <div class="pdp-compare-right">
-          <h2 id="pdp-compare-title">{{ 'product_page.compare_title' | t }}</h2>
+          <h2 id="pdp-compare-title">{{ 'sections.comparison.title' | t }}</h2>
           <div class="pdp-compare-table-wrap">
             <table class="pdp-compare-table">
               <thead>
                 <tr>
-                  <th></th>
+                  <th>{{ 'sections.comparison.feature' | t }}</th>
                   <th><span class="pdp-compare-pill">Hr²</span></th>
-                  <th>{{ 'product_page.compare_others' | t }}</th>
+                  <th>{{ 'sections.comparison.others' | t }}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>{{ 'product_page.compare_row_1' | t }}</td>
+                  <td>{{ 'sections.comparison.features.clinically_proven' | t }}</td>
                   <td><span class="pdp-compare-check">&#10003;</span></td>
-                  <td>{{ 'product_page.compare_value_rare' | t }}</td>
+                  <td>~</td>
                 </tr>
                 <tr>
-                  <td>{{ 'product_page.compare_row_2' | t }}</td>
+                  <td>{{ 'sections.comparison.features.bio_optimized' | t }}</td>
                   <td><span class="pdp-compare-check">&#10003;</span></td>
-                  <td>{{ 'product_page.compare_value_few' | t }}</td>
+                  <td>X</td>
                 </tr>
                 <tr>
-                  <td>{{ 'product_page.compare_row_3' | t }}</td>
+                  <td>{{ 'sections.comparison.features.without_drugs' | t }}</td>
                   <td><span class="pdp-compare-check">&#10003;</span></td>
-                  <td>{{ 'product_page.compare_value_rare' | t }}</td>
+                  <td>~</td>
                 </tr>
                 <tr>
-                  <td>{{ 'product_page.compare_row_4' | t }}</td>
+                  <td>{{ 'sections.comparison.features.libido_friendly' | t }}</td>
                   <td><span class="pdp-compare-check">&#10003;</span></td>
-                  <td>{{ 'product_page.compare_value_few' | t }}</td>
+                  <td>~</td>
                 </tr>
                 <tr>
-                  <td>{{ 'product_page.compare_row_5' | t }}</td>
+                  <td>{{ 'sections.comparison.features.female_dosed' | t }}</td>
                   <td><span class="pdp-compare-check">&#10003;</span></td>
-                  <td>{{ 'product_page.compare_value_few' | t }}</td>
+                  <td>X</td>
+                </tr>
+                <tr>
+                  <td>{{ 'sections.comparison.features.female_experts' | t }}</td>
+                  <td><span class="pdp-compare-check">&#10003;</span></td>
+                  <td>X</td>
                 </tr>
               </tbody>
             </table>
@@ -681,63 +686,30 @@
           <img src="{{ 'faq.png' | asset_url }}" alt="" loading="lazy" decoding="async">
         </div>
         <div class="pdp-faq-content">
-        <h2 id="pdp-faq-title">{{ 'product_page.faq_title' | t }}</h2>
+        <h2 id="pdp-faq-title">{{ 'sections.faq.heading' | t }}</h2>
 
         <div class="pdp-faq-list">
-          <div class="pdp-faq-item open">
-            <button class="pdp-faq-question" type="button" aria-expanded="true">
-              <span>{{ 'product_page.faq_q1' | t }}</span>
-              <span class="pdp-faq-toggle">−</span>
-            </button>
-            <div class="pdp-faq-answer">
-              {{ 'product_page.faq_a1' | t }}
+          {% assign pdp_faq_items = '1,2,3,4,5,6,7,8,9,10' | split: ',' %}
+          {% for faq_index in pdp_faq_items %}
+            {% assign faq_question_key = 'sections.faq.questions.q' | append: faq_index | append: '.question' %}
+            {% assign faq_answer_key = 'sections.faq.questions.q' | append: faq_index | append: '.answer' %}
+            {% assign faq_answer = faq_answer_key | t
+              | replace: '&lt;p&gt;', '<p>'
+              | replace: '&lt;/p&gt;', '</p>'
+              | replace: '&lt;br&gt;', '<br>'
+              | replace: '&lt;br/&gt;', '<br>'
+              | replace: '&lt;br /&gt;', '<br>'
+            %}
+            <div class="pdp-faq-item{% if forloop.first %} open{% endif %}">
+              <button class="pdp-faq-question" type="button" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                <span>{{ faq_question_key | t }}</span>
+                <span class="pdp-faq-toggle">{% if forloop.first %}−{% else %}+{% endif %}</span>
+              </button>
+              <div class="pdp-faq-answer" {% unless forloop.first %}hidden{% endunless %}>
+                {{ faq_answer }}
+              </div>
             </div>
-          </div>
-          <div class="pdp-faq-item">
-            <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>{{ 'product_page.faq_q2' | t }}</span>
-              <span class="pdp-faq-toggle">+</span>
-            </button>
-            <div class="pdp-faq-answer" hidden>
-              {{ 'product_page.faq_a2' | t }}
-            </div>
-          </div>
-          <div class="pdp-faq-item">
-            <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>{{ 'product_page.faq_q3' | t }}</span>
-              <span class="pdp-faq-toggle">+</span>
-            </button>
-            <div class="pdp-faq-answer" hidden>
-              {{ 'product_page.faq_a3' | t }}
-            </div>
-          </div>
-          <div class="pdp-faq-item">
-            <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>{{ 'product_page.faq_q4' | t }}</span>
-              <span class="pdp-faq-toggle">+</span>
-            </button>
-            <div class="pdp-faq-answer" hidden>
-              {{ 'product_page.faq_a4' | t }}
-            </div>
-          </div>
-          <div class="pdp-faq-item">
-            <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>{{ 'product_page.faq_q5' | t }}</span>
-              <span class="pdp-faq-toggle">+</span>
-            </button>
-            <div class="pdp-faq-answer" hidden>
-              {{ 'product_page.faq_a5' | t }}
-            </div>
-          </div>
-          <div class="pdp-faq-item">
-            <button class="pdp-faq-question" type="button" aria-expanded="false">
-              <span>{{ 'product_page.faq_q6' | t }}</span>
-              <span class="pdp-faq-toggle">+</span>
-            </button>
-            <div class="pdp-faq-answer" hidden>
-              {{ 'product_page.faq_a6_prefix' | t }} <a href="{{ pages['inhaltsstoffe'].url | default: '/pages/inhaltsstoffe' }}">{{ 'theme.header.ingredients' | t }}</a> {{ 'product_page.faq_a6_middle' | t }} <a href="{{ pages['forschung'].url | default: '/pages/forschung' }}">{{ 'theme.header.research' | t }}</a>.
-            </div>
-          </div>
+          {% endfor %}
         </div>
         </div>
       </div>
