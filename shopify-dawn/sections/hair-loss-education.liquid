@@ -1,23 +1,21 @@
 <section class="hairloss-edu">
-  <!-- Stat block -->
   <div class="hairloss-edu-stat">
-    <div class="hairloss-edu-stat-image">
-      <img src="{{ section.settings.stat_image | default: 'hair50.png' | asset_url }}" alt="{{ section.settings.stat_alt | default: 'Haarpflege' }}" loading="lazy" decoding="async">
-    </div>
     <div class="hairloss-edu-stat-copy">
       <h2 class="hairloss-edu-stat-number">{{ section.settings.stat_number | default: '50%' }}</h2>
       <p class="hairloss-edu-stat-text">{{ section.settings.stat_text | default: 'Über 50 % der Frauen sind im Laufe ihres Lebens von Haarausfall betroffen.*' }}</p>
       <cite class="hairloss-edu-stat-source">{{ section.settings.stat_source | default: '*Fabbrocini, 2018' }}</cite>
+      <div class="hairloss-edu-intro">
+        <h2 class="hairloss-edu-heading">{{ section.settings.heading | default: "Ja, das ist die Mehrheit – du bist also nicht allein." }}</h2>
+        <p class="hairloss-edu-subheading">{{ section.settings.subheading | default: "Lass uns das Stigma mit Wissenschaft angehen und mehr über Haarausfall erfahren." }}</p>
+      </div>
+    </div>
+    <div class="hairloss-edu-stat-image">
+      <img src="{{ section.settings.stat_image | default: 'hair50.png' | asset_url }}" alt="{{ section.settings.stat_alt | default: 'Haarpflege' }}" loading="lazy" decoding="async">
     </div>
   </div>
 
-  <!-- Intro copy -->
-  <div class="hairloss-edu-intro">
-    <h2 class="hairloss-edu-heading">{{ section.settings.heading | default: "Ja, das ist die Mehrheit – du bist also nicht allein." }}</h2>
-    <p class="hairloss-edu-subheading">{{ section.settings.subheading | default: "Lass uns das Stigma mit Wissenschaft angehen und mehr über Haarausfall erfahren." }}</p>
-  </div>
-
-  <!-- Cards -->
+  {% comment %}
+  The education cards are intentionally hidden for this layout revision.
   <div class="hairloss-edu-cards">
     {% for block in section.blocks %}
       {% if block.type == 'card' %}
@@ -37,6 +35,7 @@
       {% endif %}
     {% endfor %}
   </div>
+  {% endcomment %}
 </section>
 
 {% schema %}

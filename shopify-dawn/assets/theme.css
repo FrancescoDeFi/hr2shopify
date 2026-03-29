@@ -5057,7 +5057,7 @@ body.pdp-notify-open {
 .hairloss-edu {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 80px 46px;
+  padding: 56px 0;
 }
 
 .hairloss-edu-stat {
@@ -5065,46 +5065,55 @@ body.pdp-notify-open {
   grid-template-columns: 1fr 1fr;
   gap: 0;
   align-items: stretch;
+  min-height: clamp(280px, 30vw, 380px);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .hairloss-edu-stat-image {
+  position: relative;
   overflow: hidden;
-  border-radius: 0;
+  background: #3c0c1c;
 }
 
 .hairloss-edu-stat-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
 .hairloss-edu-stat-copy {
-  padding: 48px 56px;
+  padding: clamp(28px, 3vw, 42px) 46px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
 }
 
 .hairloss-edu-stat-number {
   font-family: "Inter", system-ui, sans-serif;
-  font-size: clamp(56px, 6vw, 80px);
+  font-size: clamp(46px, 4.8vw, 68px);
   font-weight: 500;
   line-height: 1;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   color: #0c0c0c;
   letter-spacing: -0.02em;
 }
 
 .hairloss-edu-stat-text {
-  font-size: clamp(15px, 1.4vw, 18px);
-  line-height: 1.5;
-  margin: 0 0 20px;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.45;
+  margin: 0 0 14px;
   color: #0c0c0c;
-  max-width: 420px;
+  max-width: 400px;
 }
 
 .hairloss-edu-stat-source {
+  display: inline-block;
   font-size: 13px;
   color: rgba(12, 12, 12, 0.55);
   font-style: normal;
@@ -5113,26 +5122,28 @@ body.pdp-notify-open {
 }
 
 .hairloss-edu-intro {
-  padding: 80px 0 40px;
+  margin-top: 24px;
+  padding: 0;
+  max-width: 470px;
 }
 
 .hairloss-edu-heading {
   font-family: "Inter", system-ui, sans-serif;
-  font-size: clamp(28px, 3.2vw, 42px);
+  font-size: clamp(26px, 2.6vw, 36px);
   font-weight: 400;
   line-height: 1.15;
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: #0c0c0c;
-  max-width: 760px;
+  max-width: 460px;
   letter-spacing: -0.01em;
 }
 
 .hairloss-edu-subheading {
-  font-size: clamp(14px, 1.2vw, 16px);
-  line-height: 1.5;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.45;
   margin: 0;
   color: rgba(12, 12, 12, 0.6);
-  max-width: 560px;
+  max-width: 430px;
 }
 
 .hairloss-edu-cards {
@@ -5172,11 +5183,16 @@ body.pdp-notify-open {
 
 @media (max-width: 1024px) {
   .hairloss-edu {
-    padding: 60px 28px;
+    padding: 48px 0;
+  }
+
+  .hairloss-edu-stat {
+    grid-template-columns: 1fr 1fr;
+    min-height: 0;
   }
 
   .hairloss-edu-stat-copy {
-    padding: 32px 36px;
+    padding: 28px;
   }
 }
 
@@ -5187,18 +5203,21 @@ body.pdp-notify-open {
 
   .hairloss-edu-stat {
     grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .hairloss-edu-stat-image {
-    aspect-ratio: 4 / 3;
+    min-height: 260px;
+    aspect-ratio: auto;
   }
 
   .hairloss-edu-stat-copy {
-    padding: 28px 0;
+    padding: 0 0 24px;
   }
 
   .hairloss-edu-intro {
-    padding: 48px 0 28px;
+    margin-top: 24px;
+    padding: 0;
   }
 
   .hairloss-edu-cards {
