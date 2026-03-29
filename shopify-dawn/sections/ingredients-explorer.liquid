@@ -109,6 +109,10 @@
                   {% assign ingredient_curve_bottom = ingredient_curve_bottom_key | t %}
                 {% endif %}
               {% endif %}
+              {% assign ingredient_description = ingredient_description
+                | replace: '&lt;sup&gt;', '<sup>'
+                | replace: '&lt;/sup&gt;', '</sup>'
+              %}
               {% if is_first %}
                 {% assign first_description = ingredient_description %}
                 {% assign first_curve_top = ingredient_curve_top %}
@@ -120,7 +124,7 @@
                       role="tab"
                       aria-selected="{{ is_first }}"
                       data-ingredient="{{ block.settings.id }}"
-                      data-description="{{ ingredient_description }}"
+                      data-description="{{ ingredient_description | escape }}"
                       data-curve-top="{{ ingredient_curve_top | default: '' | escape }}"
                       data-curve-bottom="{{ ingredient_curve_bottom | default: '' | escape }}"
                       data-image="{{ ingredient_image }}"

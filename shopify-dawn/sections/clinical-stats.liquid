@@ -44,6 +44,10 @@
                   {% assign stat_text = 'sections.clinical.stats.stat_3' | t %}
               {% endcase %}
             {% endif %}
+            {% assign stat_text = stat_text
+              | replace: '&lt;sup&gt;', '<sup>'
+              | replace: '&lt;/sup&gt;', '</sup>'
+            %}
             <div class="clinical-stat" {{ block.shopify_attributes }}>
               <div class="stat-value">{{ block.settings.value }}</div>
               <div class="stat-text">{{ stat_text }}</div>

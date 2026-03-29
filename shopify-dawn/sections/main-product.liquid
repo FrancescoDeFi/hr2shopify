@@ -142,16 +142,16 @@
                     {%- assign localized_plan_name = plan.name -%}
                     {%- if request.locale.iso_code == 'de' -%}
                       {%- assign localized_plan_name = plan.name
-                        | replace: 'Deliver every month', '1-Monats-Vorrat'
-                        | replace: 'Deliver every 1 month', '1-Monats-Vorrat'
+                        | replace: 'Deliver every month', 'Monatliche Lieferung'
+                        | replace: 'Deliver every 1 month', 'Monatliche Lieferung'
                         | replace: 'Deliver every 2 months', '2-Monats-Vorrat'
-                        | replace: 'Deliver every 3 months', '3-Monats-Vorrat'
-                        | replace: 'Deliver every 6 months', '6-Monats-Vorrat'
-                        | replace: 'DELIVER EVERY MONTH', '1-MONATS-VORRAT'
-                        | replace: 'DELIVER EVERY 1 MONTH', '1-MONATS-VORRAT'
+                        | replace: 'Deliver every 3 months', '3-Monate-Lieferung'
+                        | replace: 'Deliver every 6 months', '6-Monate-Lieferung'
+                        | replace: 'DELIVER EVERY MONTH', 'MONATLICHE LIEFERUNG'
+                        | replace: 'DELIVER EVERY 1 MONTH', 'MONATLICHE LIEFERUNG'
                         | replace: 'DELIVER EVERY 2 MONTHS', '2-MONATS-VORRAT'
-                        | replace: 'DELIVER EVERY 3 MONTHS', '3-MONATS-VORRAT'
-                        | replace: 'DELIVER EVERY 6 MONTHS', '6-MONATS-VORRAT'
+                        | replace: 'DELIVER EVERY 3 MONTHS', '3-MONATE-LIEFERUNG'
+                        | replace: 'DELIVER EVERY 6 MONTHS', '6-MONATE-LIEFERUNG'
                         | replace: ', Lieferung monatlich', ''
                         | replace: ', Lieferung alle 2 Monate', ''
                         | replace: ', Lieferung alle 3 Monate', ''
@@ -312,7 +312,7 @@
           </div>
 
           <div class="pdp-hero-partners">
-            <p class="pdp-hero-partners-kicker">{{ 'sections.partners.kicker' | t }}</p>
+            <p class="pdp-hero-partners-kicker">{{ 'sections.partners.kicker' | t | replace: '&lt;sup&gt;', '<sup>' | replace: '&lt;/sup&gt;', '</sup>' }}</p>
             <div class="pdp-hero-partners-logos">
               <img class="partner-img is-png" src="{{ 'sm_howl_looks_logo_02.png' | asset_url }}" alt="Stanford" loading="lazy">
               <img class="partner-img on-dark" src="{{ '6144ac488b51c665750238.png' | asset_url }}" alt="TUM" loading="lazy" style="transform:scale(1.4)">

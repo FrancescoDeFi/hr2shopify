@@ -31,6 +31,11 @@
       return ingredientCopy[key] || '';
     }
 
+    function normalizeSupMarkup(value) {
+      if (!value) return '';
+      return value.replace(/&lt;(\/?sup)&gt;/gi, '<$1>');
+    }
+
     function setActive(key) {
       chips.forEach(function (btn) {
         var active = btn.dataset.ingredient === key;
@@ -44,7 +49,7 @@
       });
       if (description) {
         var copy = getCopy(key);
-        if (copy) description.innerHTML = copy;
+        if (copy) description.innerHTML = normalizeSupMarkup(copy);
       }
     }
 

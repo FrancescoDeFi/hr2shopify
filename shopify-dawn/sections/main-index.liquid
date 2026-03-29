@@ -179,7 +179,7 @@
 
     <section class="partners" aria-labelledby="partners-title">
       <div class="partners-inner">
-        <p class="partners-kicker" id="partners-title">{{ 'sections.partners.kicker' | t }}</p>
+        <p class="partners-kicker" id="partners-title">{{ 'sections.partners.kicker' | t | replace: '&lt;sup&gt;', '<sup>' | replace: '&lt;/sup&gt;', '</sup>' }}</p>
         <div class="partners-logos" role="list" aria-label="{{ 'sections.partners.aria_logos' | t }}">
           <div class="partner-logo" role="listitem" aria-label="Stanford">
             <img class="partner-img is-png" src="{{ 'sm_howl_looks_logo_02.png' | asset_url }}" alt="{{ 'sections.partners.alt_stanford' | t }}" loading="lazy" decoding="async">

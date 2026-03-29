@@ -7,6 +7,10 @@
     {% assign partners_heading = 'sections.partners.kicker' | t %}
   {% endif %}
 {% endunless %}
+{% assign partners_heading = partners_heading
+  | replace: '&lt;sup&gt;', '<sup>'
+  | replace: '&lt;/sup&gt;', '</sup>'
+%}
 
 <section class="partners" aria-labelledby="partners-title">
   <div class="partners-inner">
